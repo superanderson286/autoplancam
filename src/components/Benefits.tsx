@@ -14,15 +14,13 @@ const containerVariants = {
 };
 
 const cardVariants = {
-  hidden: {
+  hidden: (direction: 'left' | 'right') => ({
     opacity: 0,
-    scale: 0.8,
-    rotate: -10,
-  },
+    x: direction === 'left' ? -100 : 100,
+  }),
   visible: {
     opacity: 1,
-    scale: 1,
-    rotate: 0,
+    x: 0,
     transition: {
       type: "spring",
       stiffness: 100,
@@ -56,8 +54,9 @@ export default function Benefits() {
           className="space-y-4"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: false, amount: 0.3 }}
           variants={containerVariants}
+          custom="left"
         >
           {benefits.map((benefit, index) => (
             <motion.div
@@ -74,8 +73,9 @@ export default function Benefits() {
           className="space-y-4"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: false, amount: 0.3 }}
           variants={containerVariants}
+          custom="right"
         >
           {targetAudience.map((audience, index) => (
             <motion.div
