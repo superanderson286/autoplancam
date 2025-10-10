@@ -6,6 +6,7 @@ import TechStack from "./components/TechStack";
 import Benefits from "./components/Benefits";
 import Monetization from "./components/Monetization";
 import Roadmap from "./components/Roadmap";
+import KoFiWidget from "./components/KoFiWidget";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Benefits />
       <Monetization />
       <Roadmap />
+      <KoFiWidget />
     </motion.div>
   );
 }

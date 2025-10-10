@@ -12,12 +12,6 @@ export default function Monetization() {
       <motion.p className="text-lg mb-6" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.2 }}>
         {t("Licencia por proyecto, suscripción mensual o donaciones vía Ko-fi, PayPal y Cripto")}
       </motion.p>
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-full"
-      >
-        {t("Empezar ahora")}
-      </motion.button>
     </section>
   );
 }
