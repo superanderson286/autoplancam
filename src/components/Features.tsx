@@ -5,7 +5,7 @@ export default function Features() {
   const { t } = useTranslation();
 
   return (
-    <section id="features" className="grid md:grid-cols-2 gap-8 px-8 py-16 bg-white text-gray-900">
+    <section id="features" className="grid md:grid-cols-2 gap-8 px-4 md:px-8 py-16 bg-white text-gray-900">
       <motion.div
         initial={{ x: -50, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}

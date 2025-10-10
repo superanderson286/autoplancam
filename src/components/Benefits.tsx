@@ -47,7 +47,7 @@ export default function Benefits() {
   const { t } = useTranslation();
 
   return (
-    <section id="benefits" className="bg-white py-16 px-8">
+    <section id="benefits" className="bg-white py-16 px-4 md:px-8">
       <h2 className="text-3xl font-bold text-center mb-8">{t("Beneficios clave")}</h2>
       <div className="grid md:grid-cols-2 gap-8 text-lg">
         <motion.div

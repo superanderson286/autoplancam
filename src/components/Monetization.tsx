@@ -5,7 +5,7 @@ export default function Monetization() {
   const { t } = useTranslation();
 
   return (
-    <section className="bg-blue-600 text-white py-16 px-8 text-center">
+    <section className="bg-blue-600 text-white py-16 px-4 md:px-8 text-center">
       <motion.h2 className="text-3xl font-bold mb-4" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}>
         {t("Disponible en versión gratuita y premium")}
       </motion.h2>

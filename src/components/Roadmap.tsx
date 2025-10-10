@@ -7,9 +7,9 @@ export default function Roadmap() {
   const roadmap = [t("✅ MVP funcional"), t("📦 Base de datos Hikvision"), t("🧪 Validación con instaladores"), t("🚀 Lanzamiento beta")];
 
   return (
-    <section id="roadmap" className="bg-gray-900 text-white py-16 px-8">
+    <section id="roadmap" className="bg-gray-900 text-white py-16 px-4 md:px-8">
       <h2 className="text-3xl font-bold text-center mb-8">{t("Próximos pasos")}</h2>
-      <div className="grid md:grid-cols-4 gap-6 text-center text-lg">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-lg">
         {roadmap.map((item, i) => (
           <motion.div
             key={i}
