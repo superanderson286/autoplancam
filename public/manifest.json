@@ -1,20 +1,20 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "AutoPlanCam",
+  "name": "AutoPlanCam",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iY3VycmVudENvbG9yIj4KICA8cGF0aCBkPSJNMTIgMTBhNCA0IDAgMSAwIDAgOCA0IDQgMCAwIDAgMC04em0wIDZhMiAyIDAgMSAxIDAtNCAyIDIgMCAwIDEgMCA0eiIvPgogIDxwYXRoIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyeW0wIDE4Yy00LjQxIDAtOC0zLjU5LTgtOHMzLjU5LTggOC04IDggMy41OSA4IDggOCAzLjU5LTggOHoiLz4KICA8cGF0aCBkPSJNMTYgN2gtMS41bC0xLTFIMTBMLTggMUg4djJoOFY3eiIvPgo8L3N2Zz4=",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "type": "image/svg+xml"
     },
     {
-      "src": "logo192.png",
-      "type": "image/png",
+      "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iY3VycmVudENvbG9yIj4KICA8cGF0aCBkPSJNMTIgMTBhNCA0IDAgMSAwIDAgOCA0IDQgMCAwIDAgMC04em0wIDZhMiAyIDAgMSAxIDAtNCAyIDIgMCAwIDEgMCA0eiIvPgogIDxwYXRoIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyeW0wIDE4Yy00LjQxIDAtOC0zLjU5LTgtOHMzLjU5LTggOC04IDggMy41OSA4IDggOCAzLjU5LTggOHoiLz4KICA8cGF0aCBkPSJNMTYgN2gtMS41bC0xLTFIMTBMLTggMUg4djJoOFY3eiIvPgo8L3N2Zz4=",
+      "type": "image/svg+xml",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
-      "type": "image/png",
+      "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iY3VycmVudENvbG9yIj4KICA8cGF0aCBkPSJNMTIgMTBhNCA0IDAgMSAwIDAgOCA0IDQgMCAwIDAgMC04em0wIDZhMiAyIDAgMSAxIDAtNCAyIDIgMCAwIDEgMCA0eiIvPgogIDxwYXRoIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyeW0wIDE4Yy00LjQxIDAtOC0zLjU5LTgtOHMzLjU5LTggOC04IDggMy41OSA4IDggOCAzLjU5LTggOHoiLz4KICA8cGF0aCBkPSJNMTYgN2gtMS41bC0xLTFIMTBMLTggMUg4djJoOFY3eiIvPgo8L3N2Zz4=",
+      "type": "image/svg+xml",
       "sizes": "512x512"
     }
   ],

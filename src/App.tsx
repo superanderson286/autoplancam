@@ -7,6 +7,7 @@ import Benefits from "./components/Benefits";
 import Monetization from "./components/Monetization";
 import Roadmap from "./components/Roadmap";
 import KoFiWidget from "./components/KoFiWidget";
+import Planner from "./components/app/Planner";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Navbar />
       <Hero />
       <Features />
+      <Planner />
       <TechStack />
       <Benefits />
       <Monetization />
