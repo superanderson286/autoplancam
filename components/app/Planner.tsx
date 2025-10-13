@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 export default function Planner() {
+  const { t } = useTranslation();
   const [area, setArea] = useState("");
   const [height, setHeight] = useState("");
   const [result, setResult] = useState<string | null>(null);
 
   const handlePlan = () => {
     // Simulación de lógica de recomendación
-    const recommended = `Recommended: 3 dome cameras + 1 PTZ for ${area}m² at ${height}m height.`;
+    const recommended = t('recommendationResult', { area, height });
     setResult(recommended);
   };
 
@@ -20,18 +22,18 @@ export default function Planner() {
         transition={{ duration: 0.8 }}
         className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg"
       >
-        <h2 className="text-2xl font-bold mb-6 text-center">AutoPlanCam Planner</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center">{t('autoPlanCamPlanner')}</h2>
         <div className="grid gap-4 mb-6">
           <input
             type="number"
-            placeholder="Area (m²)"
+            placeholder={t('area_m2')}
             value={area}
             onChange={(e) => setArea(e.target.value)}
             className="border px-4 py-2 rounded"
           />
           <input
             type="number"
-            placeholder="Height (m)"
+            placeholder={t('height_m')}
             value={height}
             onChange={(e) => setHeight(e.target.value)}
             className="border px-4 py-2 rounded"
@@ -40,7 +42,7 @@ export default function Planner() {
             onClick={handlePlan}
             className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
           >
-            Recommend Cameras
+            {t('recommendCameras')}
           </button>
         </div>
         {result && (

@@ -37,5 +37,10 @@
   "🗄️ PostgreSQL / SQLite": "🗄️ PostgreSQL / SQLite",
   "🖥️ Tauri Desktop Ready": "🖥️ Tauri Desktop Ready",
   "Invítame un café en Ko-fi": "Buy me a coffee on Ko-fi",
-  "Invítame un café en PayPal": "Buy me a coffee on PayPal"
+  "Invítame un café en PayPal": "Buy me a coffee on PayPal",
+  "autoPlanCamPlanner": "AutoPlanCam Planner",
+  "area_m2": "Area (m²)",
+  "height_m": "Height (m)",
+  "recommendCameras": "Recommend Cameras",
+  "recommendationResult": "Recommended: 3 dome cameras + 1 PTZ for {{area}}m² at {{height}}m height."
 }
