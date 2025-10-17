@@ -4,7 +4,6 @@ import { useState } from "react";
 export default function Navbar() {
   const { t, i18n } = useTranslation(); // Si usas namespaces: useTranslation("common")
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [forceUpdate, setForceUpdate] = useState(0); // Nuevo estado
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -13,9 +12,7 @@ export default function Navbar() {
 
   const changeLanguage = (lng: string) => {
     if (typeof i18n.changeLanguage === "function") {
-      i18n.changeLanguage(lng).then(() => {
-        setForceUpdate(f => f + 1); // Forzar renderizado
-      });
+      i18n.changeLanguage(lng);
     } else {
       console.warn("i18n.changeLanguage is not a function");
     }
@@ -25,9 +22,9 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 w-full bg-gray-900 text-white py-4 px-6 z-50 shadow-md">
       <div className="flex justify-between items-center">
         <div className="hidden md:flex gap-6 text-sm font-medium">
-          <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("features")}>{t("Características")}</div>
-          <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("tech")}>{t("Tecnología")}</div>
-          <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("benefits")}>{t("Beneficios")}</div>
+          <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("features")}>{t("Features")}</div>
+          <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("tech")}>{t("Technology")}</div>
+          <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("benefits")}>{t("Benefits")}</div>
           <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("roadmap")}>{t("Roadmap")}</div>
         </div>
         <div className="hidden md:flex gap-4">
@@ -45,9 +42,9 @@ export default function Navbar() {
       {isMenuOpen && (
         <div className="md:hidden mt-4">
           <div className="flex flex-col gap-4 text-sm font-medium">
-            <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("features")}>{t("Características")}</div>
-            <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("tech")}>{t("Tecnología")}</div>
-            <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("benefits")}>{t("Beneficios")}</div>
+            <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("features")}>{t("Features")}</div>
+            <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("tech")}>{t("Technology")}</div>
+            <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("benefits")}>{t("Benefits")}</div>
             <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("roadmap")}>{t("Roadmap")}</div>
             <div className="flex gap-4 mt-4">
               <button onClick={() => changeLanguage('es')} className="text-sm font-medium hover:text-blue-400">Español</button>

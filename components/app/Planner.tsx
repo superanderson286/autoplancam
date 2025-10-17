@@ -22,7 +22,7 @@ export default function Planner() {
         transition={{ duration: 0.8 }}
         className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg"
       >
-        <h2 className="text-2xl font-bold mb-6 text-center">{t('autoPlanCamPlanner')}</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center">{"AutoPlanCam Planner Demo"}</h2>
         <div className="grid gap-4 mb-6">
           <input
             type="number"

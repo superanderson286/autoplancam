@@ -3,7 +3,7 @@ import * as dotenv from "dotenv";
 dotenv.config({ path: ".env" });
 
 export default {
-  schema: "./auth-schema.ts",
+  schema: "./db/schema.js",
   out: "./drizzle",
   dialect: "postgresql",
   dbCredentials: {

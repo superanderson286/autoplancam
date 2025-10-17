@@ -22,14 +22,14 @@ export default function Hero() {
       >
         <h1 className="text-3xl md:text-5xl font-bold mb-4">AutoPlanCam</h1>
         <p className="text-lg md:text-xl text-gray-300 mb-6">
-          {t("Automatiza proyectos de videovigilancia con precisión y estilo")}
+          {t("Automate video surveillance projects with precision and style")}
         </p>
         <motion.button
           onClick={handleDemoClick}
           whileHover={{ scale: 1.1 }}
           className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-full font-semibold"
         >
-          {t("Ver demo")}
+          {t("View demo")}
         </motion.button>
       </motion.div>
     </section>
