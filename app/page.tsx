@@ -11,6 +11,7 @@ import Monetization from "../components/Monetization";
 import Roadmap from "../components/Roadmap";
 import KoFiWidget from "../components/KoFiWidget";
 import Planner from "../components/app/Planner";
+import { Button as MovingBorderButton } from "../components/ui/moving-border";
 
 export default function HomePage() { // Renamed from App
   return (
@@ -21,11 +22,26 @@ export default function HomePage() { // Renamed from App
     >
       {/* The <Head> component is removed */}
       <Navbar />
-      <div style={{ padding: '2rem', border: '1px solid #ccc', margin: '2rem' }}>
-        <Link href="/sign-in">Go to Sign In Page</Link>
-        <br />
-        <Link href="/sign-up">Go to Sign Up Page</Link>
+
+      <div className="flex justify-center space-x-4 my-8">
+        <Link href="/auth/sign-in">
+          <MovingBorderButton
+            borderRadius="1.75rem"
+            className="bg-white dark:bg-slate-900 text-black dark:text-white border-neutral-200 dark:border-slate-800"
+          >
+            Sign In
+          </MovingBorderButton>
+        </Link>
+        <Link href="/auth/sign-up">
+          <MovingBorderButton
+            borderRadius="1.75rem"
+            className="bg-white dark:bg-slate-900 text-black dark:text-white border-neutral-200 dark:border-slate-800"
+          >
+            Sign Up
+          </MovingBorderButton>
+        </Link>
       </div>
+
       <Hero />
       <Features />
       <Planner />
