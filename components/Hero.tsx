@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import Link from "next/link";
+import { Button as MovingBorderButton } from "./ui/moving-border";
 
 export default function Hero() {
   const { t } = useTranslation();
@@ -24,13 +26,31 @@ export default function Hero() {
         <p className="text-lg md:text-xl text-gray-300 mb-6">
           {t("Automate video surveillance projects with precision and style")}
         </p>
-        <motion.button
-          onClick={handleDemoClick}
-          whileHover={{ scale: 1.1 }}
-          className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-full font-semibold"
-        >
-          {t("View demo")}
-        </motion.button>
+        <div className="flex justify-center space-x-4">
+          <motion.button
+            onClick={handleDemoClick}
+            whileHover={{ scale: 1.1 }}
+            className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-full font-semibold"
+          >
+            {t("View demo")}
+          </motion.button>
+          <Link href="/auth/sign-in">
+            <MovingBorderButton
+              borderRadius="1.75rem"
+              className="bg-white dark:bg-slate-900 text-black dark:text-white border-neutral-200 dark:border-slate-800"
+            >
+              Sign In
+            </MovingBorderButton>
+          </Link>
+          <Link href="/auth/sign-up">
+            <MovingBorderButton
+              borderRadius="1.75rem"
+              className="bg-white dark:bg-slate-900 text-black dark:text-white border-neutral-200 dark:border-slate-800"
+            >
+              Sign Up
+            </MovingBorderButton>
+          </Link>
+        </div>
       </motion.div>
     </section>
   );
