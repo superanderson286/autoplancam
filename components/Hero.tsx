@@ -39,7 +39,7 @@ export default function Hero() {
               borderRadius="1.75rem"
               borderClassName="bg-[linear-gradient(to_right,#0ea5e9,#06b6d4)]"
             >
-              Sign In
+              {t("Sign In")}
             </MovingBorderButton>
           </Link>
           <Link href="/auth/sign-up">
@@ -47,7 +47,7 @@ export default function Hero() {
               borderRadius="1.75rem"
               borderClassName="bg-[linear-gradient(to_right,#0ea5e9,#06b6d4)]"
             >
-              Sign Up
+              {t("Sign Up")}
             </MovingBorderButton>
           </Link>
         </div>

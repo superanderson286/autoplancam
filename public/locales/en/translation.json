@@ -42,5 +42,9 @@
   "area_m2": "Area (m²)",
   "height_m": "Height (m)",
   "recommendCameras": "Recommend Cameras",
-  "recommendationResult": "Recommended: 3 dome cameras + 1 PTZ for {{area}}m² at {{height}}m height."
+  "recommendationResult": "Recommended: 3 dome cameras + 1 PTZ for {{area}}m² at {{height}}m height.",
+  "Sign In": "Sign In",
+  "Sign Up": "Sign Up",
+  "Spanish": "Spanish",
+  "English": "English"
 }
