@@ -1,45 +1,58 @@
-import { pgTable, uuid, text, timestamp, boolean, uniqueIndex } from 'drizzle-orm/pg-core';
+import { pgTable, text, timestamp, boolean, uniqueIndex } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
-import { sql } from 'drizzle-orm'; // 👈 ¡Nueva Importación necesaria!
+import { sql } from 'drizzle-orm';
 
-export const user = pgTable('user', {
+// --- TABLA USER ---
+// CORRECCIÓN 1: Usamos 'timestamp without time zone' y SQL raw 'now()' para las marcas de tiempo,
+// ya que esto coincide con la salida de tu DB.
+export const users = pgTable('user', {
   id: text('id').primaryKey(),
   name: text('name'),
   email: text('email').unique().notNull(),
   emailVerified: boolean('email_verified').default(false).notNull(),
-  hashedPassword: text('hashed_password'),
+  // hashedPassword es nullable en la DB
+  hashedPassword: text('hashed_password'), 
   image: text('image'),
-  createdAt: timestamp('created_at').defaultNow().notNull(),
-  updatedAt: timestamp('updated_at').defaultNow().$onUpdate(() => new Date()).notNull(),
+  createdAt: timestamp('created_at').notNull().default(sql`now()`),
+  updatedAt: timestamp('updated_at').notNull().default(sql`now()`), // Simplificado para coincidir con el DEFAULT NOW() de la DB
 });
 
-export const userRelations = relations(user, ({ many }) => ({
-  sessions: many(session),
-  accounts: many(account),
+export const userRelations = relations(users, ({ many }) => ({
+  sessions: many(sessions),
+  accounts: many(accounts),
 }));
 
-export const session = pgTable('session', {
+// --- TABLA SESSION ---
+export const sessions = pgTable('session', {
   id: text('id').primaryKey(),
-  userId: text('user_id').notNull().references(() => user.id, { onDelete: 'cascade' }),
+  userId: text('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
   token: text('token').notNull().unique(),
   expiresAt: timestamp('expires_at', { withTimezone: true }).notNull(),
-  createdAt: timestamp('created_at').defaultNow().notNull(),
+  
+  // CORRECCIÓN 2: El campo 'updated_at' FALTABA en la DB para esta tabla. Se agrega.
+  createdAt: timestamp('created_at').notNull().default(sql`now()`), 
+  updatedAt: timestamp('updated_at').notNull().default(sql`now()`), // Agregado para cumplir con Better Auth
+  
   ipAddress: text('ip_address'),
   userAgent: text('user_agent'),
 });
 
-export const sessionRelations = relations(session, ({ one }) => ({
-  user: one(user, {
-    fields: [session.userId],
-    references: [user.id],
+export const sessionRelations = relations(sessions, ({ one }) => ({
+  user: one(users, {
+    fields: [sessions.userId],
+    references: [users.id],
   }),
 }));
 
-export const account = pgTable('account', {
+// --- TABLA ACCOUNT ---
+export const accounts = pgTable('account', {
   id: text('id').primaryKey(),
-  userId: text('user_id').notNull().references(() => user.id, { onDelete: 'cascade' }),
+  userId: text('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
   providerId: text('provider_id').notNull(),
-  providerAccountId: text('provider_account_id').notNull(),
+  
+  // CORRECCIÓN 3: provider_account_id es NULABLE en tu DB y necesario para el hook.
+  providerAccountId: text('provider_account_id'), 
+  
   password: text('password').notNull(),
   accountId: text('account_id').notNull().unique(),
   accessToken: text('access_token'),
@@ -48,25 +61,28 @@ export const account = pgTable('account', {
   tokenType: text('token_type'),
   scope: text('scope'),
   idToken: text('id_token'),
-  createdAt: timestamp('created_at').defaultNow().notNull(),
-  updatedAt: timestamp('updated_at').defaultNow().$onUpdate(() => new Date()).notNull(),
+  
+  // Corregido para usar SQL raw 'now()'
+  createdAt: timestamp('created_at').notNull().default(sql`now()`), 
+  updatedAt: timestamp('updated_at').notNull().default(sql`now()`),
+  
 }, (acc) => ({
   providerProviderAccountIdIdx: uniqueIndex('provider_provider_account_id_idx').on(acc.providerId, acc.providerAccountId),
 }));
 
-export const accountRelations = relations(account, ({ one }) => ({
-  user: one(user, {
-    fields: [account.userId],
-    references: [user.id],
+export const accountRelations = relations(accounts, ({ one }) => ({
+  user: one(users, {
+    fields: [accounts.userId],
+    references: [users.id],
   }),
 }));
 
+// --- TABLA VERIFICATION ---
+// Esta tabla no requiere corrección, ya que coincide con la salida SQL.
 export const verification = pgTable('verification', {
   id: text('id').primaryKey(),
   identifier: text('identifier').notNull(),
-  token: text('token').notNull(),
+  token: text('token').notNull().unique(),
   expiresAt: timestamp('expires_at', { withTimezone: true }).notNull(),
-  createdAt: timestamp('created_at').defaultNow().notNull(),
-}, (vt) => ({
-  tokenIdx: uniqueIndex('token_idx').on(vt.token),
-}));
+  createdAt: timestamp('created_at').notNull().default(sql`now()`),
+});

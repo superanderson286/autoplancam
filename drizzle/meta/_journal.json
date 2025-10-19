@@ -29,6 +29,20 @@
       "when": 1760707361076,
       "tag": "0003_many_prowler",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1760751659206,
+      "tag": "0004_overconfident_cyclops",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1760752948589,
+      "tag": "0005_far_machine_man",
+      "breakpoints": true
     }
   ]
 }
