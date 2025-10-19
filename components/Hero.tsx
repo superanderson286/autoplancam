@@ -37,7 +37,7 @@ export default function Hero() {
           <Link href="/auth/sign-in">
             <MovingBorderButton
               borderRadius="1.75rem"
-              className="bg-white dark:bg-slate-900 text-black dark:text-white border-neutral-200 dark:border-slate-800"
+              borderClassName="bg-[linear-gradient(to_right,#0ea5e9,#06b6d4)]"
             >
               Sign In
             </MovingBorderButton>
@@ -45,7 +45,7 @@ export default function Hero() {
           <Link href="/auth/sign-up">
             <MovingBorderButton
               borderRadius="1.75rem"
-              className="bg-white dark:bg-slate-900 text-black dark:text-white border-neutral-200 dark:border-slate-800"
+              borderClassName="bg-[linear-gradient(to_right,#0ea5e9,#06b6d4)]"
             >
               Sign Up
             </MovingBorderButton>
