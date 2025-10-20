@@ -28,8 +28,8 @@ export default function Navbar() {
           <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("roadmap")}>{t("Roadmap")}</div>
         </div>
         <div className="hidden md:flex gap-4">
-          <button onClick={() => changeLanguage('es')} className="text-sm font-medium hover:text-blue-400">{t("Spanish")}</button>
-          <button onClick={() => changeLanguage('en')} className="text-sm font-medium hover:text-blue-400">{t("English")}</button>
+        <button onClick={() => changeLanguage('es')} className="text-sm font-medium hover:text-blue-400">{t("Spanish")}</button>
+        <button onClick={() => changeLanguage('en')} className="text-sm font-medium hover:text-blue-400">{t("English")}</button>
         </div>
         <div className="md:hidden flex items-center">
           <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white focus:outline-none">
@@ -47,8 +47,8 @@ export default function Navbar() {
             <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("benefits")}>{t("Benefits")}</div>
             <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("roadmap")}>{t("Roadmap")}</div>
             <div className="flex gap-4 mt-4">
-              <button onClick={() => changeLanguage('es')} className="text-sm font-medium hover:text-blue-400">{t("Spanish")}</button>
-              <button onClick={() => changeLanguage('en')} className="text-sm font-medium hover:text-blue-400">{t("English")}</button>
+              <button onClick={() => changeLanguage('es')} className="text-sm font-medium hover:text-blue-400">{t("Spanish")}</button> */
+              <button onClick={() => changeLanguage('en')} className="text-sm font-medium hover:text-blue-400">{t("English")}</button> */
             </div>
           </div>
         </div>
