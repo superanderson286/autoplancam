@@ -2,6 +2,8 @@
 'use client';
 
 import { useState } from 'react';
+import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 
 // --- 1. Base de Datos de Equipos HikVision (Simulado - Mantenemos para el cálculo) ---
 const HIKVISION_SPECS = {
@@ -181,8 +183,82 @@ function calcularRecomendaciones(datos: ProyectoDatos): Recomendacion | null {
     };
 }
 
+// --- 3. Componente de Informe con Markdown ---
+function MarkdownReport({ recomendaciones, datosProyecto }: { recomendaciones: Recomendacion, datosProyecto: ProyectoDatos }) {
+    const total_camaras_manual = datosProyecto.interior_camaras + datosProyecto.exterior_camaras;
 
-// --- 3. Componente de Interfaz de Usuario ---
+    const generateReport = () => {
+        let cameraCalcExplanation = `El sistema sugiere **${recomendaciones.camaras_sugeridas_area} cámaras** basadas en ${datosProyecto.area_m2}m² y el nivel de seguridad **${datosProyecto.nivel_seguridad.toUpperCase()}**.`
+        if (total_camaras_manual > 0 && total_camaras_manual > recomendaciones.camaras_sugeridas_area) {
+            cameraCalcExplanation += ` Se usó su conteo manual de ${total_camaras_manual} (Int: ${datosProyecto.interior_camaras}, Ext: ${datosProyecto.exterior_camaras}) porque es mayor.`
+        } else if (total_camaras_manual > 0 && total_camaras_manual < recomendaciones.camaras_sugeridas_area) {
+            cameraCalcExplanation += ` Su conteo manual (${total_camaras_manual}) fue ignorado por ser inferior al recomendado (${recomendaciones.camaras_sugeridas_area}).`
+        } else {
+            cameraCalcExplanation += ` Se aplicó el cálculo sugerido de ${recomendaciones.total_camaras} cámaras.`
+        }
+
+        const report = `
+## ✅ Informe Detallado del Proyecto
+
+<div class="bg-yellow-50 p-4 mb-6 rounded-lg border-l-4 border-yellow-500">
+<p class="font-semibold text-lg text-yellow-700">CÁLCULO DE CÁMARAS:</p>
+<p class="text-sm text-yellow-800">
+${cameraCalcExplanation}
+</p>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+<div class="lg:col-span-2 bg-blue-50 p-6 rounded-xl border-l-4 border-blue-500 shadow-md">
+### EQUIPAMIENTO HIKVISION
+- **Cámaras Totales (Final):** ${recomendaciones.total_camaras} (Int: ${recomendaciones.final_int_camaras} / Ext: ${recomendaciones.final_ext_camaras})
+- **Grabador (DVR/NVR):** ${recomendaciones.modelo_dvr} (${recomendaciones.canales_dvr} Canales)
+- **Modelo Interior:** ${recomendaciones.modelo_camara_int} (Domo)
+- **Modelo Exterior:** ${recomendaciones.modelo_camara_ext} (Bullet)
+- **Almacenamiento Mínimo:** ${recomendaciones.almacenamiento_tb_min} TB (Requerido)
+- **Disco Duro Recomendado:** ${recomendaciones.modelo_hdd}
+<p class="mt-4 text-xl font-extrabold text-blue-900">Costo de Equipos (Estimado): <strong>$${recomendaciones.costo_total_equipos} USD</strong></p>
+</div>
+
+<div class="lg:col-span-1 bg-yellow-50 p-6 rounded-xl border-l-4 border-yellow-500 shadow-md flex flex-col justify-between">
+<div class="space-y-2">
+### RESUMEN FINANCIERO
+- **Costo de Equipos:** $${recomendaciones.costo_total_equipos} USD
+- **Costo de Consumibles:** ~$${recomendaciones.costo_consumibles} USD
+- **Mano de Obra (Factor ${Math.round(recomendaciones.factor_mano_obra * 100)}%):** ~$${recomendaciones.costo_instalacion} USD
+</div>
+<div class="mt-4 pt-3 border-t border-yellow-300">
+<p class="text-2xl font-extrabold text-red-700">
+Total Proyecto Estimado: <strong>$${recomendaciones.costo_final_estimado} USD</strong>
+</p>
+</div>
+</div>
+
+</div>
+
+<div class="mt-6 p-6 bg-gray-50 rounded-xl border border-gray-200">
+### 📋 MATERIALES Y CONSUMIBLES REQUERIDOS (Detallado)
+${recomendaciones.materiales.map(m => `- ${m}`).join('\n')}
+
+<p class="mt-4 text-sm italic text-gray-500">
+**NOTA TÉCNICA:** La mano de obra y consumibles se ajustaron debido a la instalación sobre **${datosProyecto.material_pared.toUpperCase()}**.
+</p>
+</div>
+`;
+        return report;
+    };
+
+    return (
+        <div className="mt-8 pt-6 border-t border-gray-300">
+            <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+                {generateReport()}
+            </ReactMarkdown>
+        </div>
+    );
+}
+
+
+// --- 4. Componente de Interfaz de Usuario ---
 export default function PlannerLogic() {
     const [datosProyecto, setDatosProyecto] = useState<ProyectoDatos>({
         // VALORES REQUERIDOS
@@ -219,8 +295,6 @@ export default function PlannerLogic() {
         setRecomendaciones(resultados);
         setCalculado(true);
     };
-    
-    const total_camaras_manual = datosProyecto.interior_camaras + datosProyecto.exterior_camaras;
 
     return (
         <div className="p-8 space-y-8 max-w-5xl mx-auto bg-white rounded-xl shadow-2xl">
@@ -354,65 +428,7 @@ export default function PlannerLogic() {
 
             {/* Resultados y Recomendaciones */}
             {calculado && recomendaciones && (
-                <div className="mt-8 pt-6 border-t border-gray-300">
-                    <h2 className="text-2xl font-bold text-gray-800 mb-6">✅ Informe Detallado del Proyecto</h2>
-                    
-                    {/* Sección de NOTAS */}
-                    <div className="bg-yellow-50 p-4 mb-6 rounded-lg border-l-4 border-yellow-500">
-                        <p className="font-semibold text-lg text-yellow-700">CÁLCULO DE CÁMARAS:</p>
-                        <p className="text-sm text-yellow-800">
-                            El sistema sugiere **{recomendaciones.camaras_sugeridas_area} cámaras** basadas en {datosProyecto.area_m2}m² y el nivel de seguridad **{datosProyecto.nivel_seguridad.toUpperCase()}**.
-                            {total_camaras_manual > 0 && total_camaras_manual > recomendaciones.camaras_sugeridas_area 
-                                ? ` Se usó su conteo manual de ${total_camaras_manual} (Int: ${datosProyecto.interior_camaras}, Ext: ${datosProyecto.exterior_camaras}) porque es mayor.`
-                                : total_camaras_manual > 0 && total_camaras_manual < recomendaciones.camaras_sugeridas_area 
-                                ? ` Su conteo manual (${total_camaras_manual}) fue ignorado por ser inferior al recomendado (${recomendaciones.camaras_sugeridas_area}).`
-                                : ` Se aplicó el cálculo sugerido de ${recomendaciones.total_camaras} cámaras.`
-                            }
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                        {/* Equipos Requeridos */}
-                        <div className="lg:col-span-2 bg-blue-50 p-6 rounded-xl border-l-4 border-blue-500 shadow-md">
-                            <h3 className="text-xl font-bold mb-3 text-blue-700">EQUIPAMIENTO HIKVISION</h3>
-                            <p className="mb-2">**Cámaras Totales (Final):** {recomendaciones.total_camaras} (Int: {recomendaciones.final_int_camaras} / Ext: {recomendaciones.final_ext_camaras})</p>
-                            <p className="mb-2">**Grabador (DVR/NVR):** {recomendaciones.modelo_dvr} ({recomendaciones.canales_dvr} Canales)</p>
-                            <p className="mb-2">**Modelo Interior:** {recomendaciones.modelo_camara_int} (Domo) - **Modelo Exterior:** {recomendaciones.modelo_camara_ext} (Bullet)</p>
-                            <p className="mb-2">**Almacenamiento Mínimo:** {recomendaciones.almacenamiento_tb_min} TB (Requerido)</p>
-                            <p className="mb-2">**Disco Duro Recomendado:** {recomendaciones.modelo_hdd}</p>
-                            <p className="mt-4 text-xl font-extrabold text-blue-900">Costo de Equipos (Estimado): **${recomendaciones.costo_total_equipos} USD**</p>
-                        </div>
-
-                        {/* Costos Finales y Materiales */}
-                        <div className="lg:col-span-1 bg-yellow-50 p-6 rounded-xl border-l-4 border-yellow-500 shadow-md flex flex-col justify-between">
-                             <div className="space-y-2">
-                                <h3 className="text-xl font-bold mb-3 text-yellow-700">RESUMEN FINANCIERO</h3>
-                                <p>Costo de Equipos: **${recomendaciones.costo_total_equipos} USD**</p>
-                                <p>Costo de Consumibles: **~${recomendaciones.costo_consumibles} USD**</p> {/* 👈 Ahora usando la propiedad correcta */}
-                                <p>Mano de Obra (Factor **{Math.round(recomendaciones.factor_mano_obra * 100)}%**): **~${recomendaciones.costo_instalacion} USD**</p>
-                             </div>
-                             <div className="mt-4 pt-3 border-t border-yellow-300">
-                                <p className="text-2xl font-extrabold text-red-700">
-                                    Total Proyecto Estimado: **${recomendaciones.costo_final_estimado} USD**
-                                </p>
-                             </div>
-                        </div>
-                    </div>
-
-                    {/* NUEVA SECCIÓN DETALLADA DE MATERIALES */}
-                    <div className="mt-6 p-6 bg-gray-50 rounded-xl border border-gray-200">
-                        <h3 className="text-xl font-bold mb-3 text-gray-700">📋 MATERIALES Y CONSUMIBLES REQUERIDOS (Detallado)</h3>
-                        <ul className="list-disc list-inside space-y-1 text-gray-600">
-                            {recomendaciones.materiales.map((m, index) => (
-                                <li key={index}>{m}</li>
-                            ))}
-                        </ul>
-                        <p className="mt-4 text-sm italic text-gray-500">
-                            **NOTA TÉCNICA:** La mano de obra y consumibles se ajustaron debido a la instalación sobre **{datosProyecto.material_pared.toUpperCase()}**.
-                        </p>
-                    </div>
-
-                </div>
+                <MarkdownReport recomendaciones={recomendaciones} datosProyecto={datosProyecto} />
             )}
         </div>
     );
