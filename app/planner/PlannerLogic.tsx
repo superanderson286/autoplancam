@@ -200,16 +200,11 @@ function MarkdownReport({ recomendaciones, datosProyecto }: { recomendaciones: R
         const report = `
 ## ✅ Informe Detallado del Proyecto
 
-<div class="bg-yellow-50 p-4 mb-6 rounded-lg border-l-4 border-yellow-500">
-<p class="font-semibold text-lg text-yellow-700">CÁLCULO DE CÁMARAS:</p>
-<p class="text-sm text-yellow-800">
-${cameraCalcExplanation}
-</p>
-</div>
+> #### CÁLCULO DE CÁMARAS:
+> ${cameraCalcExplanation}
 
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+---
 
-<div class="lg:col-span-2 bg-blue-50 p-6 rounded-xl border-l-4 border-blue-500 shadow-md">
 ### EQUIPAMIENTO HIKVISION
 - **Cámaras Totales (Final):** ${recomendaciones.total_camaras} (Int: ${recomendaciones.final_int_camaras} / Ext: ${recomendaciones.final_ext_camaras})
 - **Grabador (DVR/NVR):** ${recomendaciones.modelo_dvr} (${recomendaciones.canales_dvr} Canales)
@@ -217,40 +212,29 @@ ${cameraCalcExplanation}
 - **Modelo Exterior:** ${recomendaciones.modelo_camara_ext} (Bullet)
 - **Almacenamiento Mínimo:** ${recomendaciones.almacenamiento_tb_min} TB (Requerido)
 - **Disco Duro Recomendado:** ${recomendaciones.modelo_hdd}
-<p class="mt-4 text-xl font-extrabold text-blue-900">Costo de Equipos (Estimado): <strong>$${recomendaciones.costo_total_equipos} USD</strong></p>
-</div>
+> **Costo de Equipos (Estimado): ${recomendaciones.costo_total_equipos} USD**
 
-<div class="lg:col-span-1 bg-yellow-50 p-6 rounded-xl border-l-4 border-yellow-500 shadow-md flex flex-col justify-between">
-<div class="space-y-2">
+---
+
 ### RESUMEN FINANCIERO
-- **Costo de Equipos:** $${recomendaciones.costo_total_equipos} USD
-- **Costo de Consumibles:** ~$${recomendaciones.costo_consumibles} USD
-- **Mano de Obra (Factor ${Math.round(recomendaciones.factor_mano_obra * 100)}%):** ~$${recomendaciones.costo_instalacion} USD
-</div>
-<div class="mt-4 pt-3 border-t border-yellow-300">
-<p class="text-2xl font-extrabold text-red-700">
-Total Proyecto Estimado: <strong>$${recomendaciones.costo_final_estimado} USD</strong>
-</p>
-</div>
-</div>
+- **Costo de Equipos:** ${recomendaciones.costo_total_equipos} USD
+- **Costo de Consumibles:** ~${recomendaciones.costo_consumibles} USD
+- **Mano de Obra (Factor ${Math.round(recomendaciones.factor_mano_obra * 100)}%):** ~${recomendaciones.costo_instalacion} USD
+> **Total Proyecto Estimado: ${recomendaciones.costo_final_estimado} USD**
 
-</div>
+---
 
-<div class="mt-6 p-6 bg-gray-50 rounded-xl border border-gray-200">
 ### 📋 MATERIALES Y CONSUMIBLES REQUERIDOS (Detallado)
 ${recomendaciones.materiales.map(m => `- ${m}`).join('\n')}
 
-<p class="mt-4 text-sm italic text-gray-500">
-**NOTA TÉCNICA:** La mano de obra y consumibles se ajustaron debido a la instalación sobre **${datosProyecto.material_pared.toUpperCase()}**.
-</p>
-</div>
+> **NOTA TÉCNICA:** La mano de obra y consumibles se ajustaron debido a la instalación sobre **${datosProyecto.material_pared.toUpperCase()}**.
 `;
         return report;
     };
 
     return (
         <div className="mt-8 pt-6 border-t border-gray-300">
-            <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+            <ReactMarkdown>
                 {generateReport()}
             </ReactMarkdown>
         </div>
