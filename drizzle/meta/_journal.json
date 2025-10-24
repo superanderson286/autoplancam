@@ -5,43 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1760659148499,
-      "tag": "0000_thankful_boomerang",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1760661761371,
-      "tag": "0001_vengeful_preak",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1760668006805,
-      "tag": "0002_concerned_butterfly",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1760707361076,
-      "tag": "0003_many_prowler",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "7",
-      "when": 1760751659206,
-      "tag": "0004_overconfident_cyclops",
-      "breakpoints": true
-    },
-    {
-      "idx": 5,
-      "version": "7",
-      "when": 1760752948589,
-      "tag": "0005_far_machine_man",
+      "when": 1761272376357,
+      "tag": "0000_far_deathstrike",
       "breakpoints": true
     }
   ]

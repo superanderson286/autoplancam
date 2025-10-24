@@ -1,8 +1,10 @@
 CREATE TABLE "account" (
 	"id" text PRIMARY KEY NOT NULL,
 	"user_id" text NOT NULL,
-	"provider" text NOT NULL,
-	"provider_account_id" text NOT NULL,
+	"provider_id" text NOT NULL,
+	"provider_account_id" text,
+	"password" text NOT NULL,
+	"account_id" text NOT NULL,
 	"access_token" text,
 	"refresh_token" text,
 	"expires_at" timestamp with time zone,
@@ -10,7 +12,17 @@ CREATE TABLE "account" (
 	"scope" text,
 	"id_token" text,
 	"created_at" timestamp DEFAULT now() NOT NULL,
-	"updated_at" timestamp DEFAULT now() NOT NULL
+	"updated_at" timestamp DEFAULT now() NOT NULL,
+	CONSTRAINT "account_account_id_unique" UNIQUE("account_id")
+);
+--> statement-breakpoint
+CREATE TABLE "products" (
+	"id" serial PRIMARY KEY NOT NULL,
+	"name" text,
+	"category" text,
+	"spec_value" text,
+	"spec_unit" text,
+	"description" text
 );
 --> statement-breakpoint
 CREATE TABLE "session" (
@@ -19,6 +31,7 @@ CREATE TABLE "session" (
 	"token" text NOT NULL,
 	"expires_at" timestamp with time zone NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL,
+	"updated_at" timestamp DEFAULT now() NOT NULL,
 	"ip_address" text,
 	"user_agent" text,
 	CONSTRAINT "session_token_unique" UNIQUE("token")
@@ -41,10 +54,10 @@ CREATE TABLE "verification" (
 	"identifier" text NOT NULL,
 	"token" text NOT NULL,
 	"expires_at" timestamp with time zone NOT NULL,
-	"created_at" timestamp DEFAULT now() NOT NULL
+	"created_at" timestamp DEFAULT now() NOT NULL,
+	CONSTRAINT "verification_token_unique" UNIQUE("token")
 );
 --> statement-breakpoint
 ALTER TABLE "account" ADD CONSTRAINT "account_user_id_user_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."user"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "session" ADD CONSTRAINT "session_user_id_user_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."user"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
-CREATE UNIQUE INDEX "provider_provider_account_id_idx" ON "account" USING btree ("provider","provider_account_id");--> statement-breakpoint
-CREATE UNIQUE INDEX "token_idx" ON "verification" USING btree ("token");
+CREATE UNIQUE INDEX "provider_provider_account_id_idx" ON "account" USING btree ("provider_id","provider_account_id");

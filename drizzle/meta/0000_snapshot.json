@@ -1,5 +1,5 @@
 {
-  "id": "c3782986-75e6-4f90-8094-d8acdc11e94f",
+  "id": "246da386-f6e8-4e39-8121-fa3f86ff2d1f",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -20,14 +20,26 @@
           "primaryKey": false,
           "notNull": true
         },
-        "provider": {
-          "name": "provider",
+        "provider_id": {
+          "name": "provider_id",
           "type": "text",
           "primaryKey": false,
           "notNull": true
         },
         "provider_account_id": {
           "name": "provider_account_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "password": {
+          "name": "password",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "account_id": {
+          "name": "account_id",
           "type": "text",
           "primaryKey": false,
           "notNull": true
@@ -88,7 +100,7 @@
           "name": "provider_provider_account_id_idx",
           "columns": [
             {
-              "expression": "provider",
+              "expression": "provider_id",
               "isExpression": false,
               "asc": true,
               "nulls": "last"
@@ -121,6 +133,63 @@
           "onUpdate": "no action"
         }
       },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "account_account_id_unique": {
+          "name": "account_account_id_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "account_id"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.products": {
+      "name": "products",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "category": {
+          "name": "category",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "spec_value": {
+          "name": "spec_value",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "spec_unit": {
+          "name": "spec_unit",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
       "policies": {},
@@ -157,6 +226,13 @@
         },
         "created_at": {
           "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
           "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
@@ -313,26 +389,18 @@
           "default": "now()"
         }
       },
-      "indexes": {
-        "token_idx": {
-          "name": "token_idx",
-          "columns": [
-            {
-              "expression": "token",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": true,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        }
-      },
+      "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
+      "uniqueConstraints": {
+        "verification_token_unique": {
+          "name": "verification_token_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "token"
+          ]
+        }
+      },
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false

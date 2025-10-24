@@ -2,6 +2,7 @@
   "name": "autoplancam",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@auth/drizzle-adapter": "^1.11.0",
     "@daveyplate/better-auth-ui": "^3.2.5",
@@ -48,7 +49,8 @@
     "lint": "eslint .",
     "db:push": "drizzle-kit push",
     "db:generate": "drizzle-kit generate",
-    "migrate": "ts-node --esm db/migrate.js"
+    "migrate": "ts-node --esm db/migrate.js",
+    "seed": "ts-node --esm db/seed.js"
   },
   "browserslist": {
     "production": [

@@ -1,4 +1,4 @@
-import { pgTable, text, timestamp, boolean, uniqueIndex } from 'drizzle-orm/pg-core';
+import { pgTable, text, timestamp, boolean, uniqueIndex, serial } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
 import { sql } from 'drizzle-orm';
 
@@ -85,4 +85,14 @@ export const verification = pgTable('verification', {
   token: text('token').notNull().unique(),
   expiresAt: timestamp('expires_at', { withTimezone: true }).notNull(),
   createdAt: timestamp('created_at').notNull().default(sql`now()`),
+});
+
+// --- TABLA PRODUCTS ---
+export const products = pgTable('products', {
+    id: serial('id').primaryKey(),
+    name: text('name'),
+    category: text('category'),
+    spec_value: text('spec_value'),
+    spec_unit: text('spec_unit'),
+    description: text('description'),
 });
