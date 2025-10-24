@@ -7,9 +7,10 @@ import rehypeRaw from 'rehype-raw';
 // --- 1. Base de Datos de Equipos HikVision (Actualizado) ---
 const HIKVISION_SPECS = {
     // --- DVRs de Base (Mantenidos) ---
-    DVR_4CH: { modelo: "DS-7204HQHI-K1", costo: 150, capacidad_max_hdd: 6, max_canales: 4 },
-    DVR_8CH: { modelo: "DS-7208HQHI-K1", costo: 220, capacidad_max_hdd: 10, max_canales: 8 },
-    DVR_16CH: { modelo: "DS-7216HQHI-K2", costo: 350, capacidad_max_hdd: 20, max_canales: 16 },
+    DVR_4CH: { modelo: "DS-7204HQHI-K1", costo: 150, capacidad_max_hdd: 6, max_canales: 4, slots_hdd: 1 },
+    DVR_8CH: { modelo: "DS-7208HQHI-K1", costo: 220, capacidad_max_hdd: 10, max_canales: 8, slots_hdd: 1 },
+    DVR_16CH: { modelo: "DS-7216HQHI-K2", costo: 350, capacidad_max_hdd: 20, max_canales: 16, slots_hdd: 2 },
+    DVR_16CH_PRO: { modelo: "iDS-7216HQHI-M2/S", costo: 450, capacidad_max_hdd: 20, max_canales: 16, slots_hdd: 2, alarm_io: true },
     
     // --- Cámaras de Base y Especiales ---
     BITRATE_5MP: 4096, 
@@ -22,6 +23,12 @@ const HIKVISION_SPECS = {
     // --- Almacenamiento ---
     HDD_1TB: { modelo: "WD Purple 1TB", costo: 60, capacidad_gb: 1000 },
     HDD_4TB: { modelo: "WD Purple 4TB", costo: 150, capacidad_gb: 4000 },
+
+    // --- Periféricos ---
+    FUENTE_CENTRALIZADA_8CH: { modelo: "Fuente Centralizada 12V 10A", costo: 70 },
+    SWITCH_8_PUERTOS: { modelo: "Switch 8 Puertos Gigabit", costo: 40 },
+    CANALETA_METRO: { costo: 2 },
+    CABLE_ALARMA_METRO: { costo: 0.5 },
     
     // --- Factores de Cálculo de Cámaras y Mano de Obra (MEJORADO) ---
     FACTOR_SEGURIDAD: {
@@ -54,6 +61,27 @@ interface ProyectoDatos {
     num_pisos: number; // Número de pisos para complejidad vertical
     usa_ptz: boolean;
     usa_ir_largo_alcance: boolean; 
+
+    // Periféricos y Puntos de Conexión
+    fuente_centralizada: boolean;
+    usa_switch: boolean;
+    tipo_conector: 'bnc_jack' | 'balun_hd';
+
+    // Definición Detallada del Entorno Exterior
+    longitud_perimetro: number;
+    conectividad_exterior: 'aereo' | 'subterraneo';
+    exposicion_ambiental: 'normal' | 'corrosivo';
+
+    // Complejidad de la Instalación Interior
+    ruta_cableado: 'canaleta' | 'oculto';
+    horario_instalacion: 'habil' | 'fuera_horario';
+
+    // Almacenamiento Adicional y RAID
+    raid: boolean;
+    modelo_nvr_dvr: 'economico' | 'pro';
+
+    // Integración con Alarmas
+    integracion_alarma: boolean;
     
     // Campos opcionales (mantenidos)
     interior_camaras: number;
@@ -96,8 +124,13 @@ interface Recomendacion {
 function calcularRecomendaciones(datos: ProyectoDatos): Recomendacion | null {
     const { 
         area_m2, num_habitaciones, nivel_seguridad, tipo_edificacion, num_pisos, usa_ptz, usa_ir_largo_alcance,
+        fuente_centralizada, usa_switch, tipo_conector,
+        longitud_perimetro, conectividad_exterior, exposicion_ambiental,
+        ruta_cableado, horario_instalacion,
+        raid, modelo_nvr_dvr,
+        integracion_alarma,
         interior_camaras, exterior_camaras, resolucion_mp, 
-        dias_grabacion, horas_grabacion, material_pared 
+        dias_grabacion, horas_grabacion, material_pared, distancia_cable 
     } = datos;
 
     if (area_m2 <= 0) return null;
@@ -136,20 +169,26 @@ function calcularRecomendaciones(datos: ProyectoDatos): Recomendacion | null {
 
     // --- 2. CÁLCULO DE DVR, HDD y COSTOS ---
     const bitrate = resolucion_mp === '8' ? HIKVISION_SPECS.BITRATE_5MP * 2 :
-                    resolucion_mp === '5' ? HIKVISION_SPECS.BITRATE_5MP : 
-                    HIKVISION_SPECS.BITRATE_2MP;
+                    resolucion_mp === '5' ? HIKVISION_SPECS.BITRATE_5MP : 
+                    HIKVISION_SPECS.BITRATE_2MP;
 
     const CH_necesarios = total_camaras;
     let modelo_dvr_data;
-    if (CH_necesarios <= 4) {
-        modelo_dvr_data = HIKVISION_SPECS.DVR_4CH;
-    } else if (CH_necesarios <= 8) {
-        modelo_dvr_data = HIKVISION_SPECS.DVR_8CH;
+
+    // Selección de DVR basada en canales, modelo Pro y si se requiere integración de alarma
+    if (integracion_alarma || modelo_nvr_dvr === 'pro' || raid) {
+        modelo_dvr_data = HIKVISION_SPECS.DVR_16CH_PRO;
     } else {
-        modelo_dvr_data = HIKVISION_SPECS.DVR_16CH; 
+        if (CH_necesarios <= 4) {
+            modelo_dvr_data = HIKVISION_SPECS.DVR_4CH;
+        } else if (CH_necesarios <= 8) {
+            modelo_dvr_data = HIKVISION_SPECS.DVR_8CH;
+        } else {
+            modelo_dvr_data = HIKVISION_SPECS.DVR_16CH; 
+        }
     }
     
-    // Cálculo de Almacenamiento (HDD) - Mantenido
+    // Cálculo de Almacenamiento (HDD)
     const consumo_total_gb = (bitrate * 3600 * horas_grabacion * dias_grabacion * total_camaras) / (8 * 1024 * 1024);
     const consumo_total_tb = consumo_total_gb / 1024;
     
@@ -159,57 +198,77 @@ function calcularRecomendaciones(datos: ProyectoDatos): Recomendacion | null {
     } else {
         modelo_hdd_data = HIKVISION_SPECS.HDD_1TB;
     }
-    const num_hdds = Math.ceil(consumo_total_tb / (modelo_hdd_data.capacidad_gb / 1024));
+    let num_hdds = Math.ceil(consumo_total_tb / (modelo_hdd_data.capacidad_gb / 1024));
+
+    // Si se necesita RAID, duplicar los discos y verificar si el DVR lo soporta
+    if (raid) {
+        if (modelo_dvr_data.slots_hdd < 2) {
+            // Si el DVR no soporta 2 discos, se forza el modelo PRO
+            modelo_dvr_data = HIKVISION_SPECS.DVR_16CH_PRO;
+        }
+        num_hdds = Math.max(2, num_hdds * 2); // RAID 1 necesita al menos 2 discos
+    }
 
 
     // --- CÁLCULO DE COSTOS DE EQUIPOS ---
+    let costo_perifericos = 0;
+    const materiales = [];
+
+    if (fuente_centralizada) {
+        costo_perifericos += HIKVISION_SPECS.FUENTE_CENTRALIZADA_8CH.costo;
+        materiales.push(`1x ${HIKVISION_SPECS.FUENTE_CENTRALIZADA_8CH.modelo}`);
+    } else {
+        materiales.push(`${total_camaras}x Fuentes de poder 12V DC (Transformadores)`);
+    }
+
+    if (usa_switch) {
+        costo_perifericos += HIKVISION_SPECS.SWITCH_8_PUERTOS.costo;
+        materiales.push(`1x ${HIKVISION_SPECS.SWITCH_8_PUERTOS.modelo}`);
+    }
+
     const costo_camaras_int = final_int_camaras * HIKVISION_SPECS.CAMARA_DOMO.costo;
-    // Si se requiere IR de largo alcance, se asigna un modelo más caro para exterior.
     const costo_camaras_ext = final_ext_camaras * (usa_ir_largo_alcance ? HIKVISION_SPECS.CAMARA_IR_LARGO_ALCANCE.costo : HIKVISION_SPECS.CAMARA_BULLET.costo);
     
-    // Costo de Cámaras Especiales (PTZ)
     const modelo_camara_especial = usa_ptz ? HIKVISION_SPECS.CAMARA_PTZ_HIWATCH.modelo : "N/A";
     const costo_camaras_especiales = num_camaras_especiales * (usa_ptz ? HIKVISION_SPECS.CAMARA_PTZ_HIWATCH.costo : 0);
     
     const costo_dvr = modelo_dvr_data.costo;
     const costo_hdd = num_hdds * modelo_hdd_data.costo;
     
-    const costo_total_equipos = costo_camaras_int + costo_camaras_ext + costo_dvr + costo_hdd + costo_camaras_especiales;
+    const costo_total_equipos = costo_camaras_int + costo_camaras_ext + costo_dvr + costo_hdd + costo_camaras_especiales + costo_perifericos;
     
     // --- LÓGICA DE MANO DE OBRA Y CONSUMIBLES (APLICANDO FACTORES) ---
     
-    // Factor de Mano de Obra: Pared * Edificación * Pisos
-    const factor_pared = material_pared === 'hormigon' ? 0.60 : 
-                         material_pared === 'drywall' ? 0.30 : 
-                         0.40; // Ladrillo
-                       
-    const factor_mano_obra_final = factor_pared * factor_edif.factor_mano_obra * factor_pisos;
-    const costo_instalacion = costo_total_equipos * factor_mano_obra_final;
+    // Factor de Mano de Obra
+    const factor_pared = material_pared === 'hormigon' ? 1.5 : material_pared === 'drywall' ? 0.8 : 1.0;
+    const factor_ruta = ruta_cableado === 'oculto' ? 1.5 : 1.0;
+    const factor_horario = horario_instalacion === 'fuera_horario' ? 1.4 : 1.0;
+    const factor_conectividad_ext = conectividad_exterior === 'subterraneo' ? 3.0 : 1.0;
 
-    // Costo de Consumibles (Ajustado por Edificación)
-    let costo_consumibles_base: number;
-    let tipo_tornillo: string;
+    const costo_mano_obra_base = costo_total_equipos * 0.3; // Costo base de mano de obra (30% del equipo)
+    const costo_instalacion = costo_mano_obra_base * factor_pared * factor_edif.factor_mano_obra * factor_pisos * factor_ruta * factor_horario;
+    const costo_instalacion_exterior = (costo_camaras_ext / costo_total_equipos) * costo_instalacion * factor_conectividad_ext;
+    const costo_instalacion_final = costo_instalacion + costo_instalacion_exterior;
 
-    if (material_pared === 'hormigon') {
-        tipo_tornillo = "Tornillo de anclaje expansivo (mín. 1/4\") y Taquetes de impacto.";
-        costo_consumibles_base = 150; 
-    } else if (material_pared === 'drywall') {
-        tipo_tornillo = "Tornillo para Drywall con anclaje mariposa/toggle.";
-        costo_consumibles_base = 80; 
-    } else { // ladrillo
-        tipo_tornillo = "Tornillo autorroscante y Taquetes plásticos estándar.";
-        costo_consumibles_base = 100; 
-    }
-    
-    const costo_consumibles_variable = total_camaras * 10 * factor_edif.cableado_complejidad; // Mayor costo por complejidad
-    const costo_consumibles = costo_consumibles_base + costo_consumibles_variable;
+    // Costo de Consumibles
+    let costo_consumibles_base = 100;
+    if (exposicion_ambiental === 'corrosivo') {
+        costo_consumibles_base += 50; // Cajas de paso IP67
+    }
+    if (integracion_alarma) {
+        costo_consumibles_base += 50; // Cable de alarma
+    }
 
-    // Cableado (mantenido y ajustado por complejidad de edificación)
-    const tipo_cable = datos.distancia_cable > 80 ? "UTP Cat. 6 100% Cobre (Recomendado)" : "UTP Cat. 5e";
-    const cable_estimado_m = total_camaras * datos.distancia_cable * 1.1 * factor_edif.cableado_complejidad;
+    const costo_canaleta = ruta_cableado === 'canaleta' ? (total_camaras * distancia_cable * HIKVISION_SPECS.CANALETA_METRO.costo) : 0;
+    const costo_consumibles_variable = total_camaras * 10 * factor_edif.cableado_complejidad;
+    const costo_consumibles = costo_consumibles_base + costo_consumibles_variable + costo_canaleta;
+
+    // Cableado
+    const cable_estimado_m = (total_camaras * distancia_cable * 1.1 * factor_edif.cableado_complejidad) + longitud_perimetro;
     const rollos_305m_estimados = Math.ceil(cable_estimado_m / 305);
+    const tipo_cable = datos.distancia_cable > 80 ? "UTP Cat. 6 100% Cobre (Recomendado)" : "UTP Cat. 5e";
     
-    const costo_final_estimado = costo_total_equipos + costo_consumibles + costo_instalacion;
+    const costo_final_estimado = costo_total_equipos + costo_consumibles + costo_instalacion_final;
     
     // --- 3. RETORNO DE RECOMENDACIONES ---
     return {
@@ -228,16 +287,16 @@ function calcularRecomendaciones(datos: ProyectoDatos): Recomendacion | null {
         costo_final_estimado: Math.round(costo_final_estimado),
         
         materiales: [
+            ...materiales,
             `Cable: ${tipo_cable} (Est. ${rollos_305m_estimados} rollo(s) de 305m - ${Math.ceil(cable_estimado_m)}m totales).`,
             `${total_camaras * 2}x Baluns HD-TVI (Receptor y Transmisor) - (Ajuste por ${tipo_edificacion.toUpperCase()})`,
-            `${total_camaras}x Fuentes de poder 12V DC (Transformadores)`,
-            `Tornillería: ${tipo_tornillo} (Mínimo ${total_camaras * 4} unidades).`,
+            `Tornillería: (Mínimo ${total_camaras * 4} unidades).`,
             `Cajas de paso/Registro: ${total_camaras} unidades (para protección de Baluns)`,
             `Consumibles Varios: Bridas, cinta de aislar, silicona industrial. (Incremento por ${num_pisos} pisos)`
         ],
         
-        factor_mano_obra: parseFloat(factor_mano_obra_final.toFixed(2)),
-        costo_instalacion: Math.round(costo_instalacion),
+        factor_mano_obra: parseFloat((costo_instalacion_final / costo_total_equipos).toFixed(2)),
+        costo_instalacion: Math.round(costo_instalacion_final),
         costo_consumibles: Math.round(costo_consumibles),
         final_int_camaras: final_int_camaras, 
         final_ext_camaras: final_ext_camaras, 
@@ -336,6 +395,27 @@ export default function PlannerLogic() {
         num_pisos: 1,
         usa_ptz: false,
         usa_ir_largo_alcance: false,
+
+        // Periféricos y Puntos de Conexión
+        fuente_centralizada: false,
+        usa_switch: false,
+        tipo_conector: 'balun_hd',
+
+        // Definición Detallada del Entorno Exterior
+        longitud_perimetro: 0,
+        conectividad_exterior: 'aereo',
+        exposicion_ambiental: 'normal',
+
+        // Complejidad de la Instalación Interior
+        ruta_cableado: 'canaleta',
+        horario_instalacion: 'habil',
+
+        // Almacenamiento Adicional y RAID
+        raid: false,
+        modelo_nvr_dvr: 'economico',
+
+        // Integración con Alarmas
+        integracion_alarma: false,
 
         // VALORES OPCIONALES
         interior_camaras: 0, 
@@ -461,6 +541,125 @@ export default function PlannerLogic() {
                         
                     </div>
                 </div>
+
+                {/* Periféricos y Puntos de Conexión */}
+                <div className="p-6 border-2 border-blue-100 rounded-xl bg-blue-50">
+                    <h2 className="text-xl font-semibold mb-4 text-blue-700">D. Periféricos y Puntos de Conexión</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div className="flex items-center pt-5">
+                            <input type="checkbox" name="fuente_centralizada" checked={datosProyecto.fuente_centralizada}
+                                   onChange={handleInputChange} id="fuente_centralizada"
+                                   className="h-4 w-4 text-blue-600 border-gray-300 rounded"
+                            />
+                            <label htmlFor="fuente_centralizada" className="ml-2 block text-sm font-medium text-gray-700">Fuente de Alimentación Centralizada</label>
+                        </div>
+                        <div className="flex items-center pt-5">
+                            <input type="checkbox" name="usa_switch" checked={datosProyecto.usa_switch}
+                                   onChange={handleInputChange} id="usa_switch"
+                                   className="h-4 w-4 text-blue-600 border-gray-300 rounded"
+                            />
+                            <label htmlFor="usa_switch" className="ml-2 block text-sm font-medium text-gray-700">Puntos de Red/Uso de Switch</label>
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Tipo de Conector</label>
+                            <select name="tipo_conector" value={datosProyecto.tipo_conector} onChange={handleInputChange}
+                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                                <option value="balun_hd">Balun HD</option>
+                                <option value="bnc_jack">BNC/Jack</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Definición Detallada del Entorno Exterior */}
+                <div className="p-6 border-2 border-yellow-100 rounded-xl bg-yellow-50">
+                    <h2 className="text-xl font-semibold mb-4 text-yellow-700">E. Definición Detallada del Entorno Exterior</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Longitud de Perímetro (m)</label>
+                            <input type="number" name="longitud_perimetro" value={datosProyecto.longitud_perimetro}
+                                   onChange={handleInputChange} min="0"
+                                   className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Tipo de Conectividad Exterior</label>
+                            <select name="conectividad_exterior" value={datosProyecto.conectividad_exterior} onChange={handleInputChange}
+                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                                <option value="aereo">Aéreo con guaya</option>
+                                <option value="subterraneo">Subterráneo/Zanjas</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Grado de Exposición Ambiental</label>
+                            <select name="exposicion_ambiental" value={datosProyecto.exposicion_ambiental} onChange={handleInputChange}
+                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                                <option value="normal">Normal</option>
+                                <option value="corrosivo">Corrosivo/Alto Polvo</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Complejidad de la Instalación Interior */}
+                <div className="p-6 border-2 border-purple-100 rounded-xl bg-purple-50">
+                    <h2 className="text-xl font-semibold mb-4 text-purple-700">F. Complejidad de la Instalación Interior</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Ruta del Cableado</label>
+                            <select name="ruta_cableado" value={datosProyecto.ruta_cableado} onChange={handleInputChange}
+                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                                <option value="canaleta">Visto/Canaleta</option>
+                                <option value="oculto">Oculto/Tubería Existente</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Horario de Instalación</label>
+                            <select name="horario_instalacion" value={datosProyecto.horario_instalacion} onChange={handleInputChange}
+                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                                <option value="habil">Horas Hábiles</option>
+                                <option value="fuera_horario">Fuera de Horario/Fines de Semana</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Almacenamiento Adicional y RAID */}
+                <div className="p-6 border-2 border-red-100 rounded-xl bg-red-50">
+                    <h2 className="text-xl font-semibold mb-4 text-red-700">G. Almacenamiento Adicional y RAID</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="flex items-center pt-5">
+                            <input type="checkbox" name="raid" checked={datosProyecto.raid}
+                                   onChange={handleInputChange} id="raid"
+                                   className="h-4 w-4 text-red-600 border-gray-300 rounded"
+                            />
+                            <label htmlFor="raid" className="ml-2 block text-sm font-medium text-gray-700">Redundancia de Disco (RAID)</label>
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Modelo NVR/DVR Base</label>
+                            <select name="modelo_nvr_dvr" value={datosProyecto.modelo_nvr_dvr} onChange={handleInputChange}
+                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                                <option value="economico">Económico</option>
+                                <option value="pro">Pro/Capacidad</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Integración con Alarmas */}
+                <div className="p-6 border-2 border-teal-100 rounded-xl bg-teal-50">
+                    <h2 className="text-xl font-semibold mb-4 text-teal-700">H. Integración con Alarmas</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
+                        <div className="flex items-center pt-5">
+                            <input type="checkbox" name="integracion_alarma" checked={datosProyecto.integracion_alarma}
+                                   onChange={handleInputChange} id="integracion_alarma"
+                                   className="h-4 w-4 text-teal-600 border-gray-300 rounded"
+                            />
+                            <label htmlFor="integracion_alarma" className="ml-2 block text-sm font-medium text-gray-700">Integración con Alarma</label>
+                        </div>
+                    </div>
+                </div>
+
 
                 {/* SECCIÓN C: Personalización y Logística (Opcional) - Mantenido */}
                 <div className="p-6 border-2 border-gray-200 rounded-xl bg-gray-50">
