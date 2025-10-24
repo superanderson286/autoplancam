@@ -4,35 +4,58 @@ import { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 
-// --- 1. Base de Datos de Equipos HikVision (Simulado - Mantenemos para el cálculo) ---
+// --- 1. Base de Datos de Equipos HikVision (Actualizado) ---
 const HIKVISION_SPECS = {
-    // ... (Mantén el objeto HIKVISION_SPECS sin cambios por ahora)
+    // --- DVRs de Base (Mantenidos) ---
     DVR_4CH: { modelo: "DS-7204HQHI-K1", costo: 150, capacidad_max_hdd: 6, max_canales: 4 },
     DVR_8CH: { modelo: "DS-7208HQHI-K1", costo: 220, capacidad_max_hdd: 10, max_canales: 8 },
-    // 💡 NUEVO GRABADOR: 16 canales
     DVR_16CH: { modelo: "DS-7216HQHI-K2", costo: 350, capacidad_max_hdd: 20, max_canales: 16 },
     
+    // --- Cámaras de Base y Especiales ---
     BITRATE_5MP: 4096, 
     BITRATE_2MP: 2048,
-    CAMARA_DOMO: { modelo: "DS-2CE56H0T-ITPF(C)", costo: 40, resolucion: 5 },
-    CAMARA_BULLET: { modelo: "DS-2CE16H0T-ITF(C)", costo: 45, resolucion: 5 },
+    CAMARA_DOMO: { modelo: "DS-2CE56H0T-ITPF(C)", costo: 40, resolucion: 5, tipo: "Interior" },
+    CAMARA_BULLET: { modelo: "DS-2CE16H0T-ITF(C)", costo: 45, resolucion: 5, tipo: "Exterior" },
+    CAMARA_PTZ_HIWATCH: { modelo: "HWT-T227-IZ", costo: 450, resolucion: 2, tipo: "PTZ" }, // Alto costo
+    CAMARA_IR_LARGO_ALCANCE: { modelo: "DS-2CE16H0T-IT5F", costo: 65, resolucion: 5, tipo: "IR 80m+" }, // Mayor alcance IR
+    
+    // --- Almacenamiento ---
     HDD_1TB: { modelo: "WD Purple 1TB", costo: 60, capacidad_gb: 1000 },
     HDD_4TB: { modelo: "WD Purple 4TB", costo: 150, capacidad_gb: 4000 },
     
-    // 💡 LÓGICA DE DENSIDAD MEJORADA: Ahora representa Cámaras por CADA 100m² Y Múltiplo de Habitaciones
+    // --- Factores de Cálculo de Cámaras y Mano de Obra (MEJORADO) ---
     FACTOR_SEGURIDAD: {
-        baja: { area: 1.5, habitacion: 0.5 },    // 1.5 Cámaras/100m²; 1 cámara por cada 2 hab.
-        normal: { area: 2.5, habitacion: 0.8 },    // 2.5 Cámaras/100m²; Casi 1 cámara por hab.
-        alta: { area: 3.5, habitacion: 1.2 },     // 3.5 Cámaras/100m²; Más de 1 cámara por hab. (pasillo + área interior)
-        extrema: { area: 4.5, habitacion: 1.5 }  // 4.5 Cámaras/100m²; 1.5 cámaras por hab. (redundancia)
+        baja: { area: 1.5, habitacion: 0.5 },
+        normal: { area: 2.5, habitacion: 0.8 },
+        alta: { area: 3.5, habitacion: 1.2 },
+        extrema: { area: 4.5, habitacion: 1.5 }
+    },
+    
+    // 💡 NUEVOS FACTORES POR TIPO DE EDIFICACIÓN
+    FACTOR_EDIFICACION: {
+        casa: { factor_camaras: 1.0, factor_mano_obra: 1.0, cableado_complejidad: 1.0 }, 
+        oficina: { factor_camaras: 1.2, factor_mano_obra: 1.1, cableado_complejidad: 1.2 }, // Más detalle, más plenum
+        edificio: { factor_camaras: 1.3, factor_mano_obra: 1.4, cableado_complejidad: 1.5 }, // Mayor complejidad vertical/tubería
+        estacionamiento: { factor_camaras: 1.6, factor_mano_obra: 0.9, cableado_complejidad: 0.8 }, // Mayor área abierta, menos obstrucciones
+        finca: { factor_camaras: 1.8, factor_mano_obra: 1.5, cableado_complejidad: 2.0 }, // Mayor distancia, zanjas/torres, etc.
+        otro: { factor_camaras: 1.0, factor_mano_obra: 1.0, cableado_complejidad: 1.0 },
     }
 };
 
-// --- Tipos de Datos (Sin Cambios) ---
+// --- Tipos de Datos ACTUALIZADOS ---
 interface ProyectoDatos {
+    // Campos requeridos para el cálculo principal
     area_m2: number;
     num_habitaciones: number;
     nivel_seguridad: 'baja' | 'normal' | 'alta' | 'extrema';
+    
+    // 💡 CAMPOS NUEVOS
+    tipo_edificacion: 'casa' | 'oficina' | 'edificio' | 'estacionamiento' | 'finca' | 'otro';
+    num_pisos: number; // Número de pisos para complejidad vertical
+    usa_ptz: boolean;
+    usa_ir_largo_alcance: boolean; 
+    
+    // Campos opcionales (mantenidos)
     interior_camaras: number;
     exterior_camaras: number;
     resolucion_mp: '2' | '5' | '8';
@@ -52,6 +75,9 @@ interface Recomendacion {
     modelo_camara_ext: string;
     almacenamiento_tb_min: number;
     modelo_hdd: string;
+    num_hdds: number; // 💡 NUEVO CAMPO
+    costo_hdd: number; // 💡 NUEVO CAMPO
+    costo_dvr: number; // 💡 NUEVO CAMPO
     costo_total_equipos: number;
     costo_final_estimado: number;
     materiales: string[];
@@ -60,45 +86,58 @@ interface Recomendacion {
     costo_consumibles: number;
     final_int_camaras: number;
     final_ext_camaras: number;
+    
+    // 💡 NUEVOS CAMPOS DE RECOMENDACIÓN
+    num_camaras_especiales: number;
+    modelo_camara_especial: string;
 }
 
-// --- 2. Función de Cálculo Principal (Lógica de Sugerencia de Cámaras MEJORADA) ---
+// --- 2. Función de Cálculo Principal (Lógica MEJORADA) ---
 function calcularRecomendaciones(datos: ProyectoDatos): Recomendacion | null {
     const { 
-        area_m2, num_habitaciones, nivel_seguridad, 
+        area_m2, num_habitaciones, nivel_seguridad, tipo_edificacion, num_pisos, usa_ptz, usa_ir_largo_alcance,
         interior_camaras, exterior_camaras, resolucion_mp, 
         dias_grabacion, horas_grabacion, material_pared 
     } = datos;
 
     if (area_m2 <= 0) return null;
 
-    // 1. CÁLCULO DE CÁMARAS SUGERIDAS (Lógica HÍBRIDA)
-    const factor = HIKVISION_SPECS.FACTOR_SEGURIDAD[nivel_seguridad];
-
-    // 1a. Cálculo basado en Área (Factor/100m²)
-    const camaras_area = (area_m2 / 100) * factor.area;
-
-    // 1b. Cálculo basado en Puntos de Interés (Habitaciones + 1 para entrada principal)
-    // En alta seguridad, se requiere más de una cámara por habitación/oficina.
-    const camaras_puntos_interes = num_habitaciones * factor.habitacion;
-    const camaras_puntos_base = Math.ceil(camaras_puntos_interes + 1); // +1 para entrada principal/sala de estar
+    // --- FACTORES CONTEXTUALES ---
+    const factor_seg = HIKVISION_SPECS.FACTOR_SEGURIDAD[nivel_seguridad];
+    const factor_edif = HIKVISION_SPECS.FACTOR_EDIFICACION[tipo_edificacion];
+    const factor_pisos = num_pisos > 1 ? (1 + num_pisos * 0.1) : 1; // 10% más de complejidad por piso adicional
     
-    // El total sugerido es el MÁXIMO entre el cálculo por Área y el cálculo por Puntos de Interés
-    const total_sugeridas_sin_redondeo = Math.max(camaras_area, camaras_puntos_base);
-    const total_sugeridas = Math.ceil(total_sugeridas_sin_redondeo);
+    // --- 1. CÁLCULO DE CÁMARAS SUGERIDAS (Lógica HÍBRIDA) ---
+    // A. Base de Cámaras por M² y Puntos de Interés
+    const camaras_area = (area_m2 / 100) * factor_seg.area;
+    const camaras_puntos_base = Math.ceil(num_habitaciones * factor_seg.habitacion + 1); // +1 para entrada principal
+
+    // B. Aplicar Factor de Edificación
+    const total_sugeridas_sin_redondeo = Math.max(camaras_area, camaras_puntos_base) * factor_edif.factor_camaras;
+    let total_sugeridas = Math.ceil(total_sugeridas_sin_redondeo);
     
-    // Se usa el conteo manual solo si es MAYOR al sugerido
+    // C. Ajuste por Cámaras Especiales (Si se requiere PTZ/IR, se asigna 1 o 2 de las cámaras sugeridas para eso)
+    const num_camaras_especiales = usa_ptz ? 1 : 0;
+    
+    // Asegurarse de que el mínimo de cámaras cubra las especiales
+    total_sugeridas = Math.max(total_sugeridas, num_camaras_especiales + 4); // Mínimo de 4 cámaras
+
+    // D. Selección Final (Manual vs. Sugerido)
     const total_manual = interior_camaras + exterior_camaras;
     const total_camaras = Math.max(total_manual, total_sugeridas);
     
-    // Asignación Interior/Exterior (50/50 si no se usa el conteo manual)
-    const final_int_camaras = total_manual >= total_sugeridas ? interior_camaras : Math.ceil(total_camaras * 0.6); // 60% interior (más habitaciones)
-    const final_ext_camaras = total_manual >= total_sugeridas ? exterior_camaras : Math.floor(total_camaras * 0.4); // 40% exterior
+    // Asignación Interior/Exterior: La asignación debe asegurar que las cámaras especiales no superen el total
+    const final_int_camaras_base = total_manual >= total_sugeridas ? interior_camaras : Math.ceil((total_camaras - num_camaras_especiales) * 0.6);
+    const final_ext_camaras_base = total_manual >= total_sugeridas ? exterior_camaras : Math.floor((total_camaras - num_camaras_especiales) * 0.4);
+    
+    const final_int_camaras = Math.max(0, final_int_camaras_base);
+    const final_ext_camaras = Math.max(0, final_ext_camaras_base);
 
-    // 2. CÁLCULO DE DVR, HDD y COSTOS
+
+    // --- 2. CÁLCULO DE DVR, HDD y COSTOS ---
     const bitrate = resolucion_mp === '8' ? HIKVISION_SPECS.BITRATE_5MP * 2 :
-                    resolucion_mp === '5' ? HIKVISION_SPECS.BITRATE_5MP : 
-                    HIKVISION_SPECS.BITRATE_2MP;
+                    resolucion_mp === '5' ? HIKVISION_SPECS.BITRATE_5MP : 
+                    HIKVISION_SPECS.BITRATE_2MP;
 
     const CH_necesarios = total_camaras;
     let modelo_dvr_data;
@@ -106,109 +145,130 @@ function calcularRecomendaciones(datos: ProyectoDatos): Recomendacion | null {
         modelo_dvr_data = HIKVISION_SPECS.DVR_4CH;
     } else if (CH_necesarios <= 8) {
         modelo_dvr_data = HIKVISION_SPECS.DVR_8CH;
-    } else if (CH_necesarios <= 16) { // 💡 AÑADIDO: Soporte para 16 canales
-        modelo_dvr_data = HIKVISION_SPECS.DVR_16CH;
     } else {
-        // En caso de necesitar más de 16, aún sugerimos el de 16 (requiere 2 grabadores)
         modelo_dvr_data = HIKVISION_SPECS.DVR_16CH; 
     }
     
-    // CÁLCULO DE ALMACENAMIENTO (HDD)
-    // La fórmula del bitrate por día es correcta: bitrate (Kbps) * segundos * horas/día * días * cámaras / 8 bits/byte / 1024 / 1024 / 1024 GB/TB
+    // Cálculo de Almacenamiento (HDD) - Mantenido
     const consumo_total_gb = (bitrate * 3600 * horas_grabacion * dias_grabacion * total_camaras) / (8 * 1024 * 1024);
     const consumo_total_tb = consumo_total_gb / 1024;
     
     let modelo_hdd_data;
-    if (consumo_total_tb > 3.5) {
+    if (consumo_total_tb > 1) {
         modelo_hdd_data = HIKVISION_SPECS.HDD_4TB;
     } else {
         modelo_hdd_data = HIKVISION_SPECS.HDD_1TB;
     }
+    const num_hdds = Math.ceil(consumo_total_tb / (modelo_hdd_data.capacidad_gb / 1024));
 
-    // CÁLCULO DE COSTOS DE EQUIPOS (Sin cambios)
+
+    // --- CÁLCULO DE COSTOS DE EQUIPOS ---
     const costo_camaras_int = final_int_camaras * HIKVISION_SPECS.CAMARA_DOMO.costo;
-    const costo_camaras_ext = final_ext_camaras * HIKVISION_SPECS.CAMARA_BULLET.costo;
+    // Si se requiere IR de largo alcance, se asigna un modelo más caro para exterior.
+    const costo_camaras_ext = final_ext_camaras * (usa_ir_largo_alcance ? HIKVISION_SPECS.CAMARA_IR_LARGO_ALCANCE.costo : HIKVISION_SPECS.CAMARA_BULLET.costo);
+    
+    // Costo de Cámaras Especiales (PTZ)
+    const modelo_camara_especial = usa_ptz ? HIKVISION_SPECS.CAMARA_PTZ_HIWATCH.modelo : "N/A";
+    const costo_camaras_especiales = num_camaras_especiales * (usa_ptz ? HIKVISION_SPECS.CAMARA_PTZ_HIWATCH.costo : 0);
+    
     const costo_dvr = modelo_dvr_data.costo;
-    const costo_hdd = modelo_hdd_data.costo;
+    const costo_hdd = num_hdds * modelo_hdd_data.costo;
     
-    const costo_total_equipos = costo_camaras_int + costo_camaras_ext + costo_dvr + costo_hdd;
+    const costo_total_equipos = costo_camaras_int + costo_camaras_ext + costo_dvr + costo_hdd + costo_camaras_especiales;
     
-    // LÓGICA DE MANO DE OBRA Y CONSUMIBLES DETALLADA (Sin cambios, es correcta)
-    const factor_mano_obra = material_pared === 'hormigon' ? 0.60 : 
-                             material_pared === 'drywall' ? 0.30 : 
-                             0.40; // Ladrillo
+    // --- LÓGICA DE MANO DE OBRA Y CONSUMIBLES (APLICANDO FACTORES) ---
+    
+    // Factor de Mano de Obra: Pared * Edificación * Pisos
+    const factor_pared = material_pared === 'hormigon' ? 0.60 : 
+                         material_pared === 'drywall' ? 0.30 : 
+                         0.40; // Ladrillo
+                       
+    const factor_mano_obra_final = factor_pared * factor_edif.factor_mano_obra * factor_pisos;
+    const costo_instalacion = costo_total_equipos * factor_mano_obra_final;
 
-    const costo_instalacion = costo_total_equipos * factor_mano_obra;
-    
-    let tipo_tornillo: string;
+    // Costo de Consumibles (Ajustado por Edificación)
     let costo_consumibles_base: number;
+    let tipo_tornillo: string;
 
     if (material_pared === 'hormigon') {
-        tipo_tornillo = "Tornillo de anclaje expansivo (mín. 1/4\") y Taquetes de impacto.";
-        costo_consumibles_base = 150; // Más caro perforar y asegurar
-    } else if (material_pared === 'drywall') {
-        tipo_tornillo = "Tornillo para Drywall con anclaje mariposa/toggle.";
-        costo_consumibles_base = 80; // Más económico
-    } else { // ladrillo
-        tipo_tornillo = "Tornillo autorroscante y Taquetes plásticos estándar.";
-        costo_consumibles_base = 100; // Estándar
-    }
+        tipo_tornillo = "Tornillo de anclaje expansivo (mín. 1/4\") y Taquetes de impacto.";
+        costo_consumibles_base = 150; 
+    } else if (material_pared === 'drywall') {
+        tipo_tornillo = "Tornillo para Drywall con anclaje mariposa/toggle.";
+        costo_consumibles_base = 80; 
+    } else { // ladrillo
+        tipo_tornillo = "Tornillo autorroscante y Taquetes plásticos estándar.";
+        costo_consumibles_base = 100; 
+    }
     
-    const costo_consumibles_variable = total_camaras * 8; // Costo por cámara (baluns, conectores, caja)
+    const costo_consumibles_variable = total_camaras * 10 * factor_edif.cableado_complejidad; // Mayor costo por complejidad
     const costo_consumibles = costo_consumibles_base + costo_consumibles_variable;
 
+    // Cableado (mantenido y ajustado por complejidad de edificación)
     const tipo_cable = datos.distancia_cable > 80 ? "UTP Cat. 6 100% Cobre (Recomendado)" : "UTP Cat. 5e";
-    const cable_estimado_m = total_camaras * datos.distancia_cable * 1.1;
+    const cable_estimado_m = total_camaras * datos.distancia_cable * 1.1 * factor_edif.cableado_complejidad;
     const rollos_305m_estimados = Math.ceil(cable_estimado_m / 305);
     
     const costo_final_estimado = costo_total_equipos + costo_consumibles + costo_instalacion;
     
+    // --- 3. RETORNO DE RECOMENDACIONES ---
     return {
         total_camaras,
-        // 💡 camaras_sugeridas_area: Ahora refleja el total MÁXIMO entre el cálculo de área y puntos de interés.
-        camaras_sugeridas_area: total_sugeridas, 
+        camaras_sugeridas_area: total_sugeridas,
         canales_dvr: modelo_dvr_data.max_canales,
         modelo_dvr: modelo_dvr_data.modelo,
         modelo_camara_int: HIKVISION_SPECS.CAMARA_DOMO.modelo,
-        modelo_camara_ext: HIKVISION_SPECS.CAMARA_BULLET.modelo,
+        modelo_camara_ext: usa_ir_largo_alcance ? HIKVISION_SPECS.CAMARA_IR_LARGO_ALCANCE.modelo : HIKVISION_SPECS.CAMARA_BULLET.modelo,
         almacenamiento_tb_min: parseFloat(consumo_total_tb.toFixed(1)),
         modelo_hdd: modelo_hdd_data.modelo,
+        num_hdds: num_hdds,
+        costo_hdd: costo_hdd,
+        costo_dvr: costo_dvr,
         costo_total_equipos: Math.round(costo_total_equipos),
         costo_final_estimado: Math.round(costo_final_estimado),
         
-        // MATERIALES Y CONSUMIBLES DETALLADOS
         materiales: [
             `Cable: ${tipo_cable} (Est. ${rollos_305m_estimados} rollo(s) de 305m - ${Math.ceil(cable_estimado_m)}m totales).`,
-            `${total_camaras * 2}x Baluns HD-TVI (Receptor y Transmisor)`,
+            `${total_camaras * 2}x Baluns HD-TVI (Receptor y Transmisor) - (Ajuste por ${tipo_edificacion.toUpperCase()})`,
             `${total_camaras}x Fuentes de poder 12V DC (Transformadores)`,
             `Tornillería: ${tipo_tornillo} (Mínimo ${total_camaras * 4} unidades).`,
             `Cajas de paso/Registro: ${total_camaras} unidades (para protección de Baluns)`,
-            `Consumibles Varios: Bridas, cinta de aislar, silicona industrial.`
+            `Consumibles Varios: Bridas, cinta de aislar, silicona industrial. (Incremento por ${num_pisos} pisos)`
         ],
         
-        factor_mano_obra: factor_mano_obra,
+        factor_mano_obra: parseFloat(factor_mano_obra_final.toFixed(2)),
         costo_instalacion: Math.round(costo_instalacion),
         costo_consumibles: Math.round(costo_consumibles),
         final_int_camaras: final_int_camaras, 
         final_ext_camaras: final_ext_camaras, 
+        
+        // RESULTADOS DE CÁMARAS ESPECIALES
+        num_camaras_especiales: num_camaras_especiales,
+        modelo_camara_especial: modelo_camara_especial,
     };
 }
 
-// --- El resto del código (MarkdownReport y PlannerLogic component) permanece igual ---
-// ...
-// --- 3. Componente de Informe con Markdown ---
+// --- 3. Componente de Informe con Markdown (Actualizado) ---
 function MarkdownReport({ recomendaciones, datosProyecto }: { recomendaciones: Recomendacion, datosProyecto: ProyectoDatos }) {
     const total_camaras_manual = datosProyecto.interior_camaras + datosProyecto.exterior_camaras;
 
     const generateReport = () => {
-        let cameraCalcExplanation = `El sistema sugiere **${recomendaciones.camaras_sugeridas_area} cámaras** basadas en ${datosProyecto.area_m2}m² y el nivel de seguridad **${datosProyecto.nivel_seguridad.toUpperCase()}**.`
+        let cameraCalcExplanation = `El sistema sugiere **${recomendaciones.camaras_sugeridas_area} cámaras** (factor ${HIKVISION_SPECS.FACTOR_EDIFICACION[datosProyecto.tipo_edificacion].factor_camaras.toFixed(1)} por ser ${datosProyecto.tipo_edificacion.toUpperCase()}) basadas en ${datosProyecto.area_m2}m² y el nivel de seguridad **${datosProyecto.nivel_seguridad.toUpperCase()}**.`;
+        
         if (total_camaras_manual > 0 && total_camaras_manual > recomendaciones.camaras_sugeridas_area) {
-            cameraCalcExplanation += ` Se usó su conteo manual de ${total_camaras_manual} (Int: ${datosProyecto.interior_camaras}, Ext: ${datosProyecto.exterior_camaras}) porque es mayor.`
+            cameraCalcExplanation += ` Se usó su conteo manual de ${total_camaras_manual} (Int: ${datosProyecto.interior_camaras}, Ext: ${datosProyecto.exterior_camaras}) porque es mayor.`;
         } else if (total_camaras_manual > 0 && total_camaras_manual < recomendaciones.camaras_sugeridas_area) {
-            cameraCalcExplanation += ` Su conteo manual (${total_camaras_manual}) fue ignorado por ser inferior al recomendado (${recomendaciones.camaras_sugeridas_area}).`
+            cameraCalcExplanation += ` Su conteo manual (${total_camaras_manual}) fue ignorado por ser inferior al recomendado (${recomendaciones.camaras_sugeridas_area}).`;
         } else {
-            cameraCalcExplanation += ` Se aplicó el cálculo sugerido de ${recomendaciones.total_camaras} cámaras.`
+            cameraCalcExplanation += ` Se aplicó el cálculo sugerido de ${recomendaciones.total_camaras} cámaras.`;
         }
+
+        let ptzReport = '';
+        if (recomendaciones.num_camaras_especiales > 0) {
+            ptzReport = `- **Cámara Especial (PTZ):** ${recomendaciones.num_camaras_especiales} unidad(es) - Modelo ${recomendaciones.modelo_camara_especial} (Costo incluido).\n`;
+        }
+        
+        let extModelNote = datosProyecto.usa_ir_largo_alcance ? `(Modelo de Larga Distancia IR ${recomendaciones.modelo_camara_ext})` : '';
 
         const report = `
 ## ✅ Informe Detallado del Proyecto
@@ -220,16 +280,24 @@ function MarkdownReport({ recomendaciones, datosProyecto }: { recomendaciones: R
 
 ### EQUIPAMIENTO HIKVISION
 - **Cámaras Totales (Final):** ${recomendaciones.total_camaras} (Int: ${recomendaciones.final_int_camaras} / Ext: ${recomendaciones.final_ext_camaras})
+${ptzReport}
 - **Grabador (DVR/NVR):** ${recomendaciones.modelo_dvr} (${recomendaciones.canales_dvr} Canales)
 - **Modelo Interior:** ${recomendaciones.modelo_camara_int} (Domo)
-- **Modelo Exterior:** ${recomendaciones.modelo_camara_ext} (Bullet)
+- **Modelo Exterior:** ${recomendaciones.modelo_camara_ext} (Bullet) ${extModelNote}
 - **Almacenamiento Mínimo:** ${recomendaciones.almacenamiento_tb_min} TB (Requerido)
-- **Disco Duro Recomendado:** ${recomendaciones.modelo_hdd}
+- **Disco Duro Recomendado:** ${recomendaciones.num_hdds} x ${recomendaciones.modelo_hdd}
 > **Costo de Equipos (Estimado): ${recomendaciones.costo_total_equipos} USD**
 
 ---
 
-### RESUMEN FINANCIERO
+### DESGLOSE DE COSTOS DE EQUIPOS
+- **Costo de Cámaras:** ${recomendaciones.costo_total_equipos - recomendaciones.costo_dvr - recomendaciones.costo_hdd} USD
+- **Costo de DVR:** ${recomendaciones.costo_dvr} USD
+- **Costo de HDD:** ${recomendaciones.costo_hdd} USD
+
+---
+
+### RESUMEN FINANCIERO (Ajustado por Logística)
 - **Costo de Equipos:** ${recomendaciones.costo_total_equipos} USD
 - **Costo de Consumibles:** ~${recomendaciones.costo_consumibles} USD
 - **Mano de Obra (Factor ${Math.round(recomendaciones.factor_mano_obra * 100)}%):** ~${recomendaciones.costo_instalacion} USD
@@ -237,10 +305,10 @@ function MarkdownReport({ recomendaciones, datosProyecto }: { recomendaciones: R
 
 ---
 
-### 📋 MATERIALES Y CONSUMIBLES REQUERIDOS (Detallado)
+### 📋 NOTAS LOGÍSTICAS Y MATERIALES REQUERIDOS
 ${recomendaciones.materiales.map(m => `- ${m}`).join('\n')}
 
-> **NOTA TÉCNICA:** La mano de obra y consumibles se ajustaron debido a la instalación sobre **${datosProyecto.material_pared.toUpperCase()}**.
+> **NOTA TÉCNICA DE INSTALACIÓN:** La complejidad y el costo de mano de obra se ajustaron debido al tipo de edificación (**${datosProyecto.tipo_edificacion.toUpperCase()}**) con **${datosProyecto.num_pisos} piso(s)** y la instalación sobre **${datosProyecto.material_pared.toUpperCase()}**.
 `;
         return report;
     };
@@ -255,13 +323,19 @@ ${recomendaciones.materiales.map(m => `- ${m}`).join('\n')}
 }
 
 
-// --- 4. Componente de Interfaz de Usuario (Sin Cambios) ---
+// --- 4. Componente de Interfaz de Usuario (ACTUALIZADO CON NUEVOS INPUTS) ---
 export default function PlannerLogic() {
     const [datosProyecto, setDatosProyecto] = useState<ProyectoDatos>({
         // VALORES REQUERIDOS
         area_m2: 150,
         num_habitaciones: 0,
         nivel_seguridad: 'normal',
+        
+        // 💡 NUEVOS VALORES REQUERIDOS
+        tipo_edificacion: 'casa',
+        num_pisos: 1,
+        usa_ptz: false,
+        usa_ir_largo_alcance: false,
 
         // VALORES OPCIONALES
         interior_camaras: 0, 
@@ -279,9 +353,13 @@ export default function PlannerLogic() {
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value, type } = e.target;
-        setDatosProyecto((prev: ProyectoDatos) => ({
+        
+        // Manejar el checkbox como booleano
+        const finalValue = type === 'checkbox' ? (e.target as HTMLInputElement).checked : (type === 'number' ? Number(value) : value);
+        
+        setDatosProyecto(prev => ({
             ...prev,
-            [name]: type === 'number' ? Number(value) : value,
+            [name]: finalValue,
         }));
         setCalculado(false);
     };
@@ -306,7 +384,7 @@ export default function PlannerLogic() {
                     <h2 className="text-xl font-semibold mb-4 text-indigo-700">A. Datos Geométricos y Nivel de Riesgo (Requeridos)</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {/* 1. Área Cuadrada (Requerido) */}
-                        <div className="col-span-1">
+                        <div>
                             <label className="block text-sm font-medium text-gray-700">Área Total del Sitio (m²)</label>
                             <input type="number" name="area_m2" value={datosProyecto.area_m2} 
                                    onChange={handleInputChange} min="1" required
@@ -314,49 +392,98 @@ export default function PlannerLogic() {
                             />
                         </div>
                         {/* 2. N° de Habitaciones/Oficinas (Requerido) */}
-                        <div className="col-span-1">
-                            <label className="block text-sm font-medium text-gray-700">N° de Habitaciones u Oficinas (0 para Espacio Abierto)</label>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">N° de Habitaciones u Oficinas</label>
                             <input type="number" name="num_habitaciones" value={datosProyecto.num_habitaciones} 
                                    onChange={handleInputChange} min="0" required
                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
                             />
                         </div>
                         {/* 3. Nivel de Seguridad (Requerido) */}
-                        <div className="col-span-1">
+                        <div>
                             <label className="block text-sm font-medium text-gray-700">Nivel de Seguridad Deseado</label>
                             <select name="nivel_seguridad" value={datosProyecto.nivel_seguridad} onChange={handleInputChange}
                                     className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
-                                <option value="baja">Baja (Solo Puntos Clave)</option>
-                                <option value="normal">Normal (Buena Cobertura)</option>
-                                <option value="alta">Alta (Densidad de Cámaras)</option>
-                                <option value="extrema">Extrema (Cobertura Total y Redundancia)</option>
+                                <option value="baja">Baja</option>
+                                <option value="normal">Normal</option>
+                                <option value="alta">Alta</option>
+                                <option value="extrema">Extrema</option>
                             </select>
                         </div>
                     </div>
                 </div>
 
-                {/* SECCIÓN B: Personalización y Logística (Opcional) */}
-                <div className="p-6 border-2 border-gray-200 rounded-xl bg-gray-50">
-                    <h2 className="text-xl font-semibold mb-4 text-gray-700">B. Personalización y Logística (Opcional - Sobrepasa el cálculo)</h2>
+                {/* 💡 NUEVA SECCIÓN: Contexto de la Edificación */}
+                <div className="p-6 border-2 border-green-100 rounded-xl bg-green-50">
+                    <h2 className="text-xl font-semibold mb-4 text-green-700">B. Contexto de Edificación y Requerimientos Especiales</h2>
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                        {/* 4. Cámaras Interiores (Opcional) */}
-                        <div className="col-span-1">
+                        
+                        {/* 4. Tipo de Edificación */}
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Tipo de Edificación</label>
+                            <select name="tipo_edificacion" value={datosProyecto.tipo_edificacion} onChange={handleInputChange}
+                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                                <option value="casa">Casa/Vivienda</option>
+                                <option value="oficina">Oficina/Consultorio</option>
+                                <option value="edificio">Edificio (Comercial/Aptos)</option>
+                                <option value="estacionamiento">Estacionamiento</option>
+                                <option value="finca">Finca/Propiedad Rural</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        
+                        {/* 5. N° de Pisos */}
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Número de Pisos/Plantas</label>
+                            <input type="number" name="num_pisos" value={datosProyecto.num_pisos} 
+                                   onChange={handleInputChange} min="1" required
+                                   className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                            />
+                        </div>
+                        
+                        {/* 6. PTZ Checkbox */}
+                        <div className="flex items-center pt-5">
+                            <input type="checkbox" name="usa_ptz" checked={datosProyecto.usa_ptz} 
+                                   onChange={handleInputChange} id="usa_ptz"
+                                   className="h-4 w-4 text-green-600 border-gray-300 rounded"
+                            />
+                            <label htmlFor="usa_ptz" className="ml-2 block text-sm font-medium text-gray-700">Requiere Cámara PTZ (Móvil)</label>
+                        </div>
+
+                        {/* 7. IR Largo Alcance Checkbox */}
+                        <div className="flex items-center pt-5">
+                            <input type="checkbox" name="usa_ir_largo_alcance" checked={datosProyecto.usa_ir_largo_alcance} 
+                                   onChange={handleInputChange} id="usa_ir_largo_alcance"
+                                   className="h-4 w-4 text-green-600 border-gray-300 rounded"
+                            />
+                            <label htmlFor="usa_ir_largo_alcance" className="ml-2 block text-sm font-medium text-gray-700">IR Largo Alcance (Noche Total)</label>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                {/* SECCIÓN C: Personalización y Logística (Opcional) - Mantenido */}
+                <div className="p-6 border-2 border-gray-200 rounded-xl bg-gray-50">
+                    <h2 className="text-xl font-semibold mb-4 text-gray-700">C. Personalización y Logística (Opcional - Sobrepasa el cálculo)</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                        {/* Cámaras Int/Ext Manuales */}
+                        <div>
                             <label className="block text-sm font-medium text-gray-700">Cámaras Int. Manuales</label>
                             <input type="number" name="interior_camaras" value={datosProyecto.interior_camaras} 
                                    onChange={handleInputChange} min="0" max="16"
                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
                             />
                         </div>
-                        {/* 5. Cámaras Exteriores (Opcional) */}
-                        <div className="col-span-1">
+                        <div>
                             <label className="block text-sm font-medium text-gray-700">Cámaras Ext. Manuales</label>
                             <input type="number" name="exterior_camaras" value={datosProyecto.exterior_camaras} 
                                    onChange={handleInputChange} min="0" max="16"
                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
                             />
                         </div>
-                        {/* 6. Resolución (Opcional) */}
-                        <div className="col-span-1">
+                        
+                        {/* Resolución */}
+                        <div>
                             <label className="block text-sm font-medium text-gray-700">Resolución</label>
                             <select name="resolucion_mp" value={datosProyecto.resolucion_mp} onChange={handleInputChange}
                                     className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
@@ -365,24 +492,18 @@ export default function PlannerLogic() {
                                 <option value="8">8 MP (4K)</option>
                             </select>
                         </div>
-                        {/* 7. Días de Grabación */}
-                        <div className="col-span-1">
+                        
+                        {/* Días y Horas de Grabación */}
+                        <div>
                             <label className="block text-sm font-medium text-gray-700">Días de Retención</label>
                             <input type="number" name="dias_grabacion" value={datosProyecto.dias_grabacion} 
                                    onChange={handleInputChange} min="7" max="90"
                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
                             />
                         </div>
-                        {/* 8. Horas de Grabación */}
-                        <div className="col-span-1">
-                            <label className="block text-sm font-medium text-gray-700">Horas de Grabación Diaria</label>
-                            <input type="number" name="horas_grabacion" value={datosProyecto.horas_grabacion} 
-                                   onChange={handleInputChange} min="1" max="24"
-                                   className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
-                            />
-                        </div>
-                        {/* 9. Material de Pared */}
-                        <div className="col-span-1">
+                        
+                        {/* Material de Pared */}
+                        <div>
                             <label className="block text-sm font-medium text-gray-700">Material de Pared</label>
                             <select name="material_pared" value={datosProyecto.material_pared} onChange={handleInputChange}
                                     className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
@@ -391,16 +512,18 @@ export default function PlannerLogic() {
                                 <option value="hormigon">Hormigón/Concreto</option>
                             </select>
                         </div>
-                        {/* 10. Distancia Promedio */}
-                        <div className="col-span-1">
+                        
+                        {/* Distancia Promedio */}
+                        <div>
                             <label className="block text-sm font-medium text-gray-700">Distancia Cable (m)</label>
                             <input type="number" name="distancia_cable" value={datosProyecto.distancia_cable} 
                                    onChange={handleInputChange} min="10" max="300"
                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
                             />
                         </div>
-                        {/* 11. Ubicación */}
-                        <div className="col-span-1">
+                        
+                        {/* Ubicación */}
+                        <div>
                             <label className="block text-sm font-medium text-gray-700">Ubicación (Mano de Obra)</label>
                             <input type="text" name="ubicacion" value={datosProyecto.ubicacion} 
                                    onChange={handleInputChange}
@@ -415,7 +538,7 @@ export default function PlannerLogic() {
                     type="submit"
                     disabled={datosProyecto.area_m2 <= 0}
                     className={`w-full py-3 text-lg font-bold rounded-lg transition duration-300 
-                               ${datosProyecto.area_m2 <= 0 
+                                ${datosProyecto.area_m2 <= 0 
                                     ? 'bg-gray-400 cursor-not-allowed' 
                                     : 'bg-blue-600 hover:bg-blue-700 text-white'}`}
                 >
