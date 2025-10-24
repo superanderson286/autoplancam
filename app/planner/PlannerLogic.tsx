@@ -1,4 +1,3 @@
-// app/planner/PlannerLogic.tsx
 'use client';
 
 import { useState } from 'react';
@@ -10,29 +9,30 @@ const HIKVISION_SPECS = {
     // ... (Mantén el objeto HIKVISION_SPECS sin cambios por ahora)
     DVR_4CH: { modelo: "DS-7204HQHI-K1", costo: 150, capacidad_max_hdd: 6, max_canales: 4 },
     DVR_8CH: { modelo: "DS-7208HQHI-K1", costo: 220, capacidad_max_hdd: 10, max_canales: 8 },
+    // 💡 NUEVO GRABADOR: 16 canales
+    DVR_16CH: { modelo: "DS-7216HQHI-K2", costo: 350, capacidad_max_hdd: 20, max_canales: 16 },
+    
     BITRATE_5MP: 4096, 
     BITRATE_2MP: 2048,
     CAMARA_DOMO: { modelo: "DS-2CE56H0T-ITPF(C)", costo: 40, resolucion: 5 },
     CAMARA_BULLET: { modelo: "DS-2CE16H0T-ITF(C)", costo: 45, resolucion: 5 },
     HDD_1TB: { modelo: "WD Purple 1TB", costo: 60, capacidad_gb: 1000 },
     HDD_4TB: { modelo: "WD Purple 4TB", costo: 150, capacidad_gb: 4000 },
-    // Definición de factor de cámaras basado en nivel de seguridad
+    
+    // 💡 LÓGICA DE DENSIDAD MEJORADA: Ahora representa Cámaras por CADA 100m² Y Múltiplo de Habitaciones
     FACTOR_SEGURIDAD: {
-        baja: 0.015, // 1.5 cámaras por cada 100m²
-        normal: 0.02, // 2.0 cámaras por cada 100m²
-        alta: 0.03,  // 3.0 cámaras por cada 100m² (para áreas abiertas)
-        extrema: 0.045 // 4.5 cámaras por cada 100m²
+        baja: { area: 1.5, habitacion: 0.5 },    // 1.5 Cámaras/100m²; 1 cámara por cada 2 hab.
+        normal: { area: 2.5, habitacion: 0.8 },    // 2.5 Cámaras/100m²; Casi 1 cámara por hab.
+        alta: { area: 3.5, habitacion: 1.2 },     // 3.5 Cámaras/100m²; Más de 1 cámara por hab. (pasillo + área interior)
+        extrema: { area: 4.5, habitacion: 1.5 }  // 4.5 Cámaras/100m²; 1.5 cámaras por hab. (redundancia)
     }
 };
 
-// --- Tipos de Datos ACTUALIZADOS ---
+// --- Tipos de Datos (Sin Cambios) ---
 interface ProyectoDatos {
-    // Campos requeridos para el cálculo principal
-    area_m2: number;            // Área total en metros cuadrados
-    num_habitaciones: number;   // Cantidad de habitaciones/oficinas (0 para espacio abierto)
-    nivel_seguridad: 'baja' | 'normal' | 'alta' | 'extrema'; // Tipo de seguridad
-    
-    // Campos opcionales
+    area_m2: number;
+    num_habitaciones: number;
+    nivel_seguridad: 'baja' | 'normal' | 'alta' | 'extrema';
     interior_camaras: number;
     exterior_camaras: number;
     resolucion_mp: '2' | '5' | '8';
@@ -45,7 +45,7 @@ interface ProyectoDatos {
 
 interface Recomendacion {
     total_camaras: number;
-    camaras_sugeridas_area: number; 
+    camaras_sugeridas_area: number;
     modelo_dvr: string;
     canales_dvr: number;
     modelo_camara_int: string;
@@ -57,12 +57,12 @@ interface Recomendacion {
     materiales: string[];
     factor_mano_obra: number;
     costo_instalacion: number;
-    costo_consumibles: number; // 👈 ¡NUEVO CAMPO!
-    final_int_camaras: number; 
+    costo_consumibles: number;
+    final_int_camaras: number;
     final_ext_camaras: number;
 }
 
-// --- 2. Función de Cálculo Principal (Lógica de Sugerencia de Cámaras) ---
+// --- 2. Función de Cálculo Principal (Lógica de Sugerencia de Cámaras MEJORADA) ---
 function calcularRecomendaciones(datos: ProyectoDatos): Recomendacion | null {
     const { 
         area_m2, num_habitaciones, nivel_seguridad, 
@@ -72,23 +72,29 @@ function calcularRecomendaciones(datos: ProyectoDatos): Recomendacion | null {
 
     if (area_m2 <= 0) return null;
 
-    // 1. CÁLCULO DE CÁMARAS SUGERIDAS (Lógica basada en M² y Seguridad)
-    const factor_por_area = HIKVISION_SPECS.FACTOR_SEGURIDAD[nivel_seguridad];
-    const camaras_sugeridas_area = Math.ceil((area_m2 / 100) * factor_por_area * 10) / 10;
+    // 1. CÁLCULO DE CÁMARAS SUGERIDAS (Lógica HÍBRIDA)
+    const factor = HIKVISION_SPECS.FACTOR_SEGURIDAD[nivel_seguridad];
+
+    // 1a. Cálculo basado en Área (Factor/100m²)
+    const camaras_area = (area_m2 / 100) * factor.area;
+
+    // 1b. Cálculo basado en Puntos de Interés (Habitaciones + 1 para entrada principal)
+    // En alta seguridad, se requiere más de una cámara por habitación/oficina.
+    const camaras_puntos_interes = num_habitaciones * factor.habitacion;
+    const camaras_puntos_base = Math.ceil(camaras_puntos_interes + 1); // +1 para entrada principal/sala de estar
     
-    let camaras_sugeridas_oficinas = 0;
-    if (num_habitaciones > 0) {
-        camaras_sugeridas_oficinas = Math.ceil(num_habitaciones / 4); 
-    }
+    // El total sugerido es el MÁXIMO entre el cálculo por Área y el cálculo por Puntos de Interés
+    const total_sugeridas_sin_redondeo = Math.max(camaras_area, camaras_puntos_base);
+    const total_sugeridas = Math.ceil(total_sugeridas_sin_redondeo);
     
-    const total_sugeridas = Math.ceil(camaras_sugeridas_area + camaras_sugeridas_oficinas);
+    // Se usa el conteo manual solo si es MAYOR al sugerido
     const total_manual = interior_camaras + exterior_camaras;
-    
     const total_camaras = Math.max(total_manual, total_sugeridas);
     
-    const final_int_camaras = total_manual >= total_sugeridas ? interior_camaras : Math.ceil(total_camaras * 0.5);
-    const final_ext_camaras = total_manual >= total_sugeridas ? exterior_camaras : Math.floor(total_camaras * 0.5);
-    
+    // Asignación Interior/Exterior (50/50 si no se usa el conteo manual)
+    const final_int_camaras = total_manual >= total_sugeridas ? interior_camaras : Math.ceil(total_camaras * 0.6); // 60% interior (más habitaciones)
+    const final_ext_camaras = total_manual >= total_sugeridas ? exterior_camaras : Math.floor(total_camaras * 0.4); // 40% exterior
+
     // 2. CÁLCULO DE DVR, HDD y COSTOS
     const bitrate = resolucion_mp === '8' ? HIKVISION_SPECS.BITRATE_5MP * 2 :
                     resolucion_mp === '5' ? HIKVISION_SPECS.BITRATE_5MP : 
@@ -100,11 +106,15 @@ function calcularRecomendaciones(datos: ProyectoDatos): Recomendacion | null {
         modelo_dvr_data = HIKVISION_SPECS.DVR_4CH;
     } else if (CH_necesarios <= 8) {
         modelo_dvr_data = HIKVISION_SPECS.DVR_8CH;
+    } else if (CH_necesarios <= 16) { // 💡 AÑADIDO: Soporte para 16 canales
+        modelo_dvr_data = HIKVISION_SPECS.DVR_16CH;
     } else {
-        modelo_dvr_data = HIKVISION_SPECS.DVR_8CH; 
+        // En caso de necesitar más de 16, aún sugerimos el de 16 (requiere 2 grabadores)
+        modelo_dvr_data = HIKVISION_SPECS.DVR_16CH; 
     }
     
     // CÁLCULO DE ALMACENAMIENTO (HDD)
+    // La fórmula del bitrate por día es correcta: bitrate (Kbps) * segundos * horas/día * días * cámaras / 8 bits/byte / 1024 / 1024 / 1024 GB/TB
     const consumo_total_gb = (bitrate * 3600 * horas_grabacion * dias_grabacion * total_camaras) / (8 * 1024 * 1024);
     const consumo_total_tb = consumo_total_gb / 1024;
     
@@ -115,7 +125,7 @@ function calcularRecomendaciones(datos: ProyectoDatos): Recomendacion | null {
         modelo_hdd_data = HIKVISION_SPECS.HDD_1TB;
     }
 
-    // CÁLCULO DE COSTOS DE EQUIPOS
+    // CÁLCULO DE COSTOS DE EQUIPOS (Sin cambios)
     const costo_camaras_int = final_int_camaras * HIKVISION_SPECS.CAMARA_DOMO.costo;
     const costo_camaras_ext = final_ext_camaras * HIKVISION_SPECS.CAMARA_BULLET.costo;
     const costo_dvr = modelo_dvr_data.costo;
@@ -123,7 +133,7 @@ function calcularRecomendaciones(datos: ProyectoDatos): Recomendacion | null {
     
     const costo_total_equipos = costo_camaras_int + costo_camaras_ext + costo_dvr + costo_hdd;
     
-    // LÓGICA DE MANO DE OBRA Y CONSUMIBLES DETALLADA
+    // LÓGICA DE MANO DE OBRA Y CONSUMIBLES DETALLADA (Sin cambios, es correcta)
     const factor_mano_obra = material_pared === 'hormigon' ? 0.60 : 
                              material_pared === 'drywall' ? 0.30 : 
                              0.40; // Ladrillo
@@ -148,14 +158,15 @@ function calcularRecomendaciones(datos: ProyectoDatos): Recomendacion | null {
     const costo_consumibles = costo_consumibles_base + costo_consumibles_variable;
 
     const tipo_cable = datos.distancia_cable > 80 ? "UTP Cat. 6 100% Cobre (Recomendado)" : "UTP Cat. 5e";
-    const cable_estimado_m = total_camaras * datos.distancia_cable * 1.1; // 10% de holgura
+    const cable_estimado_m = total_camaras * datos.distancia_cable * 1.1;
     const rollos_305m_estimados = Math.ceil(cable_estimado_m / 305);
     
     const costo_final_estimado = costo_total_equipos + costo_consumibles + costo_instalacion;
     
     return {
         total_camaras,
-        camaras_sugeridas_area: Math.ceil(camaras_sugeridas_area + camaras_sugeridas_oficinas),
+        // 💡 camaras_sugeridas_area: Ahora refleja el total MÁXIMO entre el cálculo de área y puntos de interés.
+        camaras_sugeridas_area: total_sugeridas, 
         canales_dvr: modelo_dvr_data.max_canales,
         modelo_dvr: modelo_dvr_data.modelo,
         modelo_camara_int: HIKVISION_SPECS.CAMARA_DOMO.modelo,
@@ -177,12 +188,14 @@ function calcularRecomendaciones(datos: ProyectoDatos): Recomendacion | null {
         
         factor_mano_obra: factor_mano_obra,
         costo_instalacion: Math.round(costo_instalacion),
-        costo_consumibles: Math.round(costo_consumibles), // 👈 AÑADIDO
+        costo_consumibles: Math.round(costo_consumibles),
         final_int_camaras: final_int_camaras, 
         final_ext_camaras: final_ext_camaras, 
     };
 }
 
+// --- El resto del código (MarkdownReport y PlannerLogic component) permanece igual ---
+// ...
 // --- 3. Componente de Informe con Markdown ---
 function MarkdownReport({ recomendaciones, datosProyecto }: { recomendaciones: Recomendacion, datosProyecto: ProyectoDatos }) {
     const total_camaras_manual = datosProyecto.interior_camaras + datosProyecto.exterior_camaras;
@@ -234,7 +247,7 @@ ${recomendaciones.materiales.map(m => `- ${m}`).join('\n')}
 
     return (
         <div className="mt-8 pt-6 border-t border-gray-300">
-            <ReactMarkdown>
+            <ReactMarkdown rehypePlugins={[rehypeRaw]}>
                 {generateReport()}
             </ReactMarkdown>
         </div>
@@ -242,7 +255,7 @@ ${recomendaciones.materiales.map(m => `- ${m}`).join('\n')}
 }
 
 
-// --- 4. Componente de Interfaz de Usuario ---
+// --- 4. Componente de Interfaz de Usuario (Sin Cambios) ---
 export default function PlannerLogic() {
     const [datosProyecto, setDatosProyecto] = useState<ProyectoDatos>({
         // VALORES REQUERIDOS
@@ -266,7 +279,7 @@ export default function PlannerLogic() {
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value, type } = e.target;
-        setDatosProyecto(prev => ({
+        setDatosProyecto((prev: ProyectoDatos) => ({
             ...prev,
             [name]: type === 'number' ? Number(value) : value,
         }));
