@@ -78,7 +78,7 @@ export const auth = betterAuth({
     // }
   },
   pages: {
-    signIn: `${process.env.NEXT_PUBLIC_APP_URL}/auth/sign-in`,
-    signUp: `${process.env.NEXT_PUBLIC_APP_URL}/auth/sign-up`,
+    signIn: "/auth/sign-in",
+    signUp: "/auth/sign-up",
   }
 });
