@@ -8,8 +8,8 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Rutas de acceso público (incluye sign-in y sign-up)
-  // const publicPaths = ['/sign-in', '/sign-up', '/api/auth/']; // 👈 Añadido /api/auth/
-  const publicPaths = ['/sign-in','/api/auth/'];
+  const publicPaths = ['/sign-in', '/sign-up', '/api/auth/']; // 👈 Añadido /api/auth/
+  //const publicPaths = ['/sign-in','/api/auth/'];
   // Rutas que requieren una sesión activa
   const protectedRoutes = ['/planner'];
 
