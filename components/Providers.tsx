@@ -6,7 +6,12 @@ import { AuthUIProvider } from '@daveyplate/better-auth-ui';
 import { authClient } from '../lib/auth-client';
 import { Toaster, toast } from 'sonner';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
+import NextLink from 'next/link';
+import React from 'react';
+
+const AuthLink: React.FC<{ href: string; className?: string; children: React.ReactNode }> = ({ href, className, children }) => {
+    return <NextLink href={href} className={className}>{children}</NextLink>;
+};
 
 export function Providers({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -20,7 +25,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
         onSessionChange={() => {
           router.refresh();
         }}
-        Link={Link}
+        Link={AuthLink}
         toast={(message) => {
           if (message.variant === 'error') {
             toast.error(message.message);
