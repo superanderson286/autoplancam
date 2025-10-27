@@ -17,9 +17,11 @@ function App() {
   const [password, setPassword] = useState("");
 
   const handleSignUp = async () => {
+    const name = "Test User";
     const { error } = await authClient.signUp.email({
       email,
       password,
+      name,
     });
     if (error) {
       alert(`Sign-up error: ${error.message}`);
