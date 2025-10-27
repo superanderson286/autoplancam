@@ -38,7 +38,7 @@ type HandleSignUpParams = {
 
 export const auth = betterAuth({
   secret: process.env.AUTH_SECRET!,
-  baseURL: process.env.NEXT_PUBLIC_APP_URL!,
+
   database: drizzleAdapter(db, {
     provider: 'pg',
     // CAMBIO CLAVE: Pasamos el objeto de esquema filtrado y nombrado correctamente
