@@ -77,4 +77,8 @@ export const auth = betterAuth({
     //   clientSecret: process.env.GOOGLE_CLIENT_SECRET!
     // }
   },
+  pages: {
+    signIn: "/auth/sign-in",
+    signUp: "/auth/sign-up",
+  }
 });
