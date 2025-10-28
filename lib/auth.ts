@@ -81,5 +81,10 @@ export const auth = betterAuth({
   pages: {
     signIn: "/auth/sign-in",
     signUp: "/auth/sign-up",
-  }
+  },
+  callbacks: {
+    async redirect({ url, baseUrl }: { url: string; baseUrl: string }) {
+      return '/planner';
+    },
+  },
 });
