@@ -40,6 +40,11 @@ export const auth = betterAuth({
   secret: process.env.AUTH_SECRET!,
 
   baseURL: process.env.NEXT_PUBLIC_APP_URL!,
+  cookie: {
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    domain: process.env.NODE_ENV === 'production' ? 'autoplancam.vercel.app' : undefined,
+  },
   database: drizzleAdapter(db, {
     provider: 'pg',
     // CAMBIO CLAVE: Pasamos el objeto de esquema filtrado y nombrado correctamente
