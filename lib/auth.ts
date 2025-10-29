@@ -89,6 +89,7 @@ export const auth = betterAuth({
   },
   callbacks: {
     async redirect({ url, baseUrl }: { url: string; baseUrl: string }) {
+      console.log('Auth redirect callback called:', { url, baseUrl });
       return '/planner';
     },
   },
