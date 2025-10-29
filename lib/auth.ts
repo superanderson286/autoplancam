@@ -90,7 +90,14 @@ export const auth = betterAuth({
   callbacks: {
     async redirect({ url, baseUrl }: { url: string; baseUrl: string }) {
       console.log('Auth redirect callback called:', { url, baseUrl });
-      return '/planner';
+      if (url.startsWith('/')) {
+        return url;
+      }
+      if (url === baseUrl || url === baseUrl + '/') {
+          return '/planner';
+      }
+    return url.startsWith(baseUrl) ? url : baseUrl;
     },
+
   },
 });
