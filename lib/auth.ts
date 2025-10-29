@@ -89,14 +89,13 @@ export const auth = betterAuth({
   },
   callbacks: {
     async redirect({ url, baseUrl }: { url: string; baseUrl: string }) {
-      console.log('Auth redirect callback called:', { url, baseUrl });
-      if (url.startsWith('/')) {
-        return url;
-      }
+      // Si el sistema no pasa una URL específica (es decir, cae al default), 
+      // lo enviamos a /planner. De lo contrario, respeta la URL solicitada.
       if (url === baseUrl || url === baseUrl + '/') {
           return '/planner';
       }
-    return url.startsWith(baseUrl) ? url : baseUrl;
+      // Si es una URL completa que comienza con la base (seguro), o si es una ruta relativa.
+      return url.startsWith(baseUrl) || url.startsWith('/') ? url : baseUrl;
     },
 
   },
