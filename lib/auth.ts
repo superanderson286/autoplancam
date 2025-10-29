@@ -43,7 +43,7 @@ export const auth = betterAuth({
   cookie: {
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
-    domain: process.env.NODE_ENV === 'production' ? 'autoplancam.vercel.app' : undefined,
+    //domain: process.env.NODE_ENV === 'production' ? 'autoplancam.vercel.app' : undefined,
   },
   database: drizzleAdapter(db, {
     provider: 'pg',
