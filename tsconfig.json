@@ -32,8 +32,10 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
-, "db/schema.js", "db/index.js", "db/migrate.js"  ],
+    ".next/types/**/*.ts",
+    "auth.d.ts",
+    "lib/**/*.ts"
+  ],
   "exclude": [
     "node_modules"
   ]
