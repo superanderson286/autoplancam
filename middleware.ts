@@ -1,7 +1,5 @@
-// middleware.ts - USANDO LA FUNCIÓN AUTH
-
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
+import { NextResponse } from 'next/server.js';
+import type { NextRequest } from 'next/server.js';
 // 💡 Importar la función 'getSessionCookie' de better-auth/cookies
 import { getSessionCookie } from 'better-auth/cookies'; 
 
@@ -12,7 +10,7 @@ export function middleware(request: NextRequest) {
     
     // Rutas protegidas
     const isProtectedRoute = pathname.startsWith('/planner');
-    const isAuthPath = pathname.startsWith('/auth/sign-in') || pathname.startsWith('/auth/sign-up');
+    const isAuthPath = pathname.startsWith('/auth/sign-in');
     
     // 1. Si estás en una ruta protegida Y NO tienes sesión, redirige al login
     if (isProtectedRoute && !sessionCookie) {

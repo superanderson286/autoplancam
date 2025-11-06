@@ -9,11 +9,9 @@ import { migrate } from 'drizzle-orm/node-postgres/migrator';
 import { db } from './index.js'; 
 
 async function runMigrations() {
-  console.log('Iniciando migraciones de Drizzle...');
-  
-  // Asegúrate de que 'drizzle' sea la carpeta donde se guardan tus archivos de migración
-  await migrate(db, { migrationsFolder: './drizzle' }); 
-  
+      console.log('Iniciando migraciones de Drizzle...');
+      // Asegúrate de que 'drizzle' sea la carpeta donde se guardan tus archivos de migración
+      await migrate(db, { migrationsFolder: './drizzle' });  
   console.log('Migraciones completadas exitosamente.');
   process.exit(0);
 }

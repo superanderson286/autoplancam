@@ -9,4 +9,5 @@ export default {
   dbCredentials: {
     url: process.env.DATABASE_URL!,
   },
+  migrationsTable: "drizzle.__drizzle_migrations",
 } satisfies Config;

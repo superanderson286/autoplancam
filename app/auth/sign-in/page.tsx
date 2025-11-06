@@ -3,7 +3,7 @@
 //import { useEffect } from "react";
 //import { useRouter } from "next/navigation";
 import { AuthView } from "@daveyplate/better-auth-ui";
-import { useSession } from "../../../lib/auth-client"; // Corrected import path
+import { useSession } from "../../../lib/auth-client.js"; // Corrected import path
 
 export default function SignInPage() {
   //const router = useRouter();

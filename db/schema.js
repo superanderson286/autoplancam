@@ -1,4 +1,4 @@
-import { pgTable, text, timestamp, boolean, uniqueIndex, serial } from 'drizzle-orm/pg-core';
+import { pgTable, text, timestamp, boolean, uniqueIndex, serial, integer } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
 import { sql } from 'drizzle-orm';
 
@@ -11,10 +11,14 @@ export const users = pgTable('user', {
   email: text('email').unique().notNull(),
   emailVerified: boolean('email_verified').default(false).notNull(),
   // hashedPassword es nullable en la DB
-  hashedPassword: text('hashed_password'), 
+  password: text('password'), 
   image: text('image'),
+  role: text('role').notNull().default('user'),
   createdAt: timestamp('created_at').notNull().default(sql`now()`),
   updatedAt: timestamp('updated_at').notNull().default(sql`now()`), // Simplificado para coincidir con el DEFAULT NOW() de la DB
+  expiresAt: timestamp('expires_at', { withTimezone: true }), // Para la expiración por tiempo
+  reportsUsed: integer('reports_used').notNull().default(0), // Para la expiración por uso
+  reportsLimit: integer('reports_limit').notNull().default(0), // Para el límite de uso
 });
 
 export const userRelations = relations(users, ({ many }) => ({
@@ -53,7 +57,7 @@ export const accounts = pgTable('account', {
   // CORRECCIÓN 3: provider_account_id es NULABLE en tu DB y necesario para el hook.
   providerAccountId: text('provider_account_id'), 
   
-  password: text('password').notNull(),
+  password: text('password'), // Renombrado para coincidir con lo que better-auth espera
   accountId: text('account_id').notNull().unique(),
   accessToken: text('access_token'),
   refreshToken: text('refresh_token'),

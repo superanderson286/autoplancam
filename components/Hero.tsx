@@ -42,14 +42,7 @@ export default function Hero() {
           >
             {t("Sign In")}
           </MovingBorderButton>
-          <MovingBorderButton
-            as="a"
-            href="/auth/sign-up"
-            borderRadius="1.75rem"
-            borderClassName="bg-[linear-gradient(to_right,#0ea5e9,#06b6d4)]"
-          >
-            {t("Sign Up")}
-          </MovingBorderButton>
+
         </div>
       </motion.div>
     </section>

@@ -1,6 +1,6 @@
 {
-  "id": "3b16fbe7-289d-46b6-abf8-999e94137ef0",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "2d8af873-c8c5-46af-9a3a-879f5b8db530",
+  "prevId": "3b16fbe7-289d-46b6-abf8-999e94137ef0",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -32,8 +32,8 @@
           "primaryKey": false,
           "notNull": false
         },
-        "hashed_password": {
-          "name": "hashed_password",
+        "password": {
+          "name": "password",
           "type": "text",
           "primaryKey": false,
           "notNull": false
@@ -310,8 +310,8 @@
           "notNull": true,
           "default": false
         },
-        "hashed_password": {
-          "name": "hashed_password",
+        "password": {
+          "name": "password",
           "type": "text",
           "primaryKey": false,
           "notNull": false
