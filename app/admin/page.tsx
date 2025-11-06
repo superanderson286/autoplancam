@@ -1,6 +1,6 @@
 import React from 'react';
 //import { auth } from '../../../../lib/auth/auth';
-import { auth } from '../../lib/auth.js';
+import { auth } from '../../lib/auth';
 //import { auth } from '@/lib/auth';
 import { redirect } from 'next/navigation.js';
 import { headers } from 'next/headers.js';
