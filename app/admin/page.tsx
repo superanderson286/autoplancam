@@ -2,8 +2,8 @@ import React from 'react';
 //import { auth } from '../../../../lib/auth/auth';
 import { auth } from '../../lib/auth';
 //import { auth } from '@/lib/auth';
-import { redirect } from 'next/navigation.js';
-import { headers } from 'next/headers.js';
+import { redirect } from 'next/navigation';
+import { headers } from 'next/headers';
 import type { UserWithRole } from 'better-auth/plugins/admin';
 
 const AdminDashboard = async () => {
