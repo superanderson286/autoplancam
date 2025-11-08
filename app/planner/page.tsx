@@ -4,6 +4,8 @@
 
 import { authClient } from "../../lib/auth-client";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { useEffect } from "react";
 // import { useTranslation } from "react-i18next";
 
 // 👈 Importa el nuevo componente de lógica del planificador
@@ -12,6 +14,13 @@ import PlannerLogic from "./PlannerLogic";
 export default function PlannerPage() {
   // const { t } = useTranslation();
   const router = useRouter();
+  const { data: session, status } = authClient.useSession();
+
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.push("/auth/sign-in");
+    }
+  }, [status, router]);
 
   const handleSignOut = async () => {
     await authClient.signOut({

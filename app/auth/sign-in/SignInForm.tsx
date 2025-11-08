@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-// import { IconBrandGithub, IconBrandGoogle } from "@tabler/icons-react"; // Comentado ya que no se usa
 import { authClient } from "@/lib/auth-client";
 import { useTranslation } from "react-i18next";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export function SignInForm() {
   const { t } = useTranslation();

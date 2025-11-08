@@ -1,29 +1,22 @@
 
 import { useTranslation } from "react-i18next";
-
 import { useState } from "react";
-
+import Link from "next/link";
 import { authClient } from "../lib/auth-client";
 
-// Solución temporal para el problema de tipos:
-// Definimos una interfaz local que extiende el tipo de usuario
-// para incluir la propiedad 'role'.
+// Definimos una interfaz para el usuario que incluye el rol.
+// Esto soluciona el error "Cannot find name 'UserWithRole'".
 interface UserWithRole {
-  id: string;
-  createdAt: Date;
-  updatedAt: Date;
-  email: string;
-  emailVerified: boolean;
-  name: string;
+  name?: string | null;
+  email?: string | null;
   image?: string | null;
-  role?: string; // <-- Añadimos la propiedad que falta
+  role?: string | null;
 }
 
 export default function Navbar() {
   const { t, i18n } = useTranslation();
   const { data: session } = authClient.useSession();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     setIsMenuOpen(false);
@@ -46,13 +39,20 @@ export default function Navbar() {
           <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("tech")}>{t("Technology")}</div>
           <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("benefits")}>{t("Benefits")}</div>
           <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("roadmap")}>{t("Roadmap")}</div>
+          {/* Renderizado condicional para el enlace de Admin */}
           {(session?.user as UserWithRole)?.role === 'admin' && (
-            <a href="/admin" className="cursor-pointer hover:text-blue-400">{t("Admin")}</a>
+            <Link href="/admin" className="cursor-pointer hover:text-blue-400">{t("Admin")}</Link>
           )}
         </div>
-        <div className="hidden md:flex gap-4">
-        <button onClick={() => changeLanguage('es')} className="text-sm font-medium hover:text-blue-400">{t("Spanish")}</button>
-        <button onClick={() => changeLanguage('en')} className="text-sm font-medium hover:text-blue-400">{t("English")}</button>
+        <div className="hidden md:flex items-center gap-4">
+          <button onClick={() => changeLanguage('es')} className="text-sm font-medium hover:text-blue-400">{t("Spanish")}</button>
+          <button onClick={() => changeLanguage('en')} className="text-sm font-medium hover:text-blue-400">{t("English")}</button>
+          {/* Botones de Iniciar/Cerrar Sesión */}
+          {session && (
+            <button onClick={() => authClient.signOut()} className="text-sm font-medium hover:text-blue-400">
+              {t("Sign Out")}
+            </button>
+          )}
         </div>
         <div className="md:hidden flex items-center">
           <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white focus:outline-none">
@@ -69,12 +69,21 @@ export default function Navbar() {
             <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("tech")}>{t("Technology")}</div>
             <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("benefits")}>{t("Benefits")}</div>
             <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("roadmap")}>{t("Roadmap")}</div>
+            {/* Renderizado condicional para el enlace de Admin en menú móvil */}
             {(session?.user as UserWithRole)?.role === 'admin' && (
-              <a href="/admin" className="cursor-pointer hover:text-blue-400">{t("Admin")}</a>
+              <Link href="/admin" className="cursor-pointer hover:text-blue-400">{t("Admin")}</Link>
             )}
             <div className="flex gap-4 mt-4">
               <button onClick={() => changeLanguage('es')} className="text-sm font-medium hover:text-blue-400">{t("Spanish")}</button>
               <button onClick={() => changeLanguage('en')} className="text-sm font-medium hover:text-blue-400">{t("English")}</button>
+            </div>
+            {/* Botones de Iniciar/Cerrar Sesión en menú móvil */}
+            <div className="mt-4">
+              {session && (
+                <button onClick={() => authClient.signOut()} className="text-sm font-medium hover:text-blue-400 w-full text-left">
+                  {t("Sign Out")}
+                </button>
+              )}
             </div>
           </div>
         </div>
