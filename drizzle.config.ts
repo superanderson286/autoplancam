@@ -3,11 +3,14 @@ import * as dotenv from "dotenv";
 dotenv.config({ path: ".env" });
 
 export default {
-  schema: "./db/schema.js",
+  schema: "./db/schema",
   out: "./drizzle",
   dialect: "postgresql",
   dbCredentials: {
     url: process.env.DATABASE_URL!,
   },
-  migrationsTable: "drizzle.__drizzle_migrations",
+  migrations: {
+    table: "__drizzle_migrations",
+    schema: "drizzle"
+  }
 } satisfies Config;

@@ -3,9 +3,12 @@
     "target": "es5",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
-    ,      "@/lib": ["./lib/*"]
-
+      "@/*": [
+        "./*"
+      ],
+      "@/lib": [
+        "./lib/*"
+      ]
     },
     "lib": [
       "dom",
@@ -31,12 +34,10 @@
     ]
   },
   "include": [
-    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
-    "auth.d.ts",
-    "lib/**/*.ts"
+    "next-env.d.ts",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
