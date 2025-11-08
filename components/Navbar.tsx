@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import { useState } from "react";
 
-import { useSession } from "../lib/auth-client";
+import { authClient } from "../lib/auth-client";
 
 // Solución temporal para el problema de tipos:
 // Definimos una interfaz local que extiende el tipo de usuario
@@ -21,7 +21,7 @@ interface UserWithRole {
 
 export default function Navbar() {
   const { t, i18n } = useTranslation();
-  const { data: session } = useSession();
+  const { data: session } = authClient.useSession();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const scrollTo = (id: string) => {

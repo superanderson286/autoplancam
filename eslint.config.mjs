@@ -1,18 +1,17 @@
-import nextCoreWebVitals from "eslint-config-next/core-web-vitals.js";
-import nextTypescript from "eslint-config-next/typescript.js";
+import { FlatCompat } from "@eslint/eslintrc/dist/eslintrc-universal.cjs";
+import path from "path";
+import { fileURLToPath } from "url";
 
-const eslintConfig = [
-  nextCoreWebVitals,
-  nextTypescript,
-  {
-    ignores: [
-      "node_modules/**",
-      ".next/**",
-      "out/**",
-      "build/**",
-      "next-env.d.ts",
-    ],
-  },
+// Simula __dirname en módulos ES
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Inicializa el traductor de compatibilidad
+const compat = new FlatCompat({
+  baseDirectory: __dirname,
+});
+
+export default [
+  // Usa el traductor para extender las configuraciones de Next.js
+  ...compat.extends("next/core-web-vitals", "plugin:@typescript-eslint/recommended"),
 ];
-
-export default eslintConfig;

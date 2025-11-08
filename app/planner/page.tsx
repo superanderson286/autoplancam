@@ -2,7 +2,7 @@
 
 "use client";
 
-import { signOut } from "../../lib/auth-client";
+import { authClient } from "../../lib/auth-client";
 import { useRouter } from "next/navigation";
 // import { useTranslation } from "react-i18next";
 
@@ -14,7 +14,7 @@ export default function PlannerPage() {
   const router = useRouter();
 
   const handleSignOut = async () => {
-    await signOut({
+    await authClient.signOut({
       fetchOptions: {
         onSuccess: () => {
           // Redirige a la página principal después de cerrar sesión
