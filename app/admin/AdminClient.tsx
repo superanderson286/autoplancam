@@ -1,6 +1,8 @@
 // c:\Users\super\Documents\autoplancam\app\admin\AdminClient.tsx
 "use client";
 
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { MoreHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -22,6 +24,7 @@ import {
   getSessionHistory,
 } from "./actions";
 import { toast } from "sonner";
+import { authClient } from "../../lib/auth-client";
 import { SafeLocaleDate } from "../../components/SafeLocaleDate";
 
 // Define el tipo para los usuarios que recibimos del servidor.
@@ -60,6 +63,18 @@ export default function AdminClient({ initialUsers }: { initialUsers: User[] }) 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState<React.ReactNode | null>(null);
   const [modalTitle, setModalTitle] = useState("");
+  const router = useRouter();
+
+  const handleSignOut = async () => {
+    await authClient.signOut({
+      fetchOptions: {
+        onSuccess: () => {
+          // Redirige a la página principal después de cerrar sesión
+          router.push("/");
+        },
+      },
+    });
+  };
 
   // 1. Función para refrescar la lista de usuarios desde el servidor
   const refreshUsers = async () => {
@@ -191,9 +206,17 @@ export default function AdminClient({ initialUsers }: { initialUsers: User[] }) 
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold text-gray-800">Panel de Administración</h1>
-          <button onClick={() => openModal("Crear Nuevo Usuario", <CreateUserForm />)} className="bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700">
-            + Crear Usuario
-          </button>
+          <div className="flex items-center gap-4">
+            <Link href="/planner" className="bg-gray-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-gray-700">
+              Volver a Planner
+            </Link>
+            <button onClick={handleSignOut} className="bg-red-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-700">
+              Cerrar Sesión
+            </button>
+            <button onClick={() => openModal("Crear Nuevo Usuario", <CreateUserForm />)} className="bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700">
+              + Crear Usuario
+            </button>
+          </div>
         </div>
 
         <div className="bg-white shadow-lg rounded-lg overflow-x-auto">
