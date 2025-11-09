@@ -59,16 +59,8 @@ export const auth = betterAuth({
       });
 
       // Si se encuentra el usuario, devuelve sus datos, incluido el rol.
-      // better-auth se encargará de la validación de la contraseña.
-      // Aprovechamos este punto para incrementar el contador de inicios de sesión.
       if (foundUser) {
-        // El método 'update' espera el objeto de la tabla (importado como 'user'), no los datos del usuario.
-        await db.update(user).set({
-          loginCount: (foundUser.loginCount || 0) + 1 
-        }).where(eq(user.id, foundUser.id)); // Comparamos la columna 'user.id' con el valor 'foundUser.id'
-      }
-      if (foundUser) {
-        return foundUser; // Devolvemos el objeto de usuario completo de la BD.
+        return foundUser;
       }
 
       // Si no se encuentra el usuario, devuelve null para denegar el acceso.
