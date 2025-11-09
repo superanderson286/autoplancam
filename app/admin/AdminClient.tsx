@@ -22,6 +22,7 @@ import {
   getSessionHistory,
 } from "./actions";
 import { toast } from "sonner";
+import { SafeLocaleDate } from "../../components/SafeLocaleDate";
 
 // Define el tipo para los usuarios que recibimos del servidor.
 type User = Awaited<ReturnType<typeof getUsers>>[0];
@@ -175,7 +176,7 @@ export default function AdminClient({ initialUsers }: { initialUsers: User[] }) 
           <ul className="space-y-2">
             {history.map(session => (
               <li key={session.id} className="text-sm p-2 border rounded">
-                <p><strong>Inicio:</strong> {new Date(session.createdAt).toLocaleString()}</p>
+                <p><strong>Inicio:</strong> <SafeLocaleDate date={session.createdAt} /></p>
                 <p><strong>Duración:</strong> {Math.round(session.duration / 60000)} minutos</p>
               </li>
             ))}
@@ -219,7 +220,7 @@ export default function AdminClient({ initialUsers }: { initialUsers: User[] }) 
                     </span>
                   </td>
                   <td className="p-4 text-center">{user.loginCount}</td>
-                  <td className="p-4">{user.lastSeen ? new Date(user.lastSeen).toLocaleString() : 'Nunca'}</td>
+                  <td className="p-4"><SafeLocaleDate date={user.lastSeen} /></td>
                   <td className="p-4">
                      <span className={`px-2 py-1 text-xs font-semibold rounded-full ${user.banned ? 'bg-red-100 text-red-800' : 'bg-blue-100 text-blue-800'}`}>
                       {user.banned ? 'Baneado' : 'Activo'}
