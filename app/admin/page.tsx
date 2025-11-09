@@ -4,12 +4,12 @@ import { auth } from '../../lib/auth';
 //import { auth } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 import { headers } from 'next/headers';
-import type { UserWithRole } from 'better-auth/plugins/admin';
+
 
 const AdminDashboard = async () => {
   const session = await auth.api.getSession({ headers: new Headers(await headers()) });
 
-  const user = session?.user as UserWithRole | undefined;
+  const user = session?.user;
   if (!session || user?.role !== 'admin') {
     redirect('/planner');
   }
