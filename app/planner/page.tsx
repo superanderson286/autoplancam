@@ -11,16 +11,26 @@ import { useEffect } from "react";
 // 👈 Importa el nuevo componente de lógica del planificador
 import PlannerLogic from "./PlannerLogic"; 
 
+// Definimos una interfaz para el usuario que incluye el rol,
+// igual que en la Navbar principal.
+interface UserWithRole {
+  name?: string | null;
+  email?: string | null;
+  role?: string | null;
+}
+
 export default function PlannerPage() {
   // const { t } = useTranslation();
   const router = useRouter();
-  const { data: session, status } = authClient.useSession();
+  // `better-auth` usa `isPending` y `data`, no `status`.
+  const { data: session, isPending } = authClient.useSession();
 
   useEffect(() => {
-    if (status === "unauthenticated") {
+    // Si la carga ha terminado y no hay sesión, el usuario no está autenticado.
+    if (!isPending && !session) {
       router.push("/auth/sign-in");
     }
-  }, [status, router]);
+  }, [isPending, session, router]);
 
   const handleSignOut = async () => {
     await authClient.signOut({
@@ -38,16 +48,24 @@ export default function PlannerPage() {
     // Reemplazamos la clase bg-gray-900 por bg-gray-100 para que PlannerLogic se vea bien
     <main className="min-h-screen bg-gray-100 p-4">
       
-      {/* 1. Barra superior para el nombre y el botón de Sign Out */}
+      {/* 1. Barra superior específica del planificador */}
       <div className="flex justify-between items-center mb-6 p-4 bg-white shadow-md rounded-lg">
-          <h1 className="text-2xl font-bold text-gray-800">
-             {/*t("Security Planner")*/} 
-          </h1>
+          <div className="flex items-center gap-4">
+            <h1 className="text-2xl font-bold text-gray-800">
+              {/*t("Security Planner")*/}
+              Planner
+            </h1>
+            {/* Renderizado condicional para el enlace de Admin */}
+            {(session?.user as UserWithRole)?.role === 'admin' && (
+              <Link href="/admin" className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded text-sm transition duration-150">
+                Admin
+              </Link>
+            )}
+          </div>
           <button
             onClick={handleSignOut}
             className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-bold rounded text-sm transition duration-150"
           >
-            {/*t("Sign Out")*/        }
             Sign Out
           </button>
       </div>

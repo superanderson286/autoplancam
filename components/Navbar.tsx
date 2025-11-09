@@ -16,6 +16,7 @@ interface UserWithRole {
 export default function Navbar() {
   const { t, i18n } = useTranslation();
   const { data: session } = authClient.useSession();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
