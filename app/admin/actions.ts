@@ -2,9 +2,9 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { db } from "@/db";
-import { users } from "@/db/schema";
-import { eq } from "drizzle-orm";
+import { db } from "@/db"; 
+import { users, sessions } from "@/db/schema";
+import { eq, desc } from "drizzle-orm";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 
@@ -31,8 +31,19 @@ export async function getUsers() {
     expiresAt: users.expiresAt,
     banned: users.banned,
     reportsLimit: users.reportsLimit,
+    loginCount: users.loginCount,
   }).from(users);
-  return userList;
+
+  // Para cada usuario, obtenemos la última vez que fue visto
+  const usersWithLastSeen = await Promise.all(userList.map(async (user) => {
+    const lastSession = await db.query.sessions.findFirst({
+      where: eq(sessions.userId, user.id),
+      orderBy: [desc(sessions.updatedAt)],
+    });
+    return { ...user, lastSeen: lastSession?.updatedAt || null };
+  }));
+
+  return usersWithLastSeen;
 }
 
 // --- CREAR UN NUEVO USUARIO ---
@@ -150,4 +161,14 @@ export async function deleteUser(formData: FormData) {
   } catch (error: any) {
     return { error: `Error al eliminar: ${error.message}` };
   }
+}
+
+// --- OBTENER HISTORIAL DE SESIONES DE UN USUARIO ---
+export async function getSessionHistory(userId: string) {
+  await verifyAdmin();
+  const sessionHistory = await db.select().from(sessions).where(eq(sessions.userId, userId)).orderBy(desc(sessions.createdAt));
+  return sessionHistory.map(s => ({
+    ...s,
+    duration: s.expiresAt.getTime() - s.createdAt.getTime(), // Duración en milisegundos
+  }));
 }

@@ -1,6 +1,16 @@
 // c:\Users\super\Documents\autoplancam\app\admin\AdminClient.tsx
 "use client";
 
+import { MoreHorizontal } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { useState } from "react";
 import {
   getUsers,
@@ -9,11 +19,13 @@ import {
   deleteUser,
   toggleUserBan,
   changeUserPassword,
+  getSessionHistory,
 } from "./actions";
 import { toast } from "sonner";
 
 // Define el tipo para los usuarios que recibimos del servidor.
 type User = Awaited<ReturnType<typeof getUsers>>[0];
+type SessionHistory = Awaited<ReturnType<typeof getSessionHistory>>;
 
 // Componente de Modal (Placeholder)
 // En una aplicación real, usarías un componente de UI como Radix, Shadcn/UI, etc.
@@ -48,12 +60,23 @@ export default function AdminClient({ initialUsers }: { initialUsers: User[] }) 
   const [modalContent, setModalContent] = useState<React.ReactNode | null>(null);
   const [modalTitle, setModalTitle] = useState("");
 
+  // 1. Función para refrescar la lista de usuarios desde el servidor
+  const refreshUsers = async () => {
+    try {
+      const updatedUsers = await getUsers();
+      setUsers(updatedUsers);
+    } catch (error) {
+      toast.error("Error al refrescar la lista de usuarios.");
+    }
+  };
+
   const handleAction = async (action: (formData: FormData) => Promise<any>, formData: FormData, successMessage: string) => {
     const result = await action(formData);
     if (result?.error) {
       toast.error(result.error);
     } else {
       toast.success(result?.success || successMessage);
+      await refreshUsers(); // 2. Llama a la función de refresco después de una acción exitosa
       closeModal();
     }
   };
@@ -133,6 +156,35 @@ export default function AdminClient({ initialUsers }: { initialUsers: User[] }) 
     </form>
   );
 
+  const SessionHistoryView = ({ userId }: { userId: string }) => {
+    const [history, setHistory] = useState<SessionHistory>([]);
+    const [loading, setLoading] = useState(true);
+
+    useState(() => {
+      getSessionHistory(userId).then(data => {
+        setHistory(data);
+        setLoading(false);
+      });
+    });
+
+    if (loading) return <p>Cargando historial...</p>;
+
+    return (
+      <div className="max-h-96 overflow-y-auto">
+        {history.length === 0 ? <p>No hay historial de sesiones.</p> : (
+          <ul className="space-y-2">
+            {history.map(session => (
+              <li key={session.id} className="text-sm p-2 border rounded">
+                <p><strong>Inicio:</strong> {new Date(session.createdAt).toLocaleString()}</p>
+                <p><strong>Duración:</strong> {Math.round(session.duration / 60000)} minutos</p>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    );
+  };
+
   return (
     <div className="p-8 bg-gray-50 min-h-screen">
       <div className="max-w-7xl mx-auto">
@@ -150,6 +202,8 @@ export default function AdminClient({ initialUsers }: { initialUsers: User[] }) 
                 <th className="p-4 font-semibold">Nombre</th>
                 <th className="p-4 font-semibold">Email</th>
                 <th className="p-4 font-semibold">Rol</th>
+                <th className="p-4 font-semibold">Inicios de Sesión</th>
+                <th className="p-4 font-semibold">Última vez visto</th>
                 <th className="p-4 font-semibold">Estado</th>
                 <th className="p-4 font-semibold">Acciones</th>
               </tr>
@@ -164,18 +218,31 @@ export default function AdminClient({ initialUsers }: { initialUsers: User[] }) 
                       {user.role}
                     </span>
                   </td>
+                  <td className="p-4 text-center">{user.loginCount}</td>
+                  <td className="p-4">{user.lastSeen ? new Date(user.lastSeen).toLocaleString() : 'Nunca'}</td>
                   <td className="p-4">
                      <span className={`px-2 py-1 text-xs font-semibold rounded-full ${user.banned ? 'bg-red-100 text-red-800' : 'bg-blue-100 text-blue-800'}`}>
                       {user.banned ? 'Baneado' : 'Activo'}
                     </span>
                   </td>
-                  <td className="p-4 space-x-2">
-                    <button onClick={() => openModal(`Editar ${user.name}`, <EditUserForm user={user} />)} className="text-blue-600 hover:underline text-sm">Editar</button>
-                    <button onClick={() => openModal(`Cambiar Contraseña de ${user.name}`, <ChangePasswordForm user={user} />)} className="text-orange-500 hover:underline text-sm">Contraseña</button>
-                    <button onClick={() => openModal(user.banned ? `Desbanear a ${user.name}` : `Banear a ${user.name}`, <BanUserForm user={user} />)} className="text-yellow-600 hover:underline text-sm">
-                      {user.banned ? 'Desbanear' : 'Banear'}
-                    </button>
-                    <button onClick={() => openModal(`Eliminar ${user.name}`, <DeleteUserConfirm user={user} />)} className="text-red-600 hover:underline text-sm">Eliminar</button>
+                  <td className="p-4 text-right">
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" className="h-8 w-8 p-0">
+                          <span className="sr-only">Abrir menú</span>
+                          <MoreHorizontal className="h-4 w-4" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuLabel>Acciones</DropdownMenuLabel>
+                        <DropdownMenuItem onClick={() => openModal(`Editar ${user.name}`, <EditUserForm user={user} />)}>Editar</DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => openModal(`Cambiar Contraseña de ${user.name}`, <ChangePasswordForm user={user} />)}>Contraseña</DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => openModal(`Historial de Sesiones de ${user.name}`, <SessionHistoryView userId={user.id} />)}>Ver Sesiones</DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => openModal(user.banned ? `Desbanear a ${user.name}` : `Banear a ${user.name}`, <BanUserForm user={user} />)}>{user.banned ? 'Desbanear' : 'Banear'}</DropdownMenuItem>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem className="text-red-600" onClick={() => openModal(`Eliminar ${user.name}`, <DeleteUserConfirm user={user} />)}>Eliminar</DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
                   </td>
                 </tr>
               ))}

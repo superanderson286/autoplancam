@@ -1,6 +1,7 @@
 // auth.ts
 //import betterAuth from 'better-auth';
 import { betterAuth } from 'better-auth';
+import { eq } from 'drizzle-orm';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
 import { db } from '../db';
 import {
@@ -8,7 +9,7 @@ import {
   sessions as session,
   accounts as account,
   verification
-} from '../db/schema';
+} from '../db/schema'; // 'users' se importa como 'user'
 import { v4 as uuidv4 } from 'uuid';
 import { admin } from 'better-auth/plugins/admin';
 
@@ -52,15 +53,22 @@ export const auth = betterAuth({
     async authorize(credentials: any) {
       // Busca al usuario en la base de datos por su email.
       // La tabla en la base de datos es 'user', pero el objeto de esquema de Drizzle se llama 'users'.
-      // Por lo tanto, la consulta correcta es 'db.query.users'.
-      const user = await db.query.users.findFirst({
+      // Renombramos la constante a 'foundUser' para evitar colisión con el esquema 'user' importado.
+      const foundUser = await db.query.users.findFirst({
         where: (users, { eq }) => eq(users.email, credentials.email as string),
       });
 
       // Si se encuentra el usuario, devuelve sus datos, incluido el rol.
       // better-auth se encargará de la validación de la contraseña.
-      if (user) {
-        return user; // Devolvemos el objeto de usuario completo de la BD.
+      // Aprovechamos este punto para incrementar el contador de inicios de sesión.
+      if (foundUser) {
+        // El método 'update' espera el objeto de la tabla (importado como 'user'), no los datos del usuario.
+        await db.update(user).set({
+          loginCount: (foundUser.loginCount || 0) + 1 
+        }).where(eq(user.id, foundUser.id)); // Comparamos la columna 'user.id' con el valor 'foundUser.id'
+      }
+      if (foundUser) {
+        return foundUser; // Devolvemos el objeto de usuario completo de la BD.
       }
 
       // Si no se encuentra el usuario, devuelve null para denegar el acceso.
