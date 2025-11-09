@@ -15,6 +15,13 @@
       "when": 1762392073778,
       "tag": "0001_fixed_adam_destine",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1762708073456,
+      "tag": "0002_silly_firebrand",
+      "breakpoints": true
     }
   ]
 }

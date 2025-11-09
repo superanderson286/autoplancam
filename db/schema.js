@@ -19,6 +19,11 @@ export const users = pgTable('user', {
   expiresAt: timestamp('expires_at', { withTimezone: true }), // Para la expiración por tiempo
   reportsUsed: integer('reports_used').notNull().default(0), // Para la expiración por uso
   reportsLimit: integer('reports_limit').notNull().default(0), // Para el límite de uso
+
+  // Columnas añadidas para la gestión de baneos
+  banned: boolean('banned').default(false).notNull(),
+  banReason: text('ban_reason'),
+  banExpires: timestamp('ban_expires', { withTimezone: true }),
 });
 
 export const userRelations = relations(users, ({ many }) => ({
@@ -39,6 +44,9 @@ export const sessions = pgTable('session', {
   
   ipAddress: text('ip_address'),
   userAgent: text('user_agent'),
+
+  // Columna añadida para la suplantación de sesión
+  impersonatedBy: text('impersonated_by'),
 });
 
 export const sessionRelations = relations(sessions, ({ one }) => ({
