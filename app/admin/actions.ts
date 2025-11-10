@@ -2,9 +2,9 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { db } from "@/db"; 
+import { db } from "@/db";
 import { users, sessions } from "@/db/schema";
-import { eq, desc } from "drizzle-orm";
+import { eq, desc, gte } from "drizzle-orm";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 
@@ -31,6 +31,7 @@ export async function getUsers() {
     expiresAt: users.expiresAt,
     banned: users.banned,
     reportsLimit: users.reportsLimit,
+    reportsUsed: users.reportsUsed, // <-- Añadimos esta línea
     loginCount: users.loginCount,
   }).from(users);
 
@@ -188,4 +189,42 @@ export async function getSessionHistory(userId: string) {
     ...s,
     duration: s.expiresAt.getTime() - s.createdAt.getTime(), // Duración en milisegundos
   }));
+}
+
+// --- ACCIÓN PARA GENERAR REPORTE DE FORMA SEGURA ---
+export async function generateSecureReport(datosProyecto: any) {
+  const session = await auth.api.getSession({ headers: new Headers(await headers()) });
+  if (!session?.user?.id) {
+    return { error: "No autenticado. Por favor, inicie sesión." };
+  }
+
+  const userId = session.user.id;
+
+  // 1. Obtener los datos más recientes del usuario desde la base de datos.
+  const currentUser = await db.query.users.findFirst({
+    where: eq(users.id, userId),
+  });
+
+  if (!currentUser) {
+    return { error: "Usuario no encontrado." };
+  }
+
+  // 2. Verificar si la cuenta ha expirado.
+  if (currentUser.expiresAt && new Date() > new Date(currentUser.expiresAt)) {
+    return { error: "Tu cuenta ha expirado. Por favor, contacta al soporte." };
+  }
+
+  // 3. Verificar el límite de reportes (solo si el límite es mayor que 0).
+  if (currentUser.reportsLimit > 0 && currentUser.reportsUsed >= currentUser.reportsLimit) {
+    return { error: `Has alcanzado tu límite de ${currentUser.reportsLimit} reportes. Por favor, contacta al soporte.` };
+  }
+
+  // 4. Si todas las verificaciones pasan, incrementar el contador de uso.
+  await db
+    .update(users)
+    .set({ reportsUsed: (currentUser.reportsUsed || 0) + 1 })
+    .where(eq(users.id, userId));
+
+  // 5. Devolvemos un objeto de éxito para que el cliente sepa que puede proceder.
+  return { success: true };
 }

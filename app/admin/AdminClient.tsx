@@ -233,6 +233,7 @@ export default function AdminClient({ initialUsers }: { initialUsers: User[] }) 
                 <th className="p-4 font-semibold">Última vez visto</th>
                 <th className="p-4 font-semibold">Límite Reportes</th>
                 <th className="p-4 font-semibold">Expira en</th>
+                <th className="p-4 font-semibold">Reportes Usados</th>
                 <th className="p-4 font-semibold">Estado</th>
                 <th className="p-4 font-semibold">Acciones</th>
               </tr>
@@ -251,6 +252,7 @@ export default function AdminClient({ initialUsers }: { initialUsers: User[] }) 
                   <td className="p-4"><SafeLocaleDate date={user.lastSeen} /></td>
                   <td className="p-4 text-center">{user.reportsLimit}</td>
                   <td className="p-4"><SafeLocaleDate date={user.expiresAt} /></td>
+                  <td className="p-4 text-center">{user.reportsUsed}</td>
                   <td className="p-4">
                      <span className={`px-2 py-1 text-xs font-semibold rounded-full ${user.banned ? 'bg-red-100 text-red-800' : 'bg-blue-100 text-blue-800'}`}>
                       {user.banned ? 'Baneado' : 'Activo'}

@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
+import { generateSecureReport } from '../admin/actions'; // Importamos la nueva acción
+import { toast } from 'sonner'; // Usaremos toast para los mensajes de error
 
 // --- 1. Base de Datos de Equipos HikVision (Actualizado) ---
 const HIKVISION_SPECS = {
@@ -431,6 +433,9 @@ export default function PlannerLogic() {
     const [calculado, setCalculado] = useState(false);
     const [recomendaciones, setRecomendaciones] = useState<Recomendacion | null>(null);
 
+    // Estado para el botón de carga
+    const [isGenerating, setIsGenerating] = useState(false);
+
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value, type } = e.target;
         
@@ -444,11 +449,25 @@ export default function PlannerLogic() {
         setCalculado(false);
     };
     
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setIsGenerating(true);
+
+        // 1. Llama a la acción del servidor para verificar los permisos
+        const result = await generateSecureReport(datosProyecto);
+
+        // 2. Si hay un error (límite alcanzado, cuenta expirada), muéstralo y detente.
+        if (result.error) {
+            toast.error(result.error);
+            setIsGenerating(false);
+            return;
+        }
+
+        // 3. Si todo está bien, procede a calcular y mostrar el reporte.
         const resultados = calcularRecomendaciones(datosProyecto);
         setRecomendaciones(resultados);
         setCalculado(true);
+        setIsGenerating(false);
     };
 
     return (
@@ -735,13 +754,13 @@ export default function PlannerLogic() {
                 {/* Botón de Cálculo */}
                 <button
                     type="submit"
-                    disabled={datosProyecto.area_m2 <= 0}
+                    disabled={datosProyecto.area_m2 <= 0 || isGenerating}
                     className={`w-full py-3 text-lg font-bold rounded-lg transition duration-300 
-                                ${datosProyecto.area_m2 <= 0 
+                                ${datosProyecto.area_m2 <= 0 || isGenerating
                                     ? 'bg-gray-400 cursor-not-allowed' 
                                     : 'bg-blue-600 hover:bg-blue-700 text-white'}`}
                 >
-                    {datosProyecto.area_m2 <= 0 ? 'Ingrese el Área para Calcular' : 'Generar Plan de Trabajo Exacto'}
+                    {isGenerating ? 'Generando...' : (datosProyecto.area_m2 <= 0 ? 'Ingrese el Área para Calcular' : 'Generar Plan de Trabajo Exacto')}
                 </button>
             </form>
 
