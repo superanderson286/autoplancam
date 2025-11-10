@@ -60,10 +60,20 @@ const Modal = ({
 
 export default function AdminClient({ initialUsers }: { initialUsers: User[] }) {
   const [users, setUsers] = useState(initialUsers);
+  const [searchTerm, setSearchTerm] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState<React.ReactNode | null>(null);
   const [modalTitle, setModalTitle] = useState("");
   const router = useRouter();
+
+  // Filtramos la lista de usuarios basándonos en el término de búsqueda.
+  // La lógica es insensible a mayúsculas/minúsculas y busca en nombre y email.
+  const filteredUsers = users.filter(user => {
+    const term = searchTerm.toLowerCase();
+    const nameMatch = user.name?.toLowerCase().includes(term);
+    const emailMatch = user.email?.toLowerCase().includes(term);
+    return nameMatch || emailMatch;
+  });
 
   const handleSignOut = async () => {
     await authClient.signOut({
@@ -222,6 +232,17 @@ export default function AdminClient({ initialUsers }: { initialUsers: User[] }) 
           </div>
         </div>
 
+        {/* Campo de Búsqueda */}
+        <div className="mb-4">
+          <input
+            type="text"
+            placeholder="Buscar por nombre o email..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full max-w-lg p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+          />
+        </div>
+
         <div className="bg-white shadow-lg rounded-lg">
           <div className="overflow-x-auto">
             <table className="w-full text-left min-w-[1024px]">
@@ -240,7 +261,7 @@ export default function AdminClient({ initialUsers }: { initialUsers: User[] }) 
               </tr>
             </thead>
             <tbody>
-              {users.map((user) => (
+              {filteredUsers.map((user) => (
                 <tr key={user.id} className="border-b hover:bg-gray-50">
                   <td className="p-4">{user.name}</td>
                   <td className="p-4">{user.email}</td>
@@ -282,6 +303,11 @@ export default function AdminClient({ initialUsers }: { initialUsers: User[] }) 
               ))}
             </tbody>
           </table>
+          {filteredUsers.length === 0 && (
+            <div className="text-center p-8 text-gray-500">
+              <p>No se encontraron usuarios que coincidan con la búsqueda.</p>
+            </div>
+          )}
           </div>
         </div>
       </div>
