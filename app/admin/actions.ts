@@ -5,6 +5,7 @@ import { revalidatePath } from "next/cache";
 import { db } from "@/db";
 import { users, sessions } from "@/db/schema"; // Asegúrate de que 'sessions' esté aquí
 import { eq, desc, gte, ilike, sql } from "drizzle-orm";
+import { z } from "zod";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 
@@ -74,46 +75,73 @@ export async function getUsers({ page = 1, searchTerm = '' }: { page?: number; s
   };
 }
 
+// --- Esquemas de Validación con Zod ---
+
+const CreateUserSchema = z.object({
+  name: z.string().min(1, "El nombre es requerido."),
+  email: z.string().email("El formato del email no es válido."),
+  password: z.string().min(8, "La contraseña debe tener al menos 8 caracteres."),
+  role: z.enum(["user", "admin"], { message: "El rol seleccionado no es válido." }),
+  reportsLimit: z.coerce.number().int().nonnegative("El límite debe ser un número positivo.").optional(),
+  expiresAt: z.string().optional(),
+});
+
+const UpdateUserSchema = z.object({
+  id: z.string(),
+  name: z.string().min(1, "El nombre es requerido."),
+  email: z.string().email("El formato del email no es válido."),
+  role: z.enum(["user", "admin"], { message: "El rol seleccionado no es válido." }),
+  reportsLimit: z.coerce.number().int().nonnegative("El límite debe ser un número positivo."),
+  expiresAt: z.string().optional(),
+});
+
+const ChangePasswordSchema = z.object({
+  id: z.string(),
+  newPassword: z.string().min(8, "La nueva contraseña debe tener al menos 8 caracteres."),
+});
+
+const IdSchema = z.object({ id: z.string() });
+
+const BanSchema = z.object({
+  id: z.string(),
+  isBanned: z.string(), // FormData envía valores como string
+  banReason: z.string().optional(),
+});
+
 // --- CREAR UN NUEVO USUARIO ---
 export async function createUser(formData: FormData) {
   await verifyAdmin();
-  const email = formData.get("email") as string;
-  const name = formData.get("name") as string;
-  const role = formData.get("role") as string;
-  const password = formData.get("password") as string;
-  const reportsLimitStr = formData.get("reportsLimit") as string;
-  const expiresAtStr = formData.get("expiresAt") as string;
+  const data = Object.fromEntries(formData.entries());
+  const result = CreateUserSchema.safeParse(data);
 
-  if (!email || !name || !role || !password) {
-    return { error: "Todos los campos son requeridos." };
+  if (!result.success) {
+    // Devuelve el primer error encontrado
+    return { error: Object.values(result.error.flatten().fieldErrors)[0][0] };
   }
 
+  const { name, email, password, role, reportsLimit, expiresAt: expiresAtStr } = result.data;
+
   try {
-    // 'better-auth' se encarga de hashear la contraseña automáticamente.
-    // Paso 1: Crear el usuario con los datos básicos.
     const newUserResponse = await auth.api.createUser({
       body: {
         email,
         password,
         name,
-        role: role as 'user' | 'admin', // Hacemos una aserción de tipo para satisfacer a TypeScript
+        role,
       }
     });
 
-    // Obtenemos el ID del usuario recién creado desde la respuesta.
     const newUserId = newUserResponse.user.id;
 
-    // Paso 2: Actualizar el usuario con los campos de suscripción.
-    const reportsLimit = reportsLimitStr ? parseInt(reportsLimitStr, 10) : 0; // Si no se especifica, 0
     let expiresAt: Date | null = null;
     if (expiresAtStr) {
       expiresAt = new Date(expiresAtStr);
       expiresAt.setHours(23, 59, 59, 999); // Establecer al final del día seleccionado
     }
 
-    if (reportsLimit > 0 || expiresAt) {
+    if ((reportsLimit || 0) > 0 || expiresAt) {
       await db.update(users).set({
-        reportsLimit: isNaN(reportsLimit) ? 0 : reportsLimit,
+        reportsLimit: reportsLimit || 0,
         expiresAt,
       }).where(eq(users.id, newUserId));
     }
@@ -128,24 +156,26 @@ export async function createUser(formData: FormData) {
 // --- EDITAR UN USUARIO ---
 export async function updateUser(formData: FormData) {
   await verifyAdmin();
-  const id = formData.get("id") as string;
-  const name = formData.get("name") as string;
-  const email = formData.get("email") as string;
-  const role = formData.get("role") as string;
-  const reportsLimit = parseInt(formData.get("reportsLimit") as string, 10);
+  const data = Object.fromEntries(formData.entries());
+  const result = UpdateUserSchema.safeParse(data);
+
+  if (!result.success) {
+    return { error: Object.values(result.error.flatten().fieldErrors)[0][0] };
+  }
+
+  const { id, name, email, role, reportsLimit, expiresAt: expiresAtStr } = result.data;
+
   let expiresAt: Date | null = null;
-  if (formData.get("expiresAt")) {
-    expiresAt = new Date(formData.get("expiresAt") as string);
+  if (expiresAtStr) {
+    expiresAt = new Date(expiresAtStr);
     expiresAt.setHours(23, 59, 59, 999); // Establecer al final del día seleccionado
   }
 
   try {
     await db.update(users).set({
-      name,
-      email,
-      role,
-      reportsLimit: isNaN(reportsLimit) ? 0 : reportsLimit,
-      expiresAt,
+      name, email, role,
+      reportsLimit: reportsLimit || 0,
+      expiresAt
     }).where(eq(users.id, id));
 
     revalidatePath("/admin");
@@ -158,22 +188,21 @@ export async function updateUser(formData: FormData) {
 // --- CAMBIAR CONTRASEÑA DE UN USUARIO ---
 export async function changeUserPassword(formData: FormData) {
   await verifyAdmin();
-  const id = formData.get("id") as string;
-  const newPassword = formData.get("newPassword") as string;
+  const data = Object.fromEntries(formData.entries());
+  const result = ChangePasswordSchema.safeParse(data);
 
-  if (!newPassword || newPassword.length < 6) {
-    return { error: "La contraseña debe tener al menos 6 caracteres." };
+  if (!result.success) {
+    return { error: Object.values(result.error.flatten().fieldErrors)[0][0] };
   }
 
+  const { id, newPassword } = result.data;
+
   try {
-    // 'better-auth' proporciona un método para esto.
-    // El método correcto es 'setUserPassword' y espera un objeto con 'params' y 'body'.
     await auth.api.setUserPassword({
       params: { id },
       body: {
-        // La propiedad esperada por better-auth es 'newPassword', no 'password'.
-        newPassword: newPassword, // La nueva contraseña
-        userId: id, // El ID del usuario también es requerido en el body
+        newPassword: newPassword,
+        userId: id,
       },
     });
     return { success: "Contraseña actualizada." };
@@ -185,14 +214,21 @@ export async function changeUserPassword(formData: FormData) {
 // --- BANEAR/DESBANEAR UN USUARIO ---
 export async function toggleUserBan(formData: FormData) {
   await verifyAdmin();
-  const id = formData.get("id") as string;
-  const isBanned = (formData.get("isBanned") as string) === 'true';
-  const banReason = formData.get("banReason") as string;
+  const data = Object.fromEntries(formData.entries());
+  const result = BanSchema.safeParse(data);
+
+  if (!result.success) {
+    return { error: "Datos inválidos para la operación de baneo." };
+  }
+
+  const { id, isBanned: isBannedStr, banReason } = result.data;
+  const isBanned = isBannedStr === 'true';
 
   try {
+    // Invierte el estado actual
     await db.update(users).set({
-      banned: !isBanned, // Invierte el estado actual
-      banReason: !isBanned ? banReason : null, // Añade o quita la razón
+      banned: !isBanned,
+      banReason: !isBanned ? banReason : null,
     }).where(eq(users.id, id));
 
     revalidatePath("/admin");
@@ -205,10 +241,15 @@ export async function toggleUserBan(formData: FormData) {
 // --- ELIMINAR UN USUARIO ---
 export async function deleteUser(formData: FormData) {
   await verifyAdmin();
-  const id = formData.get("id") as string;
+  const data = Object.fromEntries(formData.entries());
+  const result = IdSchema.safeParse(data);
+
+  if (!result.success) {
+    return { error: "ID de usuario inválido." };
+  }
 
   try {
-    await db.delete(users).where(eq(users.id, id));
+    await db.delete(users).where(eq(users.id, result.data.id));
     revalidatePath("/admin");
     return { success: "Usuario eliminado." };
   } catch (error: any) {

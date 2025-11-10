@@ -134,6 +134,9 @@ importers:
       web-vitals:
         specifier: ^2.1.4
         version: 2.1.4
+      zod:
+        specifier: ^4.1.12
+        version: 4.1.12
     devDependencies:
       '@types/node':
         specifier: ^24.9.1

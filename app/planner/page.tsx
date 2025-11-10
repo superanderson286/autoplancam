@@ -62,12 +62,19 @@ export default function PlannerPage() {
               </Link>
             )}
           </div>
-          <button
-            onClick={handleSignOut}
-            className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-bold rounded text-sm transition duration-150"
-          >
-            Sign Out
-          </button>
+          <div className="flex items-center gap-4">
+            {session?.user?.name && (
+              <span className="text-gray-700 font-medium hidden sm:block">
+                Bienvenido, {session.user.name}
+              </span>
+            )}
+            <button
+              onClick={handleSignOut}
+              className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-bold rounded text-sm transition duration-150"
+            >
+              Sign Out
+            </button>
+          </div>
       </div>
 
       {/* 2. El corazón de la aplicación: el Planificador de Lógica */}
