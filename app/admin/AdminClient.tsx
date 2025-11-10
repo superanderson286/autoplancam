@@ -325,7 +325,18 @@ export default function AdminClient({ initialData }: { initialData: Awaited<Retu
               {isLoading ? (
                 <TableSkeleton />
               ) : (users.map((user) => (
-                <tr key={user.id} className="border-b hover:bg-gray-50">
+                <tr 
+                  key={user.id} 
+                  className={`
+                    border-b transition-colors duration-150
+                    ${user.banned 
+                      ? 'bg-red-50 hover:bg-red-100' 
+                      : (user.expiresAt && new Date(user.expiresAt) > new Date() && new Date(user.expiresAt) < new Date(new Date().setDate(new Date().getDate() + 7))) 
+                        ? 'bg-yellow-50 hover:bg-yellow-100' 
+                        : 'hover:bg-gray-50'
+                    }
+                  `}
+                >
                   <td className="p-4">{user.name}</td>
                   <td className="p-4">{user.email}</td>
                   <td className="p-4">
@@ -339,7 +350,7 @@ export default function AdminClient({ initialData }: { initialData: Awaited<Retu
                   <td className="p-4"><SafeLocaleDate date={user.expiresAt} /></td>
                   <td className="p-4 text-center">{user.reportsUsed}</td>
                   <td className="p-4">
-                     <span className={`px-2 py-1 text-xs font-semibold rounded-full ${user.banned ? 'bg-red-100 text-red-800' : 'bg-blue-100 text-blue-800'}`}>
+                     <span className={`px-2 py-1 text-xs font-semibold rounded-full ${user.banned ? 'bg-red-200 text-red-800' : 'bg-blue-100 text-blue-800'}`}>
                       {user.banned ? 'Baneado' : 'Activo'}
                     </span>
                   </td>
