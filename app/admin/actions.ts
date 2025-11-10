@@ -53,6 +53,8 @@ export async function createUser(formData: FormData) {
   const name = formData.get("name") as string;
   const role = formData.get("role") as string;
   const password = formData.get("password") as string;
+  const reportsLimitStr = formData.get("reportsLimit") as string;
+  const expiresAtStr = formData.get("expiresAt") as string;
 
   if (!email || !name || !role || !password) {
     return { error: "Todos los campos son requeridos." };
@@ -60,8 +62,8 @@ export async function createUser(formData: FormData) {
 
   try {
     // 'better-auth' se encarga de hashear la contraseña automáticamente.
-    // El método correcto para crear un usuario desde el backend es a través de `auth.api`
-    await auth.api.createUser({ // Los datos deben ir dentro de un objeto 'body'
+    // Paso 1: Crear el usuario con los datos básicos.
+    const newUserResponse = await auth.api.createUser({
       body: {
         email,
         password,
@@ -69,6 +71,21 @@ export async function createUser(formData: FormData) {
         role: role as 'user' | 'admin', // Hacemos una aserción de tipo para satisfacer a TypeScript
       }
     });
+
+    // Obtenemos el ID del usuario recién creado desde la respuesta.
+    const newUserId = newUserResponse.user.id;
+
+    // Paso 2: Actualizar el usuario con los campos de suscripción.
+    const reportsLimit = reportsLimitStr ? parseInt(reportsLimitStr, 10) : 0;
+    const expiresAt = expiresAtStr ? new Date(expiresAtStr) : null;
+
+    if (reportsLimit > 0 || expiresAt) {
+      await db.update(users).set({
+        reportsLimit: isNaN(reportsLimit) ? 0 : reportsLimit,
+        expiresAt,
+      }).where(eq(users.id, newUserId));
+    }
+
     revalidatePath("/admin"); // Actualiza la caché para mostrar el nuevo usuario.
     return { success: "Usuario creado exitosamente." };
   } catch (error: any) {
