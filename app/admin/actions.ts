@@ -3,8 +3,8 @@
 
 import { revalidatePath } from "next/cache";
 import { db } from "@/db";
-import { users, sessions } from "@/db/schema";
-import { eq, desc, gte } from "drizzle-orm";
+import { users, sessions } from "@/db/schema"; // Asegúrate de que 'sessions' esté aquí
+import { eq, desc, gte, ilike, sql } from "drizzle-orm";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 
@@ -18,33 +18,60 @@ async function verifyAdmin() {
   return session;
 }
 
-// --- OBTENER TODOS LOS USUARIOS ---
-export async function getUsers() {
+const USERS_PER_PAGE = 10; // Define el tamaño de la página aquí
+
+// --- OBTENER USUARIOS (CON PAGINACIÓN Y BÚSQUEDA) ---
+export async function getUsers({ page = 1, searchTerm = '' }: { page?: number; searchTerm?: string } = {}) {
   await verifyAdmin();
-  // Seleccionamos todos los campos excepto la contraseña.
-  const userList = await db.select({
-    id: users.id,
-    name: users.name,
-    email: users.email,
-    role: users.role,
-    createdAt: users.createdAt,
-    expiresAt: users.expiresAt,
-    banned: users.banned,
-    reportsLimit: users.reportsLimit,
-    reportsUsed: users.reportsUsed, // <-- Añadimos esta línea
-    loginCount: users.loginCount,
-  }).from(users);
 
-  // Para cada usuario, obtenemos la última vez que fue visto
-  const usersWithLastSeen = await Promise.all(userList.map(async (user) => {
-    const lastSession = await db.query.sessions.findFirst({
-      where: eq(sessions.userId, user.id),
-      orderBy: [desc(sessions.updatedAt)],
-    });
-    return { ...user, lastSeen: lastSession?.updatedAt || null };
-  }));
+  const offset = (page - 1) * USERS_PER_PAGE;
 
-  return usersWithLastSeen;
+  // Construye la condición WHERE para la búsqueda
+  const whereCondition = searchTerm
+    ? ilike(users.name, `%${searchTerm}%`) // ilike es para búsqueda insensible a mayúsculas/minúsculas en PostgreSQL
+    : undefined;
+
+  // 1. Subconsulta: Agrupa las sesiones por usuario y encuentra la más reciente para cada uno.
+  const latestSessionSubquery = db
+    .select({
+      userId: sessions.userId,
+      lastSeen: sql<Date>`max(${sessions.updatedAt})`.as('last_seen'),
+    })
+    .from(sessions)
+    .groupBy(sessions.userId)
+    .as('latest_sessions');
+
+  // 2. Consulta principal: Une los usuarios con la subconsulta de la última sesión.
+  const results = await db
+    .select({
+      user: users,
+      lastSeen: latestSessionSubquery.lastSeen,
+    })
+    .from(users)
+    .leftJoin(latestSessionSubquery, eq(users.id, latestSessionSubquery.userId))
+    .where(whereCondition) // Aplica el filtro de búsqueda
+    .limit(USERS_PER_PAGE)
+    .offset(offset)
+    // Ordena por la última vez visto (desc), poniendo a los que nunca han entrado (null) al final.
+    .orderBy(sql`${latestSessionSubquery.lastSeen} DESC NULLS LAST`);
+
+  // 3. Aplanamos los resultados para que sean más fáciles de usar en el cliente.
+  const usersWithLastSeen = results.map(r => ({ ...r.user, lastSeen: r.lastSeen }));
+
+  // 2. Obtiene el conteo total de usuarios que coinciden con la búsqueda
+  const totalUsersResult = await db
+    .select({ total: sql<number>`count(*)` })
+    .from(users)
+    .where(whereCondition); // Aplica el mismo filtro para el conteo
+
+  const totalUsers = totalUsersResult[0].total;
+
+  // 3. Devuelve ambos: los usuarios y el conteo total
+  return {
+    users: usersWithLastSeen,
+    totalUsers: totalUsers,
+    totalPages: Math.ceil(totalUsers / USERS_PER_PAGE)
+  };
 }
 
 // --- CREAR UN NUEVO USUARIO ---

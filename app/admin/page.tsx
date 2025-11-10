@@ -16,12 +16,12 @@ const AdminDashboard = async () => {
   }
 
   // 2. Obtención de los datos iniciales en el servidor
-  const initialUsers = await getUsers();
+  const initialData = await getUsers({ page: 1, searchTerm: '' });
 
   return (
     // 3. Renderiza el componente de cliente pasándole los datos
     // El componente de cliente se encargará de toda la interactividad.
-    <AdminClient initialUsers={initialUsers} />
+    <AdminClient initialData={initialData} />
   );
 };
 

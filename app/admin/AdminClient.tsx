@@ -28,7 +28,7 @@ import { authClient } from "../../lib/auth-client";
 import { SafeLocaleDate } from "../../components/SafeLocaleDate";
 
 // Define el tipo para los usuarios que recibimos del servidor.
-type User = Awaited<ReturnType<typeof getUsers>>[0];
+type User = Awaited<ReturnType<typeof getUsers>>['users'][number];
 type SessionHistory = Awaited<ReturnType<typeof getSessionHistory>>;
 
 // Componente de Modal (Placeholder)
@@ -58,22 +58,47 @@ const Modal = ({
   );
 };
 
-export default function AdminClient({ initialUsers }: { initialUsers: User[] }) {
-  const [users, setUsers] = useState(initialUsers);
+export default function AdminClient({ initialData }: { initialData: Awaited<ReturnType<typeof getUsers>>}) {
+  const [users, setUsers] = useState(initialData.users);
+  const [totalUsers, setTotalUsers] = useState(initialData.totalUsers);
+  const [totalPages, setTotalPages] = useState(initialData.totalPages);
+  const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState<React.ReactNode | null>(null);
   const [modalTitle, setModalTitle] = useState("");
   const router = useRouter();
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
 
-  // Filtramos la lista de usuarios basándonos en el término de búsqueda.
-  // La lógica es insensible a mayúsculas/minúsculas y busca en nombre y email.
-  const filteredUsers = users.filter(user => {
-    const term = searchTerm.toLowerCase();
-    const nameMatch = user.name?.toLowerCase().includes(term);
-    const emailMatch = user.email?.toLowerCase().includes(term);
-    return nameMatch || emailMatch;
-  });
+  // Efecto para aplicar debounce a la búsqueda
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setDebouncedSearchTerm(searchTerm);
+      setCurrentPage(1); // Resetea a la primera página al buscar
+    }, 500); // 500ms de retraso
+
+    return () => {
+      clearTimeout(timerId);
+    };
+  }, [searchTerm]);
+
+  // Efecto para buscar usuarios cuando cambia la página o el término de búsqueda (debounced)
+  useEffect(() => {
+    const fetchUsers = async () => {
+      setIsLoading(true);
+      const data = await getUsers({ page: currentPage, searchTerm: debouncedSearchTerm });
+      setUsers(data.users);
+      setTotalUsers(data.totalUsers); // Actualiza el conteo total
+      setTotalPages(data.totalPages); // Actualiza el total de páginas
+      setIsLoading(false);
+    };
+
+    // Solo buscar si no es la carga inicial (página 1 sin término de búsqueda)
+    if (currentPage > 1 || (currentPage === 1 && debouncedSearchTerm !== '')) {
+      fetchUsers();
+    }
+  }, [currentPage, debouncedSearchTerm]);
 
   const handleSignOut = async () => {
     await authClient.signOut({
@@ -89,9 +114,14 @@ export default function AdminClient({ initialUsers }: { initialUsers: User[] }) 
   // 1. Función para refrescar la lista de usuarios desde el servidor
   const refreshUsers = async () => {
     try {
-      const updatedUsers = await getUsers();
-      setUsers(updatedUsers);
+      setIsLoading(true);
+      const data = await getUsers({ page: currentPage, searchTerm: debouncedSearchTerm });
+      setUsers(data.users);
+      setTotalUsers(data.totalUsers); // Actualiza el conteo total
+      setTotalPages(data.totalPages); // Actualiza el total de páginas
     } catch (error) {
+      // El toast de error se movió al bloque finally para capturar todos los casos
+    } finally {
       toast.error("Error al refrescar la lista de usuarios.");
     }
   };
@@ -261,7 +291,11 @@ export default function AdminClient({ initialUsers }: { initialUsers: User[] }) 
               </tr>
             </thead>
             <tbody>
-              {filteredUsers.map((user) => (
+              {isLoading ? (
+                <tr>
+                  <td colSpan={10} className="text-center p-8">Cargando...</td>
+                </tr>
+              ) : (users.map((user) => (
                 <tr key={user.id} className="border-b hover:bg-gray-50">
                   <td className="p-4">{user.name}</td>
                   <td className="p-4">{user.email}</td>
@@ -300,14 +334,30 @@ export default function AdminClient({ initialUsers }: { initialUsers: User[] }) 
                     </DropdownMenu>
                   </td>
                 </tr>
-              ))}
+              )))}
             </tbody>
           </table>
-          {filteredUsers.length === 0 && (
+          {!isLoading && users.length === 0 && (
             <div className="text-center p-8 text-gray-500">
               <p>No se encontraron usuarios que coincidan con la búsqueda.</p>
             </div>
           )}
+          </div>
+          {/* Controles de Paginación */}
+          <div className="flex items-center justify-between p-4 border-t">
+            <Button
+              onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+              disabled={currentPage === 1 || isLoading}
+            >
+              Anterior
+            </Button>
+            <span>Página {currentPage} de {totalPages}</span>
+            <Button
+              onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+              disabled={currentPage === totalPages || isLoading}
+            >
+              Siguiente
+            </Button>
           </div>
         </div>
       </div>
