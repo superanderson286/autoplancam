@@ -205,11 +205,11 @@ export default function AdminClient({ initialUsers }: { initialUsers: User[] }) 
   };
 
   return (
-    <div className="p-8 bg-gray-50 min-h-screen">
+    <div className="p-4 md:p-8 bg-gray-50 min-h-screen">
       <div className="max-w-7xl mx-auto">
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-800">Panel de Administración</h1>
-          <div className="flex items-center gap-4">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-800">Panel de Administración</h1>
+          <div className="flex items-center gap-2 md:gap-4 flex-wrap">
             <Link href="/planner" className="bg-gray-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-gray-700">
               Volver a Planner
             </Link>
@@ -222,8 +222,9 @@ export default function AdminClient({ initialUsers }: { initialUsers: User[] }) 
           </div>
         </div>
 
-        <div className="bg-white shadow-lg rounded-lg overflow-x-auto">
-          <table className="w-full text-left">
+        <div className="bg-white shadow-lg rounded-lg">
+          <div className="overflow-x-auto">
+            <table className="w-full text-left min-w-[1024px]">
             <thead className="bg-gray-100">
               <tr>
                 <th className="p-4 font-semibold">Nombre</th>
@@ -281,6 +282,7 @@ export default function AdminClient({ initialUsers }: { initialUsers: User[] }) 
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       </div>
       <Modal isOpen={isModalOpen} onClose={closeModal} title={modalTitle}>

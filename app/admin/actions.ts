@@ -77,8 +77,12 @@ export async function createUser(formData: FormData) {
     const newUserId = newUserResponse.user.id;
 
     // Paso 2: Actualizar el usuario con los campos de suscripción.
-    const reportsLimit = reportsLimitStr ? parseInt(reportsLimitStr, 10) : 0;
-    const expiresAt = expiresAtStr ? new Date(expiresAtStr) : null;
+    const reportsLimit = reportsLimitStr ? parseInt(reportsLimitStr, 10) : 0; // Si no se especifica, 0
+    let expiresAt: Date | null = null;
+    if (expiresAtStr) {
+      expiresAt = new Date(expiresAtStr);
+      expiresAt.setHours(23, 59, 59, 999); // Establecer al final del día seleccionado
+    }
 
     if (reportsLimit > 0 || expiresAt) {
       await db.update(users).set({
@@ -102,7 +106,11 @@ export async function updateUser(formData: FormData) {
   const email = formData.get("email") as string;
   const role = formData.get("role") as string;
   const reportsLimit = parseInt(formData.get("reportsLimit") as string, 10);
-  const expiresAt = formData.get("expiresAt") ? new Date(formData.get("expiresAt") as string) : null;
+  let expiresAt: Date | null = null;
+  if (formData.get("expiresAt")) {
+    expiresAt = new Date(formData.get("expiresAt") as string);
+    expiresAt.setHours(23, 59, 59, 999); // Establecer al final del día seleccionado
+  }
 
   try {
     await db.update(users).set({

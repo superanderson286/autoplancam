@@ -28,5 +28,5 @@ export function SafeLocaleDate({ date, fallback = 'Nunca' }: SafeLocaleDateProps
     return <>{fallback}</>;
   }
 
-  return <>{new Date(date).toLocaleString()}</>;
+  return <>{new Date(date).toLocaleString('en-GB')}</>;
 }
