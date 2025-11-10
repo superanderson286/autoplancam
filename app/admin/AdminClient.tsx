@@ -13,7 +13,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useState, useEffect } from "react";
+import { useFormStatus } from "react-dom";
+import { useState, useEffect, useCallback } from "react";
 import {
   getUsers,
   createUser,
@@ -66,39 +67,46 @@ export default function AdminClient({ initialData }: { initialData: Awaited<Retu
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalContent, setModalContent] = useState<React.ReactNode | null>(null);
+  const [modalContent, setModalContent] = useState<(() => React.ReactNode) | null>(null);
   const [modalTitle, setModalTitle] = useState("");
   const router = useRouter();
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
+
+  // 1. Función para refrescar la lista de usuarios desde el servidor
+  // La इwrapamos en useCallback para estabilizar su referencia y evitar re-renders innecesarios.
+  const refreshUsers = useCallback(async (page: number, term: string) => {
+    setIsLoading(true);
+    try {
+      const data = await getUsers({ page, searchTerm: term });
+      setUsers(data.users);
+      setTotalUsers(data.totalUsers); // Actualiza el conteo total
+      setTotalPages(data.totalPages); // Actualiza el total de páginas
+    } catch (error) {
+      if (error instanceof Error) {
+        toast.error(`Error al refrescar la lista de usuarios: ${error.message}`);
+      }
+    } finally {
+      // Aseguramos que el estado de carga se desactive siempre
+      setIsLoading(false);
+    }
+  }, []); // Las dependencias están vacías porque los setters de estado son estables.
 
   // Efecto para aplicar debounce a la búsqueda
   useEffect(() => {
     const timerId = setTimeout(() => {
       setDebouncedSearchTerm(searchTerm);
-      setCurrentPage(1); // Resetea a la primera página al buscar
+      // Cuando el término de búsqueda cambia, reseteamos a la página 1 y refrescamos.
+      if (searchTerm !== debouncedSearchTerm) {
+        setCurrentPage(1);
+        refreshUsers(1, searchTerm);
+      }
     }, 500); // 500ms de retraso
 
+    // Limpia el temporizador si el componente se desmonta o si searchTerm cambia
     return () => {
       clearTimeout(timerId);
     };
-  }, [searchTerm]);
-
-  // Efecto para buscar usuarios cuando cambia la página o el término de búsqueda (debounced)
-  useEffect(() => {
-    const fetchUsers = async () => {
-      setIsLoading(true);
-      const data = await getUsers({ page: currentPage, searchTerm: debouncedSearchTerm });
-      setUsers(data.users);
-      setTotalUsers(data.totalUsers); // Actualiza el conteo total
-      setTotalPages(data.totalPages); // Actualiza el total de páginas
-      setIsLoading(false);
-    };
-
-    // Solo buscar si no es la carga inicial (página 1 sin término de búsqueda)
-    if (currentPage > 1 || (currentPage === 1 && debouncedSearchTerm !== '')) {
-      fetchUsers();
-    }
-  }, [currentPage, debouncedSearchTerm]);
+  }, [searchTerm, debouncedSearchTerm, refreshUsers]);
 
   const handleSignOut = async () => {
     await authClient.signOut({
@@ -111,35 +119,21 @@ export default function AdminClient({ initialData }: { initialData: Awaited<Retu
     });
   };
 
-  // 1. Función para refrescar la lista de usuarios desde el servidor
-  const refreshUsers = async () => {
-    try {
-      setIsLoading(true);
-      const data = await getUsers({ page: currentPage, searchTerm: debouncedSearchTerm });
-      setUsers(data.users);
-      setTotalUsers(data.totalUsers); // Actualiza el conteo total
-      setTotalPages(data.totalPages); // Actualiza el total de páginas
-    } catch (error) {
-      // El toast de error se movió al bloque finally para capturar todos los casos
-    } finally {
-      toast.error("Error al refrescar la lista de usuarios.");
-    }
-  };
-
   const handleAction = async (action: (formData: FormData) => Promise<any>, formData: FormData, successMessage: string) => {
     const result = await action(formData);
     if (result?.error) {
       toast.error(result.error);
     } else {
-      toast.success(result?.success || successMessage);
-      await refreshUsers(); // 2. Llama a la función de refresco después de una acción exitosa
+      toast.success(result.success || successMessage);
+      await refreshUsers(currentPage, debouncedSearchTerm); // 2. Llama a la función de refresco después de una acción exitosa
       closeModal();
     }
   };
 
-  const openModal = (title: string, content: React.ReactNode) => {
+  const openModal = (title: string, content: () => React.ReactNode) => {
     setModalTitle(title);
-    setModalContent(content);
+    // Almacenamos una función que renderiza el contenido para que se cree fresco cada vez.
+    setModalContent(() => content);
     setIsModalOpen(true);
   };
 
@@ -147,6 +141,18 @@ export default function AdminClient({ initialData }: { initialData: Awaited<Retu
     setIsModalOpen(false);
     setModalContent(null);
   };
+
+  // --- Componente de Botón con Estado de Carga ---
+  // Este componente utiliza useFormStatus para reaccionar al estado de la acción del formulario.
+  const SubmitButton = ({ children, pendingText, className }: { children: React.ReactNode, pendingText: string, className?: string }) => {
+    const { pending } = useFormStatus();
+    return (
+      <button type="submit" disabled={pending} className={className}>
+        {pending ? pendingText : children}
+      </button>
+    );
+  };
+
 
   // --- Formularios para los Modales ---
 
@@ -163,7 +169,7 @@ export default function AdminClient({ initialData }: { initialData: Awaited<Retu
         </select>
         <input name="reportsLimit" type="number" placeholder="Límite de Reportes (ej. 10)" className="w-full p-2 border rounded" />
         <input name="expiresAt" type="date" placeholder="Fecha de Expiración" className="w-full p-2 border rounded" />
-        <button type="submit" className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700">Crear Usuario</button>
+        <SubmitButton pendingText="Creando..." className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 disabled:bg-blue-400">Crear Usuario</SubmitButton>
       </div>
     </form>
   );
@@ -180,7 +186,7 @@ export default function AdminClient({ initialData }: { initialData: Awaited<Retu
         </select>
         <input name="reportsLimit" type="number" defaultValue={user.reportsLimit} placeholder="Límite de Reportes" className="w-full p-2 border rounded" />
         <input name="expiresAt" type="date" defaultValue={user.expiresAt ? new Date(user.expiresAt).toISOString().split('T')[0] : ""} className="w-full p-2 border rounded" />
-        <button type="submit" className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700">Guardar Cambios</button>
+        <SubmitButton pendingText="Guardando..." className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 disabled:bg-blue-400">Guardar Cambios</SubmitButton>
       </div>
     </form>
   );
@@ -190,7 +196,7 @@ export default function AdminClient({ initialData }: { initialData: Awaited<Retu
       <input type="hidden" name="id" value={user.id} />
       <div className="space-y-4">
         <input name="newPassword" type="password" placeholder="Nueva Contraseña" required className="w-full p-2 border rounded" />
-        <button type="submit" className="w-full bg-orange-500 text-white p-2 rounded hover:bg-orange-600">Cambiar Contraseña</button>
+        <SubmitButton pendingText="Cambiando..." className="w-full bg-orange-500 text-white p-2 rounded hover:bg-orange-600 disabled:bg-orange-300">Cambiar Contraseña</SubmitButton>
       </div>
     </form>
   );
@@ -201,9 +207,9 @@ export default function AdminClient({ initialData }: { initialData: Awaited<Retu
         <input type="hidden" name="isBanned" value={String(user.banned)} />
         {!user.banned && <textarea name="banReason" placeholder="Razón del baneo (opcional)" className="w-full p-2 border rounded mb-4"></textarea>}
         <p>¿Estás seguro de que quieres {user.banned ? 'desbanear' : 'banear'} a <strong>{user.name}</strong>?</p>
-        <button type="submit" className={`w-full p-2 rounded mt-4 text-white ${user.banned ? 'bg-green-600 hover:bg-green-700' : 'bg-yellow-500 hover:bg-yellow-600'}`}>
+        <SubmitButton pendingText={user.banned ? 'Desbaneando...' : 'Baneando...'} className={`w-full p-2 rounded mt-4 text-white ${user.banned ? 'bg-green-600 hover:bg-green-700 disabled:bg-green-400' : 'bg-yellow-500 hover:bg-yellow-600 disabled:bg-yellow-300'}`}>
           {user.banned ? 'Sí, desbanear' : 'Sí, banear'}
-        </button>
+        </SubmitButton>
     </form>
   );
 
@@ -211,7 +217,7 @@ export default function AdminClient({ initialData }: { initialData: Awaited<Retu
     <form action={(formData) => handleAction(deleteUser, formData, "Usuario eliminado")}>
       <input type="hidden" name="id" value={user.id} />
       <p>Esta acción es irreversible. ¿Estás seguro de que quieres eliminar a <strong>{user.name}</strong>?</p>
-      <button type="submit" className="w-full bg-red-600 text-white p-2 rounded mt-4 hover:bg-red-700">Sí, eliminar permanentemente</button>
+      <SubmitButton pendingText="Eliminando..." className="w-full bg-red-600 text-white p-2 rounded mt-4 hover:bg-red-700 disabled:bg-red-400">Sí, eliminar permanentemente</SubmitButton>
     </form>
   );
 
@@ -244,6 +250,31 @@ export default function AdminClient({ initialData }: { initialData: Awaited<Retu
     );
   };
 
+  // Componente para el esqueleto de la tabla
+  const TableSkeleton = ({ rows = 5 }: { rows?: number }) => (
+    <>
+      {Array.from({ length: rows }).map((_, index) => (
+        <tr key={index} className="border-b animate-pulse">
+          <td className="p-4"><div className="h-4 bg-gray-200 rounded"></div></td>
+          <td className="p-4"><div className="h-4 bg-gray-200 rounded"></div></td>
+          <td className="p-4"><div className="h-4 w-16 bg-gray-200 rounded"></div></td>
+          <td className="p-4"><div className="h-4 w-8 mx-auto bg-gray-200 rounded"></div></td>
+          <td className="p-4"><div className="h-4 bg-gray-200 rounded"></div></td>
+          <td className="p-4"><div className="h-4 w-8 mx-auto bg-gray-200 rounded"></div></td>
+          <td className="p-4"><div className="h-4 bg-gray-200 rounded"></div></td>
+          <td className="p-4"><div className="h-4 w-8 mx-auto bg-gray-200 rounded"></div></td>
+          <td className="p-4"><div className="h-4 w-16 bg-gray-200 rounded"></div></td>
+          <td className="p-4">
+            <div className="flex justify-end">
+              <div className="h-8 w-8 bg-gray-200 rounded"></div>
+            </div>
+          </td>
+        </tr>
+      ))}
+    </>
+  );
+
+
   return (
     <div className="p-4 md:p-8 bg-gray-50 min-h-screen">
       <div className="max-w-7xl mx-auto">
@@ -256,7 +287,7 @@ export default function AdminClient({ initialData }: { initialData: Awaited<Retu
             <button onClick={handleSignOut} className="bg-red-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-700">
               Cerrar Sesión
             </button>
-            <button onClick={() => openModal("Crear Nuevo Usuario", <CreateUserForm />)} className="bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700">
+            <button onClick={() => openModal("Crear Nuevo Usuario", () => <CreateUserForm />)} className="bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700">
               + Crear Usuario
             </button>
           </div>
@@ -292,9 +323,7 @@ export default function AdminClient({ initialData }: { initialData: Awaited<Retu
             </thead>
             <tbody>
               {isLoading ? (
-                <tr>
-                  <td colSpan={10} className="text-center p-8">Cargando...</td>
-                </tr>
+                <TableSkeleton />
               ) : (users.map((user) => (
                 <tr key={user.id} className="border-b hover:bg-gray-50">
                   <td className="p-4">{user.name}</td>
@@ -324,12 +353,12 @@ export default function AdminClient({ initialData }: { initialData: Awaited<Retu
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
                         <DropdownMenuLabel>Acciones</DropdownMenuLabel>
-                        <DropdownMenuItem onClick={() => openModal(`Editar ${user.name}`, <EditUserForm user={user} />)}>Editar</DropdownMenuItem>
-                        <DropdownMenuItem onClick={() => openModal(`Cambiar Contraseña de ${user.name}`, <ChangePasswordForm user={user} />)}>Contraseña</DropdownMenuItem>
-                        <DropdownMenuItem onClick={() => openModal(`Historial de Sesiones de ${user.name}`, <SessionHistoryView userId={user.id} />)}>Ver Sesiones</DropdownMenuItem>
-                        <DropdownMenuItem onClick={() => openModal(user.banned ? `Desbanear a ${user.name}` : `Banear a ${user.name}`, <BanUserForm user={user} />)}>{user.banned ? 'Desbanear' : 'Banear'}</DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => openModal(`Editar ${user.name}`, () => <EditUserForm user={user} />)}>Editar</DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => openModal(`Cambiar Contraseña de ${user.name}`, () => <ChangePasswordForm user={user} />)}>Contraseña</DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => openModal(`Historial de Sesiones de ${user.name}`, () => <SessionHistoryView userId={user.id} />)}>Ver Sesiones</DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => openModal(user.banned ? `Desbanear a ${user.name}` : `Banear a ${user.name}`, () => <BanUserForm user={user} />)}>{user.banned ? 'Desbanear' : 'Banear'}</DropdownMenuItem>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem className="text-red-600" onClick={() => openModal(`Eliminar ${user.name}`, <DeleteUserConfirm user={user} />)}>Eliminar</DropdownMenuItem>
+                        <DropdownMenuItem className="text-red-600" onClick={() => openModal(`Eliminar ${user.name}`, () => <DeleteUserConfirm user={user} />)}>Eliminar</DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
                   </td>
@@ -346,14 +375,22 @@ export default function AdminClient({ initialData }: { initialData: Awaited<Retu
           {/* Controles de Paginación */}
           <div className="flex items-center justify-between p-4 border-t">
             <Button
-              onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+              onClick={() => {
+                const newPage = Math.max(1, currentPage - 1);
+                setCurrentPage(newPage);
+                refreshUsers(newPage, debouncedSearchTerm);
+              }}
               disabled={currentPage === 1 || isLoading}
             >
               Anterior
             </Button>
             <span>Página {currentPage} de {totalPages}</span>
             <Button
-              onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+              onClick={() => {
+                const newPage = Math.min(totalPages, currentPage + 1);
+                setCurrentPage(newPage);
+                refreshUsers(newPage, debouncedSearchTerm);
+              }}
               disabled={currentPage === totalPages || isLoading}
             >
               Siguiente
@@ -362,7 +399,7 @@ export default function AdminClient({ initialData }: { initialData: Awaited<Retu
         </div>
       </div>
       <Modal isOpen={isModalOpen} onClose={closeModal} title={modalTitle}>
-        {modalContent}
+        {modalContent && modalContent()}
       </Modal>
     </div>
   );
