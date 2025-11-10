@@ -1,4 +1,4 @@
-import { pgTable, text, timestamp, boolean, uniqueIndex, serial, integer } from 'drizzle-orm/pg-core';
+import { pgTable, text, timestamp, boolean, uniqueIndex, serial, integer, jsonb, real } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
 import { sql } from 'drizzle-orm';
 
@@ -107,7 +107,9 @@ export const products = pgTable('products', {
     id: serial('id').primaryKey(),
     name: text('name'),
     category: text('category'),
-    spec_value: text('spec_value'),
-    spec_unit: text('spec_unit'),
+    // Almacenará el precio sugerido del producto
+    price: real('price'),
+    // Almacenará todas las especificaciones como un objeto JSON
+    specs: jsonb('specs'),
     description: text('description'),
 });

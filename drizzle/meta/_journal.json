@@ -29,6 +29,20 @@
       "when": 1762715835332,
       "tag": "0003_nice_paibok",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1762778713294,
+      "tag": "0004_dapper_punisher",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1762784843040,
+      "tag": "0005_motionless_karnak",
+      "breakpoints": true
     }
   ]
 }
