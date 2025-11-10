@@ -195,7 +195,7 @@ export async function getSessionHistory(userId: string) {
   const sessionHistory = await db.select().from(sessions).where(eq(sessions.userId, userId)).orderBy(desc(sessions.createdAt));
   return sessionHistory.map(s => ({
     ...s,
-    duration: s.expiresAt.getTime() - s.createdAt.getTime(), // Duración en milisegundos
+    duration: s.updatedAt.getTime() - s.createdAt.getTime(), // Duración en milisegundos
   }));
 }
 

@@ -13,7 +13,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   getUsers,
   createUser,
@@ -179,12 +179,12 @@ export default function AdminClient({ initialUsers }: { initialUsers: User[] }) 
     const [history, setHistory] = useState<SessionHistory>([]);
     const [loading, setLoading] = useState(true);
 
-    useState(() => {
+    useEffect(() => {
       getSessionHistory(userId).then(data => {
         setHistory(data);
         setLoading(false);
       });
-    });
+    }, [userId]); // Se ejecuta cuando el componente se monta o el userId cambia
 
     if (loading) return <p>Cargando historial...</p>;
 
