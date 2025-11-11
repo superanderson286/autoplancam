@@ -40,6 +40,7 @@ export default function Navbar() {
           <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("tech")}>{t("Technology")}</div>
           <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("benefits")}>{t("Benefits")}</div>
           <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("roadmap")}>{t("Roadmap")}</div>
+          <Link href="/trial" className="cursor-pointer hover:text-blue-400">{t("Request Trial")}</Link>
           {/* Renderizado condicional para el enlace de Admin */}
           {(session?.user as UserWithRole)?.role === 'admin' && (
             <Link href="/admin" className="cursor-pointer hover:text-blue-400">{t("Admin")}</Link>
@@ -70,6 +71,7 @@ export default function Navbar() {
             <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("tech")}>{t("Technology")}</div>
             <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("benefits")}>{t("Benefits")}</div>
             <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("roadmap")}>{t("Roadmap")}</div>
+            <Link href="/trial" className="cursor-pointer hover:text-blue-400">{t("Request Trial")}</Link>
             {/* Renderizado condicional para el enlace de Admin en menú móvil */}
             {(session?.user as UserWithRole)?.role === 'admin' && (
               <Link href="/admin" className="cursor-pointer hover:text-blue-400">{t("Admin")}</Link>

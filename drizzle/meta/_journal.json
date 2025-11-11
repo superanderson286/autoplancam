@@ -43,6 +43,13 @@
       "when": 1762784843040,
       "tag": "0005_motionless_karnak",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1762822090924,
+      "tag": "0006_tan_tinkerer",
+      "breakpoints": true
     }
   ]
 }

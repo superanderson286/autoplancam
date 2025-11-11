@@ -113,3 +113,15 @@ export const products = pgTable('products', {
     specs: jsonb('specs'),
     description: text('description'),
 });
+
+// --- TABLA TRIAL REQUESTS ---
+export const trialRequests = pgTable('trial_requests', {
+  id: serial('id').primaryKey(),
+  firstName: text('first_name').notNull(),
+  lastName: text('last_name').notNull(),
+  country: text('country').notNull(),
+  email: text('email').notNull(),
+  useCase: text('use_case').notNull(),
+  status: text('status').notNull().default('pending'), // 'pending', 'processed'
+  createdAt: timestamp('created_at').notNull().default(sql`now()`),
+});
