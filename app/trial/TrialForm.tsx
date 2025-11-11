@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { requestTrial } from "./actions";
 import { useTranslation } from "react-i18next";
+import { useRouter } from "next/navigation";
 
 const initialState = {
   message: "",
@@ -32,6 +33,7 @@ function SubmitButton() {
 export function TrialForm() {
   const [state, formAction] = useActionState(requestTrial, initialState);
   const { t } = useTranslation();
+  const router = useRouter();
 
   if (state.success) {
     return (
@@ -40,10 +42,17 @@ export function TrialForm() {
           {t("Request Received!")}
         </h2>
         <p className="mt-2 max-w-sm text-sm text-neutral-600 dark:text-neutral-300">
-          {t(
-            "Thank you for your interest. You will receive an email with your trial credentials shortly."
-          )}
+          {state.message || t("Thank you for your interest. You will receive an email with your trial credentials shortly.")}
         </p>
+
+        <div className="mt-6 flex justify-center">
+          <button
+            onClick={() => router.push('/')}
+            className="rounded-md bg-sky-600 px-4 py-2 text-white hover:bg-sky-700"
+          >
+            OK
+          </button>
+        </div>
       </div>
     );
   }
