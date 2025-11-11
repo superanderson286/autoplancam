@@ -16,7 +16,7 @@ const initialState = {
 
 function SubmitButton() {
   const { pending } = useFormStatus();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <button
@@ -32,7 +32,7 @@ function SubmitButton() {
 
 export function TrialForm() {
   const [state, formAction] = useActionState(requestTrial, initialState);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const router = useRouter();
 
   if (state.success) {
@@ -76,20 +76,20 @@ export function TrialForm() {
         <div className="flex flex-col gap-4 md:flex-row">
           <InputGroup>
             <Label htmlFor="firstName">{t("First Name")}</Label>
-            <Input
-              id="firstName"
-              name="firstname"
-              placeholder="Tyler"
-              type="text"
-              required
-            />
+                <Input
+                  id="firstName"
+                  name="firstname"
+                  placeholder={t("placeholder.firstName")}
+                  type="text"
+                  required
+                />
           </InputGroup>
           <InputGroup>
             <Label htmlFor="lastName">{t("Last Name")}</Label>
             <Input
               id="lastName"
               name="lastname"
-              placeholder="Durden"
+              placeholder={t("placeholder.lastName")}
               type="text"
               required
             />
@@ -100,7 +100,7 @@ export function TrialForm() {
           <Input
             id="email"
             name="email"
-            placeholder="projectmayhem@fc.com"
+            placeholder={t("placeholder.email")}
             type="email"
             required
           />
@@ -110,10 +110,13 @@ export function TrialForm() {
           <Input
             id="country"
             name="country"
-            placeholder="Your Country"
+            placeholder={t("placeholder.country")}
             type="text"
             required
           />
+
+        {/* Hidden field to send language preference to server */}
+        <input type="hidden" name="lang" value={i18n?.language || 'en'} />
         </InputGroup>
 
         <SubmitButton />

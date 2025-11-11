@@ -50,8 +50,20 @@
   "This is a simple planner page. More features will be added soon!": "Esta es una página de planificador simple. ¡Se agregarán más funciones pronto!",
   "Request Trial": "Solicitar prueba"
   ,
+  "placeholder.firstName": "Tyler",
+  "placeholder.lastName": "Durden",
+  "placeholder.email": "projectmayhem@fc.com",
+  "placeholder.country": "Tu país",
+
   "Request Received!": "¡Solicitud recibida!",
   "Thank you for your interest. You will receive an email with your trial credentials shortly.": "Gracias por tu interés. Recibirás un correo con tus credenciales de prueba en breve.",
   "trial_success_check_spam": "Tu cuenta de prueba ha sido creada con éxito. Recibirás tus credenciales por correo. Si no lo ves en la bandeja de entrada, revisa la carpeta Spam o No Deseados.",
   "OK": "OK"
+
+  ,
+  "email.trial.subject_user": "Tus credenciales de prueba de AutoPlanCam",
+  "email.trial.body_user": "Hola {{name}}\n\n¡Bienvenido a AutoPlanCam! Tu cuenta de prueba ha sido activada.\n\nAquí están tus credenciales para acceder a la prueba de AutoPlanCam:\n\nEmail/Usuario: {{username}}\nContraseña: {{password}}\n\nDetalles de la prueba:\n- Duración: 3 días\n- Límite de reportes: 5\n- URL de acceso: {{access_url}}\n\nSi tienes alguna pregunta, no dudes en contactar a nuestro equipo de soporte.\n\nGracias,\nEl equipo de AutoPlanCam",
+
+  "email.trial.subject_admin": "Nueva solicitud de prueba",
+  "email.trial.body_admin": "Nueva solicitud de prueba:\n\nNombre: {{name}}\nEmail: {{email}}\nPaís: {{country}}"
 }

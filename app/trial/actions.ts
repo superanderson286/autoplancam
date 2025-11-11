@@ -40,6 +40,8 @@ export async function requestTrial(prevState: any, formData: FormData) {
   }
 
   const { firstname, lastname, country, email } = validatedFields.data;
+  // idioma enviado desde el cliente (hidden input)
+  const lang = (formData.get("lang") as string) || 'en';
   const fullName = `${firstname} ${lastname}`;
   const generatedPassword = generateSimplePassword();
 
@@ -99,12 +101,12 @@ export async function requestTrial(prevState: any, formData: FormData) {
     }).where(eq(trialRequests.email, email));
 
     try {
-      // 5. Enviar correos
-      // Enviar correo de credenciales AL USUARIO con las credenciales incluidas
-      await sendTrialCredentialsEmail(email, fullName, email, generatedPassword);
+    // 5. Enviar correos (localizados según lang)
+    // Enviar correo de credenciales AL USUARIO con las credenciales incluidas
+    await sendTrialCredentialsEmail(email, fullName, email, generatedPassword, lang);
 
-  // Opcional: Enviar correo de notificación AL ADMIN (incluye país)
-  await sendTrialRequestEmail(email, fullName, country);
+    // Opcional: Enviar correo de notificación AL ADMIN (incluye país)
+    await sendTrialRequestEmail(email, fullName, country, lang);
     } catch (emailError) {
       console.error("An email failed to send:", emailError);
       // El usuario ya fue creado, pero notificamos del error en el correo

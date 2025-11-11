@@ -48,10 +48,21 @@
   "Spanish": "Spanish",
   "English": "English",
   "This is a simple planner page. More features will be added soon!": "This is a simple planner page. More features will be added soon",
-  "Request Trial": "Request Trial"
-  ,
+  "Request Trial": "Request Trial",
+
+  "placeholder.firstName": "Tyler",
+  "placeholder.lastName": "Durden",
+  "placeholder.email": "projectmayhem@fc.com",
+  "placeholder.country": "Your Country",
+
   "Request Received!": "Request Received!",
   "Thank you for your interest. You will receive an email with your trial credentials shortly.": "Thank you for your interest. You will receive an email with your trial credentials shortly.",
   "trial_success_check_spam": "Your trial account has been created successfully. You will receive your credentials by email. If you don't see it in your inbox, please check your Spam or Junk folder.",
-  "OK": "OK"
+  "OK": "OK",
+
+  "email.trial.subject_user": "Your AutoPlanCam Trial Credentials",
+  "email.trial.body_user": "Hi {{name}}\n\nWelcome to AutoPlanCam! Your trial account has been activated.\n\nHere are your credentials to access the AutoPlanCam trial:\n\nEmail/Username: {{username}}\nPassword: {{password}}\n\nTrial Details:\n- Duration: 3 days\n- Report Limit: 5 reports\n- Access URL: {{access_url}}\n\nIf you have any questions, feel free to reach out to our support team.\n\nThanks,\nThe AutoPlanCam Team",
+
+  "email.trial.subject_admin": "New Trial Request",
+  "email.trial.body_admin": "New trial request:\n\nName: {{name}}\nEmail: {{email}}\nCountry: {{country}}"
 }
