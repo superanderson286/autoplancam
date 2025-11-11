@@ -49,4 +49,9 @@
   "English": "English",
   "This is a simple planner page. More features will be added soon!": "This is a simple planner page. More features will be added soon",
   "Request Trial": "Request Trial"
+  ,
+  "Request Received!": "Request Received!",
+  "Thank you for your interest. You will receive an email with your trial credentials shortly.": "Thank you for your interest. You will receive an email with your trial credentials shortly.",
+  "trial_success_check_spam": "Your trial account has been created successfully. You will receive your credentials by email. If you don't see it in your inbox, please check your Spam or Junk folder.",
+  "OK": "OK"
 }

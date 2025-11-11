@@ -42,7 +42,7 @@ export function TrialForm() {
           {t("Request Received!")}
         </h2>
         <p className="mt-2 max-w-sm text-sm text-neutral-600 dark:text-neutral-300">
-          {state.message || t("Thank you for your interest. You will receive an email with your trial credentials shortly.")}
+          {state.message ? t(state.message) : t("Thank you for your interest. You will receive an email with your trial credentials shortly.")}
         </p>
 
         <div className="mt-6 flex justify-center">
@@ -50,7 +50,7 @@ export function TrialForm() {
             onClick={() => router.push('/')}
             className="rounded-md bg-sky-600 px-4 py-2 text-white hover:bg-sky-700"
           >
-            OK
+            {t("OK")}
           </button>
         </div>
       </div>

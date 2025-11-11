@@ -49,4 +49,9 @@
   "English": "Inglés",
   "This is a simple planner page. More features will be added soon!": "Esta es una página de planificador simple. ¡Se agregarán más funciones pronto!",
   "Request Trial": "Solicitar prueba"
+  ,
+  "Request Received!": "¡Solicitud recibida!",
+  "Thank you for your interest. You will receive an email with your trial credentials shortly.": "Gracias por tu interés. Recibirás un correo con tus credenciales de prueba en breve.",
+  "trial_success_check_spam": "Tu cuenta de prueba ha sido creada con éxito. Recibirás tus credenciales por correo. Si no lo ves en la bandeja de entrada, revisa la carpeta Spam o No Deseados.",
+  "OK": "OK"
 }

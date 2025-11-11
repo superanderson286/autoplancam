@@ -116,7 +116,8 @@ export async function requestTrial(prevState: any, formData: FormData) {
 
     return {
       success: true,
-      message: "Tu cuenta de prueba ha sido creada con éxito. Recibirás tus credenciales por correo. Si no lo ves en la bandeja de entrada, revisa la carpeta Spam o No Deseados.",
+      // devolvemos la clave de traducción; el cliente la mostrará usando i18n
+      message: "trial_success_check_spam",
     };
   } catch (error) {
     console.error("Error processing trial request:", error);
