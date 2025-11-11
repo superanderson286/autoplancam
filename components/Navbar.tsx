@@ -2,6 +2,7 @@
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import Link from "next/link";
+import { Button as MovingBorderButton } from "./ui/moving-border";
 import { authClient } from "../lib/auth-client";
 
 // Definimos una interfaz para el usuario que incluye el rol.
@@ -40,7 +41,16 @@ export default function Navbar() {
           <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("tech")}>{t("Technology")}</div>
           <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("benefits")}>{t("Benefits")}</div>
           <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("roadmap")}>{t("Roadmap")}</div>
-          <Link href="/trial" className="cursor-pointer hover:text-blue-400">{t("Request Trial")}</Link>
+          <MovingBorderButton
+            as="a"
+            href="/trial"
+            borderRadius="1rem"
+            containerClassName="h-8 w-24 md:h-10 md:w-28"
+            className="text-xs md:text-sm flex items-center justify-center"
+            borderClassName="bg-[linear-gradient(to_right,#0ea5e9,#06b6d4)]"
+          >
+            {t("Request Trial")}
+          </MovingBorderButton>
           {/* Renderizado condicional para el enlace de Admin */}
           {(session?.user as UserWithRole)?.role === 'admin' && (
             <Link href="/admin" className="cursor-pointer hover:text-blue-400">{t("Admin")}</Link>
@@ -71,7 +81,16 @@ export default function Navbar() {
             <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("tech")}>{t("Technology")}</div>
             <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("benefits")}>{t("Benefits")}</div>
             <div className="cursor-pointer hover:text-blue-400" onClick={() => scrollTo("roadmap")}>{t("Roadmap")}</div>
-            <Link href="/trial" className="cursor-pointer hover:text-blue-400">{t("Request Trial")}</Link>
+            <MovingBorderButton
+              as="a"
+              href="/trial"
+              borderRadius="1rem"
+              containerClassName="h-8 w-24 md:h-10 md:w-28"
+              className="text-xs md:text-base flex items-center justify-center"
+              borderClassName="bg-[linear-gradient(to_right,#0ea5e9,#06b6d4)]"
+            >
+              {t("Request Trial")}
+            </MovingBorderButton>
             {/* Renderizado condicional para el enlace de Admin en menú móvil */}
             {(session?.user as UserWithRole)?.role === 'admin' && (
               <Link href="/admin" className="cursor-pointer hover:text-blue-400">{t("Admin")}</Link>
