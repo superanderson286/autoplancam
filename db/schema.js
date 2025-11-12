@@ -130,3 +130,20 @@ export const trialRequests = pgTable('trial_requests', {
   note: text('note'),
   createdAt: timestamp('created_at').notNull().default(sql`now()`),
 });
+
+// --- TABLE: TRIAL RESERVATIONS ---
+export const trialReservations = pgTable('trial_reservations', {
+  id: serial('id').primaryKey(),
+  email: text('email').notNull().unique(),
+  createdAt: timestamp('created_at').notNull().default(sql`now()`),
+});
+
+// --- TABLE: CLIENT ERRORS ---
+export const clientErrors = pgTable('client_errors', {
+  id: serial('id').primaryKey(),
+  message: text('message'),
+  info: jsonb('info'),
+  url: text('url'),
+  userAgent: text('user_agent'),
+  createdAt: timestamp('created_at').notNull().default(sql`now()`),
+});

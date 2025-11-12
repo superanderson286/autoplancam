@@ -2,7 +2,7 @@
 
 import { z } from "zod";
 import { db } from "@/db";
-import { trialRequests, users } from "@/db/schema";
+import { trialRequests, users, trialReservations } from "@/db/schema";
 import { sendTrialCredentialsEmail, sendTrialRequestEmail } from "@/lib/email";
 import { auth } from "@/lib/auth";
 import { eq, and, gt } from "drizzle-orm";
@@ -160,11 +160,23 @@ export async function requestTrial(prevState: any, formData: FormData) {
 
     // 2. Segundo: Crear el usuario usando auth.api.createUser (compatible con better-auth)
     // Esto también valida que el email no exista
+    // Reserve the email to prevent race conditions creating duplicate auth users
+    try {
+      await db.insert(trialReservations).values({ email });
+    } catch (reserveErr: any) {
+      // likely unique constraint violation -> another request is processing this email
+      console.error('Email reservation failed (likely duplicate):', reserveErr?.message || reserveErr);
+      await db.insert(trialRequests).values({ firstName: firstname, lastName: lastname, country, email, useCase: 'Not provided', status: 'blocked', ip, userAgent, fingerprint, note: 'reservation_failed' });
+      return { message: 'A trial for this email is already being processed. If this is an error, please try again later.' };
+    }
+
     // Check local DB first to avoid attempting to create duplicate users
     const existingUser = await db.query.users.findFirst({ where: eq(users.email, email) });
     if (existingUser) {
       // log blocked attempt
       await db.insert(trialRequests).values({ firstName: firstname, lastName: lastname, country, email, useCase: 'Not provided', status: 'blocked', ip, userAgent, fingerprint, note: 'email_already_exists' });
+      // cleanup reservation
+      await db.delete(trialReservations).where(eq(trialReservations.email, email));
       return { message: 'An account with this email already exists.' };
     }
 
@@ -208,20 +220,23 @@ export async function requestTrial(prevState: any, formData: FormData) {
     }).where(eq(trialRequests.email, email));
 
     try {
-    // 5. Enviar correos (localizados según lang)
-    // Enviar correo de credenciales AL USUARIO con las credenciales incluidas
-    await sendTrialCredentialsEmail(email, fullName, email, generatedPassword, lang);
-
-    // Opcional: Enviar correo de notificación AL ADMIN (incluye país)
-    await sendTrialRequestEmail(email, fullName, country, lang);
-    } catch (emailError) {
+      // 5. Enviar correos (localizados según lang)
+      await sendTrialCredentialsEmail(email, fullName, email, generatedPassword, lang);
+      await sendTrialRequestEmail(email, fullName, country, lang);
+    } catch (emailError: any) {
       console.error("An email failed to send:", emailError);
-      // El usuario ya fue creado, pero notificamos del error en el correo
+      // record the error in trial_requests for admins
+      await db.update(trialRequests).set({ note: String(emailError.message || emailError) }).where(eq(trialRequests.email, email));
+      // cleanup reservation
+      await db.delete(trialReservations).where(eq(trialReservations.email, email));
       return {
         success: true,
         message: "Your trial account has been created, but there was an issue sending your credentials email. Please contact support.",
       };
     }
+
+    // cleanup reservation
+    await db.delete(trialReservations).where(eq(trialReservations.email, email));
 
     return {
       success: true,
