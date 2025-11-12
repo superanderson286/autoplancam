@@ -160,6 +160,14 @@ export async function requestTrial(prevState: any, formData: FormData) {
 
     // 2. Segundo: Crear el usuario usando auth.api.createUser (compatible con better-auth)
     // Esto también valida que el email no exista
+    // Check local DB first to avoid attempting to create duplicate users
+    const existingUser = await db.query.users.findFirst({ where: eq(users.email, email) });
+    if (existingUser) {
+      // log blocked attempt
+      await db.insert(trialRequests).values({ firstName: firstname, lastName: lastname, country, email, useCase: 'Not provided', status: 'blocked', ip, userAgent, fingerprint, note: 'email_already_exists' });
+      return { message: 'An account with this email already exists.' };
+    }
+
     let newUserResponse;
     try {
       newUserResponse = await auth.api.createUser({
@@ -172,14 +180,11 @@ export async function requestTrial(prevState: any, formData: FormData) {
       });
     } catch (createUserError: any) {
       console.error("Error creating user with auth:", createUserError);
-      
-      // Verificar si es un error de usuario duplicado
+      // If createUser fails due to duplicate at provider level, record and return
       if (createUserError.message?.includes("email") || createUserError.message?.includes("already")) {
-        return {
-          message: "An account with this email already exists.",
-        };
+        await db.insert(trialRequests).values({ firstName: firstname, lastName: lastname, country, email, useCase: 'Not provided', status: 'blocked', ip, userAgent, fingerprint, note: 'auth_create_duplicate' });
+        return { message: 'An account with this email already exists.' };
       }
-      
       throw createUserError;
     }
 

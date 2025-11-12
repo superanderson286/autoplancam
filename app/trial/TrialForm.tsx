@@ -14,14 +14,15 @@ const initialState = {
   success: false,
 };
 
-function SubmitButton() {
+function SubmitButton({ onClick, type = 'submit' }: { onClick?: React.MouseEventHandler<HTMLButtonElement>, type?: 'button' | 'submit' }) {
   const { pending } = useFormStatus();
   const { t, i18n } = useTranslation();
 
   return (
     <button
+      onClick={onClick}
       className="submit-button group/btn relative block h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset] disabled:opacity-50"
-      type="submit"
+      type={type}
       disabled={pending}
     >
       {pending ? t("Submitting...") : `${t("Request Trial")} →`}
@@ -82,34 +83,40 @@ export function TrialForm() {
     document.head.appendChild(s);
   }, [siteKey]);
 
-  // onSubmit handler to get token from reCAPTCHA v3 before submitting
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
-    if (!siteKey) return; // no captcha configured
-    if (submittingWithCaptcha) return; // already in progress
-    e.preventDefault();
+  // Click handler to get token from reCAPTCHA v3 before submitting (avoids double onSubmit recursion)
+  const handleClick = async (e?: React.MouseEvent) => {
+    if (!siteKey) {
+      // no captcha configured, just submit
+      formRef.current?.submit();
+      return;
+    }
+    if (submittingWithCaptcha) return;
     setSubmittingWithCaptcha(true);
     try {
-      // Wait until grecaptcha is available
-      const waitForGrecaptcha = () => new Promise<void>((res, rej) => {
-        const max = 10000; let waited = 0;
-        const iv = setInterval(() => {
-          if ((window as any).grecaptcha && (window as any).grecaptcha.execute) {
-            clearInterval(iv); res();
-          }
-          waited += 100;
-          if (waited > max) { clearInterval(iv); rej(new Error('grecaptcha not available')); }
-        }, 100);
+      // prefer grecaptcha.ready when available
+      const grecaptcha = (window as any).grecaptcha;
+      if (!grecaptcha) throw new Error('grecaptcha not available');
+
+      // wait for ready
+      await new Promise<void>((res, rej) => {
+        try {
+          grecaptcha.ready(() => res());
+          // timeout
+          setTimeout(() => rej(new Error('grecaptcha.ready timeout')), 10000);
+        } catch (err) {
+          rej(err);
+        }
       });
-      await waitForGrecaptcha();
-      const token = await (window as any).grecaptcha.execute(siteKey, { action: 'trial_request' });
+
+      const token = await grecaptcha.execute(siteKey, { action: 'trial_request' });
       setRecaptchaToken(token);
       if (recaptchaInputRef.current) recaptchaInputRef.current.value = token;
       // submit the form programmatically
-      formRef.current?.requestSubmit();
+      formRef.current?.submit();
     } catch (err) {
       console.error('reCAPTCHA failed', err);
       // fallback: submit without token
-      formRef.current?.requestSubmit();
+      formRef.current?.submit();
     } finally {
       setSubmittingWithCaptcha(false);
     }
@@ -172,7 +179,7 @@ export function TrialForm() {
           {t("It seems this browser already requested a trial. If this is an error, clear your site data or contact support.")}
         </div>
       ) : (
-        <form ref={formRef} onSubmit={handleSubmit} className="my-8 flex flex-col gap-6" action={formAction}>
+        <form ref={formRef} className="my-8 flex flex-col gap-6" action={formAction}>
         <div className="flex flex-col gap-4 md:flex-row">
           <InputGroup>
             <Label htmlFor="firstName">{t("First Name")}</Label>
@@ -220,7 +227,7 @@ export function TrialForm() {
           <input type="hidden" name="fingerprint" value={fingerprint} />
           <input ref={recaptchaInputRef} type="hidden" name="recaptchaToken" value={recaptchaToken} />
         </InputGroup>
-          <SubmitButton />
+          <SubmitButton type="button" onClick={handleClick} />
         </form>
       )}
     </div>
