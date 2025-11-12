@@ -23,7 +23,11 @@ if (typeof window !== 'undefined' && firebaseConfig.projectId) {
   }
   // Una vez que estamos seguros de que la app está inicializada, intentamos obtener analytics si tenemos un measurementId.
   if (firebaseConfig.measurementId) {
-    analytics = firebase.app().analytics();
+    try {
+      analytics = firebase.app().analytics();
+    } catch (e) {
+      console.error('Failed to initialize Analytics', e);
+    }
   }
 }
 

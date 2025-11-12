@@ -61,50 +61,75 @@ export async function requestTrial(prevState: any, formData: FormData) {
   }
 
   const { firstname, lastname, country, email } = validatedFields.data;
-  // idioma enviado desde el cliente (hidden input)
   const lang = (formData.get("lang") as string) || 'en';
   const fingerprint = (formData.get("fingerprint") as string) || null;
   const recaptchaToken = (formData.get('recaptchaToken') as string) || null;
   const fullName = `${firstname} ${lastname}`;
   const generatedPassword = generateSimplePassword();
 
-  // extract headers for ip and user-agent
   const hdrs = await headers();
   const userAgent = hdrs.get('user-agent') ?? 'unknown';
   const ipHeader = hdrs.get('x-forwarded-for') || hdrs.get('x-real-ip') || '';
   const ip = ipHeader ? ipHeader.split(',')[0].trim() : 'unknown';
 
+  let trialRequestId: number | undefined;
+
   try {
-    // PRE-CHECKS: disposable email, email/fingerprint/ip limits
-    // Disposable email check
+    // Step 1: Create a single, trackable trial request record.
+    const newRequest = await db.insert(trialRequests).values({
+      firstName: firstname,
+      lastName: lastname,
+      country,
+      email,
+      useCase: "Not provided",
+      status: "pending",
+      ip,
+      userAgent,
+      fingerprint,
+    }).returning({ id: trialRequests.id });
+
+    if (!newRequest || newRequest.length === 0 || !newRequest[0].id) {
+        console.error("Failed to create a trackable trial request.");
+        return { message: "An unexpected error occurred. Please try again later." };
+    }
+    trialRequestId = newRequest[0].id;
+
+    // Step 2: Perform sequential anti-abuse checks.
+    // If a check fails, update the record and return.
+
+    // Check 2.1: Disposable email
     if (isDisposableEmail(email)) {
-      await db.insert(trialRequests).values({ firstName: firstname, lastName: lastname, country, email, useCase: 'Not provided', status: 'blocked', ip, userAgent, fingerprint, note: 'disposable_email' });
+      await db.update(trialRequests).set({ status: 'blocked', note: 'disposable_email' }).where(eq(trialRequests.id, trialRequestId));
       return { message: 'Disposable email addresses are not allowed. Please use a real email.' };
     }
 
-    // PRE-CHECKS: email/fingerprint/ip limits
-    // 1) Email already processed?
-    const existingByEmail = await db.query.trialRequests.findFirst({ where: eq(trialRequests.email, email) });
-    if (existingByEmail && existingByEmail.status === 'processed') {
-      // log blocked attempt
-      await db.insert(trialRequests).values({ firstName: firstname, lastName: lastname, country, email, useCase: 'Not provided', status: 'blocked', ip, userAgent, fingerprint, note: 'email_already_used' });
+    // Check 2.2: Email already has a processed trial
+    const existingByEmail = await db.query.trialRequests.findFirst({
+      where: and(eq(trialRequests.email, email), eq(trialRequests.status, 'processed'))
+    });
+    if (existingByEmail) {
+      await db.update(trialRequests).set({ status: 'blocked', note: 'email_already_used' }).where(eq(trialRequests.id, trialRequestId));
       return { message: 'An account with this email already exists.' };
     }
 
-    // 2) Fingerprint already used?
+    // Check 2.3: Fingerprint already used for a processed trial
     if (fingerprint) {
-      const existingByFp = await db.query.trialRequests.findFirst({ where: eq(trialRequests.fingerprint, fingerprint) });
+      const existingByFp = await db.query.trialRequests.findFirst({
+        where: and(
+          eq(trialRequests.fingerprint, fingerprint),
+          eq(trialRequests.status, 'processed')
+        )
+      });
       if (existingByFp) {
-        await db.insert(trialRequests).values({ firstName: firstname, lastName: lastname, country, email, useCase: 'Not provided', status: 'blocked', ip, userAgent, fingerprint, note: 'fingerprint_used' });
-        return { message: 'This device appears to have already requested a trial.' };
+        await db.update(trialRequests).set({ status: 'blocked', note: 'fingerprint_already_used_for_processed_trial' }).where(eq(trialRequests.id, trialRequestId));
+        return { message: 'This device has already been used to claim a trial.' };
       }
     }
 
-    // 3) Rate limit by IP in the last 24 hours (DB-based)
+    // Check 2.4: Rate limit by IP
     const since = new Date(Date.now() - 24 * 60 * 60 * 1000);
     const recentFromIp = await db.query.trialRequests.findMany({ where: and(eq(trialRequests.ip, ip), gt(trialRequests.createdAt, since)) });
     if (recentFromIp.length >= 3) {
-      // if reCAPTCHA secret is configured, try to verify the token and allow if valid
       const recaptchaSecret = process.env.RECAPTCHA_SECRET;
       let captchaOk = false;
       if (recaptchaSecret && recaptchaToken) {
@@ -115,67 +140,30 @@ export async function requestTrial(prevState: any, formData: FormData) {
             body: `secret=${encodeURIComponent(recaptchaSecret)}&response=${encodeURIComponent(recaptchaToken)}&remoteip=${encodeURIComponent(ip)}`,
           });
           const verifyJson = await verifyRes.json();
-          // For v3, check score threshold; for v2, success boolean is enough
           if (verifyJson.success && (typeof verifyJson.score === 'undefined' || verifyJson.score >= 0.5)) {
             captchaOk = true;
+            await db.update(trialRequests).set({ note: 'captcha_passed' }).where(eq(trialRequests.id, trialRequestId));
           }
-        } catch (e) {
-          console.error('reCAPTCHA verify error', e);
-        }
+        } catch (e) { console.error('reCAPTCHA verify error', e); }
       }
 
       if (!captchaOk) {
-        await db.insert(trialRequests).values({ firstName: firstname, lastName: lastname, country, email, useCase: 'Not provided', status: 'blocked', ip, userAgent, fingerprint, note: 'ip_rate_limit' });
+        await db.update(trialRequests).set({ status: 'blocked', note: 'ip_rate_limit' }).where(eq(trialRequests.id, trialRequestId));
         return { message: 'Too many requests from your network. Please complete the CAPTCHA to continue.' };
       }
-      // otherwise continue; log that captcha was accepted
-      await db.insert(trialRequests).values({ firstName: firstname, lastName: lastname, country, email, useCase: 'Not provided', status: 'pending', ip, userAgent, fingerprint, note: 'captcha_passed' });
-    } else {
-      // 4) Log initial pending attempt (normal path)
-      await db.insert(trialRequests).values({
-        firstName: firstname,
-        lastName: lastname,
-        country,
-        email,
-        useCase: "Not provided",
-        status: "pending",
-        ip,
-        userAgent,
-        fingerprint,
-      });
     }
 
-    // 4) Log initial pending attempt
-    await db.insert(trialRequests).values({
-      firstName: firstname,
-      lastName: lastname,
-      country,
-      email,
-      useCase: "Not provided",
-      status: "pending",
-      ip,
-      userAgent,
-      fingerprint,
-    });
-
-    // 2. Segundo: Crear el usuario usando auth.api.createUser (compatible con better-auth)
-    // Esto también valida que el email no exista
-    // Reserve the email to prevent race conditions creating duplicate auth users
+    // Step 3: Reserve email and create user
     try {
       await db.insert(trialReservations).values({ email });
     } catch (reserveErr: any) {
-      // likely unique constraint violation -> another request is processing this email
-      console.error('Email reservation failed (likely duplicate):', reserveErr?.message || reserveErr);
-      await db.insert(trialRequests).values({ firstName: firstname, lastName: lastname, country, email, useCase: 'Not provided', status: 'blocked', ip, userAgent, fingerprint, note: 'reservation_failed' });
+      await db.update(trialRequests).set({ status: 'blocked', note: 'reservation_failed' }).where(eq(trialRequests.id, trialRequestId));
       return { message: 'A trial for this email is already being processed. If this is an error, please try again later.' };
     }
 
-    // Check local DB first to avoid attempting to create duplicate users
     const existingUser = await db.query.users.findFirst({ where: eq(users.email, email) });
     if (existingUser) {
-      // log blocked attempt
-      await db.insert(trialRequests).values({ firstName: firstname, lastName: lastname, country, email, useCase: 'Not provided', status: 'blocked', ip, userAgent, fingerprint, note: 'email_already_exists' });
-      // cleanup reservation
+      await db.update(trialRequests).set({ status: 'blocked', note: 'email_already_exists' }).where(eq(trialRequests.id, trialRequestId));
       await db.delete(trialReservations).where(eq(trialReservations.email, email));
       return { message: 'An account with this email already exists.' };
     }
@@ -192,9 +180,9 @@ export async function requestTrial(prevState: any, formData: FormData) {
       });
     } catch (createUserError: any) {
       console.error("Error creating user with auth:", createUserError);
-      // If createUser fails due to duplicate at provider level, record and return
+      await db.delete(trialReservations).where(eq(trialReservations.email, email));
       if (createUserError.message?.includes("email") || createUserError.message?.includes("already")) {
-        await db.insert(trialRequests).values({ firstName: firstname, lastName: lastname, country, email, useCase: 'Not provided', status: 'blocked', ip, userAgent, fingerprint, note: 'auth_create_duplicate' });
+        await db.update(trialRequests).set({ status: 'blocked', note: 'auth_create_duplicate' }).where(eq(trialRequests.id, trialRequestId));
         return { message: 'An account with this email already exists.' };
       }
       throw createUserError;
@@ -202,32 +190,25 @@ export async function requestTrial(prevState: any, formData: FormData) {
 
     const newUserId = newUserResponse.user.id;
 
-    // 3. Tercero: Calcular la fecha de expiración (3 días desde ahora)
+    // Step 4: Provision trial and send emails
     const expiresAt = new Date();
     expiresAt.setDate(expiresAt.getDate() + 3);
 
-    // Actualizar los campos de prueba en la base de datos
     await db.update(users).set({
-      reportsLimit: 5, // Límite de 5 reportes
+      reportsLimit: 5,
       reportsUsed: 0,
-      expiresAt: expiresAt, // Expira en 3 días
-      emailVerified: true, // Usuario de prueba verificado automáticamente
+      expiresAt: expiresAt,
+      emailVerified: true,
     }).where(eq(users.id, newUserId));
 
-    // 4. Marcar la solicitud de prueba como "processed"
-    await db.update(trialRequests).set({
-      status: "processed",
-    }).where(eq(trialRequests.email, email));
+    await db.update(trialRequests).set({ status: "processed" }).where(eq(trialRequests.id, trialRequestId));
 
     try {
-      // 5. Enviar correos (localizados según lang)
       await sendTrialCredentialsEmail(email, fullName, email, generatedPassword, lang);
       await sendTrialRequestEmail(email, fullName, country, lang);
     } catch (emailError: any) {
       console.error("An email failed to send:", emailError);
-      // record the error in trial_requests for admins
-      await db.update(trialRequests).set({ note: String(emailError.message || emailError) }).where(eq(trialRequests.email, email));
-      // cleanup reservation
+      await db.update(trialRequests).set({ note: `processed_email_failed: ${String(emailError.message || emailError)}` }).where(eq(trialRequests.id, trialRequestId));
       await db.delete(trialReservations).where(eq(trialReservations.email, email));
       return {
         success: true,
@@ -235,16 +216,23 @@ export async function requestTrial(prevState: any, formData: FormData) {
       };
     }
 
-    // cleanup reservation
+    // Step 5: Cleanup and return success
     await db.delete(trialReservations).where(eq(trialReservations.email, email));
 
     return {
       success: true,
-      // devolvemos la clave de traducción; el cliente la mostrará usando i18n
       message: "trial_success_check_spam",
     };
-  } catch (error) {
+
+  } catch (error: any) {
     console.error("Error processing trial request:", error);
+    if (trialRequestId) {
+        try {
+            await db.update(trialRequests).set({ status: 'failed', note: String(error.message || error) }).where(eq(trialRequests.id, trialRequestId));
+        } catch (dbError) {
+            console.error("Failed to update trial request with error state:", dbError);
+        }
+    }
     return {
       message: "An unexpected error occurred. Please try again.",
     };
