@@ -126,30 +126,32 @@ export async function requestTrial(prevState: any, formData: FormData) {
       }
     }
 
-    // Check 2.4: Rate limit by IP
-    const since = new Date(Date.now() - 24 * 60 * 60 * 1000);
-    const recentFromIp = await db.query.trialRequests.findMany({ where: and(eq(trialRequests.ip, ip), gt(trialRequests.createdAt, since)) });
-    if (recentFromIp.length >= 3) {
-      const recaptchaSecret = process.env.RECAPTCHA_SECRET;
-      let captchaOk = false;
-      if (recaptchaSecret && recaptchaToken) {
-        try {
-          const verifyRes = await fetch('https://www.google.com/recaptcha/api/siteverify', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: `secret=${encodeURIComponent(recaptchaSecret)}&response=${encodeURIComponent(recaptchaToken)}&remoteip=${encodeURIComponent(ip)}`,
-          });
-          const verifyJson = await verifyRes.json();
-          if (verifyJson.success && (typeof verifyJson.score === 'undefined' || verifyJson.score >= 0.5)) {
-            captchaOk = true;
-            await db.update(trialRequests).set({ note: 'captcha_passed' }).where(eq(trialRequests.id, trialRequestId));
-          }
-        } catch (e) { console.error('reCAPTCHA verify error', e); }
-      }
+    // Check 2.4: Rate limit by IP (only in production)
+    if (process.env.NODE_ENV !== 'development') {
+      const since = new Date(Date.now() - 24 * 60 * 60 * 1000);
+      const recentFromIp = await db.query.trialRequests.findMany({ where: and(eq(trialRequests.ip, ip), gt(trialRequests.createdAt, since)) });
+      if (recentFromIp.length >= 3) {
+        const recaptchaSecret = process.env.RECAPTCHA_SECRET;
+        let captchaOk = false;
+        if (recaptchaSecret && recaptchaToken) {
+          try {
+            const verifyRes = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+              body: `secret=${encodeURIComponent(recaptchaSecret)}&response=${encodeURIComponent(recaptchaToken)}&remoteip=${encodeURIComponent(ip)}`,
+            });
+            const verifyJson = await verifyRes.json();
+            if (verifyJson.success && (typeof verifyJson.score === 'undefined' || verifyJson.score >= 0.5)) {
+              captchaOk = true;
+              await db.update(trialRequests).set({ note: 'captcha_passed' }).where(eq(trialRequests.id, trialRequestId));
+            }
+          } catch (e) { console.error('reCAPTCHA verify error', e); }
+        }
 
-      if (!captchaOk) {
-        await db.update(trialRequests).set({ status: 'blocked', note: 'ip_rate_limit' }).where(eq(trialRequests.id, trialRequestId));
-        return { message: 'Too many requests from your network. Please complete the CAPTCHA to continue.' };
+        if (!captchaOk) {
+          await db.update(trialRequests).set({ status: 'blocked', note: 'ip_rate_limit' }).where(eq(trialRequests.id, trialRequestId));
+          return { message: 'Too many requests from your network. Please complete the CAPTCHA to continue.' };
+        }
       }
     }
 
