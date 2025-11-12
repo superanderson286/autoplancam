@@ -1,33 +1,24 @@
 "use client";
 
-import { useEffect } from "react";
+import React from "react";
+import Script from "next/script";
 import { analytics } from "../firebase";
 
-const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GOOGLE_MEASUREMENT_ID || "G-8QD9JF8GLW";
+const MEASUREMENT_ID = process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID || process.env.REACT_APP_FIREBASE_MEASUREMENT_ID || "G-8QD9JF8GLW";
 
-export function FirebaseAnalyticsProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  useEffect(() => {
-    try {
-      if (analytics) {
-        console.log("Firebase Analytics (compat) está disponible.");
-      }
-      // if gtag is present, set cookie flags safely
-      const gtag = (window as any).gtag;
-      if (typeof gtag === 'function') {
-        try {
-          gtag('config', GA_MEASUREMENT_ID, { cookie_flags: 'SameSite=None;Secure' });
-        } catch (e) {
-          console.warn('gtag config failed', e);
-        }
-      }
-    } catch (e) {
-      console.warn('FirebaseAnalyticsProvider init failed', e);
-    }
-  }, []);
-
-  return <>{children}</>;
+export function FirebaseAnalyticsProvider({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      {/* Load gtag.js and initialize with cookie flags and auto domain */}
+      <Script src={`https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}`} strategy="afterInteractive" />
+      <Script id="gtag-init" strategy="afterInteractive">
+        {`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${MEASUREMENT_ID}', { 'cookie_domain': 'auto', 'cookie_flags': 'SameSite=None;Secure' });`}
+      </Script>
+      {/* still log availability of firebase analytics for debug */}
+      <Script id="firebase-analytics-debug" strategy="afterInteractive">
+        {`(function(){ try { if (window && ${!!analytics}) { console.log('Firebase Analytics (compat) está disponible.'); } } catch(e){} })()`}
+      </Script>
+      {children}
+    </>
+  );
 }
