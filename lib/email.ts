@@ -51,7 +51,7 @@ export async function sendTrialCredentialsEmail(email: string, name: string, use
     const t = loadTranslations(lang);
     const subject = (t['email.trial.subject_user'] as string) || 'Your AutoPlanCam Trial Credentials';
     const template = (t['email.trial.body_user'] as string) || '';
-    const accessUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://autoplancam.vercel.app/';
+    const accessUrl = 'https://autoplancam.vercel.app/';
     const text = template
       .replace('{{name}}', name)
       .replace('{{username}}', username)
