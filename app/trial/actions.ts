@@ -5,7 +5,28 @@ import { db } from "@/db";
 import { trialRequests, users } from "@/db/schema";
 import { sendTrialCredentialsEmail, sendTrialRequestEmail } from "@/lib/email";
 import { auth } from "@/lib/auth";
-import { eq } from "drizzle-orm";
+import { eq, and, gt } from "drizzle-orm";
+import { headers } from 'next/headers';
+
+// Lightweight disposable email domains list (can be expanded or replaced with a service)
+const DISPOSABLE_DOMAINS = new Set([
+  'mailinator.com',
+  '10minutemail.com',
+  'tempmail.com',
+  'trashmail.com',
+  'dispostable.com',
+  'guerrillamail.com',
+]);
+
+function isDisposableEmail(email: string) {
+  try {
+    const domain = email.split('@')[1]?.toLowerCase();
+    if (!domain) return false;
+    return DISPOSABLE_DOMAINS.has(domain);
+  } catch (e) {
+    return false;
+  }
+}
 
 const trialRequestSchema = z.object({
   firstname: z.string().min(1, "First name is required"),
@@ -42,11 +63,89 @@ export async function requestTrial(prevState: any, formData: FormData) {
   const { firstname, lastname, country, email } = validatedFields.data;
   // idioma enviado desde el cliente (hidden input)
   const lang = (formData.get("lang") as string) || 'en';
+  const fingerprint = (formData.get("fingerprint") as string) || null;
+  const recaptchaToken = (formData.get('recaptchaToken') as string) || null;
   const fullName = `${firstname} ${lastname}`;
   const generatedPassword = generateSimplePassword();
 
+  // extract headers for ip and user-agent
+  const hdrs = await headers();
+  const userAgent = hdrs.get('user-agent') ?? 'unknown';
+  const ipHeader = hdrs.get('x-forwarded-for') || hdrs.get('x-real-ip') || '';
+  const ip = ipHeader ? ipHeader.split(',')[0].trim() : 'unknown';
+
   try {
-    // 1. Primero: Registrar la solicitud de prueba en trial_requests
+    // PRE-CHECKS: disposable email, email/fingerprint/ip limits
+    // Disposable email check
+    if (isDisposableEmail(email)) {
+      await db.insert(trialRequests).values({ firstName: firstname, lastName: lastname, country, email, useCase: 'Not provided', status: 'blocked', ip, userAgent, fingerprint, note: 'disposable_email' });
+      return { message: 'Disposable email addresses are not allowed. Please use a real email.' };
+    }
+
+    // PRE-CHECKS: email/fingerprint/ip limits
+    // 1) Email already processed?
+    const existingByEmail = await db.query.trialRequests.findFirst({ where: eq(trialRequests.email, email) });
+    if (existingByEmail && existingByEmail.status === 'processed') {
+      // log blocked attempt
+      await db.insert(trialRequests).values({ firstName: firstname, lastName: lastname, country, email, useCase: 'Not provided', status: 'blocked', ip, userAgent, fingerprint, note: 'email_already_used' });
+      return { message: 'An account with this email already exists.' };
+    }
+
+    // 2) Fingerprint already used?
+    if (fingerprint) {
+      const existingByFp = await db.query.trialRequests.findFirst({ where: eq(trialRequests.fingerprint, fingerprint) });
+      if (existingByFp) {
+        await db.insert(trialRequests).values({ firstName: firstname, lastName: lastname, country, email, useCase: 'Not provided', status: 'blocked', ip, userAgent, fingerprint, note: 'fingerprint_used' });
+        return { message: 'This device appears to have already requested a trial.' };
+      }
+    }
+
+    // 3) Rate limit by IP in the last 24 hours (DB-based)
+    const since = new Date(Date.now() - 24 * 60 * 60 * 1000);
+    const recentFromIp = await db.query.trialRequests.findMany({ where: and(eq(trialRequests.ip, ip), gt(trialRequests.createdAt, since)) });
+    if (recentFromIp.length >= 3) {
+      // if reCAPTCHA secret is configured, try to verify the token and allow if valid
+      const recaptchaSecret = process.env.RECAPTCHA_SECRET;
+      let captchaOk = false;
+      if (recaptchaSecret && recaptchaToken) {
+        try {
+          const verifyRes = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: `secret=${encodeURIComponent(recaptchaSecret)}&response=${encodeURIComponent(recaptchaToken)}&remoteip=${encodeURIComponent(ip)}`,
+          });
+          const verifyJson = await verifyRes.json();
+          // For v3, check score threshold; for v2, success boolean is enough
+          if (verifyJson.success && (typeof verifyJson.score === 'undefined' || verifyJson.score >= 0.5)) {
+            captchaOk = true;
+          }
+        } catch (e) {
+          console.error('reCAPTCHA verify error', e);
+        }
+      }
+
+      if (!captchaOk) {
+        await db.insert(trialRequests).values({ firstName: firstname, lastName: lastname, country, email, useCase: 'Not provided', status: 'blocked', ip, userAgent, fingerprint, note: 'ip_rate_limit' });
+        return { message: 'Too many requests from your network. Please complete the CAPTCHA to continue.' };
+      }
+      // otherwise continue; log that captcha was accepted
+      await db.insert(trialRequests).values({ firstName: firstname, lastName: lastname, country, email, useCase: 'Not provided', status: 'pending', ip, userAgent, fingerprint, note: 'captcha_passed' });
+    } else {
+      // 4) Log initial pending attempt (normal path)
+      await db.insert(trialRequests).values({
+        firstName: firstname,
+        lastName: lastname,
+        country,
+        email,
+        useCase: "Not provided",
+        status: "pending",
+        ip,
+        userAgent,
+        fingerprint,
+      });
+    }
+
+    // 4) Log initial pending attempt
     await db.insert(trialRequests).values({
       firstName: firstname,
       lastName: lastname,
@@ -54,6 +153,9 @@ export async function requestTrial(prevState: any, formData: FormData) {
       email,
       useCase: "Not provided",
       status: "pending",
+      ip,
+      userAgent,
+      fingerprint,
     });
 
     // 2. Segundo: Crear el usuario usando auth.api.createUser (compatible con better-auth)

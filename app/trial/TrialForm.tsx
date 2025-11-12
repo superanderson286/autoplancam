@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useActionState } from "react";
+import React, { useActionState, useEffect, useRef, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -34,6 +34,93 @@ export function TrialForm() {
   const [state, formAction] = useActionState(requestTrial, initialState);
   const { t, i18n } = useTranslation();
   const router = useRouter();
+  const [fingerprint, setFingerprint] = useState<string>("");
+  const [blockedByLocalFlag, setBlockedByLocalFlag] = useState(false);
+  const [recaptchaToken, setRecaptchaToken] = useState('');
+  const [submittingWithCaptcha, setSubmittingWithCaptcha] = useState(false);
+  const formRef = useRef<HTMLFormElement | null>(null);
+  const recaptchaInputRef = useRef<HTMLInputElement | null>(null);
+  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
+  // Initialize FingerprintJS and localStorage flag check
+  useEffect(() => {
+    // Check localStorage flag
+    try {
+      const used = localStorage.getItem('hasUsedTrial');
+      if (used) setBlockedByLocalFlag(true);
+    } catch (e) {
+      // ignore
+    }
+
+    let mounted = true;
+  (async () => {
+      try {
+        const FingerprintJS = (await import('@fingerprintjs/fingerprintjs')).default;
+        const fp = await FingerprintJS.load();
+        const result = await fp.get();
+        if (!mounted) return;
+        setFingerprint(result.visitorId);
+      } catch (e) {
+        // if fingerprint lib fails, we just continue without it
+        console.error('Fingerprint init failed', e);
+      }
+    })();
+
+    return () => { mounted = false; };
+  }, []);
+
+  // Load reCAPTCHA script if site key provided
+  useEffect(() => {
+    if (!siteKey) return;
+    const id = 'recaptcha-script';
+    if (document.getElementById(id)) return;
+    const s = document.createElement('script');
+    s.id = id;
+    s.src = `https://www.google.com/recaptcha/api.js?render=${siteKey}`;
+    s.async = true;
+    s.defer = true;
+    document.head.appendChild(s);
+  }, [siteKey]);
+
+  // onSubmit handler to get token from reCAPTCHA v3 before submitting
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
+    if (!siteKey) return; // no captcha configured
+    if (submittingWithCaptcha) return; // already in progress
+    e.preventDefault();
+    setSubmittingWithCaptcha(true);
+    try {
+      // Wait until grecaptcha is available
+      const waitForGrecaptcha = () => new Promise<void>((res, rej) => {
+        const max = 10000; let waited = 0;
+        const iv = setInterval(() => {
+          if ((window as any).grecaptcha && (window as any).grecaptcha.execute) {
+            clearInterval(iv); res();
+          }
+          waited += 100;
+          if (waited > max) { clearInterval(iv); rej(new Error('grecaptcha not available')); }
+        }, 100);
+      });
+      await waitForGrecaptcha();
+      const token = await (window as any).grecaptcha.execute(siteKey, { action: 'trial_request' });
+      setRecaptchaToken(token);
+      if (recaptchaInputRef.current) recaptchaInputRef.current.value = token;
+      // submit the form programmatically
+      formRef.current?.requestSubmit();
+    } catch (err) {
+      console.error('reCAPTCHA failed', err);
+      // fallback: submit without token
+      formRef.current?.requestSubmit();
+    } finally {
+      setSubmittingWithCaptcha(false);
+    }
+  };
+
+  // When action reports success, set local flag so this browser won't request again casually
+  useEffect(() => {
+    if (state.success) {
+      try { localStorage.setItem('hasUsedTrial', '1'); } catch (e) {}
+    }
+  }, [state.success]);
 
   if (state.success) {
     return (
@@ -66,13 +153,26 @@ export function TrialForm() {
         {t("Enter your details to get started.")}
       </p>
 
+      {/* Privacy / fingerprinting notice */}
+      <p className="mt-3 max-w-sm text-xs text-neutral-500 dark:text-neutral-400">
+        {t("trial.fingerprint_notice", { defaultValue: "We collect basic device identifiers to prevent abuse. See our " })}
+        <a className="underline ml-1 text-sky-600" href="/privacy">
+          {t("Privacy Policy")}
+        </a>
+      </p>
+
       {state.message && !state.success && (
         <div className="mt-4 rounded-md border border-red-500 bg-red-50 p-3 text-center text-sm text-red-600">
           {state.message}
         </div>
       )}
 
-      <form className="my-8 flex flex-col gap-6" action={formAction}>
+      {blockedByLocalFlag ? (
+        <div className="mt-6 rounded-md border border-yellow-400 bg-yellow-50 p-4 text-sm text-yellow-800">
+          {t("It seems this browser already requested a trial. If this is an error, clear your site data or contact support.")}
+        </div>
+      ) : (
+        <form ref={formRef} onSubmit={handleSubmit} className="my-8 flex flex-col gap-6" action={formAction}>
         <div className="flex flex-col gap-4 md:flex-row">
           <InputGroup>
             <Label htmlFor="firstName">{t("First Name")}</Label>
@@ -115,12 +215,14 @@ export function TrialForm() {
             required
           />
 
-        {/* Hidden field to send language preference to server */}
-        <input type="hidden" name="lang" value={i18n?.language || 'en'} />
+          {/* Hidden fields to send language, fingerprint and recaptcha token to server */}
+          <input type="hidden" name="lang" value={i18n?.language || 'en'} />
+          <input type="hidden" name="fingerprint" value={fingerprint} />
+          <input ref={recaptchaInputRef} type="hidden" name="recaptchaToken" value={recaptchaToken} />
         </InputGroup>
-
-        <SubmitButton />
-      </form>
+          <SubmitButton />
+        </form>
+      )}
     </div>
   );
 }

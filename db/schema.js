@@ -122,6 +122,11 @@ export const trialRequests = pgTable('trial_requests', {
   country: text('country').notNull(),
   email: text('email').notNull(),
   useCase: text('use_case').notNull(),
-  status: text('status').notNull().default('pending'), // 'pending', 'processed'
+  status: text('status').notNull().default('pending'), // 'pending', 'processed', 'blocked'
+  // Anti-abuse fields
+  ip: text('ip'),
+  userAgent: text('user_agent'),
+  fingerprint: text('fingerprint'),
+  note: text('note'),
   createdAt: timestamp('created_at').notNull().default(sql`now()`),
 });
