@@ -215,6 +215,7 @@ function calcularRecomendaciones(datos: ProyectoDatos): Recomendacion | null {
     // --- CÁLCULO DE COSTOS DE EQUIPOS ---
     let costo_perifericos = 0;
     const materiales = [];
+    let costo_conectores = 0;
 
     if (fuente_centralizada) {
         costo_perifericos += HIKVISION_SPECS.FUENTE_CENTRALIZADA_8CH.costo;
@@ -226,6 +227,14 @@ function calcularRecomendaciones(datos: ProyectoDatos): Recomendacion | null {
     if (usa_switch) {
         costo_perifericos += HIKVISION_SPECS.SWITCH_8_PUERTOS.costo;
         materiales.push(`1x ${HIKVISION_SPECS.SWITCH_8_PUERTOS.modelo}`);
+    }
+
+    if (tipo_conector === 'balun_hd') {
+        materiales.push(`${total_camaras * 2}x Baluns HD-TVI (Receptor y Transmisor)`);
+        costo_conectores = total_camaras * 2 * 5; // Example cost: $5 per balun pair
+    } else { // bnc_jack
+        materiales.push(`${total_camaras * 2}x Conectores BNC y Jacks de corriente`);
+        costo_conectores = total_camaras * 2 * 2; // Example cost: $2 per BNC/Jack pair
     }
 
     const costo_camaras_int = final_int_camaras * HIKVISION_SPECS.CAMARA_DOMO.costo;
@@ -263,7 +272,7 @@ function calcularRecomendaciones(datos: ProyectoDatos): Recomendacion | null {
 
     const costo_canaleta = ruta_cableado === 'canaleta' ? (total_camaras * distancia_cable * HIKVISION_SPECS.CANALETA_METRO.costo) : 0;
     const costo_consumibles_variable = total_camaras * 10 * factor_edif.cableado_complejidad;
-    const costo_consumibles = costo_consumibles_base + costo_consumibles_variable + costo_canaleta;
+    const costo_consumibles = costo_consumibles_base + costo_consumibles_variable + costo_canaleta + costo_conectores;
 
     // Cableado
     const cable_estimado_m = (total_camaras * distancia_cable * 1.1 * factor_edif.cableado_complejidad) + longitud_perimetro;
@@ -291,7 +300,6 @@ function calcularRecomendaciones(datos: ProyectoDatos): Recomendacion | null {
         materiales: [
             ...materiales,
             `Cable: ${tipo_cable} (Est. ${rollos_305m_estimados} rollo(s) de 305m - ${Math.ceil(cable_estimado_m)}m totales).`,
-            `${total_camaras * 2}x Baluns HD-TVI (Receptor y Transmisor) - (Ajuste por ${tipo_edificacion.toUpperCase()})`,
             `Tornillería: (Mínimo ${total_camaras * 4} unidades).`,
             `Cajas de paso/Registro: ${total_camaras} unidades (para protección de Baluns)`,
             `Consumibles Varios: Bridas, cinta de aislar, silicona industrial. (Incremento por ${num_pisos} pisos)`
@@ -331,11 +339,51 @@ function MarkdownReport({ recomendaciones, datosProyecto }: { recomendaciones: R
         
         let extModelNote = datosProyecto.usa_ir_largo_alcance ? `(Modelo de Larga Distancia IR ${recomendaciones.modelo_camara_ext})` : '';
 
+        let edificationContext = `Tipo de Edificación: **${datosProyecto.tipo_edificacion.toUpperCase()}** (${datosProyecto.num_pisos} piso(s)).`;
+        let specialCameraContext = '';
+        if (datosProyecto.usa_ptz) {
+            specialCameraContext += ' Se incluyó una cámara PTZ (móvil) por su requerimiento. ';
+        }
+        if (datosProyecto.usa_ir_largo_alcance) {
+            specialCameraContext += ' Se priorizaron cámaras exteriores con IR de largo alcance. ';
+        }
+
+        let peripheralContext = '';
+        if (datosProyecto.fuente_centralizada) {
+            peripheralContext += ' Se consideró una fuente de alimentación centralizada. ';
+        } else {
+            peripheralContext += ' Se estimaron fuentes individuales para cada cámara. ';
+        }
+        if (datosProyecto.usa_switch) {
+            peripheralContext += ' Se incluyó un switch para la gestión de red. ';
+        }
+        peripheralContext += ` Se utilizarán conectores **${datosProyecto.tipo_conector.toUpperCase().replace('_', ' ')}**.`;
+
+        let exteriorContext = '';
+        if (datosProyecto.longitud_perimetro > 0) {
+            exteriorContext += ` Se consideró una longitud de perímetro de **${datosProyecto.longitud_perimetro}m** con conectividad **${datosProyecto.conectividad_exterior.toUpperCase()}**.`;
+        }
+        if (datosProyecto.exposicion_ambiental === 'corrosivo') {
+            exteriorContext += ' Se incluyeron consumibles especiales para ambientes corrosivos/polvo. ';
+        }
+
+        let installationComplexityContext = `Ruta de cableado: **${datosProyecto.ruta_cableado.toUpperCase()}**. Horario de instalación: **${datosProyecto.horario_instalacion.toUpperCase()}**.`;
+
+        let storageRaidContext = `Modelo de DVR/NVR base: **${datosProyecto.modelo_nvr_dvr.toUpperCase()}**.`;
+        if (datosProyecto.raid) {
+            storageRaidContext += ' Se configuró redundancia de disco (RAID) para mayor seguridad de datos. ';
+        }
+        if (datosProyecto.integracion_alarma) {
+            storageRaidContext += ' Se seleccionó un DVR compatible con integración de alarma. ';
+        }
+
         const report = `
 ## ✅ Informe Detallado del Proyecto
 
 > #### CÁLCULO DE CÁMARAS:
 > ${cameraCalcExplanation}
+> **Contexto de Edificación:** ${edificationContext}
+> **Requerimientos Especiales:** ${specialCameraContext}
 
 ---
 
@@ -369,7 +417,12 @@ ${ptzReport}
 ### 📋 NOTAS LOGÍSTICAS Y MATERIALES REQUERIDOS
 ${recomendaciones.materiales.map(m => `- ${m}`).join('\n')}
 
-> **NOTA TÉCNICA DE INSTALACIÓN:** La complejidad y el costo de mano de obra se ajustaron debido al tipo de edificación (**${datosProyecto.tipo_edificacion.toUpperCase()}**) con **${datosProyecto.num_pisos} piso(s)** y la instalación sobre **${datosProyecto.material_pared.toUpperCase()}**.
+> **Consideraciones Adicionales:**
+> - **Periféricos y Conectividad:** ${peripheralContext}
+> - **Entorno Exterior:** ${exteriorContext}
+> - **Complejidad de Instalación:** ${installationComplexityContext}
+> - **Almacenamiento y Redundancia:** ${storageRaidContext}
+> - **NOTA TÉCNICA DE INSTALACIÓN:** La complejidad y el costo de mano de obra se ajustaron debido al tipo de edificación (**${datosProyecto.tipo_edificacion.toUpperCase()}**) con **${datosProyecto.num_pisos} piso(s)** y la instalación sobre **${datosProyecto.material_pared.toUpperCase()}**.
 `;
         return report;
     };
@@ -493,7 +546,7 @@ export default function PlannerLogic() {
                         {/* 2. N° de Habitaciones/Oficinas (Requerido) */}
                         <div>
                             <label className="block text-sm font-medium text-gray-700">N° de Habitaciones u Oficinas</label>
-                            <input type="number" name="num_habitaciones" value={datosProyecto.num_habitaciones} 
+                            <input type="number" name="num_habitaciones" value={datosProyecto.num_habitaciones || ''} 
                                    onChange={handleInputChange} min="0" required
                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
                             />
@@ -596,7 +649,7 @@ export default function PlannerLogic() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div>
                             <label className="block text-sm font-medium text-gray-700">Longitud de Perímetro (m)</label>
-                            <input type="number" name="longitud_perimetro" value={datosProyecto.longitud_perimetro}
+                            <input type="number" name="longitud_perimetro" value={datosProyecto.longitud_perimetro || ''}
                                    onChange={handleInputChange} min="0"
                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
                             />
@@ -687,14 +740,14 @@ export default function PlannerLogic() {
                         {/* Cámaras Int/Ext Manuales */}
                         <div>
                             <label className="block text-sm font-medium text-gray-700">Cámaras Int. Manuales</label>
-                            <input type="number" name="interior_camaras" value={datosProyecto.interior_camaras} 
+                            <input type="number" name="interior_camaras" value={datosProyecto.interior_camaras || ''} 
                                    onChange={handleInputChange} min="0" max="16"
                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
                             />
                         </div>
                         <div>
                             <label className="block text-sm font-medium text-gray-700">Cámaras Ext. Manuales</label>
-                            <input type="number" name="exterior_camaras" value={datosProyecto.exterior_camaras} 
+                            <input type="number" name="exterior_camaras" value={datosProyecto.exterior_camaras || ''} 
                                    onChange={handleInputChange} min="0" max="16"
                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
                             />

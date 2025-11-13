@@ -6,11 +6,12 @@ export default function Planner() {
   const { t } = useTranslation();
   const [area, setArea] = useState("");
   const [height, setHeight] = useState("");
+  const [companyName, setCompanyName] = useState(""); // New state for company name
   const [result, setResult] = useState<string | null>(null);
 
   const handlePlan = () => {
     // Simulación de lógica de recomendación
-    const recommended = t('recommendationResult', { area, height });
+    const recommended = t('recommendationResult', { area, height, companyName }); // Include companyName
     setResult(recommended);
   };
 
@@ -24,6 +25,13 @@ export default function Planner() {
       >
         <h2 className="text-2xl font-bold mb-6 text-center">{"AutoPlanCam Planner Demo"}</h2>
         <div className="grid gap-4 mb-6">
+          <input
+            type="text"
+            placeholder={t('company_name')} // New placeholder for company name
+            value={companyName}
+            onChange={(e) => setCompanyName(e.target.value)}
+            className="border px-4 py-2 rounded"
+          />
           <input
             type="number"
             placeholder={t('area_m2')}
