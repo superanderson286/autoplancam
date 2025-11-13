@@ -84,14 +84,14 @@ export const MovingBorder = ({
 }) => {
   const pathRef = useRef<any>();
   const progress = useMotionValue<number>(0);
-  const [isClient, setIsClient] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsClient(true);
+    setIsMounted(true);
   }, []);
 
   useAnimationFrame((time) => {
-    if (isClient) {
+    if (isMounted) {
       const length = pathRef.current?.getTotalLength();
       if (length) {
         const pxPerMillisecond = length / duration;
@@ -102,11 +102,11 @@ export const MovingBorder = ({
 
   const x = useTransform(
     progress,
-    (val) => pathRef.current?.getPointAtLength(val).x,
+    (val) => pathRef.current?.getPointAtLength(val).x
   );
   const y = useTransform(
     progress,
-    (val) => pathRef.current?.getPointAtLength(val).y,
+    (val) => pathRef.current?.getPointAtLength(val).y
   );
 
   const transform = useMotionTemplate`translateX(${x}px) translateY(${y}px) translateX(-50%) translateY(-50%)`;
@@ -130,7 +130,7 @@ export const MovingBorder = ({
           ref={pathRef}
         />
       </svg>
-      {isClient && (
+      {isMounted && (
         <motion.div
           style={{
             position: "absolute",
