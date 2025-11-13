@@ -54,6 +54,8 @@ const HIKVISION_SPECS = {
 // --- Tipos de Datos ACTUALIZADOS ---
 interface ProyectoDatos {
     // Campos requeridos para el cálculo principal
+    clientName: string; // A quién va dirigido el reporte
+    issuingCompanyName: string; // Quién emite el reporte
     area_m2: number;
     num_habitaciones: number;
     nivel_seguridad: 'baja' | 'normal' | 'alta' | 'extrema';
@@ -378,7 +380,7 @@ function MarkdownReport({ recomendaciones, datosProyecto }: { recomendaciones: R
         }
 
         const report = `
-## ✅ Informe Detallado del Proyecto
+## ✅ Informe Detallado del Proyecto de ${datosProyecto.issuingCompanyName || 'Su Compañía'} para: ${datosProyecto.clientName || 'Cliente'}
 
 > #### CÁLCULO DE CÁMARAS:
 > ${cameraCalcExplanation}
@@ -441,6 +443,8 @@ ${recomendaciones.materiales.map(m => `- ${m}`).join('\n')}
 export default function PlannerLogic() {
     const [datosProyecto, setDatosProyecto] = useState<ProyectoDatos>({
         // VALORES REQUERIDOS
+        clientName: '',
+        issuingCompanyName: '',
         area_m2: 150,
         num_habitaciones: 0,
         nivel_seguridad: 'normal',
@@ -531,6 +535,30 @@ export default function PlannerLogic() {
 
             <form onSubmit={handleSubmit} className="space-y-8">
                 
+                {/* SECCIÓN 0: Información del Cliente */}
+                <div className="p-6 border-2 border-gray-200 rounded-xl bg-gray-50">
+                    <h2 className="text-xl font-semibold mb-4 text-gray-700">Información del Proyecto</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Cliente (Dirigido a)</label>
+                            <input type="text" name="clientName" value={datosProyecto.clientName}
+                               onChange={handleInputChange}
+                               placeholder="Ej: Mi Empresa S.A. o Juan Pérez"
+                               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Compañía Emisora</label>
+                            <input type="text" name="issuingCompanyName" value={datosProyecto.issuingCompanyName}
+                                   onChange={handleInputChange}
+                                   placeholder="Ej: Su Compañía de Seguridad"
+                                   className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+
                 {/* SECCIÓN A: Datos Básicos Requeridos */}
                 <div className="p-6 border-2 border-indigo-100 rounded-xl bg-indigo-50">
                     <h2 className="text-xl font-semibold mb-4 text-indigo-700">A. Datos Geométricos y Nivel de Riesgo (Requeridos)</h2>
