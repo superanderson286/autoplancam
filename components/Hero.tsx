@@ -1,43 +1,49 @@
-import Link from "next/link";
-import { Button } from "./ui/button";
-// import { MovingBorderButton } from "./ui/moving-border";
+import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import Link from "next/link";
+import { Button as MovingBorderButton } from "./ui/moving-border";
 
-export function Hero() {
+export default function Hero() {
   const { t } = useTranslation();
+
+  const handleDemoClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    const plannerSection = document.getElementById("planner");
+    if (plannerSection) {
+      plannerSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <div className="relative isolate overflow-hidden pt-14">
-      <div
-        className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-        aria-hidden="true"
+    <section className="h-screen bg-gray-950 text-white flex items-center justify-center">
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="text-center px-4"
       >
-        <div
-          className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-          style={{
-            clipPath:
-              "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-          }}
-        />
-      </div>
-      <div className="py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
-              {t("hero.title")}
-            </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-300">
-              {t("hero.subtitle")}
-            </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              <Link href="/trial">
-                <Button>
-                  {t("hero.cta")}
-                </Button>
-              </Link>
-            </div>
-          </div>
+        <h1 className="text-3xl md:text-5xl font-bold mb-4">AutoPlanCam</h1>
+        <p className="text-lg md:text-xl text-gray-300 mb-6">
+          {t("Automate video surveillance projects with precision and style")}
+        </p>
+        <div className="flex justify-center space-x-4">
+          <motion.button
+            onClick={handleDemoClick}
+            whileHover={{ scale: 1.1 }}
+            className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-full font-semibold"
+          >
+            {t("View demo")}
+          </motion.button>
+          <MovingBorderButton
+            as="a"
+            href="/auth/sign-in"
+            borderRadius="1.75rem"
+            borderClassName="bg-[linear-gradient(to_right,#0ea5e9,#06b6d4)]"
+          >
+            {t("Sign In")}
+          </MovingBorderButton>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </section>
   );
 }

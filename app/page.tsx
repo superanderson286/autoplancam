@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 
-import Navbar from "../components/Navbar";
-import { Hero } from "../components/Hero";
+import Navbar from "../components/Navbar"; // Correct import for default export
+import Hero from "../components/Hero"; // Correct import for default export
 import Features from "../components/Features";
 import TechStack from "../components/TechStack";
 import Benefits from "../components/Benefits";
@@ -11,7 +11,6 @@ import Monetization from "../components/Monetization";
 import Roadmap from "../components/Roadmap";
 import KoFiWidget from "../components/KoFiWidget";
 import Planner from "../components/app/Planner";
-import { Button as MovingBorderButton } from "../components/ui/moving-border";
 
 export default function HomePage() { // Renamed from App
   return (
