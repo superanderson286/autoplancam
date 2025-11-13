@@ -87,29 +87,58 @@ export const MovingBorder = ({
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    console.log("MovingBorder: Component did mount.");
     setIsMounted(true);
   }, []);
 
   useAnimationFrame((time) => {
-    if (isMounted) {
-      const length = pathRef.current?.getTotalLength();
-      if (length) {
+    if (!isMounted) {
+      console.log("MovingBorder: Animation frame skipped - component not mounted.");
+      return;
+    }
+    
+    const path = pathRef.current;
+    if (!path) {
+      console.log("MovingBorder: Animation frame skipped - path ref not available.");
+      return;
+    }
+
+    try {
+      const length = path.getTotalLength();
+      if (length > 0) {
         const pxPerMillisecond = length / duration;
         progress.set((time * pxPerMillisecond) % length);
+      } else {
+        console.log("MovingBorder: Path length is 0, skipping animation frame.");
       }
+    } catch (error) {
+      console.error("MovingBorder: Error getting path length in useAnimationFrame.", error);
     }
   });
 
-  const x = useTransform(
-    progress,
-    (val) => pathRef.current?.getPointAtLength(val).x
-  );
-  const y = useTransform(
-    progress,
-    (val) => pathRef.current?.getPointAtLength(val).y
-  );
+  const x = useTransform(progress, (val) => {
+    if (!pathRef.current) return 0;
+    try {
+      const point = pathRef.current.getPointAtLength(val);
+      return point ? point.x : 0;
+    } catch (e) {
+      return 0;
+    }
+  });
+
+  const y = useTransform(progress, (val) => {
+    if (!pathRef.current) return 0;
+    try {
+      const point = pathRef.current.getPointAtLength(val);
+      return point ? point.y : 0;
+    } catch (e) {
+      return 0;
+    }
+  });
 
   const transform = useMotionTemplate`translateX(${x}px) translateY(${y}px) translateX(-50%) translateY(-50%)`;
+
+  console.log("MovingBorder: Rendering component.", { isMounted });
 
   return (
     <>
