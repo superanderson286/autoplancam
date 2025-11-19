@@ -541,6 +541,7 @@ export default function PlannerLogic() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label className="block text-sm font-medium text-gray-700">Cliente (Dirigido a)</label>
+                            <p className="text-xs text-gray-500 italic mb-1">Nombre de la persona o empresa que recibirá el informe.</p>
                             <input type="text" name="clientName" value={datosProyecto.clientName}
                                onChange={handleInputChange}
                                placeholder="Ej: Mi Empresa S.A. o Juan Pérez"
@@ -549,6 +550,7 @@ export default function PlannerLogic() {
                         </div>
                         <div>
                             <label className="block text-sm font-medium text-gray-700">Compañía Emisora</label>
+                            <p className="text-xs text-gray-500 italic mb-1">Nombre de su empresa, quien realiza esta cotización.</p>
                             <input type="text" name="issuingCompanyName" value={datosProyecto.issuingCompanyName}
                                    onChange={handleInputChange}
                                    placeholder="Ej: Su Compañía de Seguridad"
@@ -566,6 +568,7 @@ export default function PlannerLogic() {
                         {/* 1. Área Cuadrada (Requerido) */}
                         <div>
                             <label className="block text-sm font-medium text-gray-700">Área Total del Sitio (m²)</label>
+                            <p className="text-xs text-gray-500 italic mb-1">El factor más importante para el cálculo inicial de cámaras.</p>
                             <input type="number" name="area_m2" value={datosProyecto.area_m2} 
                                    onChange={handleInputChange} min="1" required
                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
@@ -574,6 +577,7 @@ export default function PlannerLogic() {
                         {/* 2. N° de Habitaciones/Oficinas (Requerido) */}
                         <div>
                             <label className="block text-sm font-medium text-gray-700">N° de Habitaciones u Oficinas</label>
+                            <p className="text-xs text-gray-500 italic mb-1">Puntos de interés clave que requieren cobertura individual.</p>
                             <input type="number" name="num_habitaciones" value={datosProyecto.num_habitaciones || ''} 
                                    onChange={handleInputChange} min="0" required
                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
@@ -582,6 +586,7 @@ export default function PlannerLogic() {
                         {/* 3. Nivel de Seguridad (Requerido) */}
                         <div>
                             <label className="block text-sm font-medium text-gray-700">Nivel de Seguridad Deseado</label>
+                            <p className="text-xs text-gray-500 italic mb-1">Ajusta la densidad de cámaras y la robustez del sistema.</p>
                             <select name="nivel_seguridad" value={datosProyecto.nivel_seguridad} onChange={handleInputChange}
                                     className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
                                 <option value="baja">Baja</option>
@@ -593,188 +598,66 @@ export default function PlannerLogic() {
                     </div>
                 </div>
 
-                {/* 💡 NUEVA SECCIÓN: Contexto de la Edificación */}
+                {/* SECCIÓN B: Contexto de la Edificación */}
                 <div className="p-6 border-2 border-green-100 rounded-xl bg-green-50">
                     <h2 className="text-xl font-semibold mb-4 text-green-700">B. Contexto de Edificación y Requerimientos Especiales</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-8">
                         
-                        {/* 4. Tipo de Edificación */}
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700">Tipo de Edificación</label>
-                            <select name="tipo_edificacion" value={datosProyecto.tipo_edificacion} onChange={handleInputChange}
-                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
-                                <option value="casa">Casa/Vivienda</option>
-                                <option value="oficina">Oficina/Consultorio</option>
-                                <option value="edificio">Edificio (Comercial/Aptos)</option>
-                                <option value="estacionamiento">Estacionamiento</option>
-                                <option value="finca">Finca/Propiedad Rural</option>
-                                <option value="otro">Otro</option>
-                            </select>
-                        </div>
-                        
-                        {/* 5. N° de Pisos */}
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700">Número de Pisos/Plantas</label>
-                            <input type="number" name="num_pisos" value={datosProyecto.num_pisos} 
-                                   onChange={handleInputChange} min="1" required
-                                   className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
-                            />
-                        </div>
-                        
-                        {/* 6. PTZ Checkbox */}
-                        <div className="flex items-center pt-5">
-                            <input type="checkbox" name="usa_ptz" checked={datosProyecto.usa_ptz} 
-                                   onChange={handleInputChange} id="usa_ptz"
-                                   className="h-4 w-4 text-green-600 border-gray-300 rounded"
-                            />
-                            <label htmlFor="usa_ptz" className="ml-2 block text-sm font-medium text-gray-700">Requiere Cámara PTZ (Móvil)</label>
+                        {/* Tipo de Edificación y Pisos */}
+                        <div className="grid grid-cols-2 gap-4">
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">Tipo de Edificación</label>
+                                <select name="tipo_edificacion" value={datosProyecto.tipo_edificacion} onChange={handleInputChange}
+                                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                                    <option value="casa">Casa/Vivienda</option>
+                                    <option value="oficina">Oficina/Consultorio</option>
+                                    <option value="edificio">Edificio (Comercial/Aptos)</option>
+                                    <option value="estacionamiento">Estacionamiento</option>
+                                    <option value="finca">Finca/Propiedad Rural</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">N° de Pisos</label>
+                                <input type="number" name="num_pisos" value={datosProyecto.num_pisos} 
+                                       onChange={handleInputChange} min="1" required
+                                       className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                                />
+                            </div>
+                            <p className="text-xs text-gray-500 italic col-span-2">El tipo y la altura de la edificación afectan la complejidad del cableado y la mano de obra.</p>
                         </div>
 
-                        {/* 7. IR Largo Alcance Checkbox */}
-                        <div className="flex items-center pt-5">
-                            <input type="checkbox" name="usa_ir_largo_alcance" checked={datosProyecto.usa_ir_largo_alcance} 
-                                   onChange={handleInputChange} id="usa_ir_largo_alcance"
-                                   className="h-4 w-4 text-green-600 border-gray-300 rounded"
-                            />
-                            <label htmlFor="usa_ir_largo_alcance" className="ml-2 block text-sm font-medium text-gray-700">IR Largo Alcance (Noche Total)</label>
-                        </div>
-                        
-                    </div>
-                </div>
-
-                {/* Periféricos y Puntos de Conexión */}
-                <div className="p-6 border-2 border-blue-100 rounded-xl bg-blue-50">
-                    <h2 className="text-xl font-semibold mb-4 text-blue-700">D. Periféricos y Puntos de Conexión</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div className="flex items-center pt-5">
-                            <input type="checkbox" name="fuente_centralizada" checked={datosProyecto.fuente_centralizada}
-                                   onChange={handleInputChange} id="fuente_centralizada"
-                                   className="h-4 w-4 text-blue-600 border-gray-300 rounded"
-                            />
-                            <label htmlFor="fuente_centralizada" className="ml-2 block text-sm font-medium text-gray-700">Fuente de Alimentación Centralizada</label>
-                        </div>
-                        <div className="flex items-center pt-5">
-                            <input type="checkbox" name="usa_switch" checked={datosProyecto.usa_switch}
-                                   onChange={handleInputChange} id="usa_switch"
-                                   className="h-4 w-4 text-blue-600 border-gray-300 rounded"
-                            />
-                            <label htmlFor="usa_switch" className="ml-2 block text-sm font-medium text-gray-700">Puntos de Red/Uso de Switch</label>
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700">Tipo de Conector</label>
-                            <select name="tipo_conector" value={datosProyecto.tipo_conector} onChange={handleInputChange}
-                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
-                                <option value="balun_hd">Balun HD</option>
-                                <option value="bnc_jack">BNC/Jack</option>
-                            </select>
+                        {/* Checkboxes de Cámaras Especiales */}
+                        <div className="space-y-3">
+                            <label className="block text-sm font-medium text-gray-700">Requerimientos de Cámaras Especiales</label>
+                            <div className="flex items-center">
+                                <input type="checkbox" name="usa_ptz" checked={datosProyecto.usa_ptz} onChange={handleInputChange} id="usa_ptz" className="h-4 w-4 text-green-600 border-gray-300 rounded"/>
+                                <label htmlFor="usa_ptz" className="ml-2 block text-sm text-gray-700">Requiere Cámara PTZ (Móvil 360°)</label>
+                            </div>
+                            <div className="flex items-center">
+                                <input type="checkbox" name="usa_ir_largo_alcance" checked={datosProyecto.usa_ir_largo_alcance} onChange={handleInputChange} id="usa_ir_largo_alcance" className="h-4 w-4 text-green-600 border-gray-300 rounded"/>
+                                <label htmlFor="usa_ir_largo_alcance" className="ml-2 block text-sm text-gray-700">Requiere IR Largo Alcance (80m+ en oscuridad total)</label>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                {/* Definición Detallada del Entorno Exterior */}
-                <div className="p-6 border-2 border-yellow-100 rounded-xl bg-yellow-50">
-                    <h2 className="text-xl font-semibold mb-4 text-yellow-700">E. Definición Detallada del Entorno Exterior</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700">Longitud de Perímetro (m)</label>
-                            <input type="number" name="longitud_perimetro" value={datosProyecto.longitud_perimetro || ''}
-                                   onChange={handleInputChange} min="0"
-                                   className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700">Tipo de Conectividad Exterior</label>
-                            <select name="conectividad_exterior" value={datosProyecto.conectividad_exterior} onChange={handleInputChange}
-                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
-                                <option value="aereo">Aéreo con guaya</option>
-                                <option value="subterraneo">Subterráneo/Zanjas</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700">Grado de Exposición Ambiental</label>
-                            <select name="exposicion_ambiental" value={datosProyecto.exposicion_ambiental} onChange={handleInputChange}
-                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
-                                <option value="normal">Normal</option>
-                                <option value="corrosivo">Corrosivo/Alto Polvo</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Complejidad de la Instalación Interior */}
-                <div className="p-6 border-2 border-purple-100 rounded-xl bg-purple-50">
-                    <h2 className="text-xl font-semibold mb-4 text-purple-700">F. Complejidad de la Instalación Interior</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700">Ruta del Cableado</label>
-                            <select name="ruta_cableado" value={datosProyecto.ruta_cableado} onChange={handleInputChange}
-                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
-                                <option value="canaleta">Visto/Canaleta</option>
-                                <option value="oculto">Oculto/Tubería Existente</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700">Horario de Instalación</label>
-                            <select name="horario_instalacion" value={datosProyecto.horario_instalacion} onChange={handleInputChange}
-                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
-                                <option value="habil">Horas Hábiles</option>
-                                <option value="fuera_horario">Fuera de Horario/Fines de Semana</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Almacenamiento Adicional y RAID */}
-                <div className="p-6 border-2 border-red-100 rounded-xl bg-red-50">
-                    <h2 className="text-xl font-semibold mb-4 text-red-700">G. Almacenamiento Adicional y RAID</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="flex items-center pt-5">
-                            <input type="checkbox" name="raid" checked={datosProyecto.raid}
-                                   onChange={handleInputChange} id="raid"
-                                   className="h-4 w-4 text-red-600 border-gray-300 rounded"
-                            />
-                            <label htmlFor="raid" className="ml-2 block text-sm font-medium text-gray-700">Redundancia de Disco (RAID)</label>
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700">Modelo NVR/DVR Base</label>
-                            <select name="modelo_nvr_dvr" value={datosProyecto.modelo_nvr_dvr} onChange={handleInputChange}
-                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
-                                <option value="economico">Económico</option>
-                                <option value="pro">Pro/Capacidad</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Integración con Alarmas */}
-                <div className="p-6 border-2 border-teal-100 rounded-xl bg-teal-50">
-                    <h2 className="text-xl font-semibold mb-4 text-teal-700">H. Integración con Alarmas</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
-                        <div className="flex items-center pt-5">
-                            <input type="checkbox" name="integracion_alarma" checked={datosProyecto.integracion_alarma}
-                                   onChange={handleInputChange} id="integracion_alarma"
-                                   className="h-4 w-4 text-teal-600 border-gray-300 rounded"
-                            />
-                            <label htmlFor="integracion_alarma" className="ml-2 block text-sm font-medium text-gray-700">Integración con Alarma</label>
-                        </div>
-                    </div>
-                </div>
-
-
-                {/* SECCIÓN C: Personalización y Logística (Opcional) - Mantenido */}
+                {/* SECCIÓN C: Personalización y Logística (Opcional) */}
                 <div className="p-6 border-2 border-gray-200 rounded-xl bg-gray-50">
-                    <h2 className="text-xl font-semibold mb-4 text-gray-700">C. Personalización y Logística (Opcional - Sobrepasa el cálculo)</h2>
+                    <h2 className="text-xl font-semibold mb-4 text-gray-700">C. Personalización y Logística (Opcional - Anula el cálculo automático)</h2>
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                         {/* Cámaras Int/Ext Manuales */}
                         <div>
-                            <label className="block text-sm font-medium text-gray-700">Cámaras Int. Manuales</label>
+                            <label className="block text-sm font-medium text-gray-700">Cámaras Int. (Manual)</label>
+                            <p className="text-xs text-gray-500 italic mb-1">Define un número fijo de cámaras interiores.</p>
                             <input type="number" name="interior_camaras" value={datosProyecto.interior_camaras || ''} 
                                    onChange={handleInputChange} min="0" max="16"
                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-gray-700">Cámaras Ext. Manuales</label>
+                            <label className="block text-sm font-medium text-gray-700">Cámaras Ext. (Manual)</label>
+                            <p className="text-xs text-gray-500 italic mb-1">Define un número fijo de cámaras exteriores.</p>
                             <input type="number" name="exterior_camaras" value={datosProyecto.exterior_camaras || ''} 
                                    onChange={handleInputChange} min="0" max="16"
                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
@@ -784,6 +667,7 @@ export default function PlannerLogic() {
                         {/* Resolución */}
                         <div>
                             <label className="block text-sm font-medium text-gray-700">Resolución</label>
+                            <p className="text-xs text-gray-500 italic mb-1">Mayor resolución implica más detalle y más almacenamiento.</p>
                             <select name="resolucion_mp" value={datosProyecto.resolucion_mp} onChange={handleInputChange}
                                     className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
                                 <option value="2">2 MP (1080p)</option>
@@ -795,6 +679,7 @@ export default function PlannerLogic() {
                         {/* Días y Horas de Grabación */}
                         <div>
                             <label className="block text-sm font-medium text-gray-700">Días de Retención</label>
+                            <p className="text-xs text-gray-500 italic mb-1">Tiempo que se guardarán las grabaciones.</p>
                             <input type="number" name="dias_grabacion" value={datosProyecto.dias_grabacion} 
                                    onChange={handleInputChange} min="7" max="90"
                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
@@ -804,6 +689,7 @@ export default function PlannerLogic() {
                         {/* Material de Pared */}
                         <div>
                             <label className="block text-sm font-medium text-gray-700">Material de Pared</label>
+                            <p className="text-xs text-gray-500 italic mb-1">Afecta la complejidad y costo de la instalación.</p>
                             <select name="material_pared" value={datosProyecto.material_pared} onChange={handleInputChange}
                                     className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
                                 <option value="drywall">Drywall/Yeso</option>
@@ -815,6 +701,7 @@ export default function PlannerLogic() {
                         {/* Distancia Promedio */}
                         <div>
                             <label className="block text-sm font-medium text-gray-700">Distancia Cable (m)</label>
+                            <p className="text-xs text-gray-500 italic mb-1">Distancia promedio de cada cámara al grabador.</p>
                             <input type="number" name="distancia_cable" value={datosProyecto.distancia_cable} 
                                    onChange={handleInputChange} min="10" max="300"
                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
@@ -824,10 +711,125 @@ export default function PlannerLogic() {
                         {/* Ubicación */}
                         <div>
                             <label className="block text-sm font-medium text-gray-700">Ubicación (Mano de Obra)</label>
+                            <p className="text-xs text-gray-500 italic mb-1">Ciudad o zona. Afecta costos de movilización.</p>
                             <input type="text" name="ubicacion" value={datosProyecto.ubicacion} 
                                    onChange={handleInputChange}
                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
                             />
+                        </div>
+                    </div>
+                </div>
+
+                {/* SECCIÓN D: Periféricos y Puntos de Conexión */}
+                <div className="p-6 border-2 border-blue-100 rounded-xl bg-blue-50">
+                    <h2 className="text-xl font-semibold mb-4 text-blue-700">D. Periféricos y Conectividad</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-8">
+                        <div className="space-y-3">
+                            <label className="block text-sm font-medium text-gray-700">Alimentación y Red</label>
+                            <p className="text-xs text-gray-500 italic mb-1">Define cómo se energizarán y conectarán las cámaras.</p>
+                            <div className="flex items-center">
+                                <input type="checkbox" name="fuente_centralizada" checked={datosProyecto.fuente_centralizada} onChange={handleInputChange} id="fuente_centralizada" className="h-4 w-4 text-blue-600 border-gray-300 rounded"/>
+                                <label htmlFor="fuente_centralizada" className="ml-2 block text-sm text-gray-700">Fuente de Poder Centralizada</label>
+                            </div>
+                            <div className="flex items-center">
+                                <input type="checkbox" name="usa_switch" checked={datosProyecto.usa_switch} onChange={handleInputChange} id="usa_switch" className="h-4 w-4 text-blue-600 border-gray-300 rounded"/>
+                                <label htmlFor="usa_switch" className="ml-2 block text-sm text-gray-700">Requiere Switch de Red</label>
+                            </div>
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Tipo de Conector de Video</label>
+                            <p className="text-xs text-gray-500 italic mb-1">Los Baluns son recomendados para mayor calidad y distancia.</p>
+                            <select name="tipo_conector" value={datosProyecto.tipo_conector} onChange={handleInputChange}
+                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                                <option value="balun_hd">Balun HD (Recomendado)</option>
+                                <option value="bnc_jack">BNC/Jack (Básico)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                {/* SECCIÓN E: Entorno Exterior */}
+                <div className="p-6 border-2 border-yellow-100 rounded-xl bg-yellow-50">
+                    <h2 className="text-xl font-semibold mb-4 text-yellow-700">E. Detalles del Entorno Exterior</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Longitud de Perímetro (m)</label>
+                            <p className="text-xs text-gray-500 italic mb-1">Si se requiere cobertura perimetral, ingrese la longitud.</p>
+                            <input type="number" name="longitud_perimetro" value={datosProyecto.longitud_perimetro || ''}
+                                   onChange={handleInputChange} min="0"
+                                   className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Tipo de Conectividad Exterior</label>
+                            <p className="text-xs text-gray-500 italic mb-1">El cableado subterráneo es más costoso pero más seguro.</p>
+                            <select name="conectividad_exterior" value={datosProyecto.conectividad_exterior} onChange={handleInputChange}
+                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                                <option value="aereo">Aéreo con guaya</option>
+                                <option value="subterraneo">Subterráneo/Zanjas</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Grado de Exposición Ambiental</label>
+                            <p className="text-xs text-gray-500 italic mb-1">Ambientes salinos o con mucho polvo requieren protección extra.</p>
+                            <select name="exposicion_ambiental" value={datosProyecto.exposicion_ambiental} onChange={handleInputChange}
+                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                                <option value="normal">Normal</option>
+                                <option value="corrosivo">Corrosivo/Alto Polvo</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                {/* SECCIÓN F: Complejidad de la Instalación Interior */}
+                <div className="p-6 border-2 border-purple-100 rounded-xl bg-purple-50">
+                    <h2 className="text-xl font-semibold mb-4 text-purple-700">F. Detalles de la Instalación Interior</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Ruta del Cableado</label>
+                            <p className="text-xs text-gray-500 italic mb-1">El cableado oculto es más estético pero aumenta el costo.</p>
+                            <select name="ruta_cableado" value={datosProyecto.ruta_cableado} onChange={handleInputChange}
+                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                                <option value="canaleta">Visto/Canaleta</option>
+                                <option value="oculto">Oculto/Tubería Existente</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Horario de Instalación</label>
+                            <p className="text-xs text-gray-500 italic mb-1">Trabajar fuera de horas de oficina puede tener recargos.</p>
+                            <select name="horario_instalacion" value={datosProyecto.horario_instalacion} onChange={handleInputChange}
+                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                                <option value="habil">Horas Hábiles</option>
+                                <option value="fuera_horario">Fuera de Horario/Fines de Semana</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                {/* SECCIÓN G: Almacenamiento y Redundancia */}
+                <div className="p-6 border-2 border-red-100 rounded-xl bg-red-50">
+                    <h2 className="text-xl font-semibold mb-4 text-red-700">G. Almacenamiento y Funciones Pro</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-8">
+                        <div className="space-y-3">
+                            <label className="block text-sm font-medium text-gray-700">Funciones Avanzadas</label>
+                            <p className="text-xs text-gray-500 italic mb-1">Opciones que requieren equipos más robustos.</p>
+                            <div className="flex items-center">
+                                <input type="checkbox" name="raid" checked={datosProyecto.raid} onChange={handleInputChange} id="raid" className="h-4 w-4 text-red-600 border-gray-300 rounded"/>
+                                <label htmlFor="raid" className="ml-2 block text-sm text-gray-700">Discos en Espejo (RAID 1)</label>
+                            </div>
+                            <div className="flex items-center">
+                                <input type="checkbox" name="integracion_alarma" checked={datosProyecto.integracion_alarma} onChange={handleInputChange} id="integracion_alarma" className="h-4 w-4 text-red-600 border-gray-300 rounded"/>
+                                <label htmlFor="integracion_alarma" className="ml-2 block text-sm text-gray-700">Integración con Panel de Alarma</label>
+                            </div>
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Modelo NVR/DVR Base</label>
+                            <p className="text-xs text-gray-500 italic mb-1">Los modelos 'Pro' ofrecen más capacidad y funciones.</p>
+                            <select name="modelo_nvr_dvr" value={datosProyecto.modelo_nvr_dvr} onChange={handleInputChange}
+                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                                <option value="economico">Económico</option>
+                                <option value="pro">Pro/Capacidad</option>
+                            </select>
                         </div>
                     </div>
                 </div>

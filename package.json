@@ -23,6 +23,7 @@
     "better-auth": "^1.3.32",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "csv-parse": "^6.1.0",
     "drizzle-orm": "^0.44.7",
     "firebase": "^12.4.0",
     "framer-motion": "^10.18.0",
@@ -61,7 +62,8 @@
     "db:migrate": "node db/migrate.js",
     "seed": "ts-node --esm db/seed.js",
     "seed:admin": "tsx db/seed-admin.js",
-    "seed:products": "tsx db/seed-products.js"
+    "seed:products": "tsx db/seed-products.js",
+    "process-csv": "tsx scripts/process-csv.ts"
   },
   "browserslist": {
     "production": [
