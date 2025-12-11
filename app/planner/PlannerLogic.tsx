@@ -1,10 +1,78 @@
 'use client';
 
-import { useState } from 'react';
-import ReactMarkdown from 'react-markdown';
-import rehypeRaw from 'rehype-raw';
-import { generateSecureReport } from '../admin/actions'; // Importamos la nueva acción
+import { useState, useEffect } from 'react';
 import { toast } from 'sonner'; // Usaremos toast para los mensajes de error
+
+// Pequeño convertidor Markdown -> HTML para evitar dependencias pesadas
+function simpleMarkdownToHtml(md: string) {
+    // Escape HTML
+    const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+    // Handle code blocks ```
+    md = md.replace(/```([\s\S]*?)```/g, (_m, code) => `<pre><code>${esc(code)}</code></pre>`);
+
+    const lines = md.split(/\r?\n/);
+    let out: string[] = [];
+    let inList = false;
+    for (let line of lines) {
+        // Remove leading indentation (but keep code blocks handled above)
+        const trimmed = line.replace(/^\s+/, '');
+        if (/^###\s+/.test(trimmed)) {
+            if (inList) { out.push('</ul>'); inList = false; }
+            out.push(`<h3>${esc(trimmed.replace(/^###\s+/, ''))}</h3>`);
+            continue;
+        }
+        if (/^##\s+/.test(trimmed)) {
+            if (inList) { out.push('</ul>'); inList = false; }
+            out.push(`<h2>${esc(trimmed.replace(/^##\s+/, ''))}</h2>`);
+            continue;
+        }
+        if (/^#\s+/.test(trimmed)) {
+            if (inList) { out.push('</ul>'); inList = false; }
+            out.push(`<h1>${esc(trimmed.replace(/^#\s+/, ''))}</h1>`);
+            continue;
+        }
+        if (/^>\s+/.test(trimmed)) {
+            if (inList) { out.push('</ul>'); inList = false; }
+            const inner = trimmed.replace(/^>\s+/, '');
+            // Process simple inline markdown inside blockquote
+            const innerProcessed = esc(inner)
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/`([^`]+)`/g, '<code>$1</code>');
+            // If inner starts with a header marker, render it inside blockquote
+            if (/^###\s+/.test(inner)) {
+                out.push(`<blockquote><h3>${esc(inner.replace(/^###\s+/, ''))}</h3></blockquote>`);
+            } else if (/^##\s+/.test(inner)) {
+                out.push(`<blockquote><h2>${esc(inner.replace(/^##\s+/, ''))}</h2></blockquote>`);
+            } else if (/^#\s+/.test(inner)) {
+                out.push(`<blockquote><h1>${esc(inner.replace(/^#\s+/, ''))}</h1></blockquote>`);
+            } else {
+                out.push(`<blockquote>${innerProcessed}</blockquote>`);
+            }
+            continue;
+        }
+        if (/^-\s+/.test(trimmed)) {
+            if (!inList) { out.push('<ul>'); inList = true; }
+            out.push(`<li>${esc(trimmed.replace(/^-\s+/, ''))}</li>`);
+            continue;
+        }
+
+        // inline bold **text** and inline code `code`
+        let processed = esc(trimmed)
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/`([^`]+)`/g, '<code>$1</code>');
+
+        if (processed.trim() === '') {
+            if (inList) { out.push('</ul>'); inList = false; }
+            out.push('<br/>');
+        } else {
+            if (inList) { out.push('</ul>'); inList = false; }
+            out.push(`<p>${processed}</p>`);
+        }
+    }
+    if (inList) out.push('</ul>');
+    return out.join('\n');
+}
 
 // --- 1. Base de Datos de Equipos HikVision (Actualizado) ---
 const HIKVISION_SPECS = {
@@ -319,122 +387,90 @@ function calcularRecomendaciones(datos: ProyectoDatos): Recomendacion | null {
     };
 }
 
-// --- 3. Componente de Informe con Markdown (Actualizado) ---
+// --- 3. Componente de Informe (Formato profesional) ---
 function MarkdownReport({ recomendaciones, datosProyecto }: { recomendaciones: Recomendacion, datosProyecto: ProyectoDatos }) {
-    const total_camaras_manual = datosProyecto.interior_camaras + datosProyecto.exterior_camaras;
-
-    const generateReport = () => {
-        let cameraCalcExplanation = `El sistema sugiere **${recomendaciones.camaras_sugeridas_area} cámaras** (factor ${HIKVISION_SPECS.FACTOR_EDIFICACION[datosProyecto.tipo_edificacion].factor_camaras.toFixed(1)} por ser ${datosProyecto.tipo_edificacion.toUpperCase()}) basadas en ${datosProyecto.area_m2}m² y el nivel de seguridad **${datosProyecto.nivel_seguridad.toUpperCase()}**.`;
-        
-        if (total_camaras_manual > 0 && total_camaras_manual > recomendaciones.camaras_sugeridas_area) {
-            cameraCalcExplanation += ` Se usó su conteo manual de ${total_camaras_manual} (Int: ${datosProyecto.interior_camaras}, Ext: ${datosProyecto.exterior_camaras}) porque es mayor.`;
-        } else if (total_camaras_manual > 0 && total_camaras_manual < recomendaciones.camaras_sugeridas_area) {
-            cameraCalcExplanation += ` Su conteo manual (${total_camaras_manual}) fue ignorado por ser inferior al recomendado (${recomendaciones.camaras_sugeridas_area}).`;
-        } else {
-            cameraCalcExplanation += ` Se aplicó el cálculo sugerido de ${recomendaciones.total_camaras} cámaras.`;
-        }
-
-        let ptzReport = '';
-        if (recomendaciones.num_camaras_especiales > 0) {
-            ptzReport = `- **Cámara Especial (PTZ):** ${recomendaciones.num_camaras_especiales} unidad(es) - Modelo ${recomendaciones.modelo_camara_especial} (Costo incluido).\n`;
-        }
-        
-        let extModelNote = datosProyecto.usa_ir_largo_alcance ? `(Modelo de Larga Distancia IR ${recomendaciones.modelo_camara_ext})` : '';
-
-        let edificationContext = `Tipo de Edificación: **${datosProyecto.tipo_edificacion.toUpperCase()}** (${datosProyecto.num_pisos} piso(s)).`;
-        let specialCameraContext = '';
-        if (datosProyecto.usa_ptz) {
-            specialCameraContext += ' Se incluyó una cámara PTZ (móvil) por su requerimiento. ';
-        }
-        if (datosProyecto.usa_ir_largo_alcance) {
-            specialCameraContext += ' Se priorizaron cámaras exteriores con IR de largo alcance. ';
-        }
-
-        let peripheralContext = '';
-        if (datosProyecto.fuente_centralizada) {
-            peripheralContext += ' Se consideró una fuente de alimentación centralizada. ';
-        } else {
-            peripheralContext += ' Se estimaron fuentes individuales para cada cámara. ';
-        }
-        if (datosProyecto.usa_switch) {
-            peripheralContext += ' Se incluyó un switch para la gestión de red. ';
-        }
-        peripheralContext += ` Se utilizarán conectores **${datosProyecto.tipo_conector.toUpperCase().replace('_', ' ')}**.`;
-
-        let exteriorContext = '';
-        if (datosProyecto.longitud_perimetro > 0) {
-            exteriorContext += ` Se consideró una longitud de perímetro de **${datosProyecto.longitud_perimetro}m** con conectividad **${datosProyecto.conectividad_exterior.toUpperCase()}**.`;
-        }
-        if (datosProyecto.exposicion_ambiental === 'corrosivo') {
-            exteriorContext += ' Se incluyeron consumibles especiales para ambientes corrosivos/polvo. ';
-        }
-
-        let installationComplexityContext = `Ruta de cableado: **${datosProyecto.ruta_cableado.toUpperCase()}**. Horario de instalación: **${datosProyecto.horario_instalacion.toUpperCase()}**.`;
-
-        let storageRaidContext = `Modelo de DVR/NVR base: **${datosProyecto.modelo_nvr_dvr.toUpperCase()}**.`;
-        if (datosProyecto.raid) {
-            storageRaidContext += ' Se configuró redundancia de disco (RAID) para mayor seguridad de datos. ';
-        }
-        if (datosProyecto.integracion_alarma) {
-            storageRaidContext += ' Se seleccionó un DVR compatible con integración de alarma. ';
-        }
-
-        const report = `
-## ✅ Informe Detallado del Proyecto de ${datosProyecto.issuingCompanyName || 'Su Compañía'} para: ${datosProyecto.clientName || 'Cliente'}
-
-> #### CÁLCULO DE CÁMARAS:
-> ${cameraCalcExplanation}
-> **Contexto de Edificación:** ${edificationContext}
-> **Requerimientos Especiales:** ${specialCameraContext}
-
----
-
-### EQUIPAMIENTO HIKVISION
-- **Cámaras Totales (Final):** ${recomendaciones.total_camaras} (Int: ${recomendaciones.final_int_camaras} / Ext: ${recomendaciones.final_ext_camaras})
-${ptzReport}
-- **Grabador (DVR/NVR):** ${recomendaciones.modelo_dvr} (${recomendaciones.canales_dvr} Canales)
-- **Modelo Interior:** ${recomendaciones.modelo_camara_int} (Domo)
-- **Modelo Exterior:** ${recomendaciones.modelo_camara_ext} (Bullet) ${extModelNote}
-- **Almacenamiento Mínimo:** ${recomendaciones.almacenamiento_tb_min} TB (Requerido)
-- **Disco Duro Recomendado:** ${recomendaciones.num_hdds} x ${recomendaciones.modelo_hdd}
-> **Costo de Equipos (Estimado): ${recomendaciones.costo_total_equipos} USD**
-
----
-
-### DESGLOSE DE COSTOS DE EQUIPOS
-- **Costo de Cámaras:** ${recomendaciones.costo_total_equipos - recomendaciones.costo_dvr - recomendaciones.costo_hdd} USD
-- **Costo de DVR:** ${recomendaciones.costo_dvr} USD
-- **Costo de HDD:** ${recomendaciones.costo_hdd} USD
-
----
-
-### RESUMEN FINANCIERO (Ajustado por Logística)
-- **Costo de Equipos:** ${recomendaciones.costo_total_equipos} USD
-- **Costo de Consumibles:** ~${recomendaciones.costo_consumibles} USD
-- **Mano de Obra (Factor ${Math.round(recomendaciones.factor_mano_obra * 100)}%):** ~${recomendaciones.costo_instalacion} USD
-> **Total Proyecto Estimado: ${recomendaciones.costo_final_estimado} USD**
-
----
-
-### 📋 NOTAS LOGÍSTICAS Y MATERIALES REQUERIDOS
-${recomendaciones.materiales.map(m => `- ${m}`).join('\n')}
-
-> **Consideraciones Adicionales:**
-> - **Periféricos y Conectividad:** ${peripheralContext}
-> - **Entorno Exterior:** ${exteriorContext}
-> - **Complejidad de Instalación:** ${installationComplexityContext}
-> - **Almacenamiento y Redundancia:** ${storageRaidContext}
-> - **NOTA TÉCNICA DE INSTALACIÓN:** La complejidad y el costo de mano de obra se ajustaron debido al tipo de edificación (**${datosProyecto.tipo_edificacion.toUpperCase()}**) con **${datosProyecto.num_pisos} piso(s)** y la instalación sobre **${datosProyecto.material_pared.toUpperCase()}**.
-`;
-        return report;
-    };
+    const formatCurrency = (v: number) => new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(v);
+    const formatTb = (v: number) => `${v} TB`;
 
     return (
-        <div className="mt-8 pt-6 border-t border-gray-300">
-            <ReactMarkdown rehypePlugins={[rehypeRaw]}>
-                {generateReport()}
-            </ReactMarkdown>
-        </div>
+        <section className="mt-8 p-6 bg-white rounded-xl shadow-md">
+            <header className="mb-6">
+                <h2 className="text-2xl font-extrabold text-slate-800">✅ Informe Detallado del Proyecto</h2>
+                <p className="text-sm text-slate-500">Empresa emisora: <strong>{datosProyecto.issuingCompanyName || 'Autoplancam'}</strong> — Cliente: <strong>{datosProyecto.clientName || 'Cliente'}</strong></p>
+            </header>
+
+            <div className="mb-6">
+                <h3 className="text-lg font-semibold text-slate-700">Cálculo de Cámaras</h3>
+                <p className="mt-2 text-slate-600">El sistema sugiere <strong>{recomendaciones.camaras_sugeridas_area}</strong> cámaras (factor {HIKVISION_SPECS.FACTOR_EDIFICACION[datosProyecto.tipo_edificacion].factor_camaras.toFixed(1)} por ser {datosProyecto.tipo_edificacion.toUpperCase()}) basadas en <strong>{datosProyecto.area_m2} m²</strong> y el nivel de seguridad <strong>{datosProyecto.nivel_seguridad.toUpperCase()}</strong>.</p>
+                <p className="mt-2 text-slate-600">Contexto: <strong>{datosProyecto.tipo_edificacion.toUpperCase()}</strong> — {datosProyecto.num_pisos} piso(s). {datosProyecto.usa_ptz ? 'Incluye PTZ. ' : ''}{datosProyecto.usa_ir_largo_alcance ? 'Incluye IR de largo alcance.' : ''}</p>
+            </div>
+
+            <div className="mb-6">
+                <h3 className="text-lg font-semibold text-slate-700">Equipamiento recomendado</h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-3">
+                    <div className="col-span-1">
+                        <p className="text-sm text-slate-600">Cámaras (Total)</p>
+                        <p className="text-xl font-bold text-slate-800">{recomendaciones.total_camaras} <span className="text-sm font-medium text-slate-500">(Int: {recomendaciones.final_int_camaras} / Ext: {recomendaciones.final_ext_camaras})</span></p>
+                    </div>
+                    <div>
+                        <p className="text-sm text-slate-600">Grabador</p>
+                        <p className="text-lg font-semibold">{recomendaciones.modelo_dvr} <span className="text-sm text-slate-500">({recomendaciones.canales_dvr} canales)</span></p>
+                        <p className="text-sm text-slate-500 mt-1">Discos: {recomendaciones.num_hdds} x {recomendaciones.modelo_hdd} ({formatTb(recomendaciones.almacenamiento_tb_min)})</p>
+                    </div>
+                    <div>
+                        <p className="text-sm text-slate-600">Coste estimado</p>
+                        <p className="text-2xl font-extrabold text-slate-800 mt-1">{formatCurrency(recomendaciones.costo_total_equipos)}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div className="mb-6">
+                <h3 className="text-lg font-semibold text-slate-700">Desglose de costos</h3>
+                <ul className="mt-3 space-y-2 text-slate-600">
+                    <li><strong>Costo de cámaras:</strong> {formatCurrency(recomendaciones.costo_total_equipos - recomendaciones.costo_dvr - recomendaciones.costo_hdd)}</li>
+                    <li><strong>Costo DVR:</strong> {formatCurrency(recomendaciones.costo_dvr)}</li>
+                    <li><strong>Costo HDD:</strong> {formatCurrency(recomendaciones.costo_hdd)}</li>
+                </ul>
+            </div>
+
+            <div className="mb-6">
+                <h3 className="text-lg font-semibold text-slate-700">Resumen financiero</h3>
+                <div className="mt-3 grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="p-4 bg-slate-50 rounded">
+                        <div className="text-sm text-slate-500">Equipos</div>
+                        <div className="text-lg font-bold">{formatCurrency(recomendaciones.costo_total_equipos)}</div>
+                    </div>
+                    <div className="p-4 bg-slate-50 rounded">
+                        <div className="text-sm text-slate-500">Consumibles</div>
+                        <div className="text-lg font-bold">{formatCurrency(recomendaciones.costo_consumibles)}</div>
+                    </div>
+                    <div className="p-4 bg-slate-50 rounded">
+                        <div className="text-sm text-slate-500">Mano de obra</div>
+                        <div className="text-lg font-bold">{formatCurrency(recomendaciones.costo_instalacion)}</div>
+                    </div>
+                </div>
+                <div className="mt-4 text-right">
+                    <div className="text-sm text-slate-500">Total proyecto estimado</div>
+                    <div className="text-2xl font-extrabold text-slate-800">{formatCurrency(recomendaciones.costo_final_estimado)}</div>
+                </div>
+            </div>
+
+            <div className="mb-6">
+                <h3 className="text-lg font-semibold text-slate-700">Materiales y notas logísticas</h3>
+                <ul className="mt-3 list-disc list-inside text-slate-600">
+                    {recomendaciones.materiales.map((m, i) => (
+                        <li key={i}>{m}</li>
+                    ))}
+                </ul>
+
+                <div className="mt-4 text-slate-600">
+                    <p><strong>Periféricos y conectividad:</strong> {(datosProyecto.fuente_centralizada ? 'Fuente centralizada. ' : 'Fuentes individuales. ') + (datosProyecto.usa_switch ? 'Switch incluido. ' : '') + `Conectores: ${datosProyecto.tipo_conector.toUpperCase().replace('_',' ')}`}</p>
+                    <p className="mt-2"><strong>Entorno exterior:</strong> {datosProyecto.longitud_perimetro > 0 ? `Perímetro ${datosProyecto.longitud_perimetro}m, conectividad ${datosProyecto.conectividad_exterior}.` : 'No aplica.'} {datosProyecto.exposicion_ambiental === 'corrosivo' ? 'Ambiente corrosivo — consumibles especiales.' : ''}</p>
+                    <p className="mt-2"><strong>Instalación:</strong> Ruta: {datosProyecto.ruta_cableado.toUpperCase()}. Horario: {datosProyecto.horario_instalacion.toUpperCase()}.</p>
+                </div>
+            </div>
+
+        </section>
     );
 }
 
@@ -510,21 +546,31 @@ export default function PlannerLogic() {
         e.preventDefault();
         setIsGenerating(true);
 
-        // 1. Llama a la acción del servidor para verificar los permisos
-        const result = await generateSecureReport(datosProyecto);
+        try {
+            // Llamamos a la ruta API que ejecuta la verificación server-side
+            const resp = await fetch('/api/admin/generate-secure-report', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(datosProyecto),
+            });
 
-        // 2. Si hay un error (límite alcanzado, cuenta expirada), muéstralo y detente.
-        if (result.error) {
-            toast.error(result.error);
+            const result = await resp.json();
+
+            if (result.error) {
+                toast.error(result.error);
+                setIsGenerating(false);
+                return;
+            }
+
+            // Si la verificación server-side es exitosa, calculamos y mostramos el reporte en cliente
+            const resultados = calcularRecomendaciones(datosProyecto);
+            setRecomendaciones(resultados);
+            setCalculado(true);
+        } catch (err: any) {
+            toast.error(err?.message || 'Error al generar el reporte');
+        } finally {
             setIsGenerating(false);
-            return;
         }
-
-        // 3. Si todo está bien, procede a calcular y mostrar el reporte.
-        const resultados = calcularRecomendaciones(datosProyecto);
-        setRecomendaciones(resultados);
-        setCalculado(true);
-        setIsGenerating(false);
     };
 
     return (

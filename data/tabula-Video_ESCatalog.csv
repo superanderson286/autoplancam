@@ -1,5 +1,33 @@
-DS-2CE12DF3T-,DS-2CE16D1T-,DS-2CE16D0T-,DS-2CE17D0T-,DS-2CE16D0T-
-PIRXOS(2.8MM),IRP(2.8MM),ITF(2.8MM),IT3F(2.8MM),IRPF(6MM)
+"",DS-2CE16C2T-IR 2.8,DS-2CE16C0T-IT3 16MM
+Tipo de Cámara,Bullet,Bullet
+Resolución,"1,3 Mpx",1 Mpx
+Tecnología de Vídeo,HD - TVI,HD - TVI
+Tipo de Óptica,Fija,Fija
+Distancia Focal,"2,8 mm",16 mm
+"Ángulo de Ajuste",3 ejes,3 ejes
+LEDs,20 m IR,40 m IR
+Luz Blanca,;,;
+WDR,;,;
+Iluminación Mínima,0.01lux,0.01lux
+Análisis de Video,No,No
+Entradas/Salidas de Alarma,;,;
+Entrada/Salida Audio,;,;
+Slot SD,;,;
+WIFI,;,;
+Exterior,IP66,IP66
+Grado de Protección Antivandálica,;,;
+Soporte Pared,No,No
+Soporte Base,DS-1280ZJ-XS,DS-1280ZJ-XS
+Soporte Techo,No,No
+Soporte Poste,No,No
+Soporte Esquina,No,No
+Soporte Empotrado,No,No
+Alimentación,12 Vdc,12 Vdc
+Alto x Ancho x Profundo (cm),- x - x -,8.10 x 8.60 x 22.00
+Peso (kg),0.31,0.70
+Disponibilidad,C,C
+"",DS-2CE12DF3T-,DS-2CE16D1T-,DS-2CE16D0T-,DS-2CE17D0T-,DS-2CE16D0T-
+"",PIRXOS(2.8MM),IRP(2.8MM),ITF(2.8MM),IT3F(2.8MM),IRPF(6MM)
 Tipo de Cámara,Bullet,Bullet,Bullet,Bullet,Bullet
 Resolución,2 Mpx,2 Mpx,2 Mpx,2 Mpx,2 Mpx
 "",,,HD - TVI,HD - TVI,HD - TVI
@@ -34,8 +62,70 @@ Alto x Ancho x,,,,,
 Profundo (cm),7.71 x 8.26 x 21.32,7.00 x 7.00 x 14.90,5.70 x 6.09 x 13.80,7.54 x 7.89 x 21.66,7.00 x 7.00 x 13.70
 Peso (kg),0.47,0.29,0.57,0.32,0.17
 Disponibilidad,C,C,C,A,C
-DS-2CE16H0T-,DS-2CE16U1T-,DS-2CE19H0T-,DS-2CE19H8T-,DS-2CE19U1T-
-ITF(2.8MM)(C),ITF(2.8MM),AIT3ZF(2.7-13.5MM),AIT3ZF(2.7-13.5MM),AIT3ZF(2.7-13.5MM)
+"",DS-2CE19D0T-IT3ZF(2.7-13.5MM),DS-2CE19D3T-AIT3ZF(2.7-13.5MM)
+Tipo de Cámara,Bullet,Bullet
+Resolución,2 Mpx,2 Mpx
+"",HD - TVI,HD - TVI
+"",AHD,AHD
+Tecnología de Vídeo,,
+"",CVBS,CVBS
+"",HD - CVI,HD - CVI
+Tipo de Óptica,Motorizada,Motorizada
+Distancia Focal,"2,7 - 13,5 mm","2,7 - 13,5 mm"
+"Ángulo de Ajuste",3 ejes,3 ejes
+LEDs,70 m IR,70 m IR
+Luz Blanca,;,;
+WDR,120 dB,120 dB
+Iluminación Mínima,0.005lux,0.005lux
+Análisis de Video,No,No
+Entradas/Salidas de Alarma,;,;
+Entrada/Salida Audio,;,;
+Slot SD,;,;
+WIFI,;,;
+Exterior,IP67,IP67
+Grado de Protección Antivandálica,;,;
+Soporte Pared,No,No
+Soporte Base,DS-1280ZJ-S,DS-1280ZJ-S
+Soporte Techo,No,No
+Soporte Poste,DS-1275ZJ-SUS,DS-1275ZJ-SUS
+Soporte Esquina,DS-1276ZJ-SUS,DS-1276ZJ-SUS
+Soporte Empotrado,No,No
+Alimentación,12 Vdc,12 Vdc
+Alto x Ancho x Profundo (cm),8.45 x 9.20 x 25.51,8.40 x 9.20 x 25.50
+"",DS-2CE19D0T-IT3ZF(2.7-13.5MM),DS-2CE19D3T-AIT3ZF(2.7-13.5MM)
+Tipo de Cámara,Bullet,Bullet
+Resolución,2 Mpx,2 Mpx
+"",HD - TVI,HD - TVI
+"",AHD,AHD
+Tecnología de Vídeo,,
+"",CVBS,CVBS
+"",HD - CVI,HD - CVI
+Tipo de Óptica,Motorizada,Motorizada
+Distancia Focal,"2,7 - 13,5 mm","2,7 - 13,5 mm"
+"Ángulo de Ajuste",3 ejes,3 ejes
+LEDs,70 m IR,70 m IR
+Luz Blanca,;,;
+WDR,120 dB,120 dB
+Iluminación Mínima,0.005lux,0.005lux
+Análisis de Video,No,No
+Entradas/Salidas de Alarma,;,;
+Entrada/Salida Audio,;,;
+Slot SD,;,;
+WIFI,;,;
+Exterior,IP67,IP67
+Grado de Protección Antivandálica,;,;
+Soporte Pared,No,No
+Soporte Base,DS-1280ZJ-S,DS-1280ZJ-S
+Soporte Techo,No,No
+Soporte Poste,DS-1275ZJ-SUS,DS-1275ZJ-SUS
+Soporte Esquina,DS-1276ZJ-SUS,DS-1276ZJ-SUS
+Soporte Empotrado,No,No
+Alimentación,12 Vdc,12 Vdc
+Alto x Ancho x Profundo (cm),8.45 x 9.20 x 25.51,8.40 x 9.20 x 25.50
+Peso (kg),0.65,0.65
+Disponibilidad,A+,A+
+"",DS-2CE16H0T-,DS-2CE16U1T-,DS-2CE19H0T-,DS-2CE19H8T-,DS-2CE19U1T-
+"",ITF(2.8MM)(C),ITF(2.8MM),AIT3ZF(2.7-13.5MM),AIT3ZF(2.7-13.5MM),AIT3ZF(2.7-13.5MM)
 Tipo de Cámara,Bullet,Bullet,Bullet,Bullet,Bullet
 Resolución,5 Mpx,8 Mpx,5 Mpx,5 Mpx,8 Mpx
 "",HD - TVI,HD - TVI,HD - TVI,HD - TVI,HD - TVI
@@ -51,6 +141,28 @@ Luz Blanca,;,;,;,;,;
 WDR,Digital WDR,Digital WDR,Digital WDR,130 dB,Digital WDR
 Iluminación Mínima,0.01lux,0.01lux,0.01lux,0.003lux,0.01lux
 Análisis de Video,No,No,No,No,No
+Entradas/Salidas de,,,,,
+Alarma,;,;,;,;,;
+Entrada/Salida Audio,;,;,;,;,;
+Slot SD,;,;,;,;,;
+WIFI,;,;,;,;,;
+Exterior,IP67,IP67,IP67,IP67,IP67
+Grado de Protección,,,,,
+Antivandálica,;,;,;,;,;
+Soporte Pared,No,No,No,No,No
+Soporte Base,DS-1280ZJ-XS,DS-1280ZJ-XS,DS-1280ZJ-S,DS-1280ZJ-S,DS-1280ZJ-S
+Soporte Techo,No,No,No,No,No
+Soporte Poste,DS-1275ZJ-SUS,DS-1275ZJ-SUS,DS-1275ZJ-SUS,DS-1275ZJ-SUS,DS-1275ZJ-SUS
+Soporte Esquina,DS-1276ZJ-SUS,DS-1276ZJ-SUS,DS-1276ZJ-SUS,DS-1276ZJ-SUS,DS-1276ZJ-SUS
+"",DS-2CE16H0T-,DS-2CE16U1T-,DS-2CE19H0T-,DS-2CE19H8T-,DS-2CE19U1T-
+"",ITF(2.8MM)(C),ITF(2.8MM),AIT3ZF(2.7-13.5MM),AIT3ZF(2.7-13.5MM),AIT3ZF(2.7-13.5MM)
+Tipo de Cámara,Bullet,Bullet,Bullet,Bullet,Bullet
+Resolución,5 Mpx,8 Mpx,5 Mpx,5 Mpx,8 Mpx
+"",HD - TVI,HD - TVI,HD - TVI,HD - TVI,HD - TVI
+"",AHD,AHD,AHD,AHD,AHD
+Tecnología de Vídeo,,,,,
+"",CVBS,CVBS,CVBS,CVBS,CVBS
+"",HD - CVI,HD - CVI,HD - CVI,HD - CVI,HD - CVI
 Tipo de Óptica,Fija,Fija,Motorizada,Motorizada,Motorizada
 Distancia Focal,"2,8 mm","2,8 mm","2,7 - 13,5 mm","2,7 - 13,5 mm","2,7 - 13,5 mm"
 "Ángulo de Ajuste",3 ejes,3 ejes,3 ejes,3 ejes,3 ejes
@@ -61,9 +173,30 @@ Iluminación Mínima,0.01lux,0.01lux,0.01lux,0.003lux,0.01lux
 Análisis de Video,No,No,No,No,No
 Entradas/Salidas de,,,,,
 Alarma,;,;,;,;,;
-DS-2CE56D1T-,,DS-2CE56D0T-,DS-2CE56D8T-,DS-2CE76D0T-,DS-2CE72D8T-
-"",IRMMF(2.8MM),,,,
-IRMM(2.8MM),,IRMF(3.6MM)(C),ITMF(2.8MM),ITMF(2.8MM)(C),IT3SE(2.8MM)
+Entrada/Salida Audio,;,;,;,;,;
+Slot SD,;,;,;,;,;
+WIFI,;,;,;,;,;
+Exterior,IP67,IP67,IP67,IP67,IP67
+Grado de Protección,,,,,
+Antivandálica,;,;,;,;,;
+Soporte Pared,No,No,No,No,No
+Soporte Base,DS-1280ZJ-XS,DS-1280ZJ-XS,DS-1280ZJ-S,DS-1280ZJ-S,DS-1280ZJ-S
+Soporte Techo,No,No,No,No,No
+Soporte Poste,DS-1275ZJ-SUS,DS-1275ZJ-SUS,DS-1275ZJ-SUS,DS-1275ZJ-SUS,DS-1275ZJ-SUS
+Soporte Esquina,DS-1276ZJ-SUS,DS-1276ZJ-SUS,DS-1276ZJ-SUS,DS-1276ZJ-SUS,DS-1276ZJ-SUS
+Soporte Empotrado,No,No,No,No,No
+"",,,12 Vca,,
+Alimentación,12 Vdc,12 Vdc,,12 Vdc / 24 Vac,12 Vdc / 24 Vac
+"",,,12 Vdc,,
+Alto x Ancho x,,,,,
+Profundo (cm),5.80 x 6.10 x 16.30,5.80 x 6.10 x 15.86,8.45 x 9.20 x 25.51,8.45 x 9.20 x 25.51,8.45 x 9.20 x 25.51
+Peso (kg),0.35,0.34,0.68,0.93,0.69
+Disponibilidad,A,C,B,A,C
+"",,DS-2CE56D0T-,,,,
+"",DS-2CE56D1T-,,DS-2CE56D0T-,DS-2CE56D8T-,DS-2CE76D0T-,DS-2CE72D8T-
+"",,IRMMF(2.8MM),,,,
+"",IRMM(2.8MM),,IRMF(3.6MM)(C),ITMF(2.8MM),ITMF(2.8MM)(C),IT3SE(2.8MM)
+"",,(C),,,,
 Tipo de Cámara,Minidomo,Minidomo,Minidomo,Minidomo,Minidomo,Minidomo
 Resolución,2 Mpx,2 Mpx,2 Mpx,2 Mpx,2 Mpx,2 Mpx
 "",,HD - TVI,HD - TVI,HD - TVI,AHD,
@@ -101,14 +234,14 @@ Empotrado,No,No,No,No,No,No
 Alimentación,12 Vdc,12 Vdc,12 Vdc,12 Vdc,12 Vdc,
 "",,,,,,PoC at
 Alto x Ancho x,,,,,,
-Profundo (cm),6.40 x 9.80 x 9.80,6.54 x 8.34 x 8.34,6.76 x 8.94 x 8.94,6.82 x 8.95 x 8.95,7.93 x 9.00 x 9.00,9.80 x 10.90 x 10.90
+Profundo (cm),6.40 x 9.80 x 9.80,6.54 x 8.34 x 8.34,6.76 x 8.94 x 8.94,6.82 x 8.95 x 8.95,7.93 x 9.00 x 9.00,9.80 x 10.90 x 10.9
 Peso (kg),0.19,0.24,0.34,0.24,0.29,0.37
 Disponibilidad,C,A,C,C,A,C
-"",,,DS-2CE79D0T-,DS-2CE5AD8T-
-DS-2CE50D8T-,DS-2CE5AD0T-,DS-2CE79D0T-,,
-"",,,IT3ZF(2.7-13.5MM),VPIT3ZE(2.7-
-VPITSZE(2.8-12MM),VPIT3F(2.7-13.5MM),VFIT3F(2.7-13.5MM),,
-"",,,(EU),13.5MM)
+"",,,,DS-2CE79D0T-,DS-2CE5AD8T-
+"",DS-2CE50D8T-,DS-2CE5AD0T-,DS-2CE79D0T-,,
+"",,,,IT3ZF(2.7-13.5MM),VPIT3ZE(2.7-
+"",VPITSZE(2.8-12MM),VPIT3F(2.7-13.5MM),VFIT3F(2.7-13.5MM),,
+"",,,,(EU),13.5MM)
 Tipo de Cámara,Minidomo,Minidomo,Minidomo,Minidomo,Minidomo
 Resolución,2 Mpx,2 Mpx,2 Mpx,2 Mpx,2 Mpx
 "",,HD - TVI,HD - TVI,HD - TVI,
@@ -126,11 +259,102 @@ Iluminación Mínima,0.0005lux,0.01lux,0.005lux,0.005lux,0.003lux
 Análisis de Video,No,No,No,No,No
 Entradas/Salidas de,,,,,
 Alarma,;,;,;,;,;
-"",,,,DS-2CE59H8T-,DS-2CE79H0T-
-DS-2CE72HFT-,DS-2CE76H0T-,DS-2CE76H8T-,DS-2CE56H1T-,,
-"",,,,AVPIT3ZF(2.7-,IT3ZF(2.7-
-F28(2.8MM),ITMF(2.8MM)(C),ITMF(2.8MM),IT3E(3.6MM),,
-"",,,,13.5MM),13.5MM)
+Entrada/Salida Audio,;,;,;,;,;
+Slot SD,;,;,;,;,;
+WIFI,;,;,;,;,;
+Exterior,IP67,IP67,IP67,IP67,IP67
+Grado de Protección,,,,,
+Antivandálica,IK10,IK10,;,;,IK10
+Soporte Pared,DS-1272ZJ-120,DS-1273ZJ-140-DM45,DS-1273ZJ-130-TRL,DS-1273ZJ-130-TRL,No
+Soporte Base,DS-1280ZJ-DM46,DS-1280ZJ-DM45,DS-1280ZJ-M,DS-1280ZJ-XS,DS-1280ZJ-DM45
+Soporte Techo,No,No,No,No,No
+Soporte Poste,DS-1275ZJ-SUS,DS-1275ZJ-SUS,DS-1275ZJ-SUS,DS-1275ZJ-SUS,DS-1275ZJ-SUS
+"",,,,DS-2CE79D0T-,DS-2CE5AD8T-
+"",DS-2CE50D8T-,DS-2CE5AD0T-,DS-2CE79D0T-,,
+"",,,,IT3ZF(2.7-13.5MM),VPIT3ZE(2.7-
+"",VPITSZE(2.8-12MM),VPIT3F(2.7-13.5MM),VFIT3F(2.7-13.5MM),,
+"",,,,(EU),13.5MM)
+Tipo de Cámara,Minidomo,Minidomo,Minidomo,Minidomo,Minidomo
+Resolución,2 Mpx,2 Mpx,2 Mpx,2 Mpx,2 Mpx
+"",,HD - TVI,HD - TVI,HD - TVI,
+"",,AHD,AHD,AHD,
+Tecnología de Vídeo,HD - TVI,,,,HD - TVI
+"",,CVBS,CVBS,CVBS,
+"",,HD - CVI,HD - CVI,HD - CVI,
+Tipo de Óptica,Motorizada,Varifocal Manual,Motorizada,Motorizada,Motorizada
+Distancia Focal,"2,8 - 12 mm","2,7 - 13,5 mm","2,7 - 13,5 mm","2,7 - 13,5 mm","2,7 - 13,5 mm"
+"Ángulo de Ajuste",3 ejes,3 ejes,3 ejes,3 ejes,3 ejes
+LEDs,60 m IR,40 m IR,70 m IR,70 m IR,60 m IR
+Luz Blanca,;,;,;,;,;
+WDR,130 dB,Digital WDR,120 dB,120 dB,130 dB
+Iluminación Mínima,0.0005lux,0.01lux,0.005lux,0.005lux,0.003lux
+Análisis de Video,No,No,No,No,No
+Entradas/Salidas de,,,,,
+Alarma,;,;,;,;,;
+Entrada/Salida Audio,;,;,;,;,;
+Slot SD,;,;,;,;,;
+WIFI,;,;,;,;,;
+Exterior,IP67,IP67,IP67,IP67,IP67
+Grado de Protección,,,,,
+Antivandálica,IK10,IK10,;,;,IK10
+Soporte Pared,DS-1272ZJ-120,DS-1273ZJ-140-DM45,DS-1273ZJ-130-TRL,DS-1273ZJ-130-TRL,No
+Soporte Base,DS-1280ZJ-DM46,DS-1280ZJ-DM45,DS-1280ZJ-M,DS-1280ZJ-XS,DS-1280ZJ-DM45
+Soporte Techo,No,No,No,No,No
+Soporte Poste,DS-1275ZJ-SUS,DS-1275ZJ-SUS,DS-1275ZJ-SUS,DS-1275ZJ-SUS,DS-1275ZJ-SUS
+Soporte Esquina,DS-1276ZJ-SUS,DS-1276ZJ-SUS,DS-1276ZJ-SUS,DS-1276ZJ-SUS,DS-1276ZJ-SUS
+Soporte Empotrado,No,No,No,No,No
+"",12 Vdc,,,,12 Vdc
+Alimentación,,12 Vdc,12 Vdc,12 Vdc,
+"",PoC af,,,,PoC af
+Alto x Ancho x,,,,,
+Profundo (cm),9.70 x 12.10 x 12.10,9.99 x 14.10 x 14.10,12.00 x 12.00 x 10.51,8.45 x 9.20 x 25.51,11.00 x 14.00 x 14.00
+Peso (kg),0.57,0.80,0.68,0.65,1.60
+"",,,,DS-2CE79D0T-,DS-2CE5AD8T-
+"",DS-2CE50D8T-,DS-2CE5AD0T-,DS-2CE79D0T-,,
+"",,,,IT3ZF(2.7-13.5MM),VPIT3ZE(2.7-
+"",VPITSZE(2.8-12MM),VPIT3F(2.7-13.5MM),VFIT3F(2.7-13.5MM),,
+"",,,,(EU),13.5MM)
+Tipo de Cámara,Minidomo,Minidomo,Minidomo,Minidomo,Minidomo
+Resolución,2 Mpx,2 Mpx,2 Mpx,2 Mpx,2 Mpx
+"",,HD - TVI,HD - TVI,HD - TVI,
+"",,AHD,AHD,AHD,
+Tecnología de Vídeo,HD - TVI,,,,HD - TVI
+"",,CVBS,CVBS,CVBS,
+"",,HD - CVI,HD - CVI,HD - CVI,
+Tipo de Óptica,Motorizada,Varifocal Manual,Motorizada,Motorizada,Motorizada
+Distancia Focal,"2,8 - 12 mm","2,7 - 13,5 mm","2,7 - 13,5 mm","2,7 - 13,5 mm","2,7 - 13,5 mm"
+"Ángulo de Ajuste",3 ejes,3 ejes,3 ejes,3 ejes,3 ejes
+LEDs,60 m IR,40 m IR,70 m IR,70 m IR,60 m IR
+Luz Blanca,;,;,;,;,;
+WDR,130 dB,Digital WDR,120 dB,120 dB,130 dB
+Iluminación Mínima,0.0005lux,0.01lux,0.005lux,0.005lux,0.003lux
+Análisis de Video,No,No,No,No,No
+Entradas/Salidas de,,,,,
+Alarma,;,;,;,;,;
+Entrada/Salida Audio,;,;,;,;,;
+Slot SD,;,;,;,;,;
+WIFI,;,;,;,;,;
+Exterior,IP67,IP67,IP67,IP67,IP67
+Grado de Protección,,,,,
+Antivandálica,IK10,IK10,;,;,IK10
+Soporte Pared,DS-1272ZJ-120,DS-1273ZJ-140-DM45,DS-1273ZJ-130-TRL,DS-1273ZJ-130-TRL,No
+Soporte Base,DS-1280ZJ-DM46,DS-1280ZJ-DM45,DS-1280ZJ-M,DS-1280ZJ-XS,DS-1280ZJ-DM45
+Soporte Techo,No,No,No,No,No
+Soporte Poste,DS-1275ZJ-SUS,DS-1275ZJ-SUS,DS-1275ZJ-SUS,DS-1275ZJ-SUS,DS-1275ZJ-SUS
+Soporte Esquina,DS-1276ZJ-SUS,DS-1276ZJ-SUS,DS-1276ZJ-SUS,DS-1276ZJ-SUS,DS-1276ZJ-SUS
+Soporte Empotrado,No,No,No,No,No
+"",12 Vdc,,,,12 Vdc
+Alimentación,,12 Vdc,12 Vdc,12 Vdc,
+"",PoC af,,,,PoC af
+Alto x Ancho x,,,,,
+Profundo (cm),9.70 x 12.10 x 12.10,9.99 x 14.10 x 14.10,12.00 x 12.00 x 10.51,8.45 x 9.20 x 25.51,11.00 x 14.00 x 14.00
+Peso (kg),0.57,0.80,0.68,0.65,1.60
+Disponibilidad,C,A+,B,A,C
+"",,,,,DS-2CE59H8T-,DS-2CE79H0T-
+"",DS-2CE72HFT-,DS-2CE76H0T-,DS-2CE76H8T-,DS-2CE56H1T-,,
+"",,,,,AVPIT3ZF(2.7-,IT3ZF(2.7-
+"",F28(2.8MM),ITMF(2.8MM)(C),ITMF(2.8MM),IT3E(3.6MM),,
+"",,,,,13.5MM),13.5MM)
 Tipo de Cámara,Minidomo,Minidomo,Minidomo,Minidomo,Minidomo,Minidomo
 Resolución,5 Mpx,5 Mpx,5 Mpx,5 Mpx,5 Mpx,5 Mpx
 "",HD - TVI,HD - TVI,HD - TVI,,HD - TVI,HD - TVI
@@ -151,6 +375,136 @@ Entradas/Salidas,,,,,,
 de Alarma,;,;,;,;,;,;
 Entrada/Salida,,,,,,
 Audio,;,;,;,;,;,;
+Slot SD,;,;,;,;,;,;
+WIFI,;,;,;,;,;,;
+Exterior,IP67,IP67,IP67,IP67,IP67,IP67
+Grado de,,,,,,
+Protección,;,;,;,;,IK10,;
+Antivandálica,,,,,,
+"",DS-1272ZJ-110-,DS-1272ZJ-110-,DS-1272ZJ-110-,,,DS-1273ZJ-130-
+Soporte Pared,,,,No,DS-1273ZJ-140,
+"",TRS,TRS,TRS,,,TRL
+Soporte Base,DS-1280ZJ-S,DS-1280ZJ-XS,DS-1280ZJ-XS,No,No,DS-1280ZJ-M
+"",,,,,DS-2CE59H8T-,DS-2CE79H0T-
+"",DS-2CE72HFT-,DS-2CE76H0T-,DS-2CE76H8T-,DS-2CE56H1T-,,
+"",,,,,AVPIT3ZF(2.7-,IT3ZF(2.7-
+"",F28(2.8MM),ITMF(2.8MM)(C),ITMF(2.8MM),IT3E(3.6MM),,
+"",,,,,13.5MM),13.5MM)
+Tipo de Cámara,Minidomo,Minidomo,Minidomo,Minidomo,Minidomo,Minidomo
+Resolución,5 Mpx,5 Mpx,5 Mpx,5 Mpx,5 Mpx,5 Mpx
+"",HD - TVI,HD - TVI,HD - TVI,,HD - TVI,HD - TVI
+Tecnología de,AHD,AHD,AHD,,AHD,AHD
+Vídeo,CVBS,CVBS,CVBS,TVI,CVBS,CVBS
+"",HD - CVI,HD - CVI,HD - CVI,,HD - CVI,HD - CVI
+Tipo de Óptica,Fija,Fija,Fija,Fija,Motorizada,Motorizada
+Distancia Focal,"2,8 mm","2,8 mm","2,8 mm","3,6 mm","2,7 - 13,5 mm","2,7 - 13,5 mm"
+"Ángulo de Ajuste",3 ejes,3 ejes,3 ejes,3 ejes,3 ejes,3 ejes
+LEDs,;,30 m IR,30 m IR,40 m IR,60 m IR,40 m IR
+Luz Blanca,20m,;,;,;,;,;
+WDR,130 dB,Digital WDR,130 dB,Digital WDR,130 dB,Digital WDR
+Iluminación Mínima,0.005lux,0.01lux,0.003lux,0.01lux,0.003lux,0.01lux
+"",Detección de,,Detección de,,Detección de,
+Análisis de Video,,No,,No,,No
+"",Movimiento,,Movimiento,,Movimiento,
+Entradas/Salidas,,,,,,
+de Alarma,;,;,;,;,;,;
+Entrada/Salida,,,,,,
+Audio,;,;,;,;,;,;
+Slot SD,;,;,;,;,;,;
+WIFI,;,;,;,;,;,;
+Exterior,IP67,IP67,IP67,IP67,IP67,IP67
+Grado de,,,,,,
+Protección,;,;,;,;,IK10,;
+Antivandálica,,,,,,
+"",DS-1272ZJ-110-,DS-1272ZJ-110-,DS-1272ZJ-110-,,,DS-1273ZJ-130-
+Soporte Pared,,,,No,DS-1273ZJ-140,
+"",TRS,TRS,TRS,,,TRL
+Soporte Base,DS-1280ZJ-S,DS-1280ZJ-XS,DS-1280ZJ-XS,No,No,DS-1280ZJ-M
+Soporte Techo,No,No,No,No,No,No
+Soporte Poste,DS-1275ZJ-SUS,DS-1275ZJ-SUS,DS-1275ZJ-SUS,No,DS-1275ZJ-SUS,DS-1275ZJ-SUS
+Soporte Esquina,DS-1276ZJ-SUS,DS-1276ZJ-SUS,DS-1276ZJ-SUS,No,DS-1276ZJ-SUS,DS-1276ZJ-SUS
+Soporte,,,,,,
+Empotrado,No,No,No,No,No,No
+Alimentación,12 Vdc,12 Vdc,12 Vdc,12 Vdc,12 Vdc / 24 Vac,12 Vdc
+Alto x Ancho x,,,,,,
+"",,,,,DS-2CE59H8T-,DS-2CE79H0T-
+"",DS-2CE72HFT-,DS-2CE76H0T-,DS-2CE76H8T-,DS-2CE56H1T-,,
+"",,,,,AVPIT3ZF(2.7-,IT3ZF(2.7-
+"",F28(2.8MM),ITMF(2.8MM)(C),ITMF(2.8MM),IT3E(3.6MM),,
+"",,,,,13.5MM),13.5MM)
+Tipo de Cámara,Minidomo,Minidomo,Minidomo,Minidomo,Minidomo,Minidomo
+Resolución,5 Mpx,5 Mpx,5 Mpx,5 Mpx,5 Mpx,5 Mpx
+"",HD - TVI,HD - TVI,HD - TVI,,HD - TVI,HD - TVI
+Tecnología de,AHD,AHD,AHD,,AHD,AHD
+Vídeo,CVBS,CVBS,CVBS,TVI,CVBS,CVBS
+"",HD - CVI,HD - CVI,HD - CVI,,HD - CVI,HD - CVI
+Tipo de Óptica,Fija,Fija,Fija,Fija,Motorizada,Motorizada
+Distancia Focal,"2,8 mm","2,8 mm","2,8 mm","3,6 mm","2,7 - 13,5 mm","2,7 - 13,5 mm"
+"Ángulo de Ajuste",3 ejes,3 ejes,3 ejes,3 ejes,3 ejes,3 ejes
+LEDs,;,30 m IR,30 m IR,40 m IR,60 m IR,40 m IR
+Luz Blanca,20m,;,;,;,;,;
+WDR,130 dB,Digital WDR,130 dB,Digital WDR,130 dB,Digital WDR
+Iluminación Mínima,0.005lux,0.01lux,0.003lux,0.01lux,0.003lux,0.01lux
+"",Detección de,,Detección de,,Detección de,
+Análisis de Video,,No,,No,,No
+"",Movimiento,,Movimiento,,Movimiento,
+Entradas/Salidas,,,,,,
+de Alarma,;,;,;,;,;,;
+Entrada/Salida,,,,,,
+Audio,;,;,;,;,;,;
+Slot SD,;,;,;,;,;,;
+WIFI,;,;,;,;,;,;
+Exterior,IP67,IP67,IP67,IP67,IP67,IP67
+Grado de,,,,,,
+Protección,;,;,;,;,IK10,;
+Antivandálica,,,,,,
+"",DS-1272ZJ-110-,DS-1272ZJ-110-,DS-1272ZJ-110-,,,DS-1273ZJ-130-
+Soporte Pared,,,,No,DS-1273ZJ-140,
+"",TRS,TRS,TRS,,,TRL
+Soporte Base,DS-1280ZJ-S,DS-1280ZJ-XS,DS-1280ZJ-XS,No,No,DS-1280ZJ-M
+Soporte Techo,No,No,No,No,No,No
+Soporte Poste,DS-1275ZJ-SUS,DS-1275ZJ-SUS,DS-1275ZJ-SUS,No,DS-1275ZJ-SUS,DS-1275ZJ-SUS
+Soporte Esquina,DS-1276ZJ-SUS,DS-1276ZJ-SUS,DS-1276ZJ-SUS,No,DS-1276ZJ-SUS,DS-1276ZJ-SUS
+Soporte,,,,,,
+Empotrado,No,No,No,No,No,No
+Alimentación,12 Vdc,12 Vdc,12 Vdc,12 Vdc,12 Vdc / 24 Vac,12 Vdc
+Alto x Ancho x,,,,,,
+Profundo (cm),10.98 x 10.98 x 8.55,9.00 x 9.00 x 7.93,7.93 x 7.93 x 9.00,9.30 x 11.00 x 11.00,12.41 x 14.52 x 14.52,12.38 x 13.43 x 11.02
+Peso (kg),0.35,0.35,0.30,0.35,0.64,0.56
+Disponibilidad,C,A+,A,C,A,B
+"",,DS-2CE5AU1T-AVPIT3ZF(2.7-,DS-2CE79U7T-AIT3ZF(2.7-
+"",DS-2CE76U1T-ITMF(2.8MM),,
+"",,13.5MM),13.5MM)
+Tipo de Cámara,Minidomo,Minidomo,Minidomo
+Resolución,8 Mpx,8 Mpx,8 Mpx
+"",HD - TVI,HD - TVI,HD - TVI
+"",AHD,AHD,AHD
+Tecnología de Vídeo,,,
+"",CVBS,CVBS,CVBS
+"",HD - CVI,HD - CVI,HD - CVI
+Tipo de Óptica,Fija,Motorizada,Motorizada
+Distancia Focal,"2,8 mm","2,7 - 13,5 mm","2,7 - 13,5 mm"
+"Ángulo de Ajuste",3 ejes,3 ejes,3 ejes
+LEDs,30 m IR,60 m IR,60 m IR
+Luz Blanca,;,;,;
+WDR,Digital WDR,Digital WDR,130 dB
+Iluminación Mínima,0.01lux,0.01lux,0.003lux
+Análisis de Video,No,No,No
+Entradas/Salidas de Alarma,;,;,;
+Entrada/Salida Audio,;,;,;
+Slot SD,;,;,;
+WIFI,;,;,;
+Exterior,IP67,IP67,IP67
+Grado de Protección,,,
+Antivandálica,;,IK10,;
+Soporte Pared,DS-1272ZJ-110-TRS,DS-1273ZJ-140-DM45,DS-1273ZJ-130-TRL
+Soporte Base,DS-1280ZJ-XS,DS-1280ZJ-DM45,DS-1280ZJ-M
+Soporte Techo,No,No,No
+Soporte Poste,DS-1275ZJ-SUS,DS-1275ZJ-SUS,DS-1275ZJ-SUS
+Soporte Esquina,DS-1276ZJ-SUS,DS-1276ZJ-SUS,DS-1276ZJ-SUS
+"",,DS-2CE5AU1T-AVPIT3ZF(2.7-,DS-2CE79U7T-AIT3ZF(2.7-
+"",DS-2CE76U1T-ITMF(2.8MM),,
+"",,13.5MM),13.5MM)
 Tipo de Cámara,Minidomo,Minidomo,Minidomo
 Resolución,8 Mpx,8 Mpx,8 Mpx
 "",HD - TVI,HD - TVI,HD - TVI
@@ -183,12 +537,367 @@ Alimentación,12 Vdc,12 Vdc / 24 Vac,12 Vdc / 24 Vac
 Alto x Ancho x Profundo (cm),7.93 x 7.93 x 9.00,11.13 x 14.50 x 14.50,11.00 x 12.38 x 12.38
 Peso (kg),0.31,0.86,0.61
 Disponibilidad,C,C,C
-DS-2AE5225T-A3,,A(E)BRACKET,A(E)BRACKET,DS-2AE7232TI-A(D)
-"",WITH BRACKETS,,,
-"",,INCLUDED,INCLUDED,
-IDS-7216HUHI-,IDS-7216HUHI-,,IDS-7316HQHI-,IDS-7316HUHI-,IDS-7216HQHI-
-"",,M2-X-,,,
-M2-X,M2-S-4A+16-4,,M4-S,M4-S,M2-XT
+"",,DS-2CE5AU1T-AVPIT3ZF(2.7-,DS-2CE79U7T-AIT3ZF(2.7-
+"",DS-2CE76U1T-ITMF(2.8MM),,
+"",,13.5MM),13.5MM)
+Tipo de Cámara,Minidomo,Minidomo,Minidomo
+Resolución,8 Mpx,8 Mpx,8 Mpx
+"",HD - TVI,HD - TVI,HD - TVI
+"",AHD,AHD,AHD
+Tecnología de Vídeo,,,
+"",CVBS,CVBS,CVBS
+"",HD - CVI,HD - CVI,HD - CVI
+Tipo de Óptica,Fija,Motorizada,Motorizada
+Distancia Focal,"2,8 mm","2,7 - 13,5 mm","2,7 - 13,5 mm"
+"Ángulo de Ajuste",3 ejes,3 ejes,3 ejes
+LEDs,30 m IR,60 m IR,60 m IR
+Luz Blanca,;,;,;
+WDR,Digital WDR,Digital WDR,130 dB
+Iluminación Mínima,0.01lux,0.01lux,0.003lux
+Análisis de Video,No,No,No
+Entradas/Salidas de Alarma,;,;,;
+Entrada/Salida Audio,;,;,;
+Slot SD,;,;,;
+WIFI,;,;,;
+Exterior,IP67,IP67,IP67
+Grado de Protección,,,
+Antivandálica,;,IK10,;
+Soporte Pared,DS-1272ZJ-110-TRS,DS-1273ZJ-140-DM45,DS-1273ZJ-130-TRL
+Soporte Base,DS-1280ZJ-XS,DS-1280ZJ-DM45,DS-1280ZJ-M
+Soporte Techo,No,No,No
+Soporte Poste,DS-1275ZJ-SUS,DS-1275ZJ-SUS,DS-1275ZJ-SUS
+Soporte Esquina,DS-1276ZJ-SUS,DS-1276ZJ-SUS,DS-1276ZJ-SUS
+Soporte Empotrado,No,No,No
+Alimentación,12 Vdc,12 Vdc / 24 Vac,12 Vdc / 24 Vac
+Alto x Ancho x Profundo (cm),7.93 x 7.93 x 9.00,11.13 x 14.50 x 14.50,11.00 x 12.38 x 12.38
+Peso (kg),0.31,0.86,0.61
+Disponibilidad,C,C,C
+"",,,DS-2AE5225TI-,DS-2AE5232T-,
+"",,DS-2AE4225TI-D(E),,,
+"",DS-2AE5225T-A3,,A(E)BRACKET,A(E)BRACKET,DS-2AE7232TI-A(D
+"",,WITH BRACKETS,,,
+"",,,INCLUDED,INCLUDED,
+Aumentos,x25,x25,x25,x32,x32
+Resolución,2 Mpx,2 Mpx,2 Mpx,2 Mpx,2 Mpx
+LEDs,;,100 m IR,150 m IR,;,150 m IR
+"",,HD - TVI,HD - TVI,HD - TVI,HD - TVI
+"",HD - TVI,,,,
+"",,AHD,AHD,AHD,AHD
+Tecnología de Vídeo,AHD,,,,
+"",,CVBS,CVBS,CVBS,CVBS
+"",CVBS,,,,
+"",,HD - CVI,HD - CVI,HD - CVI,HD - CVI
+Giro Continuo,;,;,;,;,;
+WDR,Digital WDR,120 dB,120 dB,120 dB,120 dB
+Análisis de Video,No,No,No,No,No
+Entradas/Salidas de,,,,,
+Alarma,2e/1s,;,2e/1s,2e/1s,;
+Exterior,;,IP66,IP66,IP66,IP66
+Grado de Protección,,,,,
+Antivandálica,;,;,;,IK10,IK10
+Wiper,;,;,;,;,;
+Anticorrosión,;,;,;,;,;
+Slot SD,;,;,;,;,;
+Soporte Pared,DS-1604ZJ,DS-1604ZJ,DS-1604ZJ,DS-1604ZJ,DS-1604ZJ
+Soporte Base,No,No,No,No,No
+Soporte Techo,DS-1663ZJ,DS-1662ZJ,DS-1662ZJ,DS-1662ZJ,DS-1662ZJ
+Soporte Poste,DS-1604ZJ-POLE,DS-1604ZJ-POLE,DS-1604ZJ-POLE,DS-1604ZJ-POLE,DS-1604ZJ-POLE
+Soporte Esquina,DS-1604ZJ-CORNER,DS-1602ZJ-Corner,DS-1602ZJ-Corner,DS-1602ZJ-Corner,DS-1602ZJ-Corner
+Soporte Empotrado,No,No,No,No,No
+Soporte Suspendido,No,No,No,No,No
+Alimentación,24 Vac,12 Vdc,24 Vac,24 Vac,24 Vac
+"",,,DS-2AE5225TI-,DS-2AE5232T-,
+"",,DS-2AE4225TI-D(E),,,
+"",DS-2AE5225T-A3,,A(E)BRACKET,A(E)BRACKET,DS-2AE7232TI-A(D
+"",,WITH BRACKETS,,,
+"",,,INCLUDED,INCLUDED,
+Aumentos,x25,x25,x25,x32,x32
+Resolución,2 Mpx,2 Mpx,2 Mpx,2 Mpx,2 Mpx
+LEDs,;,100 m IR,150 m IR,;,150 m IR
+"",,HD - TVI,HD - TVI,HD - TVI,HD - TVI
+"",HD - TVI,,,,
+"",,AHD,AHD,AHD,AHD
+Tecnología de Vídeo,AHD,,,,
+"",,CVBS,CVBS,CVBS,CVBS
+"",CVBS,,,,
+"",,HD - CVI,HD - CVI,HD - CVI,HD - CVI
+Giro Continuo,;,;,;,;,;
+WDR,Digital WDR,120 dB,120 dB,120 dB,120 dB
+Análisis de Video,No,No,No,No,No
+Entradas/Salidas de,,,,,
+Alarma,2e/1s,;,2e/1s,2e/1s,;
+Exterior,;,IP66,IP66,IP66,IP66
+Grado de Protección,,,,,
+Antivandálica,;,;,;,IK10,IK10
+Wiper,;,;,;,;,;
+Anticorrosión,;,;,;,;,;
+Slot SD,;,;,;,;,;
+Soporte Pared,DS-1604ZJ,DS-1604ZJ,DS-1604ZJ,DS-1604ZJ,DS-1604ZJ
+Soporte Base,No,No,No,No,No
+Soporte Techo,DS-1663ZJ,DS-1662ZJ,DS-1662ZJ,DS-1662ZJ,DS-1662ZJ
+Soporte Poste,DS-1604ZJ-POLE,DS-1604ZJ-POLE,DS-1604ZJ-POLE,DS-1604ZJ-POLE,DS-1604ZJ-POLE
+Soporte Esquina,DS-1604ZJ-CORNER,DS-1602ZJ-Corner,DS-1602ZJ-Corner,DS-1602ZJ-Corner,DS-1602ZJ-Corner
+Soporte Empotrado,No,No,No,No,No
+Soporte Suspendido,No,No,No,No,No
+Alimentación,24 Vac,12 Vdc,24 Vac,24 Vac,24 Vac
+Alto x Ancho x,,,,,
+Profundo (cm),24.30 x 15.60 x 15.60,29.50 x 16.40 x -,30.50 x 20.80 x -,32.60 x 15.60 x -,35.30 x 22.00 x -
+Peso (kg),3.00,2.00,3.30,3.00,3.00
+Disponibilidad,B,A,C,C,A
+"",,,DS-2AE5225TI-,DS-2AE5232T-,
+"",,DS-2AE4225TI-D(E),,,
+"",DS-2AE5225T-A3,,A(E)BRACKET,A(E)BRACKET,DS-2AE7232TI-A(D
+"",,WITH BRACKETS,,,
+"",,,INCLUDED,INCLUDED,
+Aumentos,x25,x25,x25,x32,x32
+Resolución,2 Mpx,2 Mpx,2 Mpx,2 Mpx,2 Mpx
+LEDs,;,100 m IR,150 m IR,;,150 m IR
+"",,HD - TVI,HD - TVI,HD - TVI,HD - TVI
+"",HD - TVI,,,,
+"",,AHD,AHD,AHD,AHD
+Tecnología de Vídeo,AHD,,,,
+"",,CVBS,CVBS,CVBS,CVBS
+"",CVBS,,,,
+"",,HD - CVI,HD - CVI,HD - CVI,HD - CVI
+Giro Continuo,;,;,;,;,;
+WDR,Digital WDR,120 dB,120 dB,120 dB,120 dB
+Análisis de Video,No,No,No,No,No
+Entradas/Salidas de,,,,,
+Alarma,2e/1s,;,2e/1s,2e/1s,;
+Exterior,;,IP66,IP66,IP66,IP66
+Grado de Protección,,,,,
+Antivandálica,;,;,;,IK10,IK10
+Wiper,;,;,;,;,;
+Anticorrosión,;,;,;,;,;
+Slot SD,;,;,;,;,;
+Soporte Pared,DS-1604ZJ,DS-1604ZJ,DS-1604ZJ,DS-1604ZJ,DS-1604ZJ
+Soporte Base,No,No,No,No,No
+Soporte Techo,DS-1663ZJ,DS-1662ZJ,DS-1662ZJ,DS-1662ZJ,DS-1662ZJ
+Soporte Poste,DS-1604ZJ-POLE,DS-1604ZJ-POLE,DS-1604ZJ-POLE,DS-1604ZJ-POLE,DS-1604ZJ-POLE
+Soporte Esquina,DS-1604ZJ-CORNER,DS-1602ZJ-Corner,DS-1602ZJ-Corner,DS-1602ZJ-Corner,DS-1602ZJ-Corner
+Soporte Empotrado,No,No,No,No,No
+Soporte Suspendido,No,No,No,No,No
+Alimentación,24 Vac,12 Vdc,24 Vac,24 Vac,24 Vac
+Alto x Ancho x,,,,,
+Profundo (cm),24.30 x 15.60 x 15.60,29.50 x 16.40 x -,30.50 x 20.80 x -,32.60 x 15.60 x -,35.30 x 22.00 x -
+Peso (kg),3.00,2.00,3.30,3.00,3.00
+Disponibilidad,B,A,C,C,A
+"",Descripción Corta,Disponibilidad
+DS-1280ZJ-SD11,Base para instalación de superficie para cámaras domo 4” DS-2Dx,B
+DS-1280ZJ-XS,Base para instalación de superficie para cámaras bullet,A
+DS-1280ZJ-S,Base para instalación de superficie para cámaras bullet,A
+DS-1280ZJ-M,Base para instalación de superficie para mini-domo. Medidas: Φ101mm,A
+DS-1280ZJ-DM45,Base para instalación de superficie para cámaras minidomo,A
+DS-1272ZJ-110-TRS,Soporte de pared para mini-domo con tapa adaptadora Ø110mm para torretas,C
+"",Soporte de pared para minidomo con tapa adaptadora Ø130 para instalación en,
+DS-1273ZJ-130-TRL,,B
+"",superficie de torretas,
+DS-1273ZJ-140-DM45,Soporte de pared para mini-domo con tapa adaptadora Ø140mm.,C
+"",Soporte de pared con base de superficie para mini-domo con tapa adaptadora,
+DS-1473ZJ-155B,,C
+"",Ø155mm. Ø 155 × 243 × 300 mm,
+"",Descripción Corta,Disponibilidad
+DS-1603ZJ-POLE-P,Soporte de pared + accesorio de poste para PanoVu exterior,C
+DS-1662ZJ,Soporte de montaje en techo para domos exterior. Φ116.5×500mm,B
+"",Soporte de techo para mini-domo con tapa adaptadora Ø140mm. Diámetro,
+DS-1271ZJ-140,,A
+"",150mm. Longitud 565mm.,
+"",Accesorio de esquina de acero inoxidable para cámaras bullet y soportes de,
+DS-1276ZJ-SUS,,B
+"",pared,
+"",Accesorio de poste de acero inoxidable para cámaras bullet. Dimensiones:,
+DS-1275ZJ-SUS,,A
+"",127 × 46 x 250 mm,
+DS-1602ZJ-CORNER,Soporte de pared + acc esquina esquina para domos exterior.,A
+DS-1602ZJ-BOX-,,
+"",Soporte de pared + acc esquina + base para domos PTZ exterior,B
+CORNER,,
+DS-1604ZJ-POLE,Soporte de pared + acc poste para domos PTZ exterior,A
+"","Accesorio de montaje en techo, inclinado 15°. Cámaras domo diámetro",
+DS-1281ZJ-DM23,,B
+"",136cm,
+"",,,,IDS-7204HUHI-M1-
+"",IDS-7204HUHI-M1-X,IDS-7104HQHI-M1-S,IDS-7204HQHI-M1-XT,
+"",,,,S(STD)(C)
+"",HD - TVI,HD - TVI,HD - TVI,HD - TVI
+"",AHD,AHD,AHD,AHD
+Tecnología de Vídeo,CVBS,CVBS,CVBS,CVBS
+"",HD - CVI,HD - CVI,HD - CVI,HD - CVI
+"",IP,IP,BNC,IP
+No Canales Analógicos,4,4,4,4
+Resolución Máxima,,,,
+Analógica,8 Mpx,4 Mpx,4 Mpx,5 Mpx
+No Canales IP,4,2,2,8
+No Canales PoE,;,;,;,;
+Resolución Máxima IP,8 Mpx,6 Mpx,6 Mpx,8 Mpx
+"",,Hombre / Vehículo,,Hombre / Vehículo
+Análisis de Video,Hombre / Vehículo,,No,
+"",,Captura Facial,,VCA
+Hombre/Vehículo,4ch,2ch,2ch,4ch
+Detección Facial,2ch,1ch,1ch,1ch
+Ancho de Banda,,,,
+Grabación/Visualización,96 / 32,24 / 48,72 Mbps,24 / 48
+"",HDMI,,,
+"",,HDMI,HDMI,BNC
+Salida de Vídeo,VGA,,,
+"",,VGA,VGA,HDMI/VGA
+"",BNC,,,
+Entradas/Salidas de,,,,
+Alarma,;,;,;,;
+Interfaz de Red,1 x RJ45 10/100,1 x RJ45 10/100,1 x RJ45 10/100,1 x RJ45 10/100
+Puerto Teclado,;,;,;,;
+No Máximo HDDs,1,1,1,1
+RAID,No Soportado,No Soportado,No Soportado,No Soportado
+Fuente Redundante,;,;,;,;
+Alimentación,12 Vdc,12 Vdc,"12 Vdc / 1,5 A",12 Vdc
+Alto x Ancho x Profundo,,,,
+"(cm)",4.80 x 31.90 x 23.50,4.50 x 20.00 x 20.00,4.80 x 31.90 x 24.40,4.50 x 24.20 x 31.50
+Peso (kg),1.16,1.00,1.16,1.16
+Disponibilidad,C,C,A+,C
+"",IDS-7208HQHI-M1-,IDS-7208HQHI-,IDS-7208HUHI-M1-,IDS-7208HUHI-,IDS-7208HUHI-M2-
+"",S(STD)(C),M1-XT,X-4A+8-4ALM,M2-X,X(STD)-4A+8-4AL
+"",HD - TVI,HD - TVI,HD - TVI,HD - TVI,HD - TVI
+"",AHD,AHD,AHD,AHD,AHD
+Tecnología de Vídeo,CVBS,CVBS,CVBS,CVBS,CVBS
+"",HD - CVI,HD - CVI,HD - CVI,HD - CVI,HD - CVI
+"",IP,IP,BNC,IP,IP
+No Canales,,,,,
+Analógicos,8,8,16,8,8
+Resolución Máxima,,,,,
+Analógica,4 Mpx,4 Mpx,8 Mpx,8 Mpx,8 Mpx
+No Canales IP,12,8,8,16,16
+No Canales PoE,;,;,-,;,;
+Resolución Máxima IP,6 Mpx,6 Mpx,8 Mpx,8 Mpx,8 Mpx
+"",Hombre / Vehículo,,,Reconocimiento Facial,Reconocimiento Facial
+Análisis de Video,,Hombre / Vehículo,Hombre / Vehículo,,
+"",VCA,,,Hombre / Vehículo,Hombre / Vehículo
+Hombre/Vehículo,4ch,4ch,8ch,8ch,8ch
+Detección Facial,1ch,2ch,4ch,4ch,4ch
+Ancho de Banda,,,,,
+Grabación/,48 / 80,96 Mbps,256,128 / 128,128 / 128
+Visualización,,,,,
+"",,HDMI,,,
+"",BNC,,HDMI,,HDMI
+Salida de Vídeo,,VGA,,HDMI/VGA,
+"",HDMI/VGA,,VGA,,VGA
+"",,BNC,,,
+Entradas/Salidas de,,,,,
+Alarma,;,;,8e/4s,;,8e/4s
+Interfaz de Red,1 x RJ45 10/100/1000,1 x RJ45 10/100,1 x RJ45 10/100/1000,1 x RJ45 10/100/1000,1 x RJ45 10/100/1000
+Puerto Teclado,;,;,;,;,;
+No Máximo HDDs,1,1,1,1,2
+RAID,No Soportado,No Soportado,No Soportado,No Soportado,No Soportado
+Fuente Redundante,;,;,;,;,-
+Alimentación,12 Vdc,"12 Vdc / 1,5 A",12 Vdc / 2 A,12 Vdc,12 Vdc
+Alto x Ancho x,,,,,
+Profundo (cm),4.50 x 24.20 x 31.50,4.80 x 31.90 x 24.40,4.80 x 32.00 x 24.90,5.20 x 38.50 x 32.60,5.20 x 38.50 x 32.60
+Peso (kg),1.78,1.78,2.00,2.00,2.00
+Disponibilidad,C,A+,C,A,A
+"",,,IDS-7216HUHI-,,,
+"",IDS-7216HUHI-,IDS-7216HUHI-,,IDS-7316HQHI-,IDS-7316HUHI-,IDS-7216HQHI-
+"",,,M2-X-,,,
+"",M2-X,M2-S-4A+16-4,,M4-S,M4-S,M2-XT
+"",,,4A+ALM16-4,,,
+"",HD - TVI,,HD - TVI,HD - TVI,HD - TVI,HD - TVI
+"",,HD - TVI,,,,
+"",AHD,,AHD,AHD,AHD,AHD
+Tecnología de,,AHD,,,,
+Vídeo,CVBS,CVBS,CVBS,CVBS,CVBS,CVBS
+"",HD - CVI,,HD - CVI,HD - CVI,HD - CVI,HD - CVI
+"",,HD - CVI,,,,
+"",IP,,IP,IP,IP,IP
+No Canales,,,,,,
+Analógicos,16,16,16,16,16,16
+Resolución,,,,,,
+Máxima Analógica,8 Mpx,5 Mpx,8 Mpx,4 Mpx,8 Mpx,;
+No Canales IP,16,32,32,20,32,8
+No Canales PoE,;,;,;,;,;,;
+Resolución,,,,,,
+Máxima IP,8 Mpx,6 Mpx,8 Mpx,6 Mpx,12 Mpx,6 Mpx
+"",Reconocimiento,,,,,Reconocimiento
+"",,Hombre / Vehículo,Reconocimiento,,,
+"",Facial,,,,,Facial
+Análisis de Video,,Detección de,Facial,Hombre / Vehículo,Hombre / Vehículo,
+"",Hombre / Vehículo,,,,,Hombre / Vehículo
+"",,Rostros,Hombre / Vehículo,,,
+"",Captura Facial,,,,,Captura Facial
+Hombre/Vehículo,8ch,4ch,8ch,4ch,8ch,8ch
+Detección Facial,4ch,;,4ch,;,;,4ch
+Ancho de Banda,,,,,,
+Grabación/,256,96 / 32,256,112 / 128,320 / 256,256
+Visualización,,,,,,
+"",,,,,HDMI1/VGA,HDMI
+"",BNC,BNC,HDMI,,,
+Salida de Vídeo,,,,HDMI/VGA,BNC,VGA
+"",HDMI/VGA,HDMI/VGA,VGA,,,
+"",,,,,HDMI2,BNC
+Entradas/Salidas,,,,,,
+de Alarma,;,16e/4s,16e/4s,16e/4s,16e/4s,;
+"",1 x RJ45,1 x RJ45,1 x RJ45,2 x RJ45,2 x RJ45,1 x RJ45
+Interfaz de Red,,,,,,
+"",10/100/1000,10/100/1000,10/100/1000,10/100/1000,10/100/1000,10/100/1000
+Puerto Teclado,;,;,;,;,;,;
+No Máximo HDDs,2,2,2,4,4,2
+"",,,,,RAID 0,
+"",,,,,RAID 1,
+RAID,No Soportado,No Soportado,No Soportado,No Soportado,RAID 5,No Soportado
+"",,,,,RAID 6,
+"",,,,,RAID 10,
+Fuente,,,,,,
+Redundante,-,;,;,;,;,;
+Alimentación,12 Vdc,12 Vdc,12 Vdc,220 Vac,220 Vac,12 Vdc
+Alto x Ancho x,,4.80 x 38.00 x,,7.00 x 44.50 x,,4.80 x 32.00 x
+Profundo (cm),5.20 x 38.50 x 31.50,32.00,5.20 x 38.50 x 31.50,39.00,7.10 x 44.50 x 40.00,38.00
+Peso (kg),2.10,2.10,2.10,5.00,5.00,1.90
+Disponibilidad,C,A,A,B,A,A
+"",IDS-7232HQHI-M2-XT,IDS-7332HQHI-M4-S
+"",HD - TVI,HD - TVI
+"",AHD,AHD
+Tecnología de Vídeo,CVBS,CVBS
+"",HD - CVI,HD - CVI
+"",IP,IP
+No Canales Analógicos,32,32
+Resolución Máxima Analógica,5 Mpx,4 Mpx
+No Canales IP,24,48
+No Canales PoE,;,;
+Resolución Máxima IP,6 Mpx,6 Mpx
+"",,LPR
+Análisis de Video,Hombre / Vehículo,VCA
+"",,POS
+Hombre/Vehículo,8ch,;
+Detección Facial,4ch,;
+Ancho de Banda Grabación/Visualización,256,200 / 160
+"",,HDMI1
+"",HDMI,VGA
+Salida de Vídeo,,
+"",VGA,BNC
+"",,HDMI2
+Entradas/Salidas de Alarma,;,16e/4s
+Interfaz de Red,1 x RJ45 10/100/1000,2 x RJ45 10/100/1000
+Puerto Teclado,;,;
+No Máximo HDDs,2,4
+RAID,No Soportado,No Soportado
+Fuente Redundante,;,;
+Alimentación,12 Vdc,220 Vac
+Alto x Ancho x Profundo (cm),5.20 x 38.50 x 32.60,7.10 x 44.50 x 40.00
+Peso (kg),2.10,7.00
+Disponibilidad,A,A
+"",,Descripción Corta,Disponibilidad
+"",DS-1006KI,"Teclado con joystick de 3 ejes, para control de DVRs y domos",C
+"",,"Teclado IP con joystick de 3 ejes, para control de DVR/NVRs y domos motorizados",
+"",DS-1200KI,,A
+"",,"HIKVISION, pantalla LCD",
+"",,"Teclado IP WiFi con joystick de 3 ejes, para control de DVR/NVRs y domos",
+"",DS-1600KI(B),,A
+"",,"HIKVISION, pantalla LCD de 10”, hasta 16ch visión directo, salida HDMI",
+Hikvision,,,
+Grabadores,,,
+Accesorios,,,
+"",,Descripción Corta,Disponibilidad
+"",19” 1U 380,,
+"",MOUNTING,19” 1U Soporte montaje para rack (DS-76XX),B
+"",BRACKET,,
+"",HCB-6000PH,HCB-7000PHA
 Tipo de Cámara,Box analógica,Box analógica
 Resolución,2 Mpx,4 Mpx
 "",HD - TVI,
@@ -253,6 +962,7 @@ Alimentación,12 Vdc,12 Vdc / 24 Vac,12 Vdc / 24 Vac
 Alto x Ancho x Profundo (cm),7.80 x 7.80 x 25.98,8.70 x 832.00 x 25.98,8.70 x 7.80 x 25.98
 Peso (kg),0.91,0.91,0.95
 Disponibilidad,C,A,A
+"",HCO-7020RA,HCO-7070RA
 Tipo de Cámara,Bullet,Bullet
 Resolución,4 Mpx,4 Mpx
 "",AHD,AHD
@@ -282,6 +992,7 @@ Alimentación,12 Vdc,12 Vdc / 24 Vac
 Alto x Ancho x Profundo (cm),7.00 x 7.00 x 24.60,7.80 x 8.32 x 25.98
 Peso (kg),0.67,0.91
 Disponibilidad,C,C
+"",HCD-6020R,HCD-6070R,HCD-6080R,HCV-6070R,HCV-6080R
 Tipo de Cámara,Minidomo,Minidomo,Minidomo,Minidomo,Minidomo
 Resolución,2 Mpx,2 Mpx,2 Mpx,2 Mpx,2 Mpx
 "",HD - TVI,HD - TVI,HD - TVI,HD - TVI,HD - TVI
@@ -312,6 +1023,11 @@ Soporte Poste,No,No,No,No,No
 Soporte Esquina,No,No,No,No,No
 Soporte Empotrado,SHD-3000F2,SHD-3000F2,SHD-3000F2,SHD-3000F3,SHD-3000F3
 Alimentación,12 Vdc,12 Vdc / 24 Vac,12 Vdc / 24 Vac,12 Vdc / 24 Vac,12 Vdc / 24 Vac
+Alto x Ancho x,,,,,
+Profundo (cm),11.98 x 9.85 x 9.85,11.98 x 9.85 x 9.85,11.98 x 9.85 x 9.85,13.70 x 10.61 x 10.61,13.70 x 10.61 x 10.61
+Peso (kg),0.32,0.32,0.33,0.72,0.73
+Disponibilidad,C,A,C,A,C
+"",HCD-7010RA,HCV-7010RA,HCD-7070RA,HCV-7070RA
 Tipo de Cámara,Minidomo,Minidomo,Minidomo,Minidomo
 Resolución,4 Mpx,4 Mpx,4 Mpx,4 Mpx
 "",AHD,AHD,AHD,AHD
@@ -344,6 +1060,104 @@ Alto x Ancho x Profundo,,,,
 "(cm)",11.00 x 11.00 x 8.60,12.03 x 12.03 x 9.17,11.98 x 11.98 x 9.85,13.70 x 13.70 x 10.61
 Peso (kg),0.24,0.51,0.32,0.72
 Disponibilidad,C,C,C,C
+"",HCP-6320A,HCP-6320HA
+Aumentos,x32,x32
+Resolución,2 Mpx,2 Mpx
+LEDs,;,;
+"",,AHD
+Tecnología de Vídeo,AHD,
+"",,CVBS
+Giro Continuo,;,;
+WDR,120 dB,120 dB
+Análisis de Video,No,No
+Entradas/Salidas de Alarma,4e/2s,4e/2s
+Exterior,;,IP66
+Grado de Protección Antivandálica,;,IK10
+Wiper,;,;
+Anticorrosión,;,;
+Slot SD,;,;
+Soporte Pared,SBP-300WM1,SBP-300WM1
+Soporte Base,No,No
+Soporte Techo,SBP-300CM,SBP-300CM
+Soporte Poste,No,SBP-300PM
+Soporte Esquina,SBP-300KM,SBP-300KM
+Soporte Empotrado,No,No
+Soporte Suspendido,No,No
+Alimentación,24 Vac,24 Vac
+Alto x Ancho x Profundo (cm),21.00 x 15.00 x 15.00,22.34 x 22.34 x 29.36
+Peso (kg),2.11,3.30
+Disponibilidad,C,B
+"",Descripción Corta,Disponibilidad
+"","Accesorio adaptador para soporte de pared con cámaras PTZ (QNP, XNP). Soportes",
+SBP-156HMW,,B
+"",que lo necesitan SBP-300WMW1 / SBP-300WMW / SBP-390WMW2,
+SBP-120WM,Soporte de pared para Mini-domo. Color marfil,C
+STB-4150V,"Soporte de pared para cámaras de interior, color gris",C
+"",Soporte en poste para domos antivandalicos XNP-9300RW/8300RW/6400RW.,
+SBP-156LMW,,C
+"",Color blanco. Aluminio.,
+SBP-300CMW,Soporte de techo para Mini-domo y domo. Color blanco,B
+"",Soporte de techo para Mini-domos antivandálicos (requiere adaptador) y Domos PTZ,
+SBP-300CM,,C
+"",Wisenet. Color marfil,
+SBF-100B1,Base superficie para domo y minidomo. Color marfil,C
+SBO-100B1,Caja de conexión para cámara bullet Hanwha.,A
+SBV-136B,Base superficie para domo,C
+SBV-158G,Base superficie para domo y minidomo. Color marfil,C
+SBP-300PM1,Accesorio de poste para domos de exterior (requiere soporte pared SBP-300WM),B
+"",Descripción Corta,Disponibilidad
+SBP-302PM,Accesorio de poste para cámara Wisenet,B
+SBP-300PMS,Accesorio para montaje en poste para Mini-domo y domo. Material acero.,C
+SBP-303PM,Accesorio de poste para cámara Wisenet. Color blanco,C
+SBP-300HM7,Plato adaptador para mini-domo Samsung,C
+SBP-300HM6,Adaptador para montaje suspendido de Mini-domo,C
+SBP-301HMW2,Accesorio de montaje de minidomo en formato suspendido. Color blanco.,C
+"",Accesorio para montaje de minidomo empotrado. Material en aluminio blanco y,
+SHD-1408FPW,,C
+"",Polycarbonato. Consultar modelos compatibles (QNV-XXX y LNV-XXX).,
+SHF-1500F,Accesorio de empotrar para minidomos. Color marfil. Ø224.0 x 106.9mm,C
+SHD-3000F1,Accesorio de empotrar para domos PTZ de interior de SAMSUNG,C
+SHD-3000F3,"Accesorio de empotrar para mini-domos Samsung, Ø224.0x106mm",C
+SHD-3000F4,Accesorio de empotrar para minidomos. Color marfil. Ø224.0 x 106.9mm,C
+"",HRX-435,HRX-835,HRX-1635
+"",HD - TVI,HD - TVI,HD - TVI
+"",AHD,AHD,AHD
+Tecnología de Vídeo,CVBS,CVBS,CVBS
+"",HD - CVI,HD - CVI,HD - CVI
+"",IP,IP,IP
+No Canales Analógicos,4,8,16
+Resolución Máxima Analógica,8 Mpx,8 Mpx,8 Mpx
+No Canales IP,6,8,18
+No Canales PoE,;,;,;
+Resolución Máxima IP,8 Mpx,8 Mpx,8 Mpx
+"",,VCA,
+"",VCA,,VCA
+Análisis de Video,,Detección de Movimiento,
+"",Detección de Movimiento,,Detección de Movimiento
+"",,Detección de Rostros,
+Hombre/Vehículo,;,;,;
+Detección Facial,;,;,;
+Ancho de Banda Grabación/,,,
+Visualización,32 / 32,50 / 32,128 / 32
+"",HDMI,,HDMI
+Salida de Vídeo,,HDMI/VGA,
+"",VGA,,VGA
+Entradas/Salidas de Alarma,4e/2s,8e/4s,16e/4s
+Interfaz de Red,1 x RJ45 10/100,1 x RJ45 10/100/1000,1 x RJ45 10/100/1000
+Puerto Teclado,;,;,;
+No Máximo HDDs,2,4,8
+RAID,No Soportado,No Soportado,No Soportado
+Fuente Redundante,;,;,;
+Alimentación,12 Vdc,220 Vac,220 Vac
+Alto x Ancho x Profundo (cm),4.40 x 37.00 x 32.00,8.80 x 44.00 x 38.48,8.80 x 44.00 x 38.40
+Peso (kg),2.30,4.60,7.70
+Disponibilidad,B,B,B
+"",Descripción Corta,Disponibilidad
+SPC-1010,Teclado de control con joystick para cámaras con zoom y PTZ,C
+"","Teclado USB de control para cámaras PTZ mediante software WAVE, SSM y Net-i",
+SPC-2001,,C
+"",Viewer,
+SPC-2010,"Teclado de control para DVRs y domos Hanwha, Joystick 3D",C
 "",TC-C32WN SPEC:I5-Y-,TC-C34QN SPEC:I3-E-Y-,TC-C34WS SPEC:I5W-E-,TC-C34UV SPEC:W-E-Y-
 "",WIFI-4MM-V4.1,2.8MM-V5.0,Y-2.8MM-V4.2,M-S-4MM
 Tipo de Cámara,Bullet,Bullet,Bullet,Bullet
@@ -386,6 +1200,192 @@ Alto x Ancho x Profundo,,,,
 "(cm)",6.60 x 6.80 x 16.10,6.50 x 6.50 x 16.30,6.60 x 6.80 x 16.10,7.60 x 9.00 x 23.90
 Peso (kg),0.47,-,0.47,1.28
 Disponibilidad,A,A,A,A
+"",TC-C32UN SPEC:I8-A-E-Y-2.8-,TC-C32LS SPEC:I10-E-Y-M-5-,TC-C34UN SPEC:I8-A-E-Y-2.8-
+"",12MM-V4.2,50MM-V4.2,12MM-V4.2
+Tipo de Cámara,Bullet,Bullet,Bullet
+Resolución,2 Mpx,2 Mpx,4 Mpx
+Tecnología de Vídeo,IP,IP,IP
+Tipo de Óptica,Motorizada,Motorizada,Motorizada
+Distancia Focal,"2,8 - 12 mm",5 - 50 mm,"2,8 - 12 mm"
+"Ángulo de Ajuste",3 ejes,3 ejes,3 ejes
+LEDs,80 m IR,100 m IR,80 m IR
+Luz Blanca,;,;,;
+WDR,Digital WDR,120 dB,Digital WDR
+Iluminación Mínima,0.02lux,0.002lux,0.02lux
+"",,Mapa Calor,
+"",,Hombre / Vehículo,
+"",,VCA,
+Análisis de Video,No,Control de Plazas Ocupadas en,Detección Perimetral
+"",,Parking,
+"",,Detección Perimetral,
+"",,Conteo de Personas,
+Entradas/Salidas de Alarma,;,2e/1s,;
+Entrada/Salida Audio,Micrófono Integrado,1e/1s,Micrófono / Altavoz Integrado
+Slot SD,Micro SD (512 GB),Micro SD (512 GB),Micro SD (512 GB)
+WIFI,;,;,;
+Exterior,IP67,IP67,IP67
+Grado de Protección,,,
+Antivandálica,;,;,;
+"",DS-1280ZJ-XS,A22 BASE BXL,DS-1280ZJ-XS
+Soporte Pared,,,
+"",TC-P54BM V5 B-T,A22 JUNCTION BOX B-XL,TC-P54BM V5 B-T
+"",DS-1280ZJ-XS,,DS-1280ZJ-XS
+Soporte Base,,A22 JUNCTION BOX B-XL,
+"",TC-P54BM V5 B-T,,TC-P54BM V5 B-T
+"",TC-P54BM V5 B-T,,TC-P54BM V5 B-T
+Soporte Techo,,A22 JUNCTION BOX B-XL,
+"",DS-1280ZJ-XS,,DS-1280ZJ-XS
+Soporte Poste,A36 POLE MOUNT U,A36 POLE MOUNT U,A36 POLE MOUNT U
+Soporte Esquina,A35 CORNER MOUNT U,A35 CORNER MOUNT U,A35 CORNER MOUNT U
+Soporte Empotrado,No,No,No
+"",12 Vdc,12 Vdc,12 Vdc
+Alimentación,,,
+"",PoE 802.3af,PoE 802.3af,PoE 802.3af
+Alto x Ancho x Profundo (cm),26.00 x 20.00 x 45.00,5.70 x 5.70 x 32.70,20.00 x 26.00 x 45.00
+Disponibilidad,A,A,A
+"",TC-C35WS SPEC:I5-E-Y-2.8MM-V4.0,TC-C38WS SPEC:I5-E-Y-M-2.8MM-V4.0
+Tipo de Cámara,Bullet,Bullet
+Resolución,5 Mpx,8 Mpx
+Tecnología de Vídeo,IP,IP
+Tipo de Óptica,Fija,Fija
+Distancia Focal,"2,8 mm","2,8 mm"
+"Ángulo de Ajuste",3 ejes,3 ejes
+LEDs,50 m IR,15 m IR
+Luz Blanca,;,;
+WDR,120 dB,120 dB
+Iluminación Mínima,0.002lux,0.002lux
+"",VCA,Hombre / Vehículo
+Análisis de Video,,
+"",Detección Perimetral,Detección Perimetral
+Entradas/Salidas de Alarma,;,;
+Entrada/Salida Audio,Micrófono Integrado,Micrófono Integrado
+Slot SD,Micro SD (512 GB),Micro SD (512 GB)
+WIFI,;,;
+Exterior,IP67,IP67
+Grado de Protección Antivandálica,;,;
+"",DS-1280ZJ-XS,DS-1280ZJ-XS
+Soporte Pared,,
+"",TC-P54BM V5 B-T,TC-P54BM V5 B-T
+"",DS-1280ZJ-XS,DS-1280ZJ-XS
+Soporte Base,,
+"",TC-P54BM V5 B-T,TC-P54BM V5 B-T
+"",TC-P54BM V5 B-T,TC-P54BM V5 B-T
+Soporte Techo,,
+"",DS-1280ZJ-XS,DS-1280ZJ-XS
+Soporte Poste,A36 POLE MOUNT U,A36 POLE MOUNT U
+Soporte Esquina,A35 CORNER MOUNT U,A35 CORNER MOUNT U
+Soporte Empotrado,No,No
+"",12 Vdc,12 Vdc
+Alimentación,,
+"",PoE 802.3af,PoE 802.3af
+Alto x Ancho x Profundo (cm),6.50 x 6.50 x 16.00,6.60 x 6.80 x 16.10
+Peso (kg),0.48,0.65
+Disponibilidad,A,A
+"",TC-C35US SPEC:I8-A-E-Y-M-,TC-C35US SPEC:I8-A-E-Y-M-S-,TC-C38TS SPEC:I8-A-E-Y-M-
+"",2.8-12MM-V4.0,H-2.7-13.5MM-V4,H2.7-13.5MM-V4.0
+Tipo de Cámara,Bullet,Bullet,Bullet
+Resolución,5 Mpx,5 Mpx,8 Mpx
+Tecnología de Vídeo,IP,IP,IP
+Tipo de Óptica,Motorizada,Motorizada,Motorizada
+Distancia Focal,"2,8 - 12 mm","2,7 - 13,5 mm","2,7 - 13,5 mm"
+"Ángulo de Ajuste",3 ejes,3 ejes,3 ejes
+LEDs,80 m IR,80 m IR,80 m IR
+Luz Blanca,;,;,;
+WDR,120 dB,120 dB,120 dB
+Iluminación Mínima,0.002lux,0.002lux,0.003lux
+"",,,Mapa Calor
+"",,,Hombre / Vehículo
+"",,,VCA
+"",,Hombre / Vehículo,
+Análisis de Video,Detección Perimetral,,Control de Plazas Ocupadas en
+"",,Detección Perimetral,
+"",,,Parking
+"",,,Detección Perimetral
+"",,,Conteo de Personas
+Entradas/Salidas de Alarma,;,1e/1s,2e/1s
+Entrada/Salida Audio,Micrófono Integrado,Micrófono Integrado / 1e/1s,1e/1s
+Slot SD,Micro SD (512 GB),Micro SD (512 GB),Micro SD (512 GB)
+WIFI,;,;,;
+Exterior,IP67,IP67,IP67
+Grado de Protección,,,
+Antivandálica,;,;,;
+"",DS-1280ZJ-XS,DS-1280ZJ-XS,A22 BASE BXL
+Soporte Pared,,,
+"",TC-P54BM V5 B-T,TC-P54BM V5 B-T,A22 JUNCTION BOX B-XL
+"",DS-1280ZJ-XS,DS-1280ZJ-XS,
+Soporte Base,,,A22 JUNCTION BOX B-XL
+"",TC-P54BM V5 B-T,TC-P54BM V5 B-T,
+"",TC-P54BM V5 B-T,TC-P54BM V5 B-T,
+Soporte Techo,,,A22 JUNCTION BOX B-XL
+"",DS-1280ZJ-XS,DS-1280ZJ-XS,
+Soporte Poste,A36 POLE MOUNT U,A36 POLE MOUNT U,A36 POLE MOUNT U
+Soporte Esquina,A35 CORNER MOUNT U,A35 CORNER MOUNT U,A35 CORNER MOUNT U
+Soporte Empotrado,No,No,No
+"",12 Vdc,12 Vdc,12 Vdc
+Alimentación,,,
+"",PoE 802.3af,PoE 802.3af,PoE 802.3af
+Alto x Ancho x Profundo (cm),8.30 x 7.60 x 23.80,7.62 x 8.36 x 23.80,9.50 x 7.80 x 26.40
+Disponibilidad,A,A,A
+"",TC-C32KN SPEC:I3-Y-WIFI-,TC-C32KS SPEC:I3-E-Y-C-SD-,TC-C34XN SPEC:I3-E-Y-
+"",2.8MM-V4.1,2.8MM-V4.2,2.8MM-V5.0
+Tipo de Cámara,Minidomo,Minidomo,Minidomo
+Resolución,2 Mpx,2 Mpx,4 Mpx
+Tecnología de Vídeo,IP,IP,IP
+Tipo de Óptica,Fija,Fija,Fija
+Distancia Focal,"2,8 mm","2,8 mm","2,8 mm"
+"Ángulo de Ajuste",3 ejes,3 ejes,3 ejes
+LEDs,30 m IR,30 m IR,30 m IR
+Luz Blanca,;,;,;
+WDR,Digital WDR,120 dB,Digital WDR
+Iluminación Mínima,0.02lux,0.002lux,0.02lux
+Análisis de Video,No,Detección Perimetral,No
+Entradas/Salidas de Alarma,;,;,;
+Entrada/Salida Audio,Micrófono Integrado,Micrófono Integrado,Micrófono Integrado
+Slot SD,Micro SD (512 GB),Micro SD (512 GB),;
+WIFI,IEEE 802.11b/g/n,;,;
+Exterior,IP66,IP66,;
+Grado de Protección,,,
+Antivandálica,;,IK10,;
+Soporte Pared,A29 WALL MOUNT MD-STD,A29 WALL MOUNT MD-STD,No
+Soporte Base,No,A22 JUNCTION BOX B-XL,TC-P54BM V5 B-T
+Soporte Techo,No,A22 JUNCTION BOX B-XL,No
+Soporte Poste,A36 POLE MOUNT U,A36 POLE MOUNT U,A36 POLE MOUNT U
+Soporte Esquina,A35 CORNER MOUNT U,A35 CORNER MOUNT U,A35 CORNER MOUNT U
+Soporte Empotrado,No,No,No
+Alimentación,12 Vdc,PoE 802.3af,PoE 802.3af
+Alto x Ancho x Profundo (cm),9.00 x 12.00 x 12.00,9.00 x 12.10 x 12.10,9.60 x 11.60 x 11.60
+Peso (kg),0.61,0.61,0.34
+Disponibilidad,A,A,A
+"",TC-C32KN SPEC:I3-A-E-Y-2.8-12MM-V4.2,TC-C34KN SPEC:I3-A-E-Y-2.8-12MM-V4.2
+Tipo de Cámara,Minidomo,Minidomo
+Resolución,2 Mpx,4 Mpx
+Tecnología de Vídeo,IP,IP
+Tipo de Óptica,Motorizada,Motorizada
+Distancia Focal,"2,8 - 12 mm","2,8 - 12 mm"
+"Ángulo de Ajuste",3 ejes,3 ejes
+LEDs,30 m IR,30 m IR
+Luz Blanca,;,;
+WDR,Digital WDR,Digital WDR
+Iluminación Mínima,0.02lux,0.2lux
+Análisis de Video,Detección de Movimiento,Detección Perimetral
+Entradas/Salidas de Alarma,;,;
+Entrada/Salida Audio,Micrófono Integrado,Micrófono Integrado
+Slot SD,Micro SD (512 GB),Micro SD (512 GB)
+WIFI,;,;
+Exterior,IP66,IP66
+Grado de Protección Antivandálica,;,;
+Soporte Pared,A29 WALL MOUNT MD-STD,A29 WALL MOUNT MD-STD
+Soporte Base,A22 JUNCTION BOX B-XL,No
+Soporte Techo,A22 JUNCTION BOX B-XL,No
+Soporte Poste,A36 POLE MOUNT U,A36 POLE MOUNT U
+Soporte Esquina,A35 CORNER MOUNT U,A35 CORNER MOUNT U
+Soporte Empotrado,No,No
+"",12 Vdc,
+Alimentación,,12 Vdc / PoE 802.3af
+"",PoE 802.3af,
+Alto x Ancho x Profundo (cm),9.00 x 12.40 x 12.40,9.60 x 12.00 x 12.00
+Peso (kg),0.39,0.50
+Disponibilidad,A,A
 "",TC-C35PS SPEC:I3-E-Y-,TC-C35KS SPEC:I3-E-Y-,TC-C38KS SPEC:I3-E-Y-,TC-C38XS SPEC:I3-E-Y-
 "",M-H-2.8MM-V4.0,2.8MM-V4.0,2.8MM-V4.0,M-2.8MM-V4.0
 Tipo de Cámara,Minidomo,Minidomo,Minidomo,Minidomo
@@ -428,6 +1428,223 @@ Alto x Ancho x Profundo,,,,
 "(cm)",5.95 x 11.00 x 11.00,9.00 x 12.00 x 12.00,9.00 x 12.00 x 12.00,9.60 x 11.70 x 11.70
 Peso (kg),-,-,0.61,0.70
 Disponibilidad,A,A,A,A
+"",TC-C35MS SPEC:I3-A-E-Y-M-2.8-12MM-V4.0
+Tipo de Cámara,Minidomo
+Resolución,5 Mpx
+Tecnología de Vídeo,IP
+Tipo de Óptica,Motorizada
+Distancia Focal,"2,8 - 12 mm"
+"Ángulo de Ajuste",3 ejes
+LEDs,30 m IR
+Luz Blanca,;
+WDR,120 dB
+Iluminación Mínima,0.002lux
+Análisis de Video,Detección Perimetral
+Entradas/Salidas de Alarma,;
+Entrada/Salida Audio,Micrófono Integrado
+Slot SD,Micro SD (512 GB)
+WIFI,;
+Exterior,IP67
+Grado de Protección Antivandálica,IK10
+"",TC-P54BM V3 DXL
+Soporte Pared,
+"",A28 WALL MOUNT XL
+Soporte Base,TC-P54BM V3 DXL
+Soporte Techo,TC-P54BM V3 DXL
+Soporte Poste,No
+Soporte Esquina,No
+Soporte Empotrado,No
+"",12 Vdc
+Alimentación,
+"",PoE 802.3af
+Alto x Ancho x Profundo (cm),12.30 x 13.90 x 13.90
+Disponibilidad,A
+"",TC-C35VN SPEC:I3-E-Y-1.4MM-V4.2
+Tipo de Cámara,Fisheye
+Resolución,5 Mpx
+Tecnología de Vídeo,IP
+Tipo de Óptica,Fija
+Distancia Focal,"1,4 mm"
+"Ángulo de Ajuste",3 ejes
+LEDs,30 m IR
+Luz Blanca,;
+WDR,;
+Iluminación Mínima,0.02lux
+"",Mapa Calor
+Análisis de Video,VCA
+"",Detección Perimetral
+Entradas/Salidas de Alarma,1e/1s
+Entrada/Salida Audio,1e/1s
+Slot SD,Micro SD (512 GB)
+WIFI,;
+Exterior,;
+Grado de Protección Antivandálica,;
+"",TC-P54BM FISHEYE
+Soporte Pared,
+"",A29 WALL MOUNT MD-STD XS
+Soporte Base,A22 JUNCTION BOX B-XL
+Soporte Techo,A22 JUNCTION BOX B-XL
+Soporte Poste,A36 POLE MOUNT U
+Soporte Esquina,No
+Soporte Empotrado,No
+"",12 Vdc
+Alimentación,
+"",PoE 802.3af
+Alto x Ancho x Profundo (cm),3.90 x 12.20 x 12.20
+Disponibilidad,A
+"",TC-H324S SPEC:23X-I-,TC-H326S SPEC:33X-I-,TC-H354S SPEC:23X-I-,TC-H356S SPEC:30X-I-
+"",E-C-V3.0,E+-A-V3.0,E-V3.1,E++-A-V3.0
+Aumentos,x23,x33,x23,x30
+Resolución,2 Mpx,2 Mpx,5 Mpx,5 Mpx
+LEDs,150 m IR,200 m IR,150 m IR,200 m IR
+Tecnología de Vídeo,IP,IP,IP,IP
+Giro Continuo,;,;,;,;
+WDR,Digital WDR,Digital WDR,Digital WDR,Digital WDR
+"",,Mapa Calor,,
+"",,VCA,Mapa Calor,Mapa Calor
+"",,Captura Facial,VCA,VCA
+"",Mapa Calor,,,
+"",,Control de Plazas Ocupadas,Captura Facial,Captura Facial
+"",VCA,,,
+Análisis de Video,,en Parking,Detección Perimetral,Detección Perimetral
+"",Objeto abandonado,,,
+"",,Detección Perimetral,Conteo de Personas,Conteo de Personas
+"",Objeto perdido,,,
+"",,Conteo de Personas,Objeto abandonado,Objeto abandonado
+"",,Objeto abandonado,Objeto perdido,Objeto perdido
+"",,Objeto perdido,,
+Entradas/Salidas de,,,,
+Alarma,;,1e/1s,1e/1s,8e/2s
+Exterior,IP66,IP66,IP66,IP66
+Grado de Protección,,,,
+Antivandálica,;,;,;,;
+Wiper,;,;,;,;
+Anticorrosión,;,;,;,;
+Slot SD,Micro SD (512 GB),Micro SD (512 GB),Micro SD (512 GB),Micro SD (512 GB)
+"",TC-P54BM V3 DXL,,,
+Soporte Pared,,TC-P32EM,TC-P32EM,TC-P32EM
+"",A28 WALL MOUNT XL,,,
+Soporte Base,TC-P54BM V3 DXL,TC-P32EM,TC-P32EM,TC-P32EM
+Soporte Techo,TC-P54BM V3 DXL,TC-P32EM,TC-P32EM,TC-P32EM
+Soporte Poste,No,A36 POLE MOUNT U,A36 POLE MOUNT U,A36 POLE MOUNT U
+Soporte Esquina,No,A35 CORNER MOUNT U,A35 CORNER MOUNT U,A35 CORNER MOUNT U
+Soporte Empotrado,No,No,No,No
+Soporte Suspendido,No,DS-1661ZJ,DS-1661ZJ,DS-1661ZJ
+"",12 Vdc,12 Vdc,12 Vdc,24 Vac
+Alimentación,,,,
+"",PoE+ 802.3at,PoE+ 802.3at,PoE+ 802.3at,Hi-PoE 802.3bt
+Alto x Ancho x Profundo,,,,
+"(cm)",27.00 x 16.00 x 16.00,37.00 x 26.00 x 26.00,27.60 x 16.00 x 16.00,37.10 x 22.00 x 22.00
+Disponibilidad,A,A,A,A
+"",TC-H334S SPEC:I5W-C-WIFI-4MM-V4.1
+Tipo de Cámara,Domo PT
+Resolución,3 Mpx
+Tecnología de Vídeo,IP
+Tipo de Óptica,Fija
+Distancia Focal,4 mm
+"Ángulo de Ajuste",2 ejes
+LEDs,50 m IR
+Luz Blanca,15 m
+WDR,Digital WDR
+Iluminación Mínima,0.02lux
+Análisis de Video,No
+Entradas/Salidas de Alarma,;
+Entrada/Salida Audio,Micrófono / Altavoz Integrado
+Slot SD,Micro SD (512 GB)
+WIFI,IEEE 802.11b/g/n
+Exterior,IP66
+Grado de Protección Antivandálica,;
+Soporte Pared,No
+Soporte Base,No
+Soporte Techo,No
+Soporte Poste,No
+Soporte Esquina,No
+Soporte Empotrado,No
+Alimentación,12 Vdc
+Alto x Ancho x Profundo (cm),24.80 x 13.70 x 17.10
+Peso (kg),1.22
+Disponibilidad,A
+"",TC-H366V SPEC:4MP-25X-IW-E-A-2.8MM
+Aumentos,x25
+Resolución,4 Mpx
+LEDs,150 m IR
+Tecnología de Vídeo,IP
+Giro Continuo,;
+WDR,120 dB
+"",Hombre / Vehículo
+"",Detección Perimetral
+Análisis de Video,Conteo de Personas
+"",Objeto abandonado
+"",Objeto perdido
+Entradas/Salidas de Alarma,2e/1s
+Exterior,IP66
+Grado de Protección Antivandálica,;
+Wiper,;
+Anticorrosión,;
+Slot SD,Micro SD (512 GB)
+Soporte Pared,TC-P32EM
+Soporte Base,TC-P32EM
+Soporte Techo,TC-P32EM
+Soporte Poste,A36 POLE MOUNT U
+Soporte Esquina,A35 CORNER MOUNT U
+Soporte Empotrado,No
+Soporte Suspendido,DS-1661ZJ
+"",24 Vac
+Alimentación,
+"",Hi-PoE 802.3bt
+Alto x Ancho x Profundo (cm),37.50 x 26.90 x 29.70
+Peso (kg),5.33
+Disponibilidad,A
+"",TC-C382V SPEC:W-E-Y-S-H-2.8MM
+Tipo de Cámara,Panorámica
+Resolución,8 Mpx
+Tecnología de Vídeo,IP
+Tipo de Óptica,Fija
+Distancia Focal,"2,8 mm"
+"Ángulo de Ajuste",3 ejes
+LEDs,;
+Luz Blanca,15 m
+WDR,120 dB
+Iluminación Mínima,0.0001 lux
+Análisis de Video,Hombre / Vehículo
+Entradas/Salidas de Alarma,1e/1s
+Entrada/Salida Audio,Micrófono Integrado
+Slot SD,Micro SD (512 GB)
+WIFI,;
+Exterior,IP67
+Grado de Protección Antivandálica,;
+"",DS-1280ZJ-XS
+Soporte Pared,
+"",TC-P54BM V5 B-T
+"",DS-1280ZJ-XS
+Soporte Base,
+"",TC-P54BM V5 B-T
+"",TC-P54BM V5 B-T
+Soporte Techo,
+"",DS-1280ZJ-XS
+Soporte Poste,A36 POLE MOUNT U
+Soporte Esquina,A35 CORNER MOUNT U
+Soporte Empotrado,No
+"",12 Vdc
+Alimentación,
+"",PoE+ 802.3at
+Alto x Ancho x Profundo (cm),7.20 x 11.60 x 29.40
+Peso (kg),1.10
+Disponibilidad,A
+"",Descripción Corta,Disponibilidad
+TC-P54BM V3 DXL,Soporte para Domos XL tipo TC-C35MS 2.8-12 de gran diámetro,C
+A28 WALL MOUNT MD-XL,Accesorio de montaje en pared para Minidomo TC-C35MS 2.8-12.,C
+"",Base de conexiones para cámaras Bullet XL (TC-C32LS 5-50 y TC-C38TS,
+"",2.7-13.5). 140mm Diam.,
+"",Base para instalación de superficie para cámaras bullet estándar y,
+TC-P54BM V5 B-T,,A
+"",minidomos tipo Turret. 117mm Diam.,
+TC-P32EM,Base de conexiones para cámaras PTZ.,A
+A36 POLE MOUNT U,Accesorio universal de montaje en poste para cámaras.,A
+A35 CORNER MOUNT U,Accesorio universal de montaje en esquina para cámaras.,A
+A29 WALL MOUNT MD-,,
+"",Accesorio de montaje en pared para Minidomos estándar.,A
+STD,,
 "",TC-R3110 SPEC:I-B-K-V3.1,TC-R3220 SPEC:I-B-K-V3.1,TC-R3440 SPEC:I-B-N-V4.0
 Tecnología de Vídeo,IP,IP,IP
 No Canales Analógicos,;,;,;
@@ -489,11 +1706,78 @@ Alto x Ancho x Profundo,,,,
 "(cm)",4.30 x 20.00 x 20.00,4.50 x 25.50 x 23.10,4.50 x 25.50 x 23.10,4.70 x 44.00 x 27.70
 Peso (kg),0.40,0.59,1.00,-
 Disponibilidad,A,A,A,A
-DS-,DS-2CV1021G0-,,,,DS-
-"",,DS-2CV2021G2-,DS-2CD2023G2-,DS-2CD2T26G2-,
-2CD1023G0E-,IDW1(2.8MM),,,,2CD1023G0E-
-"",,IDW(2.8MM),IU(2.8MM),2I(2.8MM),
-I(2.8MM)(C),(D)-FUS,,,,I(4MM)(C)
+"",IDS-2CD7046G0-AP,IDS-2CD7086G0-AP,IDS-2CD70C5G0-AP
+Tipo de Cámara,Box IP,Box IP,Box IP
+Resolución,4 Mpx,8 Mpx,12 Mpx
+Tecnología de Vídeo,IP,IP,IP
+Tipo de Óptica,Sin Óptica,Sin Óptica,Sin Óptica
+Distancia Focal,;,;,;
+"Ángulo de Ajuste",3 ejes,3 ejes,3 ejes
+LEDs,;,;,;
+Luz Blanca,;,;,;
+WDR,120 dB,120 dB,Digital WDR
+Iluminación Mínima,0.002lux,0.002lux,0.009lux
+"",,,Reconocimiento Facial
+"",Reconocimiento Facial,Reconocimiento Facial,
+"",,,VCA
+Análisis de Video,Hombre / Vehículo,Hombre / Vehículo,
+"",,,Conteo de Personas
+"",VCA,VCA,
+"",,,Detección de Movimiento
+Entradas/Salidas de Alarma,2e/2s,2e/2s,2e/2s
+Entrada/Salida Audio,1e/1s,1e/1s,Micrófono Integrado
+Slot SD,Micro SD (256 GB),Micro SD (256 GB),Micro SD (256 GB)
+WIFI,;,;,;
+Exterior,;,;,;
+Grado de Protección,,,
+Antivandálica,;,;,;
+Soporte Pared,DS-1293ZJ,DS-1293ZJ,DS-1293ZJ
+Soporte Base,No,No,No
+"",DS-1299ZJ,DS-1299ZJ,
+Soporte Techo,,,No
+"",DS-1233ZJ,DS-1233ZJ,
+Soporte Poste,DS-1214ZJ,DS-1214ZJ,DS-1214ZJ
+Soporte Esquina,No,No,No
+Soporte Empotrado,No,No,No
+Alimentación,12 Vdc / 24 Vac / PoE 802.3af,12 Vdc / 24 Vac / PoE 802.3af,12 Vdc / 24 Vac / PoE 802.3af
+Alto x Ancho x Profundo (cm),6.80 x 6.90 x 14.20,6.80 x 6.90 x 14.20,68.00 x 69.00 x 14.25
+Peso (kg),0.73,0.73,0.73
+Disponibilidad,P,P,P
+"",DS-2CD2446G2-I(2MM),DS-2CD2446G2-I(2.8MM)
+Tipo de Cámara,Cubo,Cubo
+Resolución,4 Mpx,4 Mpx
+Tecnología de Vídeo,IP,IP
+Tipo de Óptica,Fija,Fija
+Distancia Focal,"2,0 mm","2,8 mm"
+"Ángulo de Ajuste",3 ejes,2 ejes
+LEDs,10 m IR,10 m IR
+Luz Blanca,;,;
+WDR,120 dB,120 dB
+Iluminación Mínima,0.008lux,0.008lux
+Análisis de Video,No,No
+Entradas/Salidas de Alarma,;,;
+Entrada/Salida Audio,Micrófono Integrado,Micrófono Integrado
+Slot SD,Micro SD (512 GB),Micro SD (512 GB)
+WIFI,;,;
+Exterior,;,;
+Grado de Protección Antivandálica,;,;
+Soporte Pared,No,No
+Soporte Base,No,No
+Soporte Techo,No,No
+Soporte Poste,No,No
+Soporte Esquina,No,No
+Soporte Empotrado,No,No
+"",12 Vdc,12 Vdc
+Alimentación,,
+"",PoE 802.3af,PoE 802.3af
+Alto x Ancho x Profundo (cm),10.29 x 6.52 x 3.26,13.40 x 6.50 x 7.50
+Peso (kg),0.12,0.12
+Disponibilidad,C,C
+"",DS-,DS-2CV1021G0-,,,,DS-
+"",,,DS-2CV2021G2-,DS-2CD2023G2-,DS-2CD2T26G2-,
+"",2CD1023G0E-,IDW1(2.8MM),,,,2CD1023G0E-
+"",,,IDW(2.8MM),IU(2.8MM),2I(2.8MM),
+"",I(2.8MM)(C),(D)-FUS,,,,I(4MM)(C)
 Tipo de Cámara,Bullet,Bullet,Bullet,Bullet,Bullet,Bullet
 Resolución,2 Mpx,2 Mpx,2 Mpx,2 Mpx,2 Mpx,2 Mpx
 Tecnología de,,,,,,
@@ -534,11 +1818,11 @@ Alto x Ancho x,,,,,10.50 x 10.50 x,
 Profundo (cm),7.00 x 7.00 x 17.20,6.60 x 6.70 x 9.90,7.30 x 8.91 x 17.56,11.80 x 12.10 x 21.60,28.90,17.20 x 7.00 x 7.00
 Peso (kg),0.27,0.27,0.45,0.50,1.09,0.28
 Disponibilidad,A,C,C,B,C,C
-"",IDS-,,,DS-,IDS-
-DS-2CD1623G0-,,DS-2CD2623G2-,DS-2CD2626G2-,,
-"",2CD7A26G0-P-,,,2CD4A24FWD-,2CD7A26G0-
-IZ(2.8-12MM),,IZS(2.8-12MM),IZS(2.8-12MM),,
-"",IZHSY(2.8-12MM),,,IZ(4.7-94MM),IZHS(8-32MM)
+"",,IDS-,,,DS-,IDS-
+"",DS-2CD1623G0-,,DS-2CD2623G2-,DS-2CD2626G2-,,
+"",,2CD7A26G0-P-,,,2CD4A24FWD-,2CD7A26G0-
+"",IZ(2.8-12MM),,IZS(2.8-12MM),IZS(2.8-12MM),,
+"",,IZHSY(2.8-12MM),,,IZ(4.7-94MM),IZHS(8-32MM)
 Tipo de Cámara,Bullet,Bullet,Bullet,Bullet,Bullet,Bullet
 Resolución,2 Mpx,2 Mpx,2 Mpx,2 Mpx,2 Mpx,2 Mpx
 Tecnología de,,,,,,CVBS
@@ -587,11 +1871,88 @@ Alto x Ancho x,10.50 x 10.50 x,14.00 x 14.00 x,,,,10.20 x 10.60 x
 Profundo (cm),24.44,35.10,9.30 x 9.79 x 30.85,14.41 x 14.41 x 33.30,10.00 x 10.30 x 31.18,34.70
 Peso (kg),1.01,1.92,1.74,1.40,2.00,2.45
 Disponibilidad,C,P,A,A,P,P
-DS-2CV2041G2-,,,,DS-2CD2043G2-
-"",DS-2CD2T46G2P-,DS-2CD2047G3-,DS-2CD2043G2-,
-IDW(2.8MM),,,,LI2U(2.8MM)
-"",ISU-SL,LI2UY-SL(2.8MM),LI2U(2.8MM),
-"(O-STD)-EU",,,,(BLACK)
+"",DS-2CD2047G2-,DS-2CD1043G0-,DS-2CD1047G2H-,DS-2CD1043G2-,DS-2CV2041G2-
+"",L(2.8MM),I(2.8MM)(C)(O-STD),LIU(2.8MM),I(2.8MM),IDW(2.8MM)
+Tipo de Cámara,Bullet,Bullet,Bullet,Bullet,Bullet
+Resolución,4 Mpx,4 Mpx,4 Mpx,4 Mpx,4 Mpx
+Tecnología de Vídeo,IP,IP,IP,IP,IP
+Tipo de Óptica,Fija,Fija,Fija,Fija,Fija
+Distancia Focal,"2,8 mm","2,8 mm","2,8 mm","2,8 mm","2,8 mm"
+"Ángulo de Ajuste",3 ejes,3 ejes,3 ejes,3 ejes,3 ejes
+LEDs,;,30 m IR,30 m IR,30 m IR,30 m IR
+Luz Blanca,40m,;,30m,;,;
+WDR,130 dB,120 dB,120 dB,120 dB,80 dB
+Iluminación Mínima,0.0005lux,0.01lux,0.001lux,0.01lux,0.005lux
+"",Hombre / Vehículo,,,,
+"",VCA,,,,
+Análisis de Video,Detección de,VCA,No,Hombre / Vehículo,Hombre / Vehículo
+"",Movimiento,,,,
+"",Detección de Rostros,,,,
+Entradas/Salidas de,,,,,
+Alarma,;,;,;,;,;
+Entrada/Salida Audio,;,;,Micrófono Integrado,;,Micrófono Integrado
+Slot SD,Micro SD (256 GB),;,;,;,Micro SD (512 GB)
+WIFI,;,;,;,;,2.412 GHz - 2.472 GHz
+Exterior,IP67,IP67,IP67,IP67,IP66
+Grado de Protección,,,,,
+Antivandálica,;,;,;,;,;
+Soporte Pared,No,DS-1280ZJ-XS,No,No,DS-1280ZJ-XS
+Soporte Base,DS-1280ZJ-S,No,DS-1280ZJ-XS,DS-1280ZJ-XS,No
+Soporte Techo,No,No,No,No,No
+Soporte Poste,DS-1275ZJ-SUS,DS-1275ZJ-SUS,DS-1275ZJ-SUS,No,No
+Soporte Esquina,DS-1276ZJ-SUS,DS-1276ZJ-SUS,DS-1276ZJ-SUS,No,No
+Soporte Empotrado,No,No,No,No,No
+"",,,12 Vdc,12 Vdc / 24 Vac / PoE,
+Alimentación,12 Vdc / PoE 802.3af,12 Vdc / PoE 802.3af,,,12 Vdc
+"",,,PoE 802.3af,802.3af,
+Alto x Ancho x,,,,,
+Profundo (cm),78.60 x 78.80 x 21.52,7.00 x 7.00 x 17.27,6.70 x 6.90 x 17.20,6.60 x 6.90 x 170.00,11.20 x 8.90 x 17.50
+Peso (kg),0.70,0.28,0.55,0.27,0.34
+Disponibilidad,C,C,B,A+,C
+"",DS-2CV2041G2-,,,,DS-2CD2043G2-
+"",,DS-2CD2T46G2P-,DS-2CD2047G3-,DS-2CD2043G2-,
+"",IDW(2.8MM),,,,LI2U(2.8MM)
+"",,ISU-SL,LI2UY-SL(2.8MM),LI2U(2.8MM),
+"",(O-STD)-EU,,,,(BLACK)
+Tipo de Cámara,Bullet,Bullet,Bullet,Bullet,Bullet
+Resolución,4 Mpx,4 Mpx,4 Mpx,4 Mpx,4 Mpx
+Tecnología de Vídeo,IP,IP,IP,IP,IP
+Tipo de Óptica,Fija,Fija,Fija,Fija,Fija
+Distancia Focal,"2,8 mm","2,8 mm","2,8 mm","2,8 mm","2,8 mm"
+"Ángulo de Ajuste",3 ejes,3 ejes,3 ejes,3 ejes,3 ejes
+LEDs,30 m IR,40 m IR,40 m IR,40 m IR,40 m IR
+Luz Blanca,;,;,40m,40m,40m
+WDR,120 dB,120 dB,130 dB,120 dB,120 dB
+Iluminación Mínima,0.005lux,0.003lux,0.0001 lux,0.005lux,0.005lux
+"",,,Hombre / Vehículo,,
+Análisis de Video,No,Hombre / Vehículo,,Hombre / Vehículo,Hombre / Vehículo
+"",,,Cruce de Linea,,
+Entradas/Salidas de,,,,,
+Alarma,;,1e/1s,;,;,;
+Entrada/Salida Audio,Micrófono Integrado,1e/1s,Micrófono Integrado,Micrófono Integrado,Micrófono Integrado
+Slot SD,Micro SD (512 GB),Micro SD (512 GB),Micro SD (512 GB),Micro SD (512 GB),Micro SD (512 GB)
+WIFI,2.412 GHz - 2.472 GHz,;,;,;,;
+Exterior,IP66,IP67,IP67,IP67,IP67
+Grado de Protección,,,,,
+Antivandálica,;,;,;,;,;
+Soporte Pared,No,No,DS-1280ZJ-XS,No,No
+"",,DS-1260ZJ,,,
+Soporte Base,DS-1280ZJ-XS,,DS-1280ZJ-XS,DS-1280ZJ-XS,DS-1280ZJ-XS
+"",,DS-1280ZJ-S,,,
+Soporte Techo,No,No,DS-1280ZJ-XS,No,No
+"",,DS-1275ZJ-S-SUS,,,
+Soporte Poste,No,,DS-1275ZJ-SUS,DS-1275ZJ-SUS,DS-1275ZJ-SUS
+"",,DS-1275ZJ-SUS,,,
+Soporte Esquina,No,DS-1276ZJ-SUS,DS-1276ZJ-SUS,DS-1276ZJ-SUS,DS-1276ZJ-SUS
+Soporte Empotrado,No,No,No,No,No
+"",,12 Vdc,12 Vdc,12 Vdc,12 Vdc
+Alimentación,12 Vdc,,,,
+"",,PoE 802.3af,PoE+ 802.3at,PoE 802.3af,PoE 802.3af
+Alto x Ancho x,,,,,
+Profundo (cm),11.20 x 8.90 x 17.50,10.51 x 11.86 x 30.65,7.40 x 7.40 x 17.60,7.40 x 7.40 x 17.60,7.40 x 7.40 x 17.60
+Peso (kg),0.34,1.40,0.53,0.52,0.52
+Disponibilidad,C,B,C,C,C
+"",,,DS-2CD2T47G3-LIS2UY-
 "",DS-2CD2T43G2-2I(2.8MM),DS-2CD2T46G2-2I(2.8MM)(C),
 "",,,SL(2.8MM)
 Tipo de Cámara,Bullet,Bullet,Bullet
@@ -630,11 +1991,11 @@ Alimentación,12 Vdc / PoE 802.3af,12 Vdc / PoE 802.3af,
 Alto x Ancho x Profundo (cm),10.50 x 10.50 x 29.30,9.35 x 9.35 x 28.95,8.70 x 8.80 x 28.70
 Peso (kg),1.07,1.09,1.20
 Disponibilidad,C,A,C
-"",,,,DS-2CD2646G2-,IDS-
-DS-2CD1643G2-,DS-2CD1643G2-,DS-2CD2643G2-,DS-2CD2646G2-,,
-"",,,,IZS(2.8-12MM)-,2CD7A46G0-
-IZ(2.8-12MM),LIZSU(2.8-12MM),IZS(2.8-12MM),IZS(2.8-12MM)(C),,
-"",,,,BLACK,IZHS(2.8-12MM)
+"",,,,,DS-2CD2646G2-,IDS-
+"",DS-2CD1643G2-,DS-2CD1643G2-,DS-2CD2643G2-,DS-2CD2646G2-,,
+"",,,,,IZS(2.8-12MM)-,2CD7A46G0-
+"",IZ(2.8-12MM),LIZSU(2.8-12MM),IZS(2.8-12MM),IZS(2.8-12MM)(C),,
+"",,,,,BLACK,IZHS(2.8-12MM)
 Tipo de Cámara,Bullet,Bullet,Bullet,Bullet,Bullet,Bullet
 Resolución,4 Mpx,4 Mpx,4 Mpx,4 Mpx,4 Mpx,4 Mpx
 Tecnología de,,,,,,CVBS
@@ -683,11 +2044,11 @@ Alto x Ancho x,,,,14.40 x 14.40 x,14.40 x 14.40 x,14.40 x 14.40 x
 Profundo (cm),8.30 x 8.30 x 24.40,8.30 x 8.80 x 25.20,9.31 x 9.79 x 31.20,33.30,33.30,34.70
 Peso (kg),0.75,0.59,1.39,1.40,1.40,1.92
 Disponibilidad,A,A+,A,A,A,P
-"",DS-2CD2T87G3-,DS-2CD1663G2-,DS-,,
-DS-2CD3656G2-,,,,DS-2CD2663G2-,DS-2CD3666G2-
-"",LIS2UY-,LIZSU-SL(2.8-,2CD2665FWD-,,
-IZS(2.7-13.5MM),,,,IZS(2.8-12MM),IZS(2.7-13.5MM)
-"",SL(2.8MM),12MM),IZS(2.8-12MM),,
+"",,DS-2CD2T87G3-,DS-2CD1663G2-,DS-,,
+"",DS-2CD3656G2-,,,,DS-2CD2663G2-,DS-2CD3666G2-
+"",,LIS2UY-,LIZSU-SL(2.8-,2CD2665FWD-,,
+"",IZS(2.7-13.5MM),,,,IZS(2.8-12MM),IZS(2.7-13.5MM)
+"",,SL(2.8MM),12MM),IZS(2.8-12MM),,
 Tipo de Cámara,Bullet,Bullet,Bullet,Bullet,Bullet,Bullet
 Resolución,5 Mpx,8 Mpx,6 Mpx,6 Mpx,6 Mpx,6 Mpx
 Tecnología de,,,,,,
@@ -738,8 +2099,117 @@ Alto x Ancho x,14.40 x 14.40 x,,,14.40 x 14.40 x,,
 Profundo (cm),33.30,8.70 x 8.80 x 28.70,8.30 x 8.80 x 28.50,33.27,9.30 x 9.70 x 30.85,9.40 x 9.70 x 33.20
 Peso (kg),1.31,1.25,0.81,1.40,1.29,1.54
 Disponibilidad,P,C,C,C,A,P
-DS-2CD2326G2-ISU-,DS-2CD2523G2-,DS-2CD2523G2-IS,DS-2CV2121G2-
-SL(2.8MM),I(2.8MM),2.8MM,IDW(2.8MM)
+"",DS-2CD2086G2H-IU(2.8MM)(EF)-BLACK,DS-2CD2T87G2-L(2.8MM)
+Tipo de Cámara,Bullet,Bullet
+Resolución,8 Mpx,8 Mpx
+Tecnología de Vídeo,IP,IP
+Tipo de Óptica,Fija,Fija
+Distancia Focal,"2,8 mm","2,8 mm"
+"Ángulo de Ajuste",3 ejes,3 ejes
+LEDs,40 m IR,60 m IR
+Luz Blanca,;,;
+WDR,120 dB,130 dB
+Iluminación Mínima,0.0008 lux,0.0005lux
+"",,Hombre / Vehículo
+"",,VCA
+Análisis de Video,No,Detección Perimetral
+"",,Detección de Movimiento
+"",,Detección de Rostros
+Entradas/Salidas de Alarma,;,;
+Entrada/Salida Audio,Micrófono Integrado,;
+Slot SD,Micro SD (512 GB),Micro SD (256 GB)
+WIFI,;,;
+Exterior,IP67,IP67
+Grado de Protección Antivandálica,;,;
+Soporte Pared,No,No
+"",,DS-1260ZJ
+Soporte Base,DS-1280ZJ-XS,
+"",,DS-1280ZJ-S
+Soporte Techo,No,No
+Soporte Poste,DS-1275ZJ-SUS,DS-1275ZJ-S-SUS
+Soporte Esquina,DS-1276ZJ-SUS,No
+Soporte Empotrado,No,No
+"",12 Vdc,
+Alimentación,,12 Vdc / PoE 802.3af
+"",PoE 802.3af,
+Alto x Ancho x Profundo (cm),7.40 x 7.40 x 17.90,10.50 x 10.50 x 28.95
+Peso (kg),0.53,1.26
+Disponibilidad,C,C
+"",,DS-2CD2686G2-IZS(2.8-12MM),DS-2CD2687G3-LIZS2UY-
+"",DS-2CD4AC5F-IZHS(2.8-12MM),,
+"",,(C),SL(2.8-12MM)
+Tipo de Cámara,Bullet,Bullet,Bullet
+Resolución,8 Mpx,8 Mpx,8 Mpx
+Tecnología de Vídeo,IP,IP,IP
+Tipo de Óptica,Motorizada,Motorizada,Motorizada
+Distancia Focal,"2,8 - 12 mm","2,8 - 12 mm","2,8 - 12 mm"
+"Ángulo de Ajuste",3 ejes,3 ejes,3 ejes
+LEDs,50 m IR,60 m IR,60 m IR
+Luz Blanca,;,;,60 m
+WDR,Digital WDR,120 dB,130 dB
+Iluminación Mínima,0.01lux,0.003lux,0.001lux
+"",,Hombre / Vehículo,
+"",,,Hombre / Vehículo
+Análisis de Video,VCA,VCA,
+"",,,Cruce de Linea
+"",,Detección de Rostros,
+Entradas/Salidas de Alarma,;,1e/1s,2e/2s
+Entrada/Salida Audio,;,1e/1s,Micrófono Integrado / 1e/1s
+Slot SD,;,Micro SD (256 GB),Micro SD (512 GB)
+WIFI,;,;,;
+Exterior,IP67,IP66,IP67
+Grado de Protección,,,
+Antivandálica,;,IK10,IK10
+Soporte Pared,No,No,No
+Soporte Base,No,No,No
+Soporte Techo,No,No,No
+Soporte Poste,No,DS-1275ZJ-S-SUS,DS-1476ZJ-SUS
+Soporte Esquina,No,DS-1475ZJ-SUS,DS-1475ZJ-Y
+Soporte Empotrado,No,No,No
+"",12 Vdc,,12 Vdc
+Alimentación,,12 Vdc / PoE + 802.3at,
+"",PoE+ 802.3at,,PoE+ 802.3at
+Alto x Ancho x Profundo (cm),- x - x -,14.40 x 14.40 x 33.30,9.74 x 8.20 x 33.30
+Peso (kg),1.73,1.43,1.50
+Disponibilidad,P,A+,C
+"",DS-2CD1123G0E-,DS-2CD1323G0E-,DS-2CD2123G2-,DS-2CD2123G2-
+"",I(2.8MM),I(2.8MM),I(2.8MM),IS(2.8MM)
+Tipo de Cámara,Minidomo,Minidomo,Minidomo,Minidomo
+Resolución,2 Mpx,2 Mpx,2 Mpx,2 Mpx
+Tecnología de Vídeo,IP,IP,IP,IP
+Tipo de Óptica,Fija,Fija,Fija,Fija
+Distancia Focal,"2,8 mm","2,8 mm","2,8 mm","2,8 mm"
+"Ángulo de Ajuste",2 ejes,3 ejes,3 ejes,3 ejes
+LEDs,30 m IR,30 m IR,30 m IR,30 m IR
+Luz Blanca,;,;,;,;
+WDR,Digital WDR,Digital WDR,120 dB,120 dB
+Iluminación Mínima,0.01lux,0.01lux,0.005lux,0.005lux
+"",,,Hombre / Vehículo,
+Análisis de Video,VCA,VCA,VCA,Detección de Movimiento
+"",,,Detección de Rostros,
+Entradas/Salidas de,,,,
+Alarma,;,;,;,1e/1s
+Entrada/Salida Audio,;,;,;,1e/1s
+Slot SD,;,;,Micro SD (256 GB),Micro SD (256 GB)
+WIFI,;,;,;,;
+Exterior,IP67,IP67,IP67,IP67
+Grado de Protección,,,,
+Antivandálica,IK10,;,IK10,IK10
+Soporte Pared,DS-1272ZJ-110,DS-1272ZJ-110-TRS,DS-1272ZJ-110,DS-1272ZJ-120
+Soporte Base,DS-1280ZJ-DM18,DS-1280ZJ-S,DS-1280ZJ-DM18,DS-1280ZJ-DM46
+Soporte Techo,No,No,No,No
+Soporte Poste,DS-1275ZJ-SUS,DS-1275ZJ-SUS,DS-1275ZJ-SUS,DS-1275ZJ-SUS
+Soporte Esquina,DS-1276ZJ-SUS,DS-1276ZJ-SUS,DS-1276ZJ-SUS,DS-1276ZJ-SUS
+Soporte Empotrado,No,No,No,No
+"",,,12 Vdc,12 Vdc
+Alimentación,12 Vdc / PoE 802.3af,12 Vdc / PoE 802.3af,,
+"",,,PoE 802.3af,PoE 802.3af
+Alto x Ancho x Profundo,,,,
+"(cm)",8.24 x 11.10 x 11.10,9.32 x 11.00 x 11.00,8.47 x 11.08 x 11.08,8.47 x 11.08 x 11.08
+Peso (kg),0.40,0.36,0.53,0.53
+Disponibilidad,A,A,C,A
+"",DS-2CD2326G2-ISU-,DS-2CD2523G2-,DS-2CD2523G2-IS,DS-2CV2121G2-
+"",SL(2.8MM),I(2.8MM),2.8MM,IDW(2.8MM)
 Tipo de Cámara,Minidomo,Minidomo,Minidomo,Minidomo
 Resolución,2 Mpx,2 Mpx,2 Mpx,2 Mpx
 Tecnología de Vídeo,IP,IP,IP,IP
@@ -778,8 +2248,8 @@ Alto x Ancho x Profundo,,,,
 "(cm)",13.83 x 13.83 x 11.54,11.00 x 11.00 x 5.74,11.00 x 11.00 x 5.74,12.60 x 12.60 x 9.61
 Peso (kg),0.78,0.38,0.38,0.59
 Disponibilidad,C,A,A,A
-DS-2CD1723G2-,DS-2CD2H25FWD-,DS-2CD2723G2-,DS-2CD2726G2-,DS-2CD3723G2-
-LIZSU(2.8-12MM),IZS(2.8-12MM),IZS(2.8-12MM),IZS(2.8-12MM),IZS(2.7-13.5MM)
+"",DS-2CD1723G2-,DS-2CD2H25FWD-,DS-2CD2723G2-,DS-2CD2726G2-,DS-2CD3723G2-
+"",LIZSU(2.8-12MM),IZS(2.8-12MM),IZS(2.8-12MM),IZS(2.8-12MM),IZS(2.7-13.5MM)
 Tipo de Cámara,Minidomo,Minidomo,Minidomo,Minidomo,Minidomo
 Resolución,2 Mpx,2 Mpx,2 Mpx,2 Mpx,2 Mpx
 Tecnología de Vídeo,IP,IP,IP,IP,IP
@@ -818,8 +2288,46 @@ Alto x Ancho x,,,,,
 Profundo (cm),9.70 x 12.10 x 12.10,13.58 x 13.58 x 14.55,11.16 x 15.33 x 15.33,13.31 x 15.35 x 15.35,11.10 x 15.30 x 15.30
 Peso (kg),0.54,1.06,0.88,0.89,-
 Disponibilidad,C,C,A,B,P
-DS-2CD1347G0-,DS-2CD1347G2H-,DS-2CD2143G2-,DS-2CD2143G2-,DS-2CD2146G2H-
-L(2.8MM),LIU(2.8MM),IU(2.8MM),IS(2.8MM)(BLACK),ISU2.8
+"",DS-2CD1143G0-,DS-2CD1143G2-,DS-2CD1143G2-,DS-2CD1147G2H-,DS-2CD1343G2-
+"",IUF(2.8MM),I(2.8MM),LIU(2.8MM),LIU(2.8MM),I(2.8MM)
+Tipo de Cámara,Minidomo,Minidomo,Minidomo,Minidomo,Minidomo
+Resolución,4 Mpx,4 Mpx,4 Mpx,4 Mpx,4 Mpx
+Tecnología de Vídeo,IP,IP,IP,IP,IP
+Tipo de Óptica,Fija,Fija,Fija,Fija,Fija
+Distancia Focal,"2,8 mm","2,8 mm","2,8 mm","2,8 mm","2,8 mm"
+"Ángulo de Ajuste",2 ejes,2 ejes,3 ejes,3 ejes,3 ejes
+LEDs,30 m IR,30 m IR,30 m IR,30 m IR,30 m IR
+Luz Blanca,;,;,30m,30m,;
+WDR,120 dB,120 dB,120 dB,120 dB,120 dB
+Iluminación Mínima,0.01lux,0.1lux,0.005lux,0.001lux,0.01lux
+"",,Hombre / Vehículo,,,
+"",,,,Detección de,Detección de
+Análisis de Video,No,Detección de,Hombre / Vehículo,,
+"",,,,Movimiento,Movimiento
+"",,Movimiento,,,
+Entradas/Salidas de,,,,,
+Alarma,;,;,;,;,;
+Entrada/Salida Audio,Micrófono Integrado,;,Micrófono Integrado,Micrófono Integrado,;
+Slot SD,Micro SD (512 GB),;,;,;,Micro SD (256 GB)
+WIFI,;,;,;,;,;
+Exterior,IP67,IP67,IP67,IP67,IP67
+Grado de Protección,,,,,
+Antivandálica,IK10,IK10,IK08,IK08,;
+Soporte Pared,DS-1272ZJ-120,DS-1272ZJ-110,DS-1272ZJ-120,DS-1272ZJ-120,DS-1272ZJ-110-TRS
+Soporte Base,DS-1280ZJ-DM46,DS-1280ZJ-DM18,DS-1280ZJ-DM46,DS-1280ZJ-DM46,DS-1280ZJ-S
+Soporte Techo,No,No,No,No,No
+Soporte Poste,DS-1275ZJ-SUS,DS-1275ZJ-SUS,DS-1275ZJ-SUS,DS-1275ZJ-SUS,DS-1275ZJ-SUS
+Soporte Esquina,DS-1276ZJ-SUS,DS-1276ZJ-SUS,No,DS-1276ZJ-SUS,DS-1276ZJ-SUS
+Soporte Empotrado,No,No,No,No,No
+"",12 Vdc,,12 Vdc,12 Vdc,
+Alimentación,,12 Vdc / PoE 802.3af,,,12 Vdc / PoE 802.3af
+"",PoE 802.3af,,PoE 802.3af,PoE 802.3af,
+Alto x Ancho x,,,,,
+Profundo (cm),8.24 x 11.00 x 11.00,8.40 x 10.00 x 10.00,9.70 x 12.10 x 12.10,9.70 x 12.00 x 12.00,8.50 x 11.00 x 11.00
+Peso (kg),0.41,0.52,0.55,0.55,0.33
+Disponibilidad,C,A+,C,B,A+
+"",DS-2CD1347G0-,DS-2CD1347G2H-,DS-2CD2143G2-,DS-2CD2143G2-,DS-2CD2146G2H-
+"",L(2.8MM),LIU(2.8MM),IU(2.8MM),IS(2.8MM)(BLACK),ISU2.8
 Tipo de Cámara,Minidomo,Minidomo,Minidomo,Minidomo,Minidomo
 Resolución,4 Mpx,4 Mpx,4 Mpx,4 Mpx,4 Mpx
 Tecnología de Vídeo,IP,IP,IP,IP,IP
@@ -862,8 +2370,11 @@ Alto x Ancho x,,,,,
 Profundo (cm),11.00 x 11.00 x 10.08,9.30 x 11.00 x 11.00,8.47 x 11.08 x 11.08,11.08 x 11.08 x 8.47,9.70 x 10.00 x 10.00
 Peso (kg),0.35,0.42,0.53,0.53,0.55
 Disponibilidad,C,C,A+,A,C
-DS-2CD2147G2-,DS-2CD2147G2H-,DS-2CD2147G3-,DS-2CD2343G2-
-LSU(2.8MM),LI(2.8MM),LIS2UY(2.8MM),IU(2.8MM)
+"",,,,,DS-2CD2347G2H-
+"",DS-2CD2147G2-,DS-2CD2147G2H-,DS-2CD2147G3-,DS-2CD2343G2-,
+"",,,,,LISU-SL(2.8MM)
+"",LSU(2.8MM),LI(2.8MM),LIS2UY(2.8MM),IU(2.8MM),
+"",,,,,(EF)
 Tipo de Cámara,Minidomo,Minidomo,Minidomo,Minidomo,Minidomo
 Resolución,4 Mpx,4 Mpx,4 Mpx,4 Mpx,4 Mpx
 Tecnología de Vídeo,IP,IP,IP,IP,IP
@@ -904,8 +2415,8 @@ Alto x Ancho x,,,,,
 Profundo (cm),10.00 x 12.00 x 12.00,9.70 x 10.40 x 10.40,9.70 x 12.00 x 12.00,12.73 x 12.73 x 9.59,11.50 x 13.80 x 13.80
 Peso (kg),0.60,0.53,0.60,0.60,0.82
 Disponibilidad,C,C,C,A,A
-DS-2CD2347G3-,DS-2CD2543G2-,DS-2CD2546G2-,DS-2CD2547G2-,DS-2CD2346G2P-
-LIS2UY-SL(2.8MM),IS(2.8MM),IS(2.8MM),LS(2.8MM),ISU-SL(2.8MM)
+"",DS-2CD2347G3-,DS-2CD2543G2-,DS-2CD2546G2-,DS-2CD2547G2-,DS-2CD2346G2P-
+"",LIS2UY-SL(2.8MM),IS(2.8MM),IS(2.8MM),LS(2.8MM),ISU-SL(2.8MM)
 Tipo de Cámara,Minidomo,Minidomo,Minidomo,Minidomo,Minidomo
 Resolución,4 Mpx,4 Mpx,4 Mpx,4 Mpx,4 Mpx
 Tecnología de Vídeo,IP,IP,IP,IP,IP
@@ -950,8 +2461,8 @@ Alto x Ancho x,,,,,
 Profundo (cm),11.50 x 13.80 x 13.80,11.00 x 11.00 x 5.70,12.00 x 12.00 x 6.74,11.36 x 11.36 x 7.26,14.50 x 14.00 x 14.00
 Peso (kg),0.82,0.38,0.37,0.40,0.94
 Disponibilidad,C,A,B,A,C
-DS-2CD1743G0-IZ(2.8-,DS-2CD1743G2-IZS(2.8-,DS-2CD2746G2HT-,DS-2CD2743G2-IZS(2.8-
-12MM),12MM),IZS(2.8-12MM),12MM)
+"",DS-2CD1743G0-IZ(2.8-,DS-2CD1743G2-IZS(2.8-,DS-2CD2746G2HT-,DS-2CD2743G2-IZS(2.8
+"",12MM),12MM),IZS(2.8-12MM),12MM)
 Tipo de Cámara,Minidomo,Minidomo,Minidomo,Minidomo
 Resolución,4 Mpx,4 Mpx,4 Mpx,4 Mpx
 Tecnología de Vídeo,IP,IP,IP,IP
@@ -986,10 +2497,190 @@ Alto x Ancho x Profundo,,,,
 "(cm)",9.99 x 14.10 x 14.10,9.90 x 14.00 x 14.00,11.20 x 14.10 x 14.10,11.16 x 15.33 x 15.33
 Peso (kg),0.82,1.20,0.82,0.88
 Disponibilidad,C,A+,B,A+
-DS-2CD3356G2-,DS-2CD2563G2-,DS-2CD2163G2-,DS-2CD2763G2-IZS(2.8-
-ISU(2.8MM),I(2.8MM),I(2.8MM),12MM)
-DS-2CD2387G3-LIS2UY-,DS-2CD3387G2P-LSU-,DS-2CD2387G2P-LSU-
-SL(2.8MM),SL(4MM),SL(4MM)
+"",DS-2CD2747G2T-LZS,DS-2CD2746G2-IZS(2.8-,DS-2CD2747G2HT-,DS-2CD2747G2-
+"",(C),12MM)-BLACK,LIZS(2.8-12)-EF-BLK,LZS(3.6-9MM)
+Tipo de Cámara,Minidomo,Minidomo,Minidomo,Minidomo
+Resolución,4 Mpx,4 Mpx,4 Mpx,4 Mpx
+Tecnología de Vídeo,IP,IP,IP,IP
+Tipo de Óptica,Motorizada,Motorizada,Motorizada,Motorizada
+Distancia Focal,"2,8 - 12 mm","2,8 - 12 mm","2,8 - 12 mm",3.6 - 9 mm
+"Ángulo de Ajuste",3 ejes,3 ejes,3 ejes,3 ejes
+LEDs,;,40 m IR,40 m IR,;
+Luz Blanca,40m,;,40m,40m
+WDR,130 dB,120 dB,130 dB,130 dB
+Iluminación Mínima,0.0005lux,0.003lux,0.0008 lux,0.0005lux
+"",,Hombre / Vehículo,,Hombre / Vehículo
+"",,VCA,,VCA
+Análisis de Video,No,Detección Perimetral,Hombre / Vehículo,Detección Perimetral
+"",,Detección de Movimiento,,Detección de Movimiento
+"",,Detección de Rostros,,Detección de Rostros
+Entradas/Salidas de,,,,
+Alarma,1e/1s,1e/1s,1e/1s,1e/1s
+Entrada/Salida Audio,1e/1s,1e/1s,1e/1s,1e/1s
+Slot SD,Micro SD (512 GB),Micro SD (256 GB),Micro SD (512 GB),Micro SD (512 GB)
+WIFI,;,;,;,;
+Exterior,IP67,IP66,IP67,IP67
+Grado de Protección,,,,
+Antivandálica,IK10,IK10,IK10,IK10
+Soporte Pared,DS-1473ZJ-155B,DS-1473ZJ-155,DS-1273ZJ-140-DM45,DS-1473ZJ-155
+Soporte Base,No,No,DS-1280ZJ-DM45,No
+Soporte Techo,No,No,No,No
+"",DS-1275ZJ-SUS,,,
+Soporte Poste,,DS-1475ZJ-SUS,DS-1275ZJ-SUS(Black),DS-1475ZJ-SUS
+"",DS-1475ZJ-SUS,,,
+"",DS-1276ZJ-SUS,,,
+Soporte Esquina,,DS-1476ZJ-SUS,DS-1276ZJ-SUS(Black),DS-1476ZJ-SUS
+"",DS-1476ZJ-SUS,,,
+Soporte Empotrado,No,No,No,No
+"",12 Vdc,,12 Vdc,
+Alimentación,,12 Vdc / PoE 802.3af,,12 Vdc / PoE 802.3af
+"",PoE 802.3af,,PoE 802.3af,
+Alto x Ancho x Profundo,,,,
+"(cm)",15.20 x 15.50 x 15.50,13.31 x 15.33 x 15.33,11.20 x 14.10 x 14.10,15.50 x 15.50 x 15.20
+Peso (kg),1.60,0.83,0.82,1.52
+Disponibilidad,C,C,C,C
+"",DS-2CD3356G2-,DS-2CD2563G2-,DS-2CD2163G2-,DS-2CD2763G2-IZS(2.8
+"",ISU(2.8MM),I(2.8MM),I(2.8MM),12MM)
+Tipo de Cámara,Minidomo,Minidomo,Minidomo,Minidomo
+Resolución,5 Mpx,6 Mpx,6 Mpx,6 Mpx
+Tecnología de Vídeo,IP,IP,IP,IP
+Tipo de Óptica,Fija,Fija,Fija,Motorizada
+Distancia Focal,"2,8 mm","2,8 mm","2,8 mm","2,8 - 12 mm"
+"Ángulo de Ajuste",3 ejes,3 ejes,3 ejes,3 ejes
+LEDs,40 m IR,30 m IR,30 m IR,40 m IR
+Luz Blanca,;,;,;,;
+WDR,120 dB,120 dB,120 dB,120 dB
+Iluminación Mínima,0.003lux,0.005lux,0.005lux,0.005lux
+"",,Hombre / Vehículo,Hombre / Vehículo,Hombre / Vehículo
+"",,VCA,VCA,VCA
+Análisis de Video,No,Detección Perimetral,Detección Perimetral,Detección Perimetral
+"",,Detección de Movimiento,Detección de Movimiento,Detección de Movimiento
+"",,Detección de Rostros,Detección de Rostros,Detección de Rostros
+Entradas/Salidas de,,,,
+Alarma,1e/1s,;,;,1e/1s
+Entrada/Salida Audio,1e/1s,;,;,1e/1s
+Slot SD,Micro SD (512 GB),Micro SD (512 GB),Micro SD (256 GB),Micro SD (256 GB)
+WIFI,;,;,;,;
+Exterior,IP67,IP67,IP67,IP67
+Grado de Protección,,,,
+Antivandálica,;,IK08,IK10,IK10
+Soporte Pared,No,DS-1272ZJ-120,DS-1272ZJ-110,DS-1473ZJ-155
+Soporte Base,DS-1280ZJ-PT6,DS-1280ZJ-DM46,DS-1280ZJ-DM18,DS-1280ZJ-DM55
+Soporte Techo,No,No,No,No
+Soporte Poste,DS-1275ZJ-SUS,DS-1275ZJ-SUS,DS-1275ZJ-SUS,DS-1475ZJ-SUS
+Soporte Esquina,DS-1276ZJ-SUS,DS-1276ZJ-SUS,DS-1276ZJ-SUS,DS-1476ZJ-SUS
+Soporte Empotrado,No,No,No,DS-1227ZJ-DM44
+"",12 Vdc,,,
+Alimentación,,12 Vdc / PoE 802.3af,12 Vdc / PoE 802.3af,12 Vdc / PoE 802.3af
+"",PoE 802.3af,,,
+Alto x Ancho x Profundo,,,,
+"(cm)",13.83 x 13.83 x 12.45,11.00 x 11.00 x 5.74,11.08 x 11.08 x 8.47,15.33 x 15.33 x 11.16
+Peso (kg),0.82,0.38,0.52,0.89
+Disponibilidad,P,C,C,A
+"",,,,DS-2CD2186G2H-,
+"",DS-2CD2385FWD-,DS-2CD2386G2-,DS-2CD2183G2-,,DS-2CD2187G3-
+"",,,,ISU(2.8MM)(EF)-,
+"",I(2.8MM),ISU-SL(2.8MM)(C),IU(2.8MM),,LIS2UY(2.8MM)
+"",,,,BLACK,
+Tipo de Cámara,Minidomo,Minidomo,Minidomo,Minidomo,Minidomo
+Resolución,8 Mpx,8 Mpx,8 Mpx,8 Mpx,8 Mpx
+Tecnología de Vídeo,IP,IP,IP,IP,IP
+Tipo de Óptica,Fija,Fija,Fija,Fija,Fija
+Distancia Focal,"2,8 mm","2,8 mm","2,8 mm","2,8 mm","2,8 mm"
+"Ángulo de Ajuste",3 ejes,3 ejes,3 ejes,3 ejes,3 ejes
+LEDs,30 m IR,30 m IR,30 m IR,30 m IR,30 m IR
+Luz Blanca,;,;,;,;,;
+WDR,120 dB,120 dB,120 dB,130 dB,130 dB
+Iluminación Mínima,0.01lux,0.003lux,0.005lux,0.0008 lux,0.0005lux
+"",,,Hombre / Vehículo,,
+"",,,,Hombre / Vehículo,
+"",,,VCA,,
+"",,Hombre / Vehículo,,Objetos que aparecen,
+"",,,Detección Perimetral,,Hombre / Vehículo
+Análisis de Video,No,VCA,,o entran en la zona de,
+"",,,Detección de,,Cruce de Linea
+"",,Detección de Rostros,,interés,
+"",,,Movimiento,,
+"",,,,Cruce de Linea,
+"",,,Detección de Rostros,,
+Entradas/Salidas de,,,,,
+Alarma,;,1e/1s,;,1e/1s,1e/1s
+"",,,,,Micrófono Integrado
+Entrada/Salida Audio,;,1e/1s,Micrófono Integrado,1e/1s,
+"",,,,,/ 1e/1s
+Slot SD,Micro SD (128 GB),Micro SD (512 GB),Micro SD (256 GB),Micro SD (512 GB),Micro SD (512 GB)
+WIFI,;,;,;,;,;
+Exterior,IP67,IP67,IP67,IP67,IP67
+Grado de Protección,,,,,
+Antivandálica,;,;,IK10,IK10,IK10
+Soporte Pared,DS-1273ZJ-130-TRL,DS-1273ZJ-140,DS-1272ZJ-120,DS-1272ZJ-120,DS-1272ZJ-120
+Soporte Base,DS-1280ZJ-DM8,DS-1280ZJ-PT6,DS-1280ZJ-DM46,DS-1280ZJ-DM46,DS-1280ZJ-DM46
+Soporte Techo,No,No,No,No,No
+"",,,,DS-1275ZJ-,
+Soporte Poste,DS-1275ZJ-SUS,DS-1275ZJ-SUS,DS-1275ZJ-SUS,,DS-1275ZJ-SUS
+"",,,,SUS(Black),
+"",,,,DS-1276ZJ-,
+Soporte Esquina,DS-1276ZJ-SUS,DS-1276ZJ-SUS,DS-1276ZJ-SUS,,DS-1276ZJ-SUS
+"",,,,SUS(Black),
+Soporte Empotrado,No,No,No,No,No
+"",12 Vdc,,,12 Vdc,12 Vdc
+Alimentación,,12 Vdc / PoE 802.3af,12 Vdc / PoE 802.3af,,
+"",PoE 802.3af,,,PoE 802.3af,PoE 802.3af
+Alto x Ancho x,,,,,
+Profundo (cm),9.50 x 12.70 x 12.70,13.80 x 13.80 x 12.45,12.14 x 12.14 x 9.22,9.70 x 12.10 x 12.10,9.70 x 12.10 x 12.10
+Peso (kg),0.72,0.84,0.55,0.53,0.60
+Disponibilidad,C,C,B,C,C
+"",,DS-2CD2786G2-,,,
+"",DS-2CD2783G2-,,DS-2CD2786G2HT-,IDS-2CD7186G0-H-,DS-2CD3786G2-
+"",,IZS(2.8-12MM),,,
+"",IZS(2.8-12MM),,IZS(2.8-12MM)(EF),IZHSY(2.8-12MM),IZS(2.7-13.5MM)
+"",,BLACK,,,
+Tipo de Cámara,Minidomo,Minidomo,Minidomo,Minidomo,Minidomo
+Resolución,8 Mpx,8 Mpx,8 Mpx,8 Mpx,8 Mpx
+Tecnología de Vídeo,IP,IP,IP,IP,IP
+Tipo de Óptica,Motorizada,Motorizada,Motorizada,Motorizada,Motorizada
+Distancia Focal,"2,8 - 12 mm","2,8 - 12 mm","2,8 - 12 mm","2,8 - 12 mm","2,7 - 13,5 mm"
+"Ángulo de Ajuste",3 ejes,3 ejes,3 ejes,3 ejes,3 ejes
+LEDs,40 m IR,40 m IR,40 m IR,40 m IR,40 m IR
+Luz Blanca,;,;,;,;,;
+WDR,120 dB,120 dB,120 dB,120 dB,120 dB
+Iluminación Mínima,0.005lux,0.003lux,0.0008 lux,0.002lux,0.003lux
+"",Hombre / Vehículo,,,,
+"",VCA,,,,
+"",Detección Perimetral,,,Detección de,
+Análisis de Video,,No,Hombre / Vehículo,,No
+"",Detección de,,,Movimiento,
+"",Movimiento,,,,
+"",Detección de Rostros,,,,
+Entradas/Salidas de,,,,,
+Alarma,1e/1s,1e/1s,1e/1s,2e/2s,1e/1s
+Entrada/Salida Audio,1e/1s,1e/1s,1e/1s,1e/1s,1e/1s
+Slot SD,Micro SD (256 GB),Micro SD (512 GB),Micro SD (512 GB),Micro SD (256 GB),Micro SD (512 GB)
+WIFI,;,;,;,;,;
+Exterior,IP67,IP66,IP67,IP67,IP66
+Grado de Protección,,,,,
+Antivandálica,IK10,IK10,IK10,IK10,IK10
+"",,DS-1473ZJ-155B,,,DS-1473ZJ-155B
+Soporte Pared,DS-1473ZJ-155,,DS-1273ZJ-140-DM45,No,
+"",,DS-1473ZJ-155,,,DS-1473ZJ-155
+Soporte Base,DS-1280ZJ-DM55,No,No,No,No
+Soporte Techo,No,No,No,No,No
+"",,,,,DS-1275ZJ-SUS
+Soporte Poste,DS-1475ZJ-SUS,DS-1475ZJ-SUS,No,DS-1475ZJ-SUS,
+"",,,,,DS-1475ZJ-SUS
+"",,,,DS-1476ZJ-Y,DS-1276ZJ-SUS
+Soporte Esquina,DS-1476ZJ-SUS,DS-1476ZJ-SUS,DS-1276ZJ-SUS,,
+"",,,,DS-1476ZJ-SUS,DS-1476ZJ-SUS
+Soporte Empotrado,DS-1227ZJ-DM44,DS-1227ZJ-DM37,No,No,No
+"",,12 Vdc,12 Vdc,12 - 24 Vdc,12 Vdc
+Alimentación,12 Vdc / PoE 802.3af,,,,
+"",,PoE 802.3af,PoE 802.3af,PoE+ 802.3at,PoE 802.3af
+Alto x Ancho x,,,,,
+Profundo (cm),15.35 x 15.35 x 13.32,13.10 x 15.30 x 24.40,11.20 x 14.10 x 14.10,11.40 x 14.40 x 14.40,15.35 x 15.35 x 13.31
+Peso (kg),1.08,1.08,0.84,0.95,0.81
+Disponibilidad,C,C,B,P,P
+"",DS-2CD2387G3-LIS2UY-,DS-2CD3387G2P-LSU-,DS-2CD2387G2P-LSU-
+"",SL(2.8MM),SL(4MM),SL(4MM)
 Tipo de Cámara,Minidomo,Minidomo,Minidomo
 Resolución,8 Mpx,8 Mpx,8 Mpx
 Tecnología de Vídeo,IP,IP,IP
@@ -1028,9 +2719,78 @@ Alimentación,,12 Vdc / PoE 802.3af,12 Vdc / PoE 802.3af
 Alto x Ancho x Profundo (cm),11.50 x 13.80 x 13.80,15.50 x 15.50 x 15.50,15.50 x 15.50 x 15.50
 Peso (kg),0.82,1.11,1.10
 Disponibilidad,C,P,A
-DS-,DS-2DE2A204IW-,DS-2DE4A225IW-,,DS-2DE7A232IW-
-"",,,DS-2DE4225IW-DE,
-2DE4A225IWG-E,DE3,DE,,AEB
+"",DS-2CD2955G0-,,DS-2CD6365G0E-,,DS-2CD63C5G0E-
+"",,DS-2CD6365G1-IVS,,DS-2CD63C5G1-IVS,
+"",ISU(105MM),,S-RC(1.27MM),,S-RC(2MM)
+Tipo de Cámara,Fisheye,Fisheye,Fisheye,Fisheye,Fisheye
+Resolución,5 Mpx,6 Mpx,6 Mpx,12 Mpx,12 Mpx
+Tecnología de Vídeo,IP,IP,IP,IP,IP
+Tipo de Óptica,Fija,Fija,Fija,Fija,Fija
+Distancia Focal,"1,05 mm",1.16 mm,"1,27 mm","1,29 mm","2,0 mm"
+"Ángulo de Ajuste",3 ejes,;,;,;,3 ejes
+LEDs,8 m IR,15 m IR,;,15 m IR,;
+Luz Blanca,;,;,;,;,;
+WDR,128 dB,Digital WDR,Digital WDR,Digital WDR,Digital WDR
+Iluminación Mínima,0.017 lux,0.01lux,0.01lux,0.03lux,0.06 lux
+"",,,VCA,,
+"",,,,Mapa Calor,
+Análisis de Video,No,Detección Perimetral,Detección de,,No
+"",,,,Conteo de Personas,
+"",,,Movimiento,,
+Entradas/Salidas de,,,,,
+Alarma,1e/1s,2e/2s,;,2e/2s,1e/1s
+Entrada/Salida Audio,1e/1s,1e/1s,Micrófono Integrado,1e/1s,1e/1s
+Slot SD,Micro SD (256 GB),Micro SD (256 GB),Micro SD (256 GB),Micro SD (256 GB),Micro SD (256 GB)
+WIFI,;,;,;,;,;
+Exterior,;,IP67,;,IP67,;
+Grado de Protección,,,,,
+Antivandálica,;,IK10,;,IK10,;
+Soporte Pared,DS-1294ZJ,DS-1273ZJ-140,No,DS-1273ZJ-140,DS-1273ZJ-DM25
+Soporte Base,No,No,No,No,DS-1280ZJ-DM25
+Soporte Techo,No,No,No,No,No
+Soporte Poste,No,DS-1275ZJ-SUS,No,DS-1275ZJ-SUS,DS-1275ZJ-SUS
+Soporte Esquina,No,DS-1276ZJ-SUS,No,DS-1276ZJ-SUS,DS-1276ZJ-SUS
+Soporte Empotrado,No,No,No,No,No
+"",,,,,12 Vdc
+Alimentación,12 Vdc / PoE 802.3af,12 Vdc / PoE 802.3af,12 Vdc / PoE 802.3af,12 Vdc / PoE 802.3af,
+"",,,,,PoE 802.3af
+Alto x Ancho x,,,,,
+Profundo (cm),4.12 x 15.00 x 15.00,5.90 x 14.00 x 14.00,6.90 x 16.50 x 16.50,5.94 x 8.35 x 8.35,16.50 x 16.50 x 6.70
+Peso (kg),0.32,1.40,0.48,0.72,0.48
+Disponibilidad,A,P,P,P,P
+"",DS-2CD6425G1-10(3.7MM)8M,DS-2CD2D25G1-M-D-NF(2.8MM)
+Tipo de Cámara,Pinhole,Cámara Oculta
+Resolución,2 Mpx,2 Mpx
+Tecnología de Vídeo,IP,IP
+Tipo de Óptica,Fija,Fija
+Distancia Focal,"3,7 mm","2,8 mm"
+"Ángulo de Ajuste",3 ejes,3 ejes
+LEDs,;,;
+Luz Blanca,;,;
+WDR,120 dB,120 dB
+Iluminación Mínima,0.002lux,0.002lux
+"",VCA,VCA
+Análisis de Video,,
+"",Detección de Movimiento,Detección de Movimiento
+Entradas/Salidas de Alarma,1e/1s,;
+Entrada/Salida Audio,1e/1s,1e/1s
+Slot SD,Micro SD (256 GB),;
+WIFI,;,;
+Exterior,;,;
+Grado de Protección Antivandálica,;,;
+Soporte Pared,No,No
+Soporte Base,No,No
+Soporte Techo,No,No
+Soporte Poste,No,No
+Soporte Esquina,No,No
+Soporte Empotrado,No,No
+Alimentación,12 Vdc / PoE 802.3af,12 Vdc
+Alto x Ancho x Profundo (cm),10.00 x 13.90 x 21.90,3.15 x 3.15 x 4.96
+Peso (kg),0.09,0.09
+Disponibilidad,B,C
+"",DS-,DS-2DE2A204IW-,DS-2DE4A225IW-,,DS-2DE7A232IW-
+"",,,,DS-2DE4225IW-DE,
+"",2DE4A225IWG-E,DE3,DE,,AEB
 Aumentos,x25,x4,x25,x25,x32
 Resolución,2 Mpx,2 Mpx,2 Mpx,2 Mpx,2 Mpx
 LEDs,50 m IR,20 m IR,50 m IR,100 m IR,200 m IR
@@ -1070,6 +2830,46 @@ Alto x Ancho x,,,,,
 Profundo (cm),16.10 x 16.90 x 16.90,13.00 x 13.00 x 10.17,16.10 x 16.90 x 16.90,29.00 x 16.45 x 16.45,22.00 x 22.00 x 36.33
 Peso (kg),2.45,0.53,2.45,2.00,5.00
 Disponibilidad,B,B,C,A,A+
+"",DS-2CV2Q21G1-IDW(4MM),DS-2DF8C260I5XG-ELW
+Tipo de Cámara,Minidomo,Domo PTZ
+Resolución,2 Mpx,2 Mpx
+Tecnología de Vídeo,IP,IP
+Tipo de Óptica,Fija,Motorizada
+Distancia Focal,"4,0 mm",6 - 360 mm
+"Ángulo de Ajuste",3 ejes,3 ejes
+LEDs,10 m IR,500 m IR
+Luz Blanca,;,;
+WDR,Digital WDR,140 dB
+Iluminación Mínima,0.05lux,0.002lux
+"",,LPR
+"",,Hombre / Vehículo
+"",,Clasificación Tipo de Vehículo
+"",,Detección Perimetral
+Análisis de Video,Detección de Movimiento,
+"",,Módulo Análisis y Comparación de Imágenes
+"",,Faciales
+"",,Clasificación Color de Vehículo
+"",,Detección de Rostros
+Entradas/Salidas de Alarma,;,7e/2s
+Entrada/Salida Audio,Micrófono / Altavoz Integrado,1e/1s
+Slot SD,Micro SD (512 GB),Micro SD (256 GB)
+WIFI,;,;
+Exterior,;,IP67
+Grado de Protección Antivandálica,;,IK10
+Soporte Pared,No,DS-1603ZJ-P
+Soporte Base,No,No
+Soporte Techo,No,No
+"",,DS-1603ZJ-Pole-P
+Soporte Poste,No,
+"",,DS-1673ZJ-P
+Soporte Esquina,No,No
+Soporte Empotrado,No,No
+"",,24 Vac
+Alimentación,5 Vdc,
+"",,Hi-PoE 802.3bt
+Alto x Ancho x Profundo (cm),12.20 x 8.80 x 7.90,43.00 x 26.70 x 26.70
+Peso (kg),0.22,9.60
+Disponibilidad,C,P
 "",DS-2DE2A404IW-,,,
 "",,DS-2DE4A425IWG-E,DS-2DE4425IW-DE,DS-2DE5425IW-AE
 "",DE3(C0)(S6),,,
@@ -1106,6 +2906,48 @@ Alto x Ancho x Profundo,,,,
 "(cm)",10.17 x 13.07 x 13.07,16.90 x 16.90 x 16.10,29.00 x 16.45 x 16.45,20.80 x 20.80 x 34.50
 Peso (kg),0.53,2.45,2.00,3.30
 Disponibilidad,A,B,A+,A
+"",,DS-2SE4C425MWG-,,
+"",DS-2DF8425IX-AEL,,DS-2DE7A432IW-AEB,DS-2DF6A436X-AEL
+"",,E(14F0),,
+Aumentos,x25,x25,x32,x36
+Resolución,4 Mpx,4 Mpx,4 Mpx,4 Mpx
+LEDs,;,100 m IR,200 m IR,;
+"",,,,IP
+Tecnología de Vídeo,IP,IP,IP,
+"",,,,BNC
+Giro Continuo,;,;,;,;
+WDR,140 dB,120 dB,120 dB,140 dB
+"",,,Hombre / Vehículo,
+"",,,VCA,
+"",,VCA,,VCA
+Análisis de Video,Hombre / Vehículo,,Detección Perimetral,
+"",,Detección de Humanos,,Detección de Movimiento
+"",,,Detección de Movimiento,
+"",,,Detección de Rostros,
+Entradas/Salidas de,,,,
+Alarma,7e/2s,1e/1s,2e/1s,7e/2s
+Exterior,IP67,IP66,IP66,IP67
+Grado de Protección,,,,
+Antivandálica,IK10,;,IK10,IK10
+Wiper,;,;,;,;
+Anticorrosión,;,;,;,;
+Slot SD,Micro SD (256 GB),Micro SD (256 GB),Micro SD (256 GB),Micro SD (256 GB)
+"",,DS-1604ZJ,,
+Soporte Pared,No,,DS-1602ZJ,DS-1604ZJ-P
+"",,DS-1602ZJ,,
+Soporte Base,No,No,No,No
+Soporte Techo,No,No,DS-1661ZJ,DS-1663ZJ-P
+Soporte Poste,No,DS-1673ZJ,DS-1673ZJ,DS-1673ZJ-P
+Soporte Esquina,DS-1604ZJ-CORNER,DS-1604ZJ-CORNER,DS-1602ZJ-Corner,DS-1604ZJ-CORNER-P
+Soporte Empotrado,No,No,No,No
+Soporte Suspendido,No,DS-1661ZJ,No,DS-1662ZJ-P
+"",,12 Vdc,,
+Alimentación,24 Vac / Hi-PoE 802.3bt,,24 Vac / Hi-PoE 802.3bt,24 Vac / Hi-PoE 802.3bt
+"",,PoE+ 802.3at,,
+Alto x Ancho x Profundo,,,,
+"(cm)",41.00 x 26.60 x 26.60,37.50 x 16.60 x 18.20,22.00 x 22.00 x 36.33,23.11 x 23.11 x 35.56
+Peso (kg),8.00,2.40,5.00,6.00
+Disponibilidad,P,C,A,P
 "",DS-2DE7A632IWG-EB,DS-2DE7A825IW-AEB,DS-2DF8C842IXS-AELW
 Aumentos,x32,x25,x42
 Resolución,6 Mpx,8 Mpx,8 Mpx
@@ -1140,14 +2982,291 @@ Alimentación,,24 Vac / Hi-PoE 802.3bt,24 Vac / Hi-PoE 802.3bt
 Alto x Ancho x Profundo (cm),36.30 x 22.00 x 22.00,22.00 x 22.00 x 36.33,43.00 x 26.70 x 26.70
 Peso (kg),5.00,5.00,9.60
 Disponibilidad,C,B,P
-DS-,DS-,,DS-,DS-,DS-
-"",,DS-2CD6D44G1-,,,
-2CD6D24FWD-,2CD6D52G0-,,2CD6D54G2-,2CD6924G0-,2CD6984G0-
-"",,IZS(2.8-8MM),,,
-IZHS(2.8-12MM),IHS(2.8MM),,IZHS(2.8-8MM),IHS(6MM),IHS(2.8MM)
+"",DS-,DS-,,DS-,DS-,DS-
+"",,,DS-2CD6D44G1-,,,
+"",2CD6D24FWD-,2CD6D52G0-,,2CD6D54G2-,2CD6924G0-,2CD6984G0-
+"",,,IZS(2.8-8MM),,,
+"",IZHS(2.8-12MM),IHS(2.8MM),,IZHS(2.8-8MM),IHS(6MM),IHS(2.8MM)
 Resolución,8 Mpx,10 Mpx,16 Mpx,20 Mpx,32 Mpx,32 Mpx
 "Ángulo",,,,,,
 Visualización,360o,180o,360o,360o,180o,180o
+No Sensores,4,2,4,4,4,4
+Distancia Focal,"2,8 - 12 mm","2,8 mm","2,8 - 12 mm","2,8 - 8 mm",6 mm,"2,8 mm"
+LEDs,30 m IR,10 m IR,30 m IR,30 m IR,20 m IR,20 m IR
+"",Detección de,,,Hombre / Vehículo,,
+"",Rostros,VCA,,Objetos que entran,,
+"",,,Detección de,,,
+Análisis de Video,Objeto,Detección de,,en la zona de,No,No
+"",,,Movimiento,,,
+"",abandonado,Movimiento,,interés,,
+"",Cruce de Linea,,,Cruce de Linea,,
+Giro Continuo PTZ,-,-,;,;,;,-
+Grado de,,,,,,
+Protección,IK10,IK10,IK10,IK10,IK10,IK10
+Antivandálica,,,,,,
+Entrada/Salida,,,,,,
+Audio,1e/1s,-,-,-,-,-
+Tecnología de,,,,,,
+Vídeo,IP,IP,IP,IP,IP,IP
+Entradas/Salidas,,,,,,
+de Alarma,2e/2s,1e/1s,2e/2s,2e/2s,2e/2s,2e/2s
+Stitching,;,;,;,;,;,;
+Tecnología Cámara,IP,IP,IP,IP,IP,IP
+Tipo de Cámara,Multisensor,Dual,Multisensor,Multisensor,Multisensor,Multisensor
+Tipo de Óptica,Motorizada,Fija,Motorizada,Motorizada,Fija,Fija
+WDR,120 dB,120 dB,120 dB,120 dB,Digital WDR,Digital WDR
+"",,,,DS-1604ZJ,,
+Soporte Pared,No,No,No,,DS-1602ZJ,DS-1602ZJ
+"",,,,DS-1602ZJ,,
+Soporte Techo,DS-1663ZJ,No,No,DS-1663ZJ,No,No
+Soporte Poste,No,No,No,DS-1673ZJ,No,No
+"",DS-1604ZJ-,,,DS-1604ZJ-,,
+Soporte Esquina,,No,No,,No,No
+"",CORNER,,,CORNER,,
+Soporte,,,,,,
+Empotrado,No,No,No,No,No,No
+"",,12 Vdc / PoE,,12 Vdc,12 Vdc,12 Vdc / PoE +
+Alimentación,12 Vdc / 24 Vac,,12 Vdc / 24 Vac,,,
+"",,802.3af,,PoE+ 802.3at,PoE+ 802.3at,802.3at
+Alto x Ancho x,29.00 x 29.00 x,,11.40 x 25.00 x,14.80 x 29.00 x,,20.70 x 20.80 x
+Profundo (cm),14.55,6.74 x 8.46 x 16.43,25.00,29.00,- x - x -,19.00
+Peso (kg),4.70,0.77,2.20,4.70,3.00,3.50
+Disponibilidad,P,C,P,P,P,P
+"",Descripción Corta,Disponibilidad
+AC POWER,,
+CABLE-EUROPEN,,
+"",Cable de alimentación AC europeo para inyector PoE,A
+STANDARD-C13-,,
+1.5M,,
+"",Base para instalación de superficie para cámaras bullet o,
+DS-1280ZJ-DM8,,B
+"",minidomo,
+"",Base para instalación de superficie para cámaras domo 4”,
+DS-1280ZJ-SD11,,B
+"",DS-2Dx,
+DS-1280ZJ-,Base para instalación de superficie para cámaras bullet o,
+"",,C
+DM8(BLACK),minidomo en color negro.,
+DS-2280ZJ-,,
+"",Caja de conexiones,B
+WA140,,
+"",Base para instalación de superficie para mini-domo. Medidas:,
+DS-1280ZJ-DM18,,A
+"",Φ111mm,
+DS-1280ZJ-DM25,"Base para instalación de superficie, Cámaras 360o.",A
+DS-1280ZJ-DM21,Base para instalación de superficie para mini-domo.,A
+DS-1280ZJ-DM46,Base para instalación de superficie para cámaras minidomo,A
+DS-1280ZJ-XS,Base para instalación de superficie para cámaras bullet,A
+DS-1260ZJ,Base para instalación de superficie para cámaras bullet,A
+DS-1280ZJ-DM55,Base para instalación de superficie para cámaras minidomo,A
+DS-1280ZJ-S,Base para instalación de superficie para cámaras bullet,A
+"",Base para instalación de superficie para mini-domo. Medidas:,
+DS-1280ZJ-M,,A
+"",Φ101mm,
+"",Descripción Corta,Disponibilidad
+DS-1280ZJ-DM45,Base para instalación de superficie para cámaras minidomo,A
+"",Soporte de pared para mini domos PTZ. Blanco Hikvision.,
+DS-1294ZJ-PT,,B
+"",Plástico y acero. De interior y exterior,
+DS-1294ZJ,Soporte de pared para mini domos PTZ,C
+"",Soporte de pared para mini-domo con tapa adaptadora,
+DS-1272ZJ-110,,B
+"",Ø110mm. Medidas: Φ110×120×120mm,
+"",Soporte de pared para cámara PanoVu DS-2PT3 para,
+DS-1294ZJ-TRL,,C
+"",instalación en superficie,
+DS-1272ZJ-110-,Soporte de pared para mini-domo con tapa adaptadora,
+"",,C
+TRS,Ø110mm para torretas,
+"",Soporte de pared para mini-domo con tapa adaptadora,
+DS-1272ZJ-120,,B
+"",Ø120mm. Medidas: Φ120×120×120mm,
+"",Soporte de pared para mini-domo con tapa adaptadora,
+DS-1273ZJ-135,,A
+"",Ø135mm. Medidas: Φ135×182×120mm,
+"",Soporte de pared para mini-domo con tapa adaptadora,
+DS-1273ZJ-140,,B
+"",Ø140mm.,
+"",Soporte de pared sin base de superficie para mini-domo con,
+DS-1273ZJ-130,,C
+"",tapa adaptadora Ø130mm. Medidas: Φ130×182×120mm,
+DS-1273ZJ-130-,Soporte de pared para minidomo con tapa adaptadora Ø130,
+"",,B
+TRL,para instalación en superficie de torretas,
+DS-1273ZJ-140-,Soporte de pared para mini-domo con tapa adaptadora,
+"",,C
+DM45,Ø140mm.,
+"",Soporte de pared con base de superficie para mini-domo con,
+DS-1473ZJ-155B,,C
+"",tapa adaptadora Ø155mm. Ø 155 × 243 × 300 mm,
+DS-1273ZJ-DM25,Soporte de pared. Cámaras 360o,C
+"",Descripción Corta,Disponibilidad
+DS-1603ZJ-,,
+"",Soporte de pared + accesorio de poste para PanoVu exterior,C
+POLE-P,,
+"",Soporte de pared para mini-domo con tapa adaptadora,
+DS-1473ZJ-155,,A
+"",Ø155mm. Medidas: Ø155×183.5×240mm,
+DS-1272ZJ-,Soporte de pared para mini-domo con tapa adaptadora,
+"",,C
+120(BLACK),Ø120mm. Medidas: Φ120×120×120mm. Color negro.,
+DS-1271ZJ-PT10,Soporte de techo para cámara PanoVu DS-2PT3,C
+"",Soporte de techo para mini-domo con tapa adaptadora,
+DS-1271ZJ-110,,B
+"",Ø110mm,
+"",Soporte de techo color blanco para cámaras 360o.,
+DS-1271ZJ-DM25,,C
+"",165x560mm,
+"",Soporte de techo para mini-domo con tapa adaptadora,
+DS-1271ZJ-130,,C
+"",Ø130mm. Φ130×545mm,
+"",Soporte de montaje en techo para domos exterior.,
+DS-1662ZJ,,B
+"",Φ116.5×500mm,
+"",Soporte de techo para mini-domo con tapa adaptadora,
+DS-1271ZJ-140,,A
+"",Ø140mm. Diámetro 150mm. Longitud 565mm.,
+"",Accesorio de esquina de acero inoxidable para cámaras bullet,
+DS-1276ZJ-SUS,,B
+"",y soportes de pared,
+"",Accesorio de montaje en esquina para mini-domo. Acero,
+DS-1476ZJ-SUS,,C
+"",inoxidable,
+"",Accesorio de montaje en esquina de acero inoxidable y,
+DS-1476ZJ-Y,,C
+"",Nema4X hasta 10Kg de carga. Color blanco.,
+"",Accesorio de poste de acero inoxidable para cámaras bullet.,
+DS-1275ZJ-SUS,,A
+"",Dimensiones: 127 × 46 x 250 mm,
+"",Accesorio de poste de acero inoxidable. Diámetro ajustable:,
+DS-1275ZJ-S-SUS,,A
+"","62-127mm. Dimensiones: 131,6 × 44,3 x 144 mm",
+"",Descripción Corta,Disponibilidad
+"",Accesorio de poste de acero inoxidable. Color Blanco.,
+DS-1475ZJ-SUS,,A
+"",Dimensiones: 250 × 127 × 46 mm,
+"",Soporte de poste para cámaras exterior. Acero inoxidable.,
+DS-1673ZJ-P,,B
+"",Color Gris Platino. Diámetro ajustable poste 67 a 127 mm,
+DS-1602ZJ,Soporte de pared para domos de exterior.,A
+DS-1604ZJ-BOX,Soporte de pared + base para domos PTZ exterior,B
+DS-1602ZJ-,,
+"",Soporte de pared + acc esquina esquina para domos exterior.,A
+CORNER,,
+"",Soporte de pared + accesorio de poste para domos exterior.,
+DS-1602ZJ-POLE,,A
+"",Color Blanco,
+DS-1602ZJ-BOX-,Soporte de pared + acc esquina + base para domos PTZ,
+"",,B
+CORNER,exterior,
+DS-1604ZJ-POLE,Soporte de pared + acc poste para domos PTZ exterior,A
+"","Accesorio de montaje en techo, inclinado 15°. Cámaras domo",
+DS-1281ZJ-DM23,,B
+"",diámetro 136cm,
+DS-1602ZJ-BOX-,Soporte de pared + acc poste + base para domos PTZ,
+"",,A
+POLE,exterior,
+"",Soporte de montaje en techo para domos exterior.,
+DS-1663ZJ,,A
+"",Φ116.5×57mm,
+DS-1232ZJ-,,
+"","Junta PT de acero inoxidable anticorrosión de color blanco,",
+T-BJH-ANTI-,,P
+"",medidas: 100 mm × 100 mm × 92.5 mm.,
+CORROSION,,
+"",Soporte de montaje en techo para domos exterior.,
+DS-1661ZJ,,A
+"",Φ116.5×200mm,
+DS-1660ZJ,Soporte de parapeto a pared. Exterior,A
+"",DS-QAZ1206G1-BE,DS-QAZ1307G1T-E,DS-UAC-S1
+Tipo de Altavoz,Techo,Superficie,Superficie
+Potencia (W),"6,0000","7,0000","3,0000"
+Potencia Acústica,100 dB,121 dBSPL,81 dBSPL @1m
+"",Plástico,,Plástico
+Material Carcasa,,Metal,
+"",Metal,,Metal
+Color Altavoz,Blanco,Blanco,Gris
+Protección IP,No,IP67,No
+Alto x Ancho x Profundo (cm),7.30 x 17.90 x 17.90,40.00 x 23.70 x 27.60,9.30 x 13.30 x 6.00
+Peso (kg),0.30,2.10,0.65
+Disponibilidad,C,B,C
+"",DS-7604NXI-K1,DS-7604NXI-K1-4P
+"",HDMI,
+Tecnología de Vídeo,,IP
+"",VGA,
+No Canales Analógicos,;,;
+No Canales IP,4,4
+No Canales PoE,;,4
+Resolución Máxima IP,12 Mpx,12 Mpx
+"",,LPR
+"",,Reconocimiento Facial
+"",Hombre / Vehículo,
+"",,Hombre / Vehículo
+"",Captura Facial,
+Análisis de Video,,VCA
+"",Módulo Análisis y Comparación de Imágenes,
+"",,POS
+"",Faciales,
+"",,Detección Perimetral
+"",,Conteo de Personas
+Hombre/Vehículo,1ch,1ch
+Detección Facial,1ch,2ch
+Ancho de Banda Grabación/Visualización,40 / 80,40 / 80
+"",HDMI,HDMI
+Salida de Vídeo,,
+"",VGA,VGA
+Entradas/Salidas de Alarma,;,;
+Interfaz de Red,1 x RJ45 10/100,1 x RJ45 10/100/1000
+Puerto Teclado,;,;
+No Máximo HDDs,1,1
+RAID,No Soportado,No Soportado
+Fuente Redundante,;,;
+Alimentación,12 Vdc,48 Vdc
+Alto x Ancho x Profundo (cm),4.80 x 32.00 x 24.00,4.80 x 32.00 x 24.00
+Peso (kg),1.00,1.00
+Disponibilidad,A+,A+
+"",DS-7608NXI-I2-S,DS-7608NXI-K1,DS-7608NXI-K1-8P,DS-7608NXI-K2
+Tecnología de Vídeo,IP,IP,IP,IP
+No Canales Analógicos,;,;,;,;
+No Canales IP,8,8,8,8
+No Canales PoE,;,;,8,;
+Resolución Máxima IP,12 Mpx,12 Mpx,8 Mpx,8 Mpx
+"",LPR,,,
+"",,,LPR,
+"",Reconocimiento Facial,,,
+"",,LPR,Reconocimiento Facial,LPR
+"",Mapa Calor,,,
+"",,Reconocimiento Facial,Hombre / Vehículo,Reconocimiento Facial
+"",Hombre / Vehículo,,,
+Análisis de Video,,VCA,VCA,VCA
+"",VCA,,,
+"",,Detección Perimetral,POS,Detección Perimetral
+"",POS,,,
+"",,Detección de Movimiento,Detección Perimetral,Detección de Movimiento
+"",Detección de Movimiento,,,
+"",,,Conteo de Personas,
+"",Detección de Rostros,,,
+Hombre/Vehículo,4ch,1ch,2ch,2ch
+Detección Facial,4ch,1ch,2ch,1ch
+Ancho de Banda,,,,
+Grabación/Visualización,80 / 256,80 / 80,80 / 80,80 / 80
+"",HDMI,,,
+"",,HDMI,HDMI,
+Salida de Vídeo,VGA,,,HDMI/VGA
+"",,VGA,VGA,
+"",BNC,,,
+Entradas/Salidas de,,,,
+Alarma,4e/1s,;,;,4e/1s
+Interfaz de Red,2 x RJ45 10/100/1000,1 x RJ45 10/100/1000,1 x RJ45 10/100,1 x RJ45 10/100/1000
+Puerto Teclado,;,;,;,;
+No Máximo HDDs,2,1,8,2
+RAID,No Soportado,No Soportado,No Soportado,No Soportado
+Fuente Redundante,;,;,;,;
+Alimentación,220 Vac,12 Vdc,48 Vdc,12 Vdc / 3 A
+Alto x Ancho x Profundo,,,,
+"(cm)",5.20 x 38.50 x 31.50,4.80 x 20.00 x 32.00,4.80 x 32.00 x 24.00,5.20 x 38.50 x 31.50
+Peso (kg),1.60,1.00,1.00,1.00
+Disponibilidad,A,A+,A+,A
 "",DS-7608NXI-K2-8P,DS-7608NXI-I2-8P-S,IDS-7608NXI-M2-X,IDS-7608NXI-M2-8P-X
 "",,,,HDMI
 Tecnología de Vídeo,IP,IP,IP,VGA
@@ -1186,9 +3305,9 @@ Alto x Ancho x Profundo,,,,
 "(cm)",5.20 x 38.50 x 31.50,5.15 x 31.50 x 38.00,5.20 x 38.50 x 31.50,5.20 x 38.50 x 32.60
 Peso (kg),3.00,2.90,3.00,3.00
 Disponibilidad,A,B,C,C
-"",DS-7616NXI-K2-,,DS-7716NXI-K4-,,DS-7616NXI-I2-
-DS-7616NXI-K2,,DS-7716NXI-K4,,DS-7616NXI-I2-S,
-"",16P,,16P,,16P-S
+"",,DS-7616NXI-K2-,,DS-7716NXI-K4-,,DS-7616NXI-I2-
+"",DS-7616NXI-K2,,DS-7716NXI-K4,,DS-7616NXI-I2-S,
+"",,16P,,16P,,16P-S
 Tecnología de,,,,,,
 Vídeo,IP,IP,IP,IP,IP,IP
 No Canales,,,,,,
@@ -1245,9 +3364,9 @@ Alto x Ancho x,,,7.50 x 44.50 x,7.50 x 40.00 x,,38.00 x 31.00 x
 Profundo (cm),5.20 x 38.50 x 31.50,5.20 x 38.50 x 31.50,40.00,44.50,5.20 x 38.50 x 31.50,51.50
 Peso (kg),1.00,1.00,5.00,5.00,1.60,3.00
 Disponibilidad,A+,A+,A,A,A,B
-"",,DS-7716NXI-I4-,,DS-7616NI-M2-,IDS-7716NXI-
-DS-7716NI-I4,DS-7716NXI-I4-S,,DS-7616NI-M2,,
-"",,16P-S,,16P,M4-X
+"",,,DS-7716NXI-I4-,,DS-7616NI-M2-,IDS-7716NXI-
+"",DS-7716NI-I4,DS-7716NXI-I4-S,,DS-7616NI-M2,,
+"",,,16P-S,,16P,M4-X
 Tecnología de,,,,,,
 Vídeo,IP,IP,IP,IP,IP,IP
 No Canales,,,,,,
@@ -1390,6 +3509,14 @@ Alimentación,100 - 240 Vac,220 Vac,220 Vac
 Alto x Ancho x Profundo (cm),7.50 x 44.50 x 41.00,9.30 x 44.50 x 46.50,14.60 x 44.20 x 24.40
 Peso (kg),5.00,10.00,16.00
 Disponibilidad,P,P,P
+"",Descripción Corta,Disponibilidad
+"","Teclado IP con joystick de 3 ejes, para control de DVR/NVRs y domos motorizados",
+DS-1200KI,,A
+"","HIKVISION, pantalla LCD",
+"","Teclado IP WiFi con joystick de 3 ejes, para control de DVR/NVRs y domos",
+DS-1600KI(B),,A
+"","HIKVISION, pantalla LCD de 10”, hasta 16ch visión directo, salida HDMI",
+"",HM-TD1018-1-QR
 Alcance (m),"4,0000"
 Cobertura,0.3 m - 4 m
 Altura Montaje Máxima (m),"2,7000"
@@ -1443,6 +3570,28 @@ Alto x Ancho x Profundo,,,,
 "(cm)",6.60 x 7.38 x 13.60,6.66 x 7.38 x 13.62,7.31 x 6.66 x 14.79,6.66 x 7.31 x 14.78
 Peso (kg),0.32,0.32,0.42,0.41
 Disponibilidad,C,C,C,B
+"",PNB-A6001,XNZ-L6320A,PNB-A9001
+Tipo de Cámara,Box IP,Compacta,Box IP
+Resolución,2 Mpx,2 Mpx,8 Mpx
+"",IP,,CVBS
+Tecnología de Vídeo,,IP,
+"",BNC,,IP
+Tipo de Óptica,Sin Óptica,Motorizada,Sin Óptica
+Distancia Focal,;,"4,44 - 142,6 mm",;
+"Ángulo de Ajuste",3 ejes,3 ejes,3 ejes
+LEDs,;,;,;
+Luz Blanca,;,;,;
+WDR,120 dB,120 dB,120 dB
+Iluminación Mínima,0.006lux,0.05lux,0.003lux
+"",Gestión de Colas,,Gestión de Colas
+"",Mapa Calor,,Mapa Calor
+"",Hombre / Vehículo,,Hombre / Vehículo
+"",VCA,VCA,VCA
+Análisis de Video,Detección de placa matrícula,Detección de Movimiento,Detección de placa matrícula
+"",Clasificación Tipo de Vehículo,Detección de Rostros,Clasificación Tipo de Vehículo
+"",Conteo de Personas,,Conteo de Personas
+"",Detección de Movimiento,,Detección de Movimiento
+"",Detección de Rostros,,Detección de Rostros
 Entradas/Salidas de Alarma,1e/1s,1e/1s,1e/1s
 Entrada/Salida Audio,1e/1s,1e/1s,1e/1s
 Slot SD,2 x Micro SD (512 GB),Micro SD (256 GB),2 x Micro SD (512 GB)
@@ -1456,6 +3605,45 @@ Soporte Techo,No,No,No
 Soporte Poste,No,No,No
 Soporte Esquina,No,No,No
 Soporte Empotrado,No,No,No
+"",12 Vdc,,
+Alimentación,,12 Vdc / PoE 802.3af,12 Vdc / PoE + 802.3at
+"",PoE+ 802.3at,,
+Alto x Ancho x Profundo (cm),6.70 x 8.10 x 16.50,6.39 x 7.20 x 13.54,6.70 x 8.10 x 16.50
+Peso (kg),0.88,0.48,0.18
+Disponibilidad,C,C,C
+"",XNB-6003
+Tipo de Cámara,Box IP
+Resolución,2 Mpx
+Tecnología de Vídeo,IP
+Tipo de Óptica,Sin Óptica
+Distancia Focal,;
+"Ángulo de Ajuste",2 ejes
+LEDs,;
+Luz Blanca,;
+WDR,150 dB
+Iluminación Mínima,0.007lux
+"",Gestión de Colas
+"",Mapa Calor
+Análisis de Video,VCA
+"",Conteo de Personas
+"",Detección de Movimiento
+Entradas/Salidas de Alarma,1e/1s
+Entrada/Salida Audio,Micrófono Integrado
+Slot SD,2 x Micro SD (512 GB)
+WIFI,;
+Exterior,;
+Grado de Protección Antivandálica,;
+Soporte Pared,No
+Soporte Base,No
+Soporte Techo,No
+Soporte Poste,No
+Soporte Esquina,No
+Soporte Empotrado,No
+Alimentación,12 Vdc / PoE 802.3af
+Alto x Ancho x Profundo (cm),6.70 x 8.10 x 16.50
+Peso (kg),0.88
+Disponibilidad,C
+"",XNB-8003,XNB-9002
 Tipo de Cámara,Box IP,Box IP
 Resolución,6 Mpx,8 Mpx
 Tecnología de Vídeo,IP,IP
@@ -1487,6 +3675,39 @@ Alimentación,12 Vdc / PoE 802.3af,12 Vdc / 24 Vac / PoE 802.3af
 Alto x Ancho x Profundo (cm),6.70 x 8.10 x 16.50,6.70 x 8.10 x 16.50
 Peso (kg),0.88,0.88
 Disponibilidad,C,C
+"",QNO-6012R,XNO-6010R
+Tipo de Cámara,Bullet,Bullet
+Resolución,2 Mpx,2 Mpx
+"",IP,IP
+Tecnología de Vídeo,,
+"",BNC,BNC
+Tipo de Óptica,Fija,Fija
+Distancia Focal,"2,8 mm","2,8 mm"
+"Ángulo de Ajuste",3 ejes,3 ejes
+LEDs,20 m IR,20 m IR
+Luz Blanca,;,;
+WDR,Digital WDR,150 dB
+Iluminación Mínima,0.01lux,0.05lux
+"",,VCA
+Análisis de Video,VCA,
+"",,Detección de Rostros
+Entradas/Salidas de Alarma,1e/1s,1e/1s
+Entrada/Salida Audio,1 e,1e/1s
+Slot SD,Micro SD (128 GB),2 x Micro SD (512 GB)
+WIFI,;,;
+Exterior,IP66,IP67
+Grado de Protección Antivandálica,IK10,IK10
+Soporte Pared,No,No
+Soporte Base,SBO-100B1,No
+Soporte Techo,No,No
+Soporte Poste,SBP-302PM,SBP-302PM
+Soporte Esquina,No,No
+Soporte Empotrado,No,No
+Alimentación,12 Vdc / PoE 802.3af,12 Vdc / PoE 802.3af
+Alto x Ancho x Profundo (cm),9.10 x 9.10 x 36.80,7.00 x 7.00 x 29.60
+Peso (kg),0.70,0.42
+Disponibilidad,C,C
+"",XNO-C6083R,XNO-6080R,QNO-6082R1,QNO-6082R,LNO-6072R
 Tipo de Cámara,Bullet,Bullet,Bullet,Bullet,Bullet
 Resolución,2 Mpx,2 Mpx,2 Mpx,2 Mpx,2 Mpx
 "",,IP,,IP,
@@ -1551,6 +3772,10 @@ Análisis de Video,,matrícula,,
 "",Detección de Rostros,,Detección de Rostros,VCA
 "",,Clasificación Tipo de,,
 "",,,,Detección de Movimiento
+"",,Vehículo,,
+"",,Conteo de Personas,,
+"",,Detección de Movimiento,,
+"",,Detección de Rostros,,
 Entradas/Salidas de,,,,
 Alarma,1e/1s,1e/1s,1e/1s,1e/1s
 Entrada/Salida Audio,1e/1s,1e/1s,1e/1s,;
@@ -1565,6 +3790,13 @@ Soporte Techo,No,No,No,No
 Soporte Poste,SBP-302PM,No,SBP-302PM,No
 Soporte Esquina,No,No,No,No
 Soporte Empotrado,No,No,No,No
+"",12 Vdc / 24 Vac / PoE,,12 Vdc / 24 Vac / PoE,
+Alimentación,,12 Vdc / PoE + 802.3at,,12 Vdc / PoE + 802.3at
+"",802.3af,,802.3af,
+Alto x Ancho x Profundo,,,,
+"(cm)",9.10 x 9.10 x 38.80,9.10 x 9.10 x 36.86,9.10 x 9.10 x 36.86,9.34 x 9.34 x 27.66
+Peso (kg),2.35,2.48,2.18,1.64
+Disponibilidad,C,C,C,C
 "",QNO-7012R,QNO-8010R,XNO-8020R,XNO-C7083R
 Tipo de Cámara,Bullet,Bullet,Bullet,Bullet
 Resolución,4 Mpx,5 Mpx,5 Mpx,4 Mpx
@@ -1621,6 +3853,9 @@ Iluminación Mínima,0.11lux,0.07 lux,0.1 lux,0.007lux
 "",VCA,VCA,,VCA
 Análisis de Video,,,Detección de Movimiento,
 "",Detección de Movimiento,Clasificación Tipo de,,Detección de Rostros
+"",,Vehículo,,
+"",,Detección Perimetral,,
+"",,Conteo de Personas,,
 Entradas/Salidas de,,,,
 Alarma,1e/1s,1e/1s,;,1e/1s
 Entrada/Salida Audio,1 e,1e/1s,;,1e/1s
@@ -1814,6 +4049,26 @@ Alto x Ancho x,,,,,
 Profundo (cm),9.88 x 11.98 x 11.98,10.60 x 13.70 x 13.70,10.60 x 13.70 x 13.70,11.80 x 16.00 x 16.00,13.78 x 13.78 x 10.71
 Peso (kg),0.32,0.71,0.71,0.94,0.55
 Disponibilidad,B,B,A,C,B
+"",PNV-A6081R-E1T,PND-A6081RV,PND-A6081RF
+Tipo de Cámara,Minidomo,Minidomo,Minidomo
+Resolución,2 Mpx,2 Mpx,2 Mpx
+Tecnología de Vídeo,IP,IP,IP
+Tipo de Óptica,Motorizada,Motorizada,Motorizada
+Distancia Focal,4.4 - 9.3 mm,4.4 - 9.3 mm,4.4 - 9.3 mm
+"Ángulo de Ajuste",3 ejes,3 ejes,3 ejes
+LEDs,40 m IR,40 m IR,40 m IR
+Luz Blanca,;,;,;
+WDR,120 dB,120 dB,120 dB
+Iluminación Mínima,0.007lux,0.007lux,0.007lux
+"",,Gestión de Colas,Gestión de Colas
+"",,Mapa Calor,Mapa Calor
+"",LPR,Hombre / Vehículo,Hombre / Vehículo
+"",Clasificación Tipo de Vehículo,VCA,VCA
+Análisis de Video,Clasificación Color de Vehículo,Detección de placa matrícula,Detección de placa matrícula
+"",Detección de Humanos,Clasificación Tipo de Vehículo,Clasificación Tipo de Vehículo
+"",Cruce de Linea,Conteo de Personas,Conteo de Personas
+"",,Detección de Movimiento,Detección de Movimiento
+"",,Detección de Rostros,Detección de Rostros
 Entradas/Salidas de Alarma,1e/1s,1e/1s,1e/1s
 Entrada/Salida Audio,Micrófono Integrado,1e/1s,1e/1s
 Slot SD,;,2 x Micro SD (512 GB),2 x Micro SD (512 GB)
@@ -1833,6 +4088,86 @@ Alimentación,,12 Vdc / PoE + 802.3at,12 Vdc / PoE + 802.3at
 Alto x Ancho x Profundo (cm),13.00 x 18.00 x 18.00,16.00 x 16.00 x 12.50,20.50 x 20.50 x 16.30
 Peso (kg),1.90,1.60,1.95
 Disponibilidad,C,C,C
+"",QND-7012R,QNV-7010R,ANE-L7012R,XND-C7083RV
+Tipo de Cámara,Minidomo,Minidomo,Minidomo,Minidomo
+Resolución,4 Mpx,4 Mpx,4 Mpx,4 Mpx
+Tecnología de Vídeo,IP,IP,IP,IP
+Tipo de Óptica,Fija,Fija,Fija,Motorizada
+Distancia Focal,"2,8 mm","2,8 mm",3 mm,2.8 - 10mm
+"Ángulo de Ajuste",3 ejes,3 ejes,3 ejes,3 ejes
+LEDs,20 m IR,20 m IR,20 m IR,40 m IR
+Luz Blanca,;,;,;,;
+WDR,120 dB,120 dB,120 dB,120 dB
+Iluminación Mínima,0.015lux,0.16lux,0.13 lux,0.034lux
+"",,,,LPR
+"",Detección Perimetral,,,Hombre / Vehículo
+Análisis de Video,,VCA,Detección de Movimiento,
+"",Detección de Movimiento,,,VCA
+"",,,,Detección de Movimiento
+Entradas/Salidas de,,,,
+Alarma,1e/1s,1e/1s,;,1e/1s
+"",Micrófono / Altavoz,,,
+Entrada/Salida Audio,,1e/1s,;,1e/1s
+"",Integrado,,,
+Slot SD,Micro SD (128 GB),Micro SD (128 GB),Micro SD (128 GB),Micro SD (512 GB)
+WIFI,;,;,;,;
+Exterior,;,IP66,IP67,IP52
+Grado de Protección,,,,
+Antivandálica,;,IK10,IK10,IK08
+"",,SBP-300WM1,,
+Soporte Pared,SBP-300WMW1,,No,SBP-300WMW1
+"",,SBP-122HMW,,
+Soporte Base,No,SBP-300NB,No,No
+"",,SBP-300CMW,,
+Soporte Techo,SBP-300CMW,,No,No
+"",,SBP-122HMW,,
+"",,SBP-300PMW,,
+Soporte Poste,SBP-300PMW,SBP-300WMW1,No,No
+"",,SBP-122HMW,,
+"",,SBP-300WMW1,,
+Soporte Esquina,SBP-300KMW,SBP-300KMW1,No,SBP-300KMW1
+"",,SBP-122HMW,,
+Soporte Empotrado,No,No,No,No
+Alimentación,12 Vdc,12 Vdc / PoE 802.3af,PoE 802.3af,12 Vdc / PoE 802.3af
+Alto x Ancho x Profundo,,,,
+"(cm)",11.00 x 11.00 x 8.60,12.03 x 12.03 x 9.17,8.70 x 8.70 x 12.50,16.00 x 16.00 x 11.80
+Peso (kg),0.29,0.49,0.63,1.35
+Disponibilidad,B,C,C,C
+"",XNV-C7083R,QND-7082R,QNV-7082R,ANV-L7082R
+Tipo de Cámara,Minidomo,Minidomo,Minidomo,Minidomo
+Resolución,4 Mpx,4 Mpx,4 Mpx,4 Mpx
+Tecnología de Vídeo,IP,IP,IP,IP
+Tipo de Óptica,Motorizada,Motorizada,Motorizada,Motorizada
+Distancia Focal,2.8 - 10mm,"3,2 - 10 mm","3,2 - 10 mm","3,35-10,05 mm"
+"Ángulo de Ajuste",3 ejes,3 ejes,3 ejes,3 ejes
+LEDs,40 m IR,20 m IR,30 m IR,30 m IR
+Luz Blanca,;,;,;,;
+WDR,120 dB,120 dB,120 dB,120 dB
+Iluminación Mínima,0.034lux,0.1lux,0.1lux,0.1 lux
+"",LPR,,,
+"",Hombre / Vehículo,VCA,VCA,
+Análisis de Video,,,,Detección de Movimiento
+"",VCA,Detección de Movimiento,Detección de Movimiento,
+"",Detección de Movimiento,,,
+Entradas/Salidas de,,,,
+Alarma,1e/1s,1e/1s,1e/1s,;
+Entrada/Salida Audio,1e/1s,Micrófono Integrado,1 e,;
+Slot SD,Micro SD (512 GB),Micro SD (128 GB),Micro SD (128 GB),Micro SD (128 GB)
+WIFI,;,;,;,;
+Exterior,IP67,;,IP66,IP66
+Grado de Protección,,,,
+Antivandálica,IK10,;,IK10,IK10
+Soporte Pared,SBP-300WMW1,SBP-300WMW1,SBP-300WMW1,No
+Soporte Base,No,No,No,No
+Soporte Techo,SBP-300CMW,No,No,No
+Soporte Poste,No,SBP-300PMW,SBP-300PMW,No
+Soporte Esquina,SBP-300KMW1,SBP-300KMW,SBP-300KMW,No
+Soporte Empotrado,No,No,No,No
+Alimentación,12 Vdc / PoE 802.3af,12 Vdc / PoE 802.3af,12 Vdc / PoE 802.3af,PoE 802.3af
+Alto x Ancho x Profundo,,,,
+"(cm)",16.00 x 16.00 x 11.80,11.98 x 11.98 x 9.88,10.61 x 13.70 x 13.70,10.70 x 13.70 x 13.70
+Peso (kg),1.45,0.32,0.71,0.55
+Disponibilidad,C,A,B,A
 "",QNV-C8012,QNV-C8011R,XND-8020R,XNV-8020R
 Tipo de Cámara,Minidomo,Minidomo,Minidomo,Minidomo
 Resolución,5 Mpx,5 Mpx,5 Mpx,5 Mpx
@@ -1972,6 +4307,8 @@ Alimentación,PoE 802.3af,,,PoE 802.3af,,
 "",,802.3af,PoE 802.3af,,802.3at,802.3at
 Alto x Ancho x,,16.00 x 16.00 x,18.00 x 18.00 x,,12.50 x 16.00 x,12.50 x 18.00 x
 Profundo (cm),11.00 x 11.00 x 7.70,12.50,12.50,14.00 x 14.00 x 11.02,16.00,18.00
+Peso (kg),0.52,1.60,1.90,0.88,1.60,1.90
+Disponibilidad,C,C,C,C,C,C
 "",XNF-8010R,XNF-8010RV,XNF-9010RV
 Tipo de Cámara,Fisheye,Fisheye,Fisheye
 Resolución,4 Mpx,4 Mpx,12 Mpx
@@ -2037,6 +4374,7 @@ Alto x Ancho x Profundo,,,,
 "(cm)",16.15 x 16.80 x -,20.43 x 20.43 x 26.50,15.80 x 15.80 x 29.33,40.77 x 23.69 x 23.69
 Peso (kg),1.90,2.70,3.10,7.10
 Disponibilidad,C,C,B,C
+"",XNP-6400R,XNP-C6403R,XNP-6550RH
 Aumentos,x40,x40,x55
 Resolución,2 Mpx,2 Mpx,2 Mpx
 LEDs,200 m IR,200 m IR,500 m IR
@@ -2068,6 +4406,7 @@ Alimentación,PoE+ 802.3at,Hi-PoE 802.3bt,Hi-PoE 802.3bt
 Alto x Ancho x Profundo (cm),15.80 x 15.80 x 29.33,15.80 x 15.80 x 29.33,40.77 x 23.69 x 23.69
 Peso (kg),2.80,3.20,7.10
 Disponibilidad,A,C,C
+"",XNP-8250R,XNP-C8253R
 Aumentos,x25,x25
 Resolución,6 Mpx,6 Mpx
 LEDs,200 m IR,200 m IR
@@ -2094,6 +4433,34 @@ Alimentación,Hi-PoE 802.3bt,Hi-PoE 802.3bt
 Alto x Ancho x Profundo (cm),15.80 x 15.80 x 29.33,15.80 x 15.80 x 29.33
 Peso (kg),2.80,3.20
 Disponibilidad,C,C
+"",XNP-9250R
+Aumentos,x25
+Resolución,8 Mpx
+LEDs,200 m IR
+Tecnología de Vídeo,IP
+Giro Continuo,;
+WDR,120 dB
+"",VCA
+Análisis de Video,Detección de Movimiento
+"",Detección de Rostros
+Entradas/Salidas de Alarma,;
+Exterior,IP66
+Grado de Protección Antivandálica,IK10
+Wiper,;
+Anticorrosión,;
+Slot SD,2 x Micro SD (1TB)
+Soporte Pared,No
+Soporte Base,No
+Soporte Techo,No
+Soporte Poste,No
+Soporte Esquina,No
+Soporte Empotrado,No
+Soporte Suspendido,No
+Alimentación,Hi-PoE 802.3bt
+Alto x Ancho x Profundo (cm),15.80 x 15.80 x 29.33
+Peso (kg),2.80
+Disponibilidad,C
+"",PNM-7082RVD,PNM-C16083RVQ,PNM-C32083RVQ
 Resolución,2 Mpx,4 Mpx,4 Mpx
 "Ángulo Visualización",180o,360o,360o
 No Sensores,2,4,4
@@ -2125,6 +4492,7 @@ Alimentación,PoE 802.3af,PoE+ 802.3at,
 Alto x Ancho x Profundo (cm),9.32 x 21.50 x 13.50,25.00 x 25.00 x 11.42,25.00 x 25.00 x 11.42
 Peso (kg),1.33,2.73,2.82
 Disponibilidad,C,C,C
+"",PNM-9002VQ,PNM-9084RQZ1,PNM-9085RQZ1
 Resolución,2 Mpx,2 Mpx,5 Mpx
 "Ángulo Visualización",360o,360o,360o
 No Sensores,4,4,4
@@ -2156,6 +4524,121 @@ Alimentación,PoE+ 802.3at,,
 Alto x Ancho x Profundo (cm),13.00 x 25.30 x 25.30,14.59 x 31.50 x 31.50,14.59 x 31.50 x 31.50
 Peso (kg),3.00,5.20,5.20
 Disponibilidad,C,C,C
+"",Descripción Corta,Disponibilidad
+SLA-2M2400Q,"Modulo lente para PNM-9002VQ de 2MP, óptica fija 2.4mm, WDR 150dB",C
+SLA-2M2800Q,"Módulo lente para PNM-9002VQ de 2MP, óptica fija 2.8mm, WDR 150dB",C
+SLA-2M3600Q,"Módulo lente para PNM-9002VQ de 2MP, óptica fija 3.6mm, WDR 150dB",C
+SLA-5M3700Q,"Módulo lente para PNM-9002VQ de 5MP, óptica fija 3.7mm, WDR 120dB",C
+SLA-5M4600Q,"Módulo lente para PNM-9002VQ de 5MP, óptica fija 4.6mm, WDR 120dB",C
+SLA-2M6000Q,"Módulo lente para PNM-9002VQ de 2MP, óptica fija 6mm, WDR 150dB",C
+SLA-5M7000Q,"Módulo lente para PNM-9002VQ de 5MP, óptica fija 7mm, WDR 120dB",C
+"",PNM-C34404RQPZ,PNM-9322VQP
+Resolución,4 Mpx,8 - 20 Mpx
+"Ángulo Visualización",360o,360o
+No Sensores,4,4
+"",,"2 Mpx (2,4 / 2,8 / 3,6 / 6 mm) 5 Mpx ( 3,7 / 4,6 /"
+Distancia Focal,3.3 - 5.7 mm,
+"",,7 mm)
+LEDs,20 m IR,;
+"",Hombre / Vehículo,VCA
+Análisis de Video,,
+"",VCA,Detección de Movimiento
+Giro Continuo PTZ,;,;
+Grado de Protección Antivandálica,IK10,IK10
+Tecnología de Vídeo,IP,IP
+Entradas/Salidas de Alarma,;,1e/2s
+Stitching,;,;
+Tecnología Cámara,IP,IP
+Tipo de Cámara,Multisensor + PTZ,Multisensor + PTZ
+Tipo de Óptica,Motorizada,Fija
+WDR,120 dB,120dB / 150dB
+Soporte Pared,No,SBP-300WM
+Soporte Techo,No,SBP-300CM
+Soporte Poste,No,SBP-300PM
+Soporte Esquina,No,SBP-300KM
+Soporte Empotrado,No,No
+Alimentación,Hi-PoE 802.3bt,Hi-PoE 802.3bt
+Alto x Ancho x Profundo (cm),37.98 x 37.98 x 30.19,33.57 x 36.78 x 36.78
+Peso (kg),7.90,7.05
+Disponibilidad,C,C
+"",Descripción Corta,Disponibilidad
+SLA-2M2400P,"Módulo lente para PNM-9320VQP de 2MP, óptica fija 2.4mm, WDR 150dB",C
+SLA-2M2800P,"Módulo lente para PNM-9320VQP de 2MP, óptica fija 2.8mm, WDR 150dB",C
+SLA-2M3600P,"Modulo lente para PNM-9320VQP de 2MP, óptica fija 3.6mm, WDR 150dB",C
+SLA-5M3700P,"Módulo lente para PNM-9320VQP de 5MP, óptica fija 3.7mm, WDR 120dB",C
+SLA-5M4600P,"Módulo lente para PNM-9320VQP de 5MP, óptica fija 4.6mm, WDR 120dB",C
+SLA-2M6000P,"Módulo lente para PNM-9320VQP de 2MP, óptica fija 6 mm, WDR 150dB",C
+SLA-5M7000P,"Módulo lente para PNM-9320VQP de 5MP, óptica fija 7mm, WDR 120dB",C
+SLA-2M1200P,"Módulo lente para PNM-9320VQP de 2MP, óptica fija 12mm, WDR 150dB",C
+"",Descripción Corta,Disponibilidad
+"","Accesorio adaptador para soporte de pared con cámaras PTZ (QNP, XNP).",
+SBP-156HMW,,B
+"",Soportes que lo necesitan SBP-300WMW1 / SBP-300WMW / SBP-390WMW2,
+SBP-120WM,Soporte de pared para Mini-domo. Color marfil,C
+STB-4150V,"Soporte de pared para cámaras de interior, color gris",C
+"",Soporte en poste para domos antivandalicos XNP-9300RW/8300RW/6400RW.,
+SBP-156LMW,,C
+"",Color blanco. Aluminio.,
+"",Soporte de pared para Mini-domos antivandálicos y Domos PTZ Wisenet (requiere,
+SBP-300WM,,C
+"",adaptador),
+SBP-300WM1,Soporte para cámara PTZ,A
+"",Soporte de pared para Mini-domo y domo. Color blanco. Necesario adaptador a,
+SBP-300WMW1,,A
+"",cámara multisensor.,
+SBP-156WMW,"Soporte a pared para domos PTZ, compatible con XNP. Blanco",A
+SBP-300CMW,Soporte de techo para Mini-domo y domo. Color blanco,B
+"",Soporte de techo para Mini-domos antivandálicos (requiere adaptador) y Domos,
+SBP-300CM,,C
+"",PTZ Wisenet. Color marfil,
+"",Soporte a techo compatible con adaptador montaje colgante SBP-120HMW /,
+SBP-900CMW,,C
+"",140HMW / 160HMW1 / 180HMW1 de Hanwha,
+"","Soporte de aluminio para techo, dimensiones ø54x900mm. La extensión se debe",
+SBP-900CMP,,C
+"",hacer con SBP-180CMB. Rosca estándar para domos Hanwha PTZ.,
+"","Soporte a techo de doble rosca, dimensiones 86x71mm(ø3.38x2.8”), compatible con",
+SBP-C15P,,C
+"","SBP-150CMP, SBP-300CMP, SBP-900CMP.",
+"",Descripción Corta,Disponibilidad
+SBF-100B1,Base superficie para domo y minidomo. Color marfil,C
+"","Caja conexión compatible con QNV-C8083R/C9083R, QNV-C801xR/C9011R,",
+SBV-140BW,,C
+"","QND-6011/21, QND-8011/21, QND-60x2R, QND-70x2R. Aluminio color blanco.",
+SBO-100B1,Caja de conexión para cámara bullet Hanwha.,A
+"","Caja de conexiones en Aluminio color Blanco. Compatible cámaras XND-9082RV,",
+SBV-160BW,,C
+"",PND-A9081RV y otros minidomos Hanwha (consultar).,
+SBV-136B,Base superficie para domo,C
+SBV-158G,Base superficie para domo y minidomo. Color marfil,C
+"",Accesorio de esquina para domos de exterior (requiere soporte pared SBP-,
+SBP-300KM1,,C
+"",300WM). Color blanco marfil,
+SBP-300PM1,Accesorio de poste para domos de exterior (requiere soporte pared SBP-300WM),B
+SBP-302PM,Accesorio de poste para cámara Wisenet,B
+SBP-300PMS,Accesorio para montaje en poste para Mini-domo y domo. Material acero.,C
+SBP-303PM,Accesorio de poste para cámara Wisenet. Color blanco,C
+SBP-122HMW,Accesorio de montaje de minidomo y domo en formato suspendido. Color blanco,C
+SBP-168HM,Accesorio de montaje de domo XNP-6120HP en formato suspendido. Color marfil,C
+"",Descripción Corta,Disponibilidad
+"",Adaptador para montaje suspendido de mini-domo:QNV-6010(20)(30)R/7010(20),
+SBP-122HM,"(30)R, QND-6070(80)R, SCD-5080(82)(83)/6021(83)R, SND-6011R/L5083R/",C
+"",L6083R,
+SBP-300HM5,Adaptador para montaje suspendido para cámara hemisférica fisheye,C
+SBP-300HM7,Plato adaptador para mini-domo Samsung,C
+SBP-300HM8,Accesorio de montaje de minidomo y domo en formato suspendido. Color marfil,C
+SBP-300HM6,Adaptador para montaje suspendido de Mini-domo,C
+SBP-301HMW2,Accesorio de montaje de minidomo en formato suspendido. Color blanco.,C
+"",Accesorio para montaje de minidomo empotrado. Material en aluminio blanco y,
+SHD-1408FPW,,C
+"",Polycarbonato. Consultar modelos compatibles (QNV-XXX y LNV-XXX).,
+SHP-1680F,Accesorio de empotrar de domo XNP-6120HP. Color marfil.,C
+SHF-1500F,Accesorio de empotrar para minidomos. Color marfil. Ø224.0 x 106.9mm,C
+SHD-3000F1,Accesorio de empotrar para domos PTZ de interior de SAMSUNG,C
+SHD-3000F3,"Accesorio de empotrar para mini-domos Samsung, Ø224.0x106mm",C
+SHD-3000F4,Accesorio de empotrar para minidomos. Color marfil. Ø224.0 x 106.9mm,C
+SBP-300LM,Soporte de parapeto para domo Samsung,C
+"",SPA-H100W,SPA-H100B
 Tipo de Altavoz,Superficie,Superficie
 Potencia (W),"10,0000","10,0000"
 Potencia Acústica,124 dB,124 dB
@@ -2165,9 +4648,34 @@ Protección IP,IP66,IP66
 Alto x Ancho x Profundo (cm),15.50 x 24.10 x 30.70,15.50 x 24.10 x 30.70
 Peso (kg),3.70,3.70
 Disponibilidad,C,C
-WRN-1610S-16CH-8TB-,WRN-1610S-16CH-24TB-,,
-"",,XRN-3210B2,XRN-3210RB2
-HDV2,HDV2,,
+"",XRN-420S,XRN-820S
+Tecnología de Vídeo,IP,IP
+No Canales Analógicos,;,;
+No Canales IP,4,8
+No Canales PoE,4,8
+Resolución Máxima IP,8 Mpx,8 Mpx
+"",LPR,LPR
+Análisis de Video,VCA,VCA
+"",POS,POS
+Hombre/Vehículo,;,;
+Detección Facial,;,;
+Ancho de Banda Grabación/Visualización,50 / 64,100 / 32
+"",,HDMI
+Salida de Vídeo,HDMI/VGA,
+"",,VGA
+Entradas/Salidas de Alarma,4e/2s,4e/2s
+Interfaz de Red,1 x RJ45 10/100,2 x RJ45 10/100/1000
+Puerto Teclado,;,;
+No Máximo HDDs,1,2
+RAID,No Soportado,No Soportado
+Fuente Redundante,;,;
+Alimentación,220 Vac,220 Vac
+Alto x Ancho x Profundo (cm),4.71 x 30.00 x 20.80,5.07 x 37.00 x 32.43
+Peso (kg),1.06,2.70
+Disponibilidad,C,B
+"",WRN-1610S-16CH-8TB-,WRN-1610S-16CH-24TB-,,
+"",,,XRN-3210B2,XRN-3210RB2
+"",HDV2,HDV2,,
 Tecnología de Vídeo,IP,HD - TVI,IP,IP
 No Canales Analógicos,;,;,;,;
 No Canales IP,16,16,32,32
@@ -2197,6 +4705,57 @@ Alto x Ancho x Profundo,,,,
 "(cm)",8.98 x 42.63 x 44.00,8.98 x 42.63 x 11.23,8.60 x 43.80 x 43.49,8.60 x 43.80 x 43.50
 Peso (kg),5.20,5.20,7.50,9.10
 Disponibilidad,C,C,B,B
+"",XRN-6410B2
+Tecnología de Vídeo,IP
+No Canales Analógicos,;
+No Canales IP,64
+No Canales PoE,;
+Resolución Máxima IP,32 Mpx
+"",LPR
+"",VCA
+Análisis de Video,
+"",POS
+"",Detección de Movimiento
+Hombre/Vehículo,;
+Detección Facial,;
+Ancho de Banda Grabación/Visualización,400 / 32
+"",HDMI
+Salida de Vídeo,
+"",HDMI2
+Entradas/Salidas de Alarma,8e/4s
+Interfaz de Red,3 x RJ45 10/100/1000
+Puerto Teclado,;
+No Máximo HDDs,8
+RAID,No Soportado
+Fuente Redundante,;
+Alimentación,220 Vac
+Alto x Ancho x Profundo (cm),8.60 x 43.80 x 43.49
+Peso (kg),7.50
+Disponibilidad,C
+"",2.0C-H6X-B,4.0C-H6X-B,6.0C-H6X-B,8.0C-H6X-B
+Tipo de Cámara,Box IP,Box IP,Box IP,Box IP
+Resolución,2 Mpx,4 Mpx,6 Mpx,8 Mpx
+Tecnología de Vídeo,IP,IP,IP,IP
+Tipo de Óptica,Sin Óptica,Sin Óptica,Sin Óptica,Sin Óptica
+Distancia Focal,;,;,;,;
+"Ángulo de Ajuste",3 ejes,3 ejes,3 ejes,3 ejes
+LEDs,;,;,;,;
+Luz Blanca,;,;,;,;
+WDR,150 dB,150 dB,144 dB,150 dB
+Iluminación Mínima,0.003lux,0.003lux,0.003lux,0.006lux
+"",Objetos en la zona de interés,Objetos en la zona de interés,Objetos en la zona de interés,Objetos en la zona de interés
+"",Objetos deambulantes,Objetos deambulantes,Objetos deambulantes,Objetos deambulantes
+"",Objetos cruzando el haz,Objetos cruzando el haz,Objetos cruzando el haz,Objetos cruzando el haz
+"",Objetos que aparecen o,Objetos que aparecen o,Objetos que aparecen o,Objetos que aparecen o
+"",entran en la zona de interés,entran en la zona de interés,entran en la zona de interés,entran en la zona de interés
+"",Ausencia de objetos en la,Ausencia de objetos en la,Ausencia de objetos en la,Ausencia de objetos en la
+Análisis de Video,,,,
+"",zona de interés,zona de interés,zona de interés,zona de interés
+"",Objetos que entran en la,Objetos que entran en la,Objetos que entran en la,Objetos que entran en la
+"",zona de interés,zona de interés,zona de interés,zona de interés
+"",El objeto se detiene en el,El objeto se detiene en el,El objeto se detiene en el,El objeto se detiene en el
+"",área,área,área,área
+"",Objeto en área prohibida,Objeto en área prohibida,Objeto en área prohibida,Objeto en área prohibida
 Entradas/Salidas de,,,,
 Alarma,;,;,;,;
 Entrada/Salida Audio,1e/1s,1e/1s,1e/1s,1e/1s
@@ -2257,6 +4816,30 @@ Alto x Ancho x Profundo,,,,
 "(cm)",8.20 x 8.70 x 14.20,8.20 x 8.70 x 14.20,8.20 x 8.70 x 14.20,8.20 x 8.70 x 14.20
 Peso (kg),0.50,0.50,0.50,0.50
 Disponibilidad,C,C,C,C
+"",2.0C-H6A-BO1-IR,2.0C-H6SL-BO1-IR
+Tipo de Cámara,Bullet,Bullet
+Resolución,2 Mpx,2 Mpx
+Tecnología de Vídeo,IP,IP
+Tipo de Óptica,Motorizada,Motorizada
+Distancia Focal,"2,8 - 12 mm","3,4 - 10,5 mm"
+"Ángulo de Ajuste",3 ejes,3 ejes
+LEDs,50 m IR,50 m IR
+Luz Blanca,;,;
+WDR,126 dB,126 dB
+Iluminación Mínima,0 lux,0.005lux
+"",Objetos en la zona de interés,
+"",Objetos deambulantes,
+"",,Objetos en la zona de interés
+"",Objetos cruzando el haz,
+"",,Objetos deambulantes
+"",Objetos que aparecen o entran en la zona de,
+Análisis de Video,,Objetos cruzando el haz
+"",interés,
+"",,Ausencia de objetos en la zona de interés
+"",Ausencia de objetos en la zona de interés,
+"",,Objetos que entran en la zona de interés
+"",Objetos que entran en la zona de interés,
+"",El objeto se detiene en el área,
 Entradas/Salidas de Alarma,1e/1s,1e/1s
 Entrada/Salida Audio,1e/1s,1e/1s
 Slot SD,"Micro SD (1,5 TB)","Micro SD (1,5 TB)"
@@ -2273,6 +4856,40 @@ Alimentación,PoE+ 802.3at,12 Vdc / PoE 802.3af
 Alto x Ancho x Profundo (cm),13.30 x 13.30 x 31.10,11.60 x 12.60 x 29.60
 Peso (kg),2.11,1.31
 Disponibilidad,C,C
+"",3.0C-H6SL-BO1-IR,3.0C-H6SL-BO2-IR,4.0C-H6A-BO1-IR,4.0C-H6A-BO2-IR
+Tipo de Cámara,Bullet,Bullet,Bullet,Bullet
+Resolución,3 Mpx,3 Mpx,4 Mpx,4 Mpx
+Tecnología de Vídeo,IP,IP,IP,IP
+Tipo de Óptica,Motorizada,Motorizada,Motorizada,Motorizada
+Distancia Focal,"3,4 - 10,5 mm","10,9 - 29 mm",4.4 - 9.3 mm,"6,9 - 214,6 mm"
+"Ángulo de Ajuste",3 ejes,3 ejes,3 ejes,3 ejes
+LEDs,50 m IR,40 m IR,70 m IR,170 m
+Luz Blanca,;,;,;,;
+WDR,126 dB,130 dB,150 dB,144 dB
+Iluminación Mínima,0.005lux,0.005lux,0.006lux,0.004 lux
+"",,Objetos en la zona de interés,Objetos en la zona de interés,
+"",,,,Objetos en la zona de interé
+"",,Objetos deambulantes,Objetos deambulantes,
+"",,,,Objetos deambulantes
+"",Objetos en la zona de interés,Objetos cruzando el haz,Objetos cruzando el haz,
+"",,,,Objetos cruzando el haz
+"",Objetos deambulantes,Objetos que aparecen o,Objetos que aparecen o,
+"",,,,Objetos que aparecen o
+"",Objetos cruzando el haz,entran en la zona de interés,entran en la zona de interés,
+"",,,,entran en la zona de interés
+"",Objetos que aparecen o,Ausencia de objetos en la,Ausencia de objetos en la,
+Análisis de Video,,,,Ausencia de objetos en la
+"",entran en la zona de interés,zona de interés,zona de interés,
+"",,,,zona de interés
+"",Ausencia de objetos en la,Objetos que entran en la,Objetos que entran en la,
+"",,,,Objetos que entran en la
+"",zona de interés,zona de interés,zona de interés,
+"",,,,zona de interés
+"",Objeto en área prohibida,El objeto se detiene en el,El objeto se detiene en el,
+"",,,,El objeto se detiene en el
+"",,área,área,
+"",,,,área
+"",,Objeto en área prohibida,Objeto en área prohibida,
 Entradas/Salidas de,,,,
 Alarma,1e/1s,1e/1s,;,;
 Entrada/Salida Audio,1e/1s,1e/1s,Micrófono Integrado,1e/1s
@@ -2349,6 +4966,39 @@ Alto x Ancho x Profundo,,,,
 "(cm)",10.60 x 12.60 x 29.60,10.60 x 12.60 x 29.60,11.10 x 12.60 x 31.10,13.30 x 13.30 x 31.10
 Peso (kg),1.31,1.31,2.11,2.50
 Disponibilidad,C,C,C,C
+"",2.0C-H5M-DO1-IR,2.0C-H6M-D1,2.0C-H6M-D1-IR,2.0C-H6SL-D1-IR
+Tipo de Cámara,Minidomo,Minidomo,Minidomo,Minidomo
+Resolución,2 Mpx,2 Mpx,2 Mpx,2 Mpx
+Tecnología de Vídeo,IP,IP,IP,IP
+Tipo de Óptica,Fija,Fija,Fija,Motorizada
+Distancia Focal,"2,8 mm","2,9 mm","2,9 mm","3,4 - 10,5 mm"
+"Ángulo de Ajuste",3 ejes,3 ejes,3 ejes,3 ejes
+LEDs,10 m IR,10 m IR,10 m IR,30 m IR
+Luz Blanca,;,;,;,;
+WDR,120 dB,120 dB,120 dB,126 dB
+Iluminación Mínima,0.027lux,0.005lux,0.005lux,0.005lux
+"",Detección de Movimiento,,,
+Análisis de Video,,Hombre / Vehículo,Hombre / Vehículo,VCA
+"",Inusual,,,
+Entradas/Salidas de,,,,
+Alarma,1e/1s,;,;,1e/1s
+Entrada/Salida Audio,1e/1s,;,;,1e/1s
+Slot SD,;,Micro SD,Micro SD,Micro SD (1TB)
+WIFI,;,;,;,;
+Exterior,IP66,;,;,IP67
+Grado de Protección,,,,
+Antivandálica,IK08,;,;,IK10
+Soporte Pared,No,No,No,CM-MT-WALL1
+Soporte Base,No,No,No,No
+Soporte Techo,H5M-MT-DCIL1,No,No,No
+Soporte Poste,No,No,No,No
+Soporte Esquina,No,No,No,No
+Soporte Empotrado,No,No,No,No
+Alimentación,PoE 802.3af,PoE 802.3af,PoE 802.3af,PoE 802.3af
+Alto x Ancho x Profundo,,,,
+"(cm)",10.00 x 11.50 x 11.50,6.30 x 7.50 x 7.50,6.30 x 7.50 x 7.50,11.60 x 15.60 x 15.60
+Peso (kg),0.36,0.17,0.17,0.81
+Disponibilidad,C,C,C,C
 "",2.0C-H6A-D1-IR,2.0C-H5A-D1-IR,2.0C-H6SL-DO1-IR
 Tipo de Cámara,Minidomo,Minidomo,Minidomo
 Resolución,2 Mpx,2 Mpx,2 Mpx
@@ -2376,11 +5026,6 @@ Entrada/Salida Audio,Micrófono Integrado,1e/1s,1e/1s
 Slot SD,"Micro SD (1,5 TB)",Micro SD,"Micro SD (1,5 TB)"
 WIFI,;,;,;
 Exterior,;,IP67,IP67
-Entradas/Salidas de Alarma,;,1e/1s,1e/1s
-Entrada/Salida Audio,Micrófono Integrado,1e/1s,1e/1s
-Slot SD,"Micro SD (1,5 TB)",Micro SD,"Micro SD (1,5 TB)"
-WIFI,;,;,;
-Exterior,;,IP67,IP67
 Grado de Protección,,,
 Antivandálica,IK10,IK10,IK10
 "",H6A-MT-NPTA1,,
@@ -2391,9 +5036,15 @@ Soporte Techo,No,No,No
 Soporte Poste,No,No,No
 Soporte Esquina,No,No,No
 Soporte Empotrado,CLADP-1001,No,No
-"",3.0C-H5A-CR1-,3.0C-H5A-CR1-,3.0C-H5SL-,,3.0C-H6SL-
-3.0C-H6M-D1-IR,,,,3.0C-H6SL-D1-IR,
-"",IR,IR-SS,DO1-IR,,DO1-IR
+"",12 - 24 Vdc,,
+Alimentación,,12 Vdc / 24 Vac / PoE 802.3af,PoE 802.3af
+"",PoE+ 802.3at,,
+Alto x Ancho x Profundo (cm),13.10 x 18.00 x 18.00,11.80 x 16.30 x 16.30,11.60 x 15.60 x 15.60
+Peso (kg),1.59,0.99,0.81
+Disponibilidad,C,C,C
+"",,3.0C-H5A-CR1-,3.0C-H5A-CR1-,3.0C-H5SL-,,3.0C-H6SL-
+"",3.0C-H6M-D1-IR,,,,3.0C-H6SL-D1-IR,
+"",,IR,IR-SS,DO1-IR,,DO1-IR
 Tipo de Cámara,Minidomo,Minidomo Esquina,Minidomo Esquina,Minidomo,Minidomo,Minidomo
 Resolución,3 Mpx,3 Mpx,3 Mpx,3 Mpx,3 Mpx,3 Mpx
 Tecnología de,,,,,,
@@ -2421,6 +5072,13 @@ Análisis de Video,Hombre / Vehículo,Movimiento Inusual,Movimiento Inusual,,,
 "",,Detección de,Detección de,,,
 "",,,,,Ausencia de,
 "",,Actividad Inusual,Actividad Inusual,,,
+"",,,,,objetos en la zona,
+"",,,,,de interés,
+"",,,,,Objetos que entran,
+"",,,,,en la zona de,
+"",,,,,interés,
+"",,,,,El objeto se detiene,
+"",,,,,en el área,
 Entradas/Salidas,,,,,,
 de Alarma,;,1e/1s,1e/1s,1e/1s,1e/1s,1e/1s
 Entrada/Salida,,,,,,
@@ -2443,9 +5101,11 @@ Alimentación,PoE 802.3af,,,PoE 802.3af,PoE 802.3af,PoE 802.3af
 "",,PoE 802.3af,PoE 802.3af,,,
 Alto x Ancho x,,,,,,
 Profundo (cm),6.30 x 7.50 x 7.50,12.10 x 16.30 x 16.30,12.10 x 16.30 x 16.30,16.20 x 17.40 x 17.40,11.60 x 15.60 x 15.60,11.60 x 15.60 x 15.60
-"",5.0C-H5M-DO1-,5.0C-H5A-CR1-,5.0C-H5A-CR1-,,5.0C-H6SL-
-5.0C-H6M-D2-IR,,,,5.0C-H6SL-D1-IR,
-"",IR,IR,IR-SS,,DO1-IR
+Peso (kg),0.17,3.21,3.21,0.77,0.81,0.81
+Disponibilidad,C,C,C,C,C,C
+"",,5.0C-H5M-DO1-,5.0C-H5A-CR1-,5.0C-H5A-CR1-,,5.0C-H6SL-
+"",5.0C-H6M-D2-IR,,,,5.0C-H6SL-D1-IR,
+"",,IR,IR,IR-SS,,DO1-IR
 Tipo de Cámara,Minidomo,Minidomo,Minidomo Esquina,Minidomo Esquina,Minidomo,Minidomo
 Resolución,5 Mpx,5 Mpx,5 Mpx,5 Mpx,5 Mpx,5 Mpx
 Tecnología de,,,,,,
@@ -2502,6 +5162,28 @@ Alimentación,PoE 802.3af,PoE 802.3af,,,PoE 802.3af,PoE 802.3af
 "",,,PoE 802.3af,PoE 802.3af,,
 Alto x Ancho x,,,,,,
 Profundo (cm),6.30 x 7.50 x 7.50,10.00 x 11.50 x 11.50,12.10 x 16.30 x 16.30,12.10 x 16.30 x 16.30,11.60 x 15.60 x 15.60,11.60 x 15.60 x 15.60
+Peso (kg),0.82,0.36,3.21,3.21,1.31,0.81
+Disponibilidad,C,C,C,C,C,C
+"",6.0C-H6A-DO1-IR,6.0C-H6A-DO2-IR,8.0C-H6A-DO1-IR
+Tipo de Cámara,Minidomo,Minidomo,Minidomo
+Resolución,6 Mpx,6 Mpx,8 Mpx
+Tecnología de Vídeo,IP,IP,IP
+Tipo de Óptica,Motorizada,Motorizada,Motorizada
+Distancia Focal,4.4 - 9.3 mm,"10,9 - 29 mm",4.4 - 9.3 mm
+"Ángulo de Ajuste",3 ejes,3 ejes,3 ejes
+LEDs,50 m IR,70 m IR,50 m IR
+Luz Blanca,;,;,;
+WDR,144 dB,144 dB,144 dB
+Iluminación Mínima,0.008lux,0.008lux,0.008lux
+"",Objetos en la zona de interés,,Objetos en la zona de interés
+"",Objetos deambulantes,,Objetos deambulantes
+"",Objetos cruzando el haz,,Objetos cruzando el haz
+"",Objetos que aparecen o entran en la,,Objetos que aparecen o entran en l
+Análisis de Video,zona de interés,Hombre / Vehículo,zona de interés
+"",Ausencia de objetos en la zona de,,Ausencia de objetos en la zona de
+"",interés,,interés
+"",Objetos que entran en la zona de,,Objetos que entran en la zona de
+"",interés,,interés
 Entradas/Salidas de Alarma,;,;,;
 Entrada/Salida Audio,Micrófono Integrado,Micrófono Integrado,1e/1s
 Slot SD,"Micro SD (1,5 TB)","Micro SD (1,5 TB)","Micro SD (1,5 TB)"
@@ -2523,6 +5205,109 @@ Alimentación,12 - 24 Vdc,12 - 24 Vdc,
 Alto x Ancho x Profundo (cm),18.90 x 18.00 x 18.00,18.90 x 18.00 x 18.00,13.10 x 18.10 x 18.10
 Peso (kg),1.59,1.59,1.21
 Disponibilidad,B,C,C
+"",8.0C-H5A-FE-DC1,8.0C-H5A-FE-DO1,8.0C-H5A-FE-DO1-IR
+Tipo de Cámara,Fisheye,Fisheye,Fisheye
+Resolución,8 Mpx,8 Mpx,8 Mpx
+Tecnología de Vídeo,IP,IP,IP
+Tipo de Óptica,Fija,Fija,Fija
+Distancia Focal,"1,4 mm","1,4 mm","1,4 mm"
+"Ángulo de Ajuste",;,;,;
+LEDs,;,;,20 m IR
+Luz Blanca,;,;,;
+WDR,120 dB,120 dB,120 dB
+Iluminación Mínima,0.1lux,0.1lux,0.1lux
+"",VCA,VCA,VCA
+Análisis de Video,Detección de Movimiento Inusual,Detección de Movimiento Inusual,Detección de Movimiento Inusual
+"",Detección de Actividad Inusual,Detección de Actividad Inusual,Detección de Actividad Inusual
+Entradas/Salidas de Alarma,1e/1s,1e/1s,1e/1s
+Entrada/Salida Audio,1e/1s,1e/1s,1e/1s
+Slot SD,2 x Micro SD,2 x Micro SD,2 x Micro SD
+WIFI,;,;,;
+Exterior,;,IP67,IP67
+Grado de Protección,,,
+Antivandálica,;,IK10,IK10
+Soporte Pared,No,CM-MT-WALL1,CM-MT-WALL1
+Soporte Base,No,No,No
+Soporte Techo,No,No,No
+Soporte Poste,No,No,No
+Soporte Esquina,No,H4-MT-CRNR1,H4-MT-CRNR1
+Soporte Empotrado,No,No,No
+Alimentación,12 Vdc / PoE 802.3af,12 Vdc / PoE 802.3af,12 Vdc / PoE 802.3af
+Alto x Ancho x Profundo (cm),1.42 x 20.06 x 20.06,6.20 x 14.55 x 14.55,6.20 x 14.55 x 14.55
+Peso (kg),0.60,0.52,0.52
+Disponibilidad,C,C,B
+"",12.0W-H5A-FE-DC1,12.0W-H5A-FE-DO1,12.0W-H5A-FE-DO1-IR
+Tipo de Cámara,Fisheye,Fisheye,Fisheye
+Resolución,12 Mpx,12 Mpx,12 Mpx
+Tecnología de Vídeo,IP,IP,IP
+Tipo de Óptica,Fija,Fija,Fija
+Distancia Focal,"1,6 mm","1,6 mm","1,6 mm"
+"Ángulo de Ajuste",;,;,;
+LEDs,;,;,20 m IR
+Luz Blanca,;,;,;
+WDR,120 dB,120 dB,120 dB
+Iluminación Mínima,0.19lux,0.19lux,0.19lux
+"",VCA,VCA,VCA
+Análisis de Video,Detección de Movimiento Inusual,Detección de Movimiento Inusual,Detección de Movimiento Inusual
+"",Detección de Actividad Inusual,Detección de Actividad Inusual,Detección de Actividad Inusual
+Entradas/Salidas de Alarma,1e/1s,1e/1s,1e/1s
+Entrada/Salida Audio,1e/1s,1e/1s,1e/1s
+Slot SD,2 x Micro SD,2 x Micro SD,2 x Micro SD
+WIFI,;,;,;
+Exterior,;,IP67,IP67
+Grado de Protección,,,
+Antivandálica,;,IK10,IK10
+Soporte Pared,No,CM-MT-WALL1,CM-MT-WALL1
+Soporte Base,No,No,No
+Soporte Techo,No,No,No
+Soporte Poste,No,No,No
+Soporte Esquina,No,H4-MT-CRNR1,H4-MT-CRNR1
+Soporte Empotrado,No,No,No
+Alimentación,12 Vdc / PoE 802.3af,12 Vdc / PoE 802.3af,12 Vdc / PoE 802.3af
+Alto x Ancho x Profundo (cm),1.42 x 20.06 x 20.06,1.42 x 20.06 x 20.06,1.42 x 20.06 x 20.06
+Peso (kg),0.60,0.52,0.52
+Disponibilidad,C,C,B
+"",2.0C-H6A-PTZ-DP30,2.0C-H5A-IRPTZ-DP40-WP
+Aumentos,x30,x40
+Resolución,2 Mpx,2 Mpx
+LEDs,;,300 m IR
+Tecnología de Vídeo,IP,IP
+Giro Continuo,;,;
+WDR,122 dB,120 dB
+"",Objetos deambulantes,
+"",Objetos cruzando el haz,
+"",,Objetos en la zona de interés
+"",Objetos que aparecen o entran en la zona de,
+"",,Objetos deambulantes
+"",interés,
+"",,Objetos cruzando el haz
+Análisis de Video,Ausencia de objetos en la zona de interés,
+"",,Objetos que aparecen o entran en la zona de
+"",Objetos que entran en la zona de interés,
+"",,interés
+"",El objeto se detiene en el área,
+"",,El objeto se detiene en el área
+"",Objeto en área prohibida,
+"",Objeto abandonado,
+Entradas/Salidas de Alarma,3e/1s,2e/2s
+Exterior,IP67,IP67
+Grado de Protección Antivandálica,IK10,IK10
+Wiper,;,;
+Anticorrosión,;,;
+Slot SD,2 x Micro SD,Micro SD
+Soporte Pared,WLMT-1021,IRPTZ-MNT-WALL1
+Soporte Base,No,No
+Soporte Techo,No,No
+Soporte Poste,PLMT-1001,H4-MT-POLE1
+Soporte Esquina,CRNMT-1001,H4-MT-CRNR1
+Soporte Empotrado,No,No
+Soporte Suspendido,No,No
+"",24 Vdc,24 Vdc
+Alimentación,,
+"",Hi-PoE 802.3bt,Hi-PoE 802.3bt
+Alto x Ancho x Profundo (cm),30.00 x 24.00 x 24.00,25.00 x 25.00 x 36.40
+Peso (kg),3.59,6.76
+Disponibilidad,C,C
 "",8.0C-H5A-PTZ-DC36,8.0C-H5A-PTZ-DP36
 Aumentos,x36,x36
 Resolución,8 Mpx,8 Mpx
@@ -2596,6 +5381,23 @@ Alto x Ancho x Profundo,,,,
 "(cm)",16.10 x 29.80 x 29.80,11.80 x 21.80 x 8.20,16.10 x 29.80 x 29.80,29.80 x 16.10 x 16.10
 Peso (kg),1.10,1.25,1.10,1.10
 Disponibilidad,C,C,C,C
+"",20C-H5A-4MH,32C-H5A-4MH
+Resolución,4 Mpx,32 Mpx
+"Ángulo Visualización",360o,360o
+No Sensores,4,4
+Distancia Focal,3.3 - 5.7 mm,3.3 - 5.7 mm
+LEDs,30 m IR,;
+"",Objetos deambulantes,
+"",,LPR
+"",Objetos que aparecen o entran en la zona de,
+"",,Conteo
+"",interés,
+Análisis de Video,,Objetos en la zona de interés
+"",Ausencia de objetos en la zona de interés,
+"",,Objetos deambulantes
+"",Objetos que entran en la zona de interés,
+"",,Cruce de Linea
+"",El objeto se detiene en el área,
 Grado de Protección Antivandálica,IK10,IK10
 Tecnología de Vídeo,IP,IP
 Entradas/Salidas de Alarma,1e/1s,1e/1s
@@ -2615,18 +5417,103 @@ Alimentación,,
 Alto x Ancho x Profundo (cm),29.80 x 16.10 x 16.10,16.10 x 29.80 x 29.80
 Peso (kg),1.10,1.10
 Disponibilidad,C,C
-"",,,,,
+"",AINVR-SFPPLUS-SR
+Alto x Ancho x Profundo (cm),2.00 x 2.00 x 10.00
+Peso (kg),0.02
+Disponibilidad,C
+"",ENC-4P-H264
+Tecnología de Vídeo,IP
+No Canales,4
+Peso (kg),0.62
+Disponibilidad,C
+"",Descripción Corta,Disponibilidad
+H6A-MT-NPTA1,Accesorio de montaje colgante para domos H6A,C
+H4SL-MT-NPTA1,Accesorio de montaje suspendido para domos H4SL y H5SL,C
+"",Adaptador de montaje colgante para exteriores; debe pedirse el soporte,
+H5AMH-AD-PEND1,WLMT-1001 o NPTA-1001 y uno de H5AMH-DO-COVR1 o el H5AMHDO-,B
+"",COVR1-SMOKE.,
+"",Accesorio de montaje suspendido para usar con H4 IR PTZ o H4A-MH-AD-,
+IRPTZ-MNT-NPTA1,,C
+"",PEND1,
+H5A-FE-MT-NPTA1,Accesorio de montaje suspendido para domos fisheye H5A (H5A-FE-DO),C
+H6SL-MT-NPTA1,Soporte colgante para cámaras domo Avigilon H6SL.,C
+H4A-MT-WALL1,Soporte de pared para domos H5A-DP/H4A-DP,C
+"","Adaptador de brazo para pared. Para montaje suspendido. Para H5A-PTZ-DP,",
+IRPTZ-MNT-WALL1,,C
+"",H4IRPTZ-DP o en cámaras Multisensor H4A.,
+WLMT-1001,Brazo colgante de pared para usar con H5AMH-ADPEND1.,B
+H4A-MT-NPTA1,Accesorio de montaje colgante para domos H5A/H4A,C
+H6M-MT-DCIL1,Soporte para empotrar cámaras domo H6 Avigilon en techo.,C
+"","Accesorio para esquina para uso con H4A-MT-WALL1, H4-BO-JBOX1, H4SL,",
+H4-MT-CRNR1,"H4F, H4 PTZ, H4 IR PTZ, multisensor H4 y H5 Fisheye (necesita H5A-FE-MT-",C
+"",NPTA1).,
+"",Descripción Corta,Disponibilidad
+CRNMT-1001,"Soporte para montaje de minidomos Avigilon en esquina. Aluminio, color blanco.",C
+H4-BO-JBOX1,"Base para instalación superficie para bullet H4A, H5A, H4SL y H4 Térmica",C
+"","Accesorio para poste para uso con H4A-MT-WALL1, H4-BO-JBOX1, H4SL, H4F, H4",
+H4-MT-POLE1,,C
+"","PTZ, H4 IR PTZ y H4 Cámaras Multisensor. 148,38 x 177,80 x 75,57 mm",
+"","Soporte para montaje en poste para cámaras domo y bullet Avigilon. Aluminio, color",
+PLMT-1001,,C
+"",blanco.,
+ES-HD-MNT-,,
+"",Accesorio de poste mediano para carcasa,C
+POLE-MD,,
+H4AMH-AD-IRIL1,"Anillo iluminador IR opcional, hasta 30 m, para su uso con H4AMH-DO-COVR1.",C
+H5AMH-DO-,Burbuja para base superficie o suspendida de cámara multisensor H5A.,
+"",,B
+COVR1,Transparente. Exteriores,
+H5M-MT-DCIL1,Adaptador de montaje encastrado en techo para la cámara domo H5M,C
+H4SL-MT-DCIL1,Adaptador de montaje empotrado en techo para la cámara domo H5SL y H4SL,C
+HALO-V3.00C,"HALO IoT Smart Sensor 3C. 12 detectores en 1 dispositivo. Wifi, PoE, IK10.",C
+HALO-V3.00C-,,
+"",Base para HALO-V3.00C de empotrar (opcional),C
+BACKBOX,,
+EX1,Extensor PoE 1 Puerto 100Mbps,C
+"",3.0C-H4VI-RO1-IR
+Tecnología Videoportero,IP
+Pulsadores de Llamada,1
+Tipo Lector,No Incluido
+Relés de Salida,1
+Cámara,;
+Interfaz de Conexión,Ethernet
+Web Server,;
+Software Compatible,Avigilon Control Center (ACC)
+Led,;
+Montaje,Superficie
+Material Carcasa,Aluminio
+"",IP67
+Protección IP,
+"",IP66
+Protección Antivandálica,;
+Temperatura de Trabajo,-40 ~60oC
+Alimentación,12 Vdc / PoE 802.3af
+Peso (kg),1.23
+Disponibilidad,C
+"",NVR5-VAL-6TB-EU,NVR5-VAL-12TB-EU,NVR5-VAL-24TB-EU
+Tecnología de Vídeo,IP,IP,IP
+No Canales Analógicos,;,;,;
+No Canales IP,90,46,46
+No Canales PoE,;,;,;
+Resolución Máxima IP,;,;,;
+Análisis de Video,No,No,No
+Hombre/Vehículo,;,;,;
+Detección Facial,;,;,;
+Ancho de Banda Grabación/,,,
+Visualización,550 / 450,300 / 128,300 / 128
+Salida de Vídeo,Sin Salida de Vídeo,VGA,VGA
+Entradas/Salidas de Alarma,;,;,;
+Interfaz de Red,2 x RJ45 10/100/1000,2 x RJ45 10/100/1000,2 x RJ45 10/100/1000
+Puerto Teclado,;,;,;
+No Máximo HDDs,4,4,4
+RAID,RAID 5,RAID 5,RAID 5
+Fuente Redundante,;,;,;
+Alimentación,100 - 240 Vac,220 Vac,220 Vac
+Alto x Ancho x Profundo (cm),4.20 x 48.20 x 59.80,4.20 x 48.20 x 59.40,4.20 x 48.20 x 59.40
+Peso (kg),12.50,12.50,12.50
+Disponibilidad,C,C,C
 "",NVR6-STD-FORM-,NVR6-STD-FORM-,NVR6-STD-FORM-,NVR6-STD-FORM-,NVR6-STD-FORM-
 "",D-16TB-S22-EU,D-16TB-W10-EU,D-24TB-S22-EU,D-32TB-S22-EU,D-48TB-S22-EU
-Tecnología de Vídeo,IP,IP,IP,IP,IP
-No Canales,,,,,
-Analógicos,;,;,;,;,;
-No Canales IP,200,90,90,90,90
-No Canales PoE,;,;,;,;,;
-Resolución Máxima IP,;,;,;,;,;
-Análisis de Video,No,No,No,No,No
-Hombre/Vehículo,;,;,;,;,;
-Detección Facial,;,;,;,;,;
 Tecnología de Vídeo,IP,IP,IP,IP,IP
 No Canales,,,,,
 Analógicos,;,;,;,;,;
@@ -2652,7 +5539,6 @@ Alto x Ancho x,,,,,
 Profundo (cm),8.60 x 48.20 x 72.10,8.60 x 48.20 x 72.10,8.60 x 48.20 x 72.10,8.60 x 48.20 x 72.10,8.60 x 48.20 x 72.10
 Peso (kg),28.60,28.60,28.60,28.60,28.60
 Disponibilidad,C,C,C,C,C
-"",,,,
 "",NVR6-STD-FORM-D-,NVR6-PRM-FORM-D-,NVR6-PRM-FORM-D-,NVR6-PRM-FORM-D-
 "",64TB-S22-EU,72TB-S22-EU,96TB-S22-EU,120TB-S22-EU
 Tecnología de Vídeo,IP,IP,IP,IP
@@ -2705,12 +5591,59 @@ Alto x Ancho x,,,,,
 Profundo (cm),4.20 x 48.20 x 59.80,8.60 x 18.00 x 29.50,4.20 x 48.20 x 59.80,8.68 x 48.20 x 77.20,8.60 x 48.20 x 48.20
 Peso (kg),12.50,33.10,12.50,28.60,36.10
 Disponibilidad,C,C,C,C,C
-AINVR2-STD-FORM-D-,AINVR2-STD-FORM-D-,AINVR2-PRM-FORM-D-,
-"",,,ENVR2-PLUS-8P4-EU
-32TB-EU,64TB-EU,96TB-EU,
-DS-2XS2T41G1-ID-4G-,,DS-2XS6A46G1-P-IZS-,
-"",4G-C18S40(4MM)-O-,,DS-2DE5425IWG-K-4G
-C05S07(4MM),,C36S80(8-32MM),
+"",AINVR2-STD-FORM-D-,AINVR2-STD-FORM-D-,AINVR2-PRM-FORM-D-,
+"",,,,ENVR2-PLUS-8P4-EU
+"",32TB-EU,64TB-EU,96TB-EU,
+Tecnología de Vídeo,IP,IP,IP,IP
+No Canales Analógicos,;,;,;,;
+No Canales IP,130,130,200,20
+No Canales PoE,;,;,;,;
+Resolución Máxima IP,;,;,;,;
+Análisis de Video,No,No,No,No
+Hombre/Vehículo,;,;,;,;
+Detección Facial,;,;,120ch,;
+Ancho de Banda,,,,
+Grabación/Visualización,900 / 800,900 / 800,1500/800,130 / 80
+Salida de Vídeo,Sin Salida de Vídeo,Sin Salida de Vídeo,Sin Salida de Vídeo,Sin Salida de Vídeo
+Entradas/Salidas de,,,,
+Alarma,;,;,;,;
+Interfaz de Red,6 x RJ45 10/100/1000,6 x RJ45 10/100/1000,2 x RJ45 10/100/1000,2 x RJ45 10/100/1000
+Puerto Teclado,;,;,;,;
+No Máximo HDDs,10,10,12,1
+RAID,RAID 6,RAID 6,RAID 6,No Soportado
+Fuente Redundante,;,;,;,;
+Alimentación,100 - 240 Vac,100 - 240 Vac,100 - 240 Vac,220 Vac
+Alto x Ancho x Profundo,,,,
+"(cm)",8.68 x 48.20 x 77.20,8.68 x 48.20 x 77.20,8.68 x 48.20 x 77.20,4.40 x 19.50 x 25.40
+Peso (kg),28.60,28.60,36.10,1.14
+Disponibilidad,C,C,C,C
+"",,DS-2XS2T47G1-LDH-,,
+"",DS-2XS2T41G1-ID-4G-,DS-2XS6A46G1-P-IZS-,,
+"",,4G-C18S40(4MM)-O-,DS-2DE5425IWG-K-4G,
+"",C05S07(4MM),C36S80(8-32MM),,
+"",,STD-EU,,
+Distancia Focal,4 mm,"4,0 mm 8 - 32 mm",,4.8 - 120 mm
+Resolución,4 Mpx,4 Mpx 4 Mpx,,4 Mpx
+LEDs,30 m IR,; 50 m IR,,150 m IR
+"",,Objetos que aparecen o,,
+Análisis de Video,No,Detección de Humanos entran en la zona de interés,,No
+"",,Cruce de Linea,,
+Exterior,IP66,IP67 IP66,,IP66
+Panel Solar,80W,40W 80W,,4x 90W
+Conectividad,4G,4G 4G,,4G
+Batería Incluida,"Si, 1 x 51,46WH","Si, 2 x 8.4 Ah Si, 3 x 90WH",,"Si, 3 x 90WH"
+Batería Adicional,-,- -,,12V 9Ah
+Vida Batería Modo,,,,
+Performance,-,3.6 días -,,2 días
+Vida Batería Modo,,,,
+Proactivo,1.5 días,6 días 8 días,,2.5 días
+Vida Batería Modo Standby,11 días,30 días 80 días,,80 días
+Temperatura de Trabajo,0 ~ 50oC,-20 ~ 50oC -20 ~ 60oC,,-30 ~ 65oC
+Alimentación,12 Vdc,12 Vdc 12 Vdc,,12 Vdc
+"",Descripción Corta,,,Disponibilidad
+DS-2XS6K01-,"Kit panel solar de 80W. Incluye panel solar, caja de batería y soporte para montaje en",,,
+"",,,,P
+C36S80,pared o poste,,,
 "",DS-2TD2617-3-QA,DS-2TD2617-6-QA,DS-2TD2617-10-QA
 Tipo de Cámara,Bullet,Bullet,Bullet
 Cámara Dual,;,;,;
@@ -2734,6 +5667,27 @@ Alimentación,12 Vdc / PoE 802.3af,12 Vdc / PoE 802.3af,12 Vdc / PoE 802.3af
 Alto x Ancho x Profundo (cm),11.35 x 11.52 x 35.83,11.50 x 11.30 x 35.80,11.50 x 11.30 x 35.80
 Peso (kg),1.76,1.71,1.71
 Disponibilidad,A,C,B
+"",DS-2TD2628T-3-QA,HM-TD3028T-2-Q
+Tipo de Cámara,Bullet,Cubo Térmica
+Cámara Dual,;,;
+Resolución cámara térmica,256 x 192,256 x 192
+Resolución,4 Mpx,4 Mpx
+Distancia Focal,"4,0 mm","1,4 mm"
+Analítica Embebida,;,;
+Luz Blanca,;,;
+Aumentos,x4,x4
+Exterior,IP67,IP67
+Anticorrosión,;,;
+ATEX,;,;
+Entradas/Salidas de Alarma,2e/2s,2s
+Tecnología de Vídeo,IP,IP
+Wiper,;,;
+"",24 Vac,12 Vdc
+Alimentación,,
+"",PoE 802.3af,PoE 802.3af
+Alto x Ancho x Profundo (cm),10.60 x 10.70 x 32.13,10.60 x 4.00 x 3.80
+Peso (kg),1.55,0.34
+Disponibilidad,B,P
 "",DS-2TD2628-3-QA,DS-2TD2628-7-QA,DS-2TD2628-10-QA
 Tipo de Cámara,Bullet,Bullet,Bullet
 Cámara Dual,;,;,;
@@ -2757,8 +5711,8 @@ Alimentación,12 Vdc / PoE 802.3af,12 Vdc / PoE 802.3af,12 Vdc / PoE 802.3af
 Alto x Ancho x Profundo (cm),10.70 x 10.60 x 32.13,10.70 x 10.60 x 32.13,10.70 x 10.60 x 32.13
 Peso (kg),1.55,1.55,1.55
 Disponibilidad,A,A,A
-DS-2TD2138-,DS-2TD2138-,DS-2TD2138-,DS-2TD2138-,DS-2TD2138-,DS-2TD2138-
-4-QY,7-QY,10-QY,15-QY,25-QY,35-QY
+"",DS-2TD2138-,DS-2TD2138-,DS-2TD2138-,DS-2TD2138-,DS-2TD2138-,DS-2TD2138-
+"",4-QY,7-QY,10-QY,15-QY,25-QY,35-QY
 Tipo de Cámara,Bullet,Bullet,Bullet,Bullet,Bullet,Bullet
 Cámara Dual,;,;,;,;,;,;
 Resolución cámara,,,,,,
@@ -2807,6 +5761,49 @@ Alto x Ancho x Profundo,,,,
 "(cm)",11.52 x 11.30 x 35.13,11.52 x 11.30 x 35.13,11.52 x 11.30 x 35.13,11.52 x 11.30 x 35.13
 Peso (kg),1.77,1.77,1.77,1.77
 Disponibilidad,B,A,A,A
+"",HM-TD2638-35-G0-T1Y
+Tipo de Cámara,Bullet
+Cámara Dual,;
+Resolución cámara térmica,384 x 288
+Resolución,384 x 288
+Distancia Focal,35 mm
+"Ángulo de Apertura Cámara Térmica",7.5° × 5.6° (H × V)
+"Ángulo de Apertura Cámara Visible",24.6° × 14° (H × V)
+Analítica Embebida,;
+Luz Blanca,;
+Aumentos,x8
+Exterior,IP67
+Anticorrosión,;
+ATEX,;
+Entradas/Salidas de Alarma,2e/2s
+Tecnología de Vídeo,IP
+Wiper,;
+"",12 Vdc
+Alimentación,24 Vac
+"",PoE 802.3af
+Alto x Ancho x Profundo (cm),11.80 x 11.90 x 37.60
+Peso (kg),1.82
+Disponibilidad,C
+"",DS-2TD2367-50-PY,DS-2TD2367-100-PY
+Tipo de Cámara,Térmica IP,Térmica IP
+Cámara Dual,;,;
+Resolución cámara térmica,640 x 512,640 x 512
+Resolución,640 x 512,640 x 512
+Distancia Focal,50 mm,100 mm
+"Ángulo de Apertura Cámara Térmica",12.42o,6.22o
+Analítica Embebida,;,;
+Luz Blanca,;,;
+Aumentos,;,;
+Exterior,IP67,IP66
+Anticorrosión,;,;
+ATEX,;,;
+Entradas/Salidas de Alarma,2e/2s,2e/2s
+Tecnología de Vídeo,IP,IP
+Wiper,;,;
+Alimentación,12 Vdc / 24 Vac / PoE+ 802.3at,12 Vdc / 24 Vac / PoE+ 802.3at
+Alto x Ancho x Profundo (cm),17.10 x 40.00 x 53.50,17.10 x 40.00 x 53.50
+Peso (kg),6.40,6.40
+Disponibilidad,P,P
 "",TNO-3010T,TNO-3020T,TNO-3030T,TNO-3040T,TNO-3050T
 Tipo de Cámara,Térmica IP,Térmica IP,Térmica IP,Térmica IP,Térmica IP
 Cámara Dual,;,;,;,;,;
@@ -2833,6 +5830,139 @@ Alto x Ancho x,,,,,
 Profundo (cm),14.75 x 14.75 x 37.53,14.75 x 14.75 x 37.53,14.75 x 14.75 x 37.53,14.75 x 14.75 x 37.53,14.75 x 14.75 x 40.13
 Peso (kg),2.51,2.51,2.51,2.50,2.74
 Disponibilidad,C,C,C,C,C
+"",320F-H5A-THC-BO50,320F-H5A-THC-BO12
+Tipo de Cámara,Térmica IP,Térmica IP
+Cámara Dual,;,;
+Resolución cámara térmica,320 x 256,320 x 256
+Distancia Focal,"4,3 mm",18 mm
+"Ángulo de Apertura Cámara Térmica","46,9o",12.2o
+Analítica Embebida,;,;
+Luz Blanca,;,;
+Aumentos,;,;
+Exterior,IP67,IP67
+Anticorrosión,;,;
+ATEX,;,;
+Entradas/Salidas de Alarma,1e/1s,1e/1s
+Tecnología de Vídeo,IP,IP
+Wiper,;,;
+"",12 Vdc / 24 Vac,
+Alimentación,,12 Vdc / 24 Vac / PoE 802.3af
+"",PoE 802.3af,
+Alto x Ancho x Profundo (cm),10.60 x 12.60 x 28.90,10.60 x 12.60 x 30.00
+Peso (kg),1.46,1.92
+Disponibilidad,C,C
+"",DS-2XE6222F-IS(4MM)-316L@,TNO-6322ER,DS-2TD2528T-3-Q
+Tipo de Cámara,Sistema Antideflagrante,Bullet,Termográfica
+Resolución,2 Mpx,2 Mpx,4 Mpx
+Cámara Dual,;,;,;
+Distancia Focal,"4,0 mm","4,44 - 142,6 mm","4,0 mm"
+Aumentos,;,x32,;
+LEDs,30 m IR,70 m IR,30 m IR
+Entradas/Salidas de Alarma,2e/2s,1e/1s,2e/2s
+Grado de Protección,,,
+Antivandálica,IK10,IK10,;
+Tecnología de Vídeo,IP,IP,IP
+Slot SD,Micro SD (128 GB),;,Micro SD (256 GB)
+WDR,120 dB,120 dB,120 dB
+Wiper,;,;,;
+"",220 Vac,,100 - 240 Vac
+Alimentación,,24 Vac,
+"",PoE 802.3af,,PoE 802.3af
+Alto x Ancho x Profundo (cm),17.40 x 17.20 x 22.13,157.50 x 24.20 x 32.00,14.80 x 15.00 x 28.60
+Peso (kg),7.40,11.50,5.85
+Disponibilidad,P,C,P
+"",TNU-6322E,TNU-6322ER
+Tipo de Cámara,Posicionador PTZ,Posicionador PTZ
+Resolución,2 Mpx,2 Mpx
+Cámara Dual,;,;
+Distancia Focal,"4,44 - 142,6 mm","4,44 - 142,6 mm"
+Aumentos,x32,x32
+Giro Vertical,180o (+90o a -90o),180o (+90o a -90o)
+LEDs,;,200 m IR
+Entradas/Salidas de Alarma,1e/1s,1e/1s
+Grado de Protección Antivandálica,IK10,IK10
+Tecnología de Vídeo,IP,IP
+Slot SD,;,;
+WDR,120 dB,120 dB
+Wiper,;,;
+Alimentación,24 Vac,24 Vac
+Alto x Ancho x Profundo (cm),35.50 x 42.70 x 23.50,61.10 x 43.80 x 23.50
+Peso (kg),25.00,36.00
+Disponibilidad,C,C
+"",AE-VC224T-IT(2.8MM)
+Tipo de Cámara,Portable
+Resolución,2 Mpx
+Tecnología de Vídeo,HD - TVI
+Tipo de Óptica,Fija
+Distancia Focal,"2,8 mm"
+"Ángulo de Ajuste",3 ejes
+LEDs,10 m IR
+Luz Blanca,;
+WDR,;
+Iluminación Mínima,0.1lux
+Análisis de Video,No
+Entradas/Salidas de Alarma,;
+Entrada/Salida Audio,;
+Slot SD,;
+WIFI,;
+Exterior,IP68
+Grado de Protección Antivandálica,IK10
+Soporte Pared,No
+Soporte Base,No
+Soporte Techo,No
+Soporte Poste,No
+Soporte Esquina,No
+Soporte Empotrado,No
+Alimentación,9 - 16 Vdc
+Alto x Ancho x Profundo (cm),7.40 x 6.50 x 5.70
+Peso (kg),0.20
+Disponibilidad,P
+"",DS-MH2311-32G-GLE
+Tipo de Cámara,Portable
+Resolución,2 Mpx
+Tecnología de Vídeo,IP
+Tipo de Óptica,Fija
+Distancia Focal,2.4 mm
+"Ángulo de Ajuste",;
+LEDs,10 m IR
+Luz Blanca,;
+WDR,;
+Iluminación Mínima,0.15 lux
+Análisis de Video,No
+Entradas/Salidas de Alarma,;
+Entrada/Salida Audio,;
+Slot SD,;
+WIFI,;
+Exterior,IP67
+Grado de Protección Antivandálica,;
+Soporte Pared,No
+Soporte Base,No
+Soporte Techo,No
+Soporte Poste,No
+Soporte Esquina,No
+Soporte Empotrado,No
+Alimentación,5 Vdc
+Peso (kg),0.13
+Disponibilidad,P
+"",AE-MN5083-M12
+No Canales Analógicos,;
+No Canales IP,8
+Resolución Máxima IP,2 Mpx
+Análisis de Video,No
+Hombre/Vehículo,;
+Detección Facial,;
+Ancho de Banda Grabación/Visualización,;
+Salida de Vídeo,VGA
+Entradas/Salidas de Alarma,1e/1s
+Interfaz de Red,1 x RJ45 10/100
+Puerto Teclado,;
+No Máximo HDDs,1
+RAID,No Soportado
+Fuente Redundante,;
+Alimentación,9 - 32 Vdc
+Alto x Ancho x Profundo (cm),6.30 x 18.40 x 19.00
+Peso (kg),1.58
+Disponibilidad,P
 "",DS-6701HUHI,SPE-420,SPE-1630
 "",HD - TVI,HD - TVI,HD - TVI
 "",AHD,AHD,AHD
@@ -2872,7 +6002,7 @@ Luz Blanca,;,;,40m
 WDR,120 dB,150 dB,120 dB
 Iluminación Mínima,0.01lux,0.015lux,0.001lux
 "",,,Hombre / Vehículo
-"",VCA,VCA,Objetos que aparecen o entran en la
+"",VCA,VCA,Objetos que aparecen o entran en l
 Análisis de Video,,,
 "",Detección de Movimiento,Detección de Rostros,zona de interés
 "",,,Cruce de Linea
@@ -2895,11 +6025,152 @@ Alimentación,12 Vdc / PoE 802.3af,12 Vdc / 24 Vac / PoE 802.3af,
 Alto x Ancho x Profundo (cm),11.30 x 11.30 x 7.73,12.05 x 16.20 x 16.20,9.10 x 10.50 x 25.00
 Peso (kg),1.68,2.68,0.76
 Disponibilidad,P,C,P
-IDS-,IDS-,IDS-,IDS-,,
-"",,,,IDS-TCM403-,IDS-TCM403-
-2CD7026G0-P-,2CD7A46G0-P-,2CD7A26G0-P-,2CD7A26G0-P-,,
-"",,,,BI-0411,BI(G)-POE-0832
-AP(C),IZHSY(2.8-12MM),IZHS(2.8-12MM),IZHS(8-32MM),,
+"",DS-2DT6223-AELY
+Aumentos,x23
+Resolución,2 Mpx
+LEDs,;
+"",IP
+Tecnología de Vídeo,
+"",BNC
+Giro Continuo,;
+WDR,120 dB
+Análisis de Video,VCA
+Entradas/Salidas de Alarma,7e/2s
+Exterior,IP67
+Grado de Protección Antivandálica,IK10
+Wiper,;
+Anticorrosión,;
+Slot SD,Micro SD (256 GB)
+Soporte Pared,No
+Soporte Base,No
+Soporte Techo,No
+Soporte Poste,No
+Soporte Esquina,No
+Soporte Empotrado,No
+Soporte Suspendido,No
+Alimentación,24 Vac / Hi-PoE 802.3bt
+Alto x Ancho x Profundo (cm),33.00 x 26.20 x 26.20
+Peso (kg),10.00
+Disponibilidad,P
+"",Descripción Corta,Disponibilidad
+"",Caja de conexión antiexplosión ATEX (Zona 1 a 22) y IECEx de acero,
+DS-2780ZJ-X(OS)-316L,,P
+"","inoxidable 316L, IP68, 4 conectores (M25 x1.5)",
+"",DS-QAZ1307G1T-E
+Tipo de Altavoz,Superficie
+Potencia (W),"7,0000"
+Potencia Acústica,121 dBSPL
+Material Carcasa,Metal
+Color Altavoz,Blanco
+Protección IP,IP67
+Alto x Ancho x Profundo (cm),40.00 x 23.70 x 27.60
+Peso (kg),2.10
+Disponibilidad,B
+"",Descripción Corta,Disponibilidad
+"",Módulo IOT para gestión de 32 entradas (digitales)/32 salidas (relé) compatible con servidores de analítica,
+CSM-KC868-A32,,A
+"",perimetral Davantis. Alimentador 12V incl.,
+"",Descripción Corta,Disponibilidad
+DFUSION 02,Sistema de vídeo análisis para 2 canales IP. DFusion con Deep Learning. Rack,A
+DFUSION 03,Sistema de vídeo análisis para 3 canales IP. DFusion con Deep Learning. Rack,B
+DFUSION 04,Sistema de vídeo análisis para 4 canales IP. DFusion con Deep Learning. Rack,A
+DFUSION 05,Sistema de vídeo análisis para 5 canales IP. DFusion con Deep Learning. Rack,B
+DFUSION 06,Sistema de vídeo análisis para 6 canales IP. DFusion con Deep Learning. Rack,A
+DFUSION 07,Sistema de vídeo análisis para 7 canales IP. DFusion con Deep Learning. Rack,A
+DFUSION 08,Sistema de vídeo análisis para 8 canales IP. DFusion con Deep Learning. Rack,A
+DFUSION 09,Sistema de vídeo análisis para 9 canales IP. DFusion con Deep Learning. Rack,A
+DFUSION 10,Sistema de vídeo análisis para 10 canales IP. DFusion con Deep Learning. Rack,A
+DFUSION 11,Sistema de vídeo análisis para 11 canales IP. DFusion con Deep Learning. Rack,A
+DFUSION 12,Sistema de vídeo análisis para 12 canales IP. DFusion con Deep Learning. Rack,B
+DFUSION 13,Sistema de vídeo análisis para 13 canales IP. DFusion con Deep Learning. Rack,B
+DFUSION 14,Sistema de vídeo análisis para 14 canales IP. DFusion con Deep Learning. Rack,C
+DFUSION 15,Sistema de vídeo análisis para 15 canales IP. DFusion con Deep Learning. Rack,B
+DFUSION 16,Sistema de vídeo análisis para 16 canales IP. DFusion con Deep Learning. Rack,B
+DFUSION 17,Sistema de vídeo análisis para 17 canales IP. DFusion con Deep Learning. Rack,C
+DFUSION 18,Sistema de vídeo análisis para 18 canales IP. DFusion con Deep Learning. Rack,C
+DFUSION 19,Sistema de vídeo análisis para 19 canales IP. DFusion con Deep Learning. Rack,C
+DFUSION 20,Sistema de vídeo análisis para 20 canales IP. DFusion con Deep Learning. Rack,C
+DFUSION 21,Sistema de vídeo análisis para 21 canales IP. DFusion con Deep Learning. Rack,C
+DFUSION 22,Sistema de vídeo análisis para 22 canales IP. DFusion con Deep Learning. Rack,C
+DFUSION 23,Sistema de vídeo análisis para 23 canales IP. DFusion con Deep Learning. Rack,C
+DFUSION 24,Sistema de vídeo análisis para 24 canales IP. DFusion con Deep Learning. Rack,C
+DFUSION 25,Sistema de vídeo análisis para 25 canales IP. DFusion con Deep Learning. Rack,C
+DFUSION 26,Sistema de vídeo análisis para 26 canales IP. DFusion con Deep Learning. Rack,C
+DFUSION 27,Sistema de vídeo análisis para 27 canales IP. DFusion con Deep Learning. Rack,C
+DFUSION 28,Sistema de vídeo análisis para 28 canales IP. DFusion con Deep Learning. Rack,C
+DFUSION 29,Sistema de vídeo análisis para 29 canales IP. DFusion con Deep Learning. Rack,C
+DFUSION 30,Sistema de vídeo análisis para 30 canales IP. DFusion con Deep Learning. Rack,C
+DFUSION 31,Sistema de vídeo análisis para 31 canales IP. DFusion con Deep Learning. Rack,C
+DFUSION 32,Sistema de vídeo análisis para 32 canales IP. DFusion con Deep Learning. Rack,C
+"",Descripción Corta,Disponibilidad
+DFUSION PRO 02,Sistema de vídeo análisis para largas distancias. 2 canales IP. DFusion PRO con DeepLearning. Rack,C
+DFUSION PRO 03,Sistema de vídeo análisis para largas distancias. 3 canales IP. DFusion PRO con DeepLearning. Rack,C
+DFUSION PRO 04,Sistema de vídeo análisis para largas distancias. 4 canales IP. DFusion PRO con DeepLearning. Rack,C
+DFUSION PRO 05,Sistema de vídeo análisis para largas distancias. 5 canales IP. DFusion PRO con DeepLearning. Rack,C
+DFUSION PRO 06,Sistema de vídeo análisis para largas distancias. 6 canales IP. DFusion PRO con DeepLearning. Rack,C
+DFUSION PRO 07,Sistema de vídeo análisis para largas distancias. 7 canales IP. DFusion PRO con DeepLearning. Rack,C
+DFUSION PRO 08,Sistema de vídeo análisis para largas distancias. 8 canales IP. DFusion PRO con DeepLearning. Rack,C
+DFUSION PRO 09,Sistema de vídeo análisis para largas distancias. 9 canales IP. DFusion PRO con DeepLearning. Rack,C
+DFUSION PRO 10,Sistema de vídeo análisis para largas distancias. 10 canales IP. DFusion PRO con DeepLearning. Rack,C
+DFUSION PRO 11,Sistema de vídeo análisis para largas distancias. 11 canales IP. DFusion PRO con DeepLearning. Rack,C
+DFUSION PRO 12,Sistema de vídeo análisis para largas distancias. 12 canales IP. DFusion PRO con DeepLearning. Rack,C
+DFUSION PRO 13,Sistema de vídeo análisis para largas distancias. 13 canales IP. DFusion PRO con DeepLearning. Rack,C
+DFUSION PRO 14,Sistema de vídeo análisis para largas distancias. 14 canales IP. DFusion PRO con DeepLearning. Rack,C
+DFUSION PRO 15,Sistema de vídeo análisis para largas distancias. 15 canales IP. DFusion PRO con DeepLearning. Rack,C
+DFUSION PRO 16,Sistema de vídeo análisis para largas distancias. 16 canales IP. DFusion PRO con DeepLearning. Rack,C
+"",DS-QAZ1307G1T-E
+Tipo de Altavoz,Superficie
+Potencia (W),"7,0000"
+Potencia Acústica,121 dBSPL
+Material Carcasa,Metal
+Color Altavoz,Blanco
+Protección IP,IP67
+Alto x Ancho x Profundo (cm),40.00 x 23.70 x 27.60
+Peso (kg),2.10
+Disponibilidad,B
+"",Descripción Corta,Disponibilidad
+"",Módulo IOT para gestión de 32 entradas (digitales)/32 salidas (relé) compatible con servidores de analítica,
+CSM-KC868-A32,,A
+"",perimetral Davantis. Alimentador 12V incl.,
+"",IDS-2CD8A47G0-SC-ZY(2.8-12MM)
+Tipo de Cámara,Bullet
+Resolución,4 Mpx
+Tecnología de Vídeo,IP
+Tipo de Óptica,Motorizada
+Distancia Focal,"2,8 - 12 mm"
+"Ángulo de Ajuste",3 ejes
+LEDs,;
+Luz Blanca,;
+WDR,140 dB
+Iluminación Mínima,0.002lux
+"",Hombre / Vehículo
+"",Objetos que aparecen o entran en la zona de interés
+Análisis de Video,
+"",Ausencia de objetos en la zona de interés
+"",Cruce de Linea
+Entradas/Salidas de Alarma,;
+Entrada/Salida Audio,;
+Slot SD,Micro SD (1TB)
+WIFI,;
+Exterior,IP67
+Grado de Protección Antivandálica,IK10
+Soporte Pared,No
+Soporte Base,No
+Soporte Techo,No
+Soporte Poste,No
+Soporte Esquina,No
+Soporte Empotrado,No
+"",12 Vdc
+Alimentación,
+"",PoE+ 802.3at
+Alto x Ancho x Profundo (cm),19.30 x 26.10 x 33.70
+Peso (kg),2.90
+Disponibilidad,P
+"",IDS-,IDS-,IDS-,IDS-,,
+"",,,,,IDS-TCM403-,IDS-TCM403-
+"",2CD7026G0-P-,2CD7A46G0-P-,2CD7A26G0-P-,2CD7A26G0-P-,,
+"",,,,,BI-0411,BI(G)-POE-0832
+"",AP(C),IZHSY(2.8-12MM),IZHS(2.8-12MM),IZHS(8-32MM),,
 Tipo de Cámara,Box IP,Bullet,Bullet,Bullet,Bullet,Bullet
 Resolución,2 Mpx,4 Mpx,2 Mpx,2 Mpx,4 Mpx,4 Mpx
 Tecnología de,,,CVBS,CVBS,,
@@ -2954,329 +6225,68 @@ Alto x Ancho x,,14.00 x 14.00 x,10.20 x 10.60 x,10.20 x 10.60 x,12.00 x 13.80 x,
 Profundo (cm),6.80 x 6.98 x 14.20,35.10,35.10,35.10,42.80,42.80
 Peso (kg),0.75,1.95,1.92,1.92,3.62,3.62
 Disponibilidad,P,P,P,P,P,P
-"",DGS-1008P,DGS-1008MP,DGS-1210-10P,DGS-1510-20-E
-Tipo de Electrónica de Red,Switch,Switch,Switch,Switch
-Gestión,Sin Gestión,Sin Gestión,Web. Capa 2 (L2),Web. Capa 3 (L3)
-No Puertos 100 Mbps,;,;,;,;
-No Puertos 100/1000,8,8,8,16
-No puertos SFP 1Gbps,;,;,2,2
-No Puertos SFP 10 Gbps,;,;,;,2
-No Puertos PoE,4,8,8,;
-No Puertos PoE+,2,4,2,;
-No Puertos High PoE,;,;,;,;
-PoE Budget (W),68,125,65,;
-No puertos Distancia,,,,
-Extendida,;,;,;,;
-No Puertos de Fibra,;,;,2,2
-Rango Extendido de,,,,
-Temperatura,;,;,;,;
-Stack,;,;,;,;
-"",,,DEM-310GT,DEM-310GT
-SFP Compatible,No,No,DEM-311GT,DEM-311GT
-"",,,DEM-312GT2,DEM-312GT2
-Alimentación,48 Vdc,220 Vac,54 Vdc,220 Vac
-Alto x Ancho x Profundo,,,,
-"(cm)",3.80 x 19.00 x 12.00,4.40 x 28.00 x 18.00,4.40 x 28.00 x 12.60,4.40 x 44.00 x 21.00
-Peso (kg),1.17,2.01,1.54,1.24
-Disponibilidad,B,C,B,C
-"",DGS-1210-24,DGS-1210-24P,DGS-3130-30PS-E,DGS-3130-54PS-E
-Tipo de Electrónica de Red,Switch,Switch,Switch,Switch
-Gestión,Web. Capa 2 (L2),Web. Capa 2 (L2),Web. Capa 3 (L3),Web. Capa 3 (L3)
-No Puertos 100 Mbps,;,;,;,;
-No Puertos 100/1000,24,24,24,48
-No puertos SFP 1Gbps,4,4,;,;
-No Puertos SFP 10 Gbps,;,;,4,4
-No Puertos PoE,;,24,24,48
-No Puertos PoE+,;,6,2,;
-No Puertos High PoE,;,;,;,;
-PoE Budget (W),;,193,370,370
-No puertos Distancia,,,,
-Extendida,;,;,;,;
-No Puertos de Fibra,4,4,4,4
-Rango Extendido de,,,,
-Temperatura,;,;,;,;
-Stack,;,;,;,;
-"",,,DEM-310GT,
-"",DEM-310GT,DEM-310GT,,DEM-310GT
-"",,,DEM-311GT,
-SFP Compatible,DEM-311GT,DEM-311GT,,DEM-311GT
-"",,,DEM-312GT2,
-"",DEM-312GT2,DEM-312GT2,,DEM-312GT2
-"",,,DEM-314GT,
-Alimentación,220 Vac,220 Vac,220 Vac,100 - 240 Vac / 50 - 60Hz
-Alto x Ancho x Profundo,,,,
-"(cm)",4.40 x 44.00 x 14.00,4.40 x 44.00 x 25.00,4.40 x 4.40 x 35.00,44.00 x 43.00 x 4.40
-Peso (kg),2.22,4.10,4.66,4.66
-Disponibilidad,C,A,C,C
-"",DEM-310GT,DEM-431XT,DEM-432XT
-Tipo fibra óptica,Fibra MonoModo,Fibra MultiModo,Fibra MonoModo
-Distancia Máxima Transmisión,Monomodo 10 Km,Multimodo 300 Mts,Monomodo 10 Km
-Velocidad Transmisión,1 Gbps,10 Gbps,10 Gbps
-Tipo Puerto Fibra Óptica,Duplex LC,Duplex LC,Duplex LC
-Número de fibras ópticas,2,2,2
-Alimentación,"3,3 Vdc","3,3 V","3,3 V"
-Temperatura de Trabajo,0 ~ 45oC,0 ~ 70oC,0 ~ 70oC
-Alto x Ancho x Profundo (cm),1.35 x 1.34 x 5.64,1.18 x 1.48 x 5.65,1.18 x 1.48 x 5.65
-Peso (kg),0.02,0.02,0.02
-Disponibilidad,C,C,C
-DS-3T1306P-,DS-3E0105P-,,,,
-"",,DS-3E0106HP-E,DS-3E0310HP-E,DS-3E0505P-E,DS-3E0505HP-E
-SI-HS,E(B),,,,
-Tipo de Electrónica,,,,,,
-de Red,Switch,Switch,Switch,Switch,Switch,Switch
-Gestión,Sin Gestión,Sin Gestión,Sin Gestión,Sin Gestión,Sin Gestión,Sin Gestión
-No Puertos 100,,,,,,
-Mbps,4,5,6,8,;,;
-No Puertos,,,,,,
-100/1000,;,;,;,2,5,5
-No puertos SFP,,,,,,
-1Gbps,;,0,;,;,;,;
-No Puertos SFP 10,,,,,,
-Gbps,;,0,;,;,;,;
-"",DS-3E0528HP-E,,DS-3E1309P-EI,DS-3E1510P-SI,DS-3E2510P,DS-3E1318P-EI
-"",,EIV2,,,,
-Tipo de Electrónica,,,,,,
-de Red,Switch,Switch,Switch,Switch,Switch,Switch
-Gestión,Sin Gestión,Gestión Web,Gestión Web,Gestión Web,Web. Capa 2 (L2),Gestión Web
-No Puertos 100,,,,,,
-Mbps,;,5,8,;,;,16
-No Puertos,,,,,,
-100/1000,26,;,1,8,8,2
-No puertos SFP,,,,,,
-1Gbps,2,;,;,2,2,2
-"",DS-3E1326P-EI,DS-3E1526P-SI,DS-3E2528P,DS-3E2528P-H,DS-3E3728F-H,DS-3E3754TF
-Tipo de Electrónica,,,,,,
-de Red,Switch,Switch,Switch,Switch,Switch,Switch
-Gestión,Gestión Web,Gestión Web,Web. Capa 2 (L2),Web. Capa 2 (L2),Web. Capa 3 (L3),Web. Capa 3 (L3)
-No Puertos 100,,,,,,
-Mbps,24,;,;,;,;,;
-No Puertos,,,,,,
-100/1000,;,24,28,24,8,24
-No puertos SFP,,,,,,
-1Gbps,2,2,4,4,24,24
-"",,HK-1.25G-20-1310,HK-1.25G-20-1550
-DF,MM,,
-Tipo fibra óptica,Fibra MonoModo,Fibra MultiModo,Fibra MonoModo,Fibra MonoModo
-Distancia Máxima,,,,
-Transmisión,Monomodo 20 Km,Multimodo 1 Km,Monomodo 20 Km,Monomodo 20 Km
-"",DIS-100G-5PSW,DIS-100G-5W,DIS-300G-8PSW,DIS-200G-12PS,,DIS-700G-28XS
-"",,,,,14PSW,
-Tipo de Electrónica,,,,,,
-de Red,Switch,Switch,Switch,Switch,Switch,Switch
-Gestión,Sin Gestión,Sin Gestión,Web. Capa 2 (L2),Web. Capa 2 (L2),Web. Capa 2 (L2),Web. Capa 2 (L2)
-No Puertos 100,,,,,,
-Mbps,;,;,;,;,;,;
-No Puertos,,,,,,
-100/1000,4,5,8,10,10,;
-No puertos SFP,,,,,,
-1Gbps,1,;,2,2,4,24
-PoE Budget (W),120,;,120,240,240,;
-No puertos,,,,,,
-Distancia,;,;,;,;,;,;
-Extendida,,,,,,
-No Puertos de,,,,,,
-Fibra,;,;,;,;,;,;
-"",CLFE1EOU,CLFE1EOC,CNFE2MC-M,CNFESFPMCPOE30-M,CNFE2MCPOE2,CNFE3DOE2-M
-"",,Transceptor,,,,
-Tipo de Electrónica,Transceptor,,Conversor de,Conversor de,Conversor de,Conversor de
-de Red,Ethernet vía UTP,Ethernet por,Medio,Medio,Medio,Medio
-"",,Coaxial,,,,
-Gestión,Sin Gestión,Sin Gestión,Sin Gestión,Sin Gestión,Sin Gestión,Sin Gestión
-No Puertos 100,,,,,,
-Mbps,1,1,1,1,1,2
-No Puertos,,,,,,
-100/1000,;,;,;,;,;,;
-No puertos SFP,,,,,,
-1Gbps,;,;,;,1,;,;
-Stack,;,;,;,;,;,;
-"",,,,,SFP-2,SFP-2
-SFP Compatible,No,No,SFP-155M-2KM,SFP-155M-2KM,,
-"",,,,,SFP-3,SFP-3
-"",12 Vdc / 24 Vac /,12 Vdc / 24 Vac /,,,,
-Alimentación,,,12 Vdc,48 - 56 Vdc,24 Vdc,60 Vdc
-"",PoE 802.3af,PoE 802.3af,,,,
-Alto x Ancho x,,,,,,
-Profundo (cm),2.80 x 13.50 x 15.50,2.80 x 6.40 x 8.40,2.80 x 9.40 x 10.40,2.70 x 9.50 x 10.40,15.50 x 2.80 x 13.50,13.70 x 5.50 x 7.40
-"",CNGE2FE4SMS,CNGE2FE4SMSPOEHO,CNGE5MS,CNGE4+2SMSPOEHO-M,CNGE2FE8MSPOE+,CNGE24MS2
-Tipo de Electrónica,,,,,,
-de Red,Switch,Switch,Switch,Switch,Switch,Switch
-Gestión,Sin Gestión,Sin Gestión,Sin Gestión,Sin Gestión,Gestión Web,Web. Capa 3 (L3)
-No Puertos 100,,,,,,
-Mbps,4,4,;,;,8,;
-No Puertos,,,,,,
-100/1000,;,2,3,4,;,16
-No puertos SFP,,,,,,
-1Gbps,2,2,2,2,2,24
-No Puertos SFP 10,,,,,,
-Gbps,;,;,;,;,;,;
-"",S222N0,AD-SFP2160,S222M2,S152M2,S162M2
-Tipo fibra óptica,Fibra MultiModo,Fibra MultiModo,Fibra MonoModo,Fibra MonoModo,Fibra MonoModo
-Distancia Máxima,,,,,
-Transmisión,Multimodo 550 Mts,Multimodo 300 Mts,Monomodo 20 Km,Monomodo 20 Km,Monomodo 20 Km
-Velocidad Transmisión,"1,25 Gbps",10 Gbps,"1,25 Gbps","1,25 Gbps","1,25 Gbps"
-Tipo Puerto Fibra,,,,,
-"Óptica",Duplex LC,Duplex LC,Duplex LC,Mono LC,Mono LC
-Número de fibras,,,,,
-"ópticas",2,2,2,1,1
-Alimentación,"3,6 V","3,6 V","3,6 V","3,6 V","3,6 V"
-Temperatura de,,,,,
-Trabajo,-40 ~ 85oC,-40 ~ 85oC,-40 ~ 85oC,-40 ~ 85oC,-40 ~ 85oC
-Peso (kg),0.10,0.10,-,-,-
-Disponibilidad,A,C,A,B,B
-AMG570-8GAT-,AMG570-4GAT-,,,AMG350-
-"",,AMG350-2G-2S,AMG350-5G,
-3S-P240,2S-P120,,,8GAT-P200
-Tipo de Electrónica,,,,,
-de Red,Switch,Switch,Switch,Switch,Switch
-Gestión,Web. Capa 2 (L2),Web. Capa 2 (L2),Sin Gestión,Sin Gestión,Sin Gestión
-No Puertos 100 Mbps,;,;,;,;,;
-No Puertos 100/1000,8,;,2,5,8
-No puertos SFP 1Gbps,3,2,2,;,;
-No Puertos SFP 10,,,,,
-Gbps,;,;,;,;,;
-No Puertos PoE,8,4,;,;,8
-No Puertos PoE+,;,;,;,;,;
-No Puertos High PoE,;,;,;,;,;
-PoE Budget (W),;,;,;,;,200
-No Puertos de Fibra,;,2,2,;,;
-Rango Extendido de,,,,,
-Temperatura,;,;,;,;,;
-Stack,;,;,;,;,;
-"",S222M2,S222M2,,,
-SFP Compatible,,,-,-,-
-"",S222N0,S222N0,,,
-Alimentación,48 Vdc,48 Vdc,12 - 36 Vdc,12 - 48 Vdc,48 - 56 Vdc
-Alto x Ancho x,,,,,
-Profundo (cm),6.00 x 26.00 x 20.00,5.40 x 22.00 x 17.50,4.00 x 22.00 x 17.00,4.00 x 22.00 x 17.00,6.00 x 26.00 x 20.00
-Peso (kg),1.35,0.80,0.60,0.59,1.01
-Disponibilidad,C,C,C,C,C
-"",RUT200,RUT361,RUT901
-Tipo de Electrónica de Red,Router,Router,Router
-Gestión,Web. Capa 3 (L3),Web. Capa 3 (L3),Web. Capa 3 (L3)
-No Puertos 100 Mbps,2,2,4
-No Puertos 100/1000,;,;,;
-No puertos SFP 1Gbps,;,;,;
-No Puertos SFP 10 Gbps,;,;,;
-No Puertos PoE,;,;,;
-No Puertos PoE+,;,;,;
-No Puertos High PoE,;,;,;
-PoE Budget (W),;,;,;
-No puertos Distancia Extendida,;,;,;
-No Puertos de Fibra,;,;,;
-Rango Extendido de Temperatura,;,;,;
-Stack,;,;,;
-SFP Compatible,No,No,No
-Alimentación,9 - 30 Vdc,9 - 30 Vdc,9 - 30 Vdc
-Alto x Ancho x Profundo (cm),2.50 x 8.30 x 7.40,10.00 x 9.30 x 3.00,5.00 x 11.00 x 10.00
-Peso (kg),0.13,0.24,0.30
-Disponibilidad,C,C,C
-"",DS-D5032F3-1V0S,SMT-3240,SMT-3215,QRDCD32HG1A0IK10,DS-D5232F2-1V1S
-Tamaño,32”,32”,32”,32”,32”
-Resolución monitor,1920 x 1080,3840 x 2160,1920 x 1080,1920 x 1080,1920 x 1080
-No Entrada Vídeo,2,2,3,3,3
-"",,,,,HDMI
-"",,,HDMI,HDMI,
-"",HDMI,HDMI,,,VGA
-Tecnología de Vídeo,,,VGA,VGA,
-"",VGA,DP,,,BNC
-"",,,DP,DP,
-"",,,,,DVI
-Ancho de Marco (mm),"0,6600",-,-,-,"1,1000"
-Videowall,;,;,;,;,;
-Alto x Ancho x,,,,,
-Profundo (cm),43.30 x 73.50 x 8.00,48.56 x 71.46 x 20.09,48.40 x 71.40 x 20.00,84.00 x 54.00 x 109.00,42.30 x 72.30 x 2.00
-Peso (kg),4.55,8.00,7.28,85.00,6.15
-Disponibilidad,A,C,C,C,A
-"",DS-D5043QE,SMT-4343,M4K43-G2-EU,QRDCD42HG1A0IK10,DS-D5043U3-1V0S
-Tamaño,"42,5”",43”,43”,43”,43”
-Resolución monitor,1920 x 1080,3840 x 2160,3840 x 2160,1920 x 1080,3840 x 2160
-No Entrada Vídeo,2,2,5,3,3
-"",,,HDMI,,
-"",,,,HDMI,
-"",HDMI,HDMI,VGA,,HDMI
-Tecnología de Vídeo,,,,VGA,
-"",VGA,DP,DP,,USB
-"",,,,DP,
-"",,,Mini DP,,
-Ancho de Marco (mm),"26,9700","8,6000",-,-,"1,7500"
-Videowall,;,;,;,;,;
-Alto x Ancho x,,,,,
-Profundo (cm),55.90 x 96.81 x 7.68,56.00 x 96.70 x 7.35,65.80 x 97.30 x 25.00,- x - x -,56.10 x 95.60 x 3.90
-Peso (kg),8.20,7.60,17.41,90.00,6.81
-Disponibilidad,A,C,C,C,C
-"",HDD-CCTV-1TB,HDD-CCTV-2TB,HDD-CCTV-3TB,HDD-CCTV-4TB,HDD-CCTV-6TB
-Capacidad,1 TB,2 TB,3 TB,4 TB,6 TB
-Recomendado para,,,,,
-RAID,;,;,;,;,;
-Tipo de,,,,,
-Almacenamiento,HDD,HDD,HDD,HDD,HDD
-Alto x Ancho x,,,,,
-Profundo (cm),2.02 x 10.18 x 14.69,2.02 x 10.18 x 14.69,2.02 x 10.18 x 14.69,2.02 x 10.18 x 14.69,2.02 x 10.18 x 14.69
-"",,UTP 4P CAT 5E.,UTP 4P CAT 5E.,UTP 4P CAT 6E.,
-RG-59 B-U HF,RAP-3038,,,,NEXO 04X10 SM
-"",,LSHF,PVC-3,LSFH,
-"",,Micro Coaxial,,,,
-Tipo de Cable,Coaxial,,UTP,UTP,UTP,Multifilar
-"",,Combinado,,,,
-Entubado,;,;,;,;,;,;
-No Conductores,2,3,8,8,8,4
-Conductores,Tipo Coaxial,"RG-174 + 2 x 0,75",Cobre Rígido,Cobre Rígido,Cobre Rígido,Fibra Óptica
-Apantallado,;,;,;,;,;,;
-Longitud Bobina,,,,,,
-"(m)",100.00,100.00,305.00,305.00,305.00,2000.00
-Resistente al,,,,,,
-Fuego,;,;,;,;,;,;
-Cubierta Exterior,Poliolefina,PVC,PVC,PVC,PVC,LSZH
-Ancho de Banda,,,,,,
-Datos,;,;,300 MHz,;,;,;
-Categoría en Datos,;,;,Categoría 5e,Categoría 5e,Categoría 6,;
-Libre Halógenos,;,;,;,;,;,;
-Temperatura de,,,,,,
-Trabajo,-5 ~ 70oC,-,-20 ~ 50oC,-,-20 ~ 60oC,-
-Disponibilidad,B,C,C,C,C,C
-"",NEXO 08X10 SM,NEXO 12X10 SM,NEXO 04X50 MM,NEXO 08X50 MM,NEXO 12X50 MM
-Tipo de Cable,Multifilar,Multifilar,Multifilar,Multifilar,Multifilar
-Entubado,;,;,;,;,;
-No Conductores,8,12,4,8,12
-Conductores,Fibra Óptica,Fibra Óptica,Fibra Óptica,Fibra Óptica,Fibra Óptica
-Apantallado,;,;,;,;,;
-Longitud Bobina (m),2000.00,2000.00,2000.00,2000.00,2000.00
-Resistente al Fuego,;,;,;,;,;
-Cubierta Exterior,LSZH,LSZH,LSZH,LSZH,LSZH
-Ancho de Banda Datos,;,;,;,;,;
-Categoría en Datos,;,;,;,;,;
-Libre Halógenos,;,;,;,;,;
-Temperatura de,,,,,
-Trabajo,-,-,-,-,-
-Disponibilidad,C,C,C,C,C
-"",ES-HD-HWS-LG,SHB-4200H,SHB-4300H,SHB-4301H2,SHB-4301HP,SHB-9000H
-Material Carcasa,Plástico ABS,Aluminio,Aluminio,Aluminio,Aluminio,Aluminio
-Dimensión Interior,-,84 x 78 x 260 mm,91 x 78 x 190 mm,99 x 80 x 190 mm,99 x 80 x 250 mm,-
-Exterior,IP66,IP66,IP66,IP66,IP66,IP66
-Grado de,,,,,,
-Protección,;,;,;,;,;,;
-Antivandálica,,,,,,
-Wiper,;,;,-,;,;,;
-Calefactor,;,;,;,;,;,;
-"",,,,,12 Vdc / PoE +,
-Alimentación,12 Vdc / 24 Vac,24 Vac,24 Vac,220 Vac,,220 Vac
-"",,,,,802.3at,
-Alto x Ancho x,,,18.40 x 12.70 x,12.70 x 18.40 x,18.40 x 12.70 x,18.40 x 30.00 x
-Profundo (cm),31.70 x 17.60 x 51.40,6.90 x 8.40 x 31.90,46.00,46.00,46.00,70.00
-Peso (kg),4.80,1.10,3.50,3.70,2.50,6.20
-Disponibilidad,C,B,C,C,C,C
-"",DS-TL2002CI,WS-IR18040-POE,WS-IR18040-220,WS-IR5560,WS-IR20060
-Distancia,16 - 30 m,180 m,180 m,55 m,200 m
-"Ángulo de Apertura",30o,40o,40o,60o,60o
-Longitud de Onda,850 nm,850 nm,850 nm,850 nm,850 nm
-Consumo (mA),-,650.00,650.00,410.00,4500.00
-"",,12 Vdc / 24 Vac / PoE,,,12 Vdc
-Alimentación,200 VAC - 240 VAC,,220 Vac,12 Vdc / 24 Vac,
-"",,802.3af,,,24 Vac
-Alto x Ancho x,,,,,
-Profundo (cm),27.00 x 31.40 x 11.90,15.70 x 15.70 x 22.80,15.70 x 15.70 x 22.80,8.65 x 9.00 x 20.10,13.50 x 12.70 x 20.50
-Peso (kg),5.20,2.33,2.33,0.75,1.64
-Disponibilidad,P,A,A,A,A
+"",IDS-2CD6810F-C(2.8MM),DS-2CD6825G0-C-IS(2.0MM),IDS-2CD7146G0-IZS(2.8-12MM)
+Tipo de Cámara,Compacta,Dual,Minidomo
+Resolución,640 x 960,2 Mpx,4 Mpx
+Tecnología de Vídeo,IP,IP,IP
+Tipo de Óptica,Fija,Fija,Motorizada
+Distancia Focal,"2,8 mm","2,0 mm","2,8 - 12 mm"
+"Ángulo de Ajuste",2 ejes,3 ejes,3 ejes
+LEDs,;,6 m IR,30 m IR
+Luz Blanca,;,;,;
+WDR,;,Digital WDR,140 dB
+Iluminación Mínima,;,0.005lux,0.0005lux
+"",,,Reconocimiento Facial
+Análisis de Video,Conteo de Personas,Conteo,Conteo
+"",,,VCA
+Entradas/Salidas de Alarma,1e/1s,1e/1s,1e/1s
+Entrada/Salida Audio,;,1e/1s,Micrófono Integrado
+Slot SD,;,;,Micro SD (256 GB)
+WIFI,;,;,;
+Exterior,;,IP67,;
+Grado de Protección,,,
+Antivandálica,;,;,IK10
+Soporte Pared,No,No,DS-1273ZJ-130
+Soporte Base,No,No,No
+Soporte Techo,No,No,No
+Soporte Poste,No,No,DS-1275ZJ-SUS
+Soporte Esquina,No,No,DS-1276ZJ-SUS
+Soporte Empotrado,No,No,No
+Alimentación,12 Vdc / PoE 802.3af,PoE 802.3af,12 Vdc / 24 Vac / PoE 802.3af
+Alto x Ancho x Profundo (cm),3.58 x 7.02 x 19.40,3.60 x 6.10 x 16.80,12.20 x 12.10 x 12.10
+Peso (kg),0.30,0.43,0.95
+Disponibilidad,P,B,P
+"",IDS-2CD7146G0-IZS(2.8-12MM)
+Tipo de Cámara,Minidomo
+Resolución,4 Mpx
+Tecnología de Vídeo,IP
+Tipo de Óptica,Motorizada
+Distancia Focal,"2,8 - 12 mm"
+"Ángulo de Ajuste",3 ejes
+LEDs,30 m IR
+Luz Blanca,;
+WDR,140 dB
+Iluminación Mínima,0.0005lux
+"",Reconocimiento Facial
+Análisis de Video,Conteo
+"",VCA
+Entradas/Salidas de Alarma,1e/1s
+Entrada/Salida Audio,Micrófono Integrado
+Slot SD,Micro SD (256 GB)
+WIFI,;
+Exterior,;
+Grado de Protección Antivandálica,IK10
+Soporte Pared,DS-1273ZJ-130
+Soporte Base,No
+Soporte Techo,No
+Soporte Poste,DS-1275ZJ-SUS
+Soporte Esquina,DS-1276ZJ-SUS
+Soporte Empotrado,No
+Alimentación,12 Vdc / 24 Vac / PoE 802.3af
+Alto x Ancho x Profundo (cm),12.20 x 12.10 x 12.10
+Peso (kg),0.95
+Disponibilidad,P
+
 Referencia,Stock,PVP,Página
 10.0C-H5DH-DO1-IR,C,"1.569,00€",148
 12.0W-H5A-FE-DC1,C,"1.145,00€",145
@@ -3339,7 +6349,6 @@ Referencia,Stock,PVP,Página
 8.0C-H5A-PTZ-DC36,C,"3.611,00€",147
 8.0C-H5A-PTZ-DP36,C,"3.611,00€",147
 8.0C-H6A-BO1-IR,C,"1.710,00€",138
-Referencia,Stock,PVP,Página
 8.0C-H6A-DO1-IR,C,"1.617,00€",143
 8.0C-H6X-B,C,"1.358,00€",134
 8C-H5PRO-B,C,"3.100,00€",135
@@ -3401,7 +6410,6 @@ ANV-L7082R,A,"336,00€",113
 AO-ENT-AINN-ADD,C,Gratis,195
 AO-ENT-AINN-ADD,C,Gratis,217
 AO-ENT-CAM,C,"321,95€",195
-Referencia,Stock,PVP,Página
 AO-ENT-CAM,C,"321,95€",217
 AO-ENT-LPRRR-AD,C,"829,27€",195
 AO-ENT-LPRRR-AD,C,"829,27€",217
@@ -3463,7 +6471,6 @@ CLFE1EOU,C,"579,60€",231
 CNFE2MC-M,C,"457,37€",231
 CNFE2MCPOE2,C,"880,57€",231
 CNFE3DOE2-M,C,"1.098,74€",231
-Referencia,Stock,PVP,Página
 CNFESFPMCPOE30-M,C,"609,83€",231
 CNGE24MS2,C,"4.544,80€",232
 CNGE2FE4SMS,C,"1.098,74€",232
@@ -3525,7 +6532,6 @@ CURSO PROFESIONAL RTC-RPAS RADIOFONISTA,C,Gratis,189
 DAVIEW SERVER 12CH NUC,A,"1.877,69€",204
 DAVIEW SERVER 40CH RACK,A,"2.314,69€",204
 DEM-310GT,C,"84,73€",223
-Referencia,Stock,PVP,Página
 DEM-431XT,C,"302,91€",223
 DEM-432XT,C,"557,45€",223
 DEM-CB300S,C,"412,00€",223
@@ -3587,7 +6593,6 @@ DJI ZENMUSE H20N,C,"30.063,41€",187
 DJI ZENMUSE H20T,C,"24.448,78€",187
 DJI ZENMUSE L2,C,"27.585,17€",187
 DPE-101GI,B,"67,76€",223
-Referencia,Stock,PVP,Página
 DPE-302GE,B,"188,97€",223
 DPS-700,C,"2.327,15€",223
 DS-1006KI,C,"478,45€",22
@@ -3649,7 +6654,6 @@ DS-1476ZJ-SUS,C,"50,85€",86
 DS-1476ZJ-Y,C,"107,45€",86
 DS-1600KI(B),A,"2.323,08€",22
 DS-1600KI(B),A,"2.323,08€",96
-Referencia,Stock,PVP,Página
 DS-1602ZJ,A,"31,72€",87
 DS-1602ZJ-BOX-CORNER,B,"158,10€",17
 DS-1602ZJ-BOX-CORNER,B,"158,10€",87
@@ -3711,7 +6715,6 @@ DS-2CD2143G2-IS(2.8MM)(BLACK),A,"271,49€",66
 DS-2CD2143G2-IU(2.8MM),A+,"264,74€",66
 DS-2CD2146G2H-ISU2.8,C,"327,03€",66
 DS-2CD2147G2-LSU(2.8MM),C,"387,71€",67
-Referencia,Stock,PVP,Página
 DS-2CD2147G2H-LI(2.8MM),C,"389,19€",67
 DS-2CD2147G3-LIS2UY(2.8MM),C,"381,86€",67
 DS-2CD2163G2-I(2.8MM),C,"297,30€",71
@@ -3773,7 +6776,6 @@ DS-2CD3666G2-IZS(2.7-13.5MM),P,"1.084,49€",59
 DS-2CD3723G2-IZS(2.7-13.5MM),P,"750,02€",64
 DS-2CD3786G2-IZS(2.7-13.5MM),P,"1.240,43€",73
 DS-2CD4A24FWD-IZ(4.7-94MM),P,"1.589,23€",54
-Referencia,Stock,PVP,Página
 DS-2CD4AC5F-IZHS(2.8-12MM),P,"2.595,12€",61
 DS-2CD6365G0E-S-RC(1.27MM),P,"1.618,46€",75
 DS-2CD6365G1-IVS,P,"1.770,94€",75
@@ -3835,7 +6837,6 @@ DS-2DE2A404IW-DE3(C0)(S6),A,"374,96€",80
 DS-2DE4225IW-DE,A,"680,14€",78
 DS-2DE4425IW-DE,A+,"908,01€",80
 DS-2DE4A225IW-DE,C,"1.159,84€",78
-Referencia,Stock,PVP,Página
 DS-2DE4A225IWG-E,B,"1.069,71€",78
 DS-2DE4A425IWG-E,B,"1.215,43€",80
 DS-2DE5425IW-AE,A,"1.140,66€",80
@@ -3897,7 +6898,6 @@ DS-3WAP622G-SI,C,"207,04€",239
 DS-3WAP623E-SI,C,"320,86€",239
 DS-3WF02C-5AC-OV3,A,"128,42€",239
 DS-3WF0FA-5AC-O,C,"347,44€",239
-Referencia,Stock,PVP,Página
 DS-3WG105GP-SI,C,"180,16€",239
 DS-6701HUHI,B,"342,86€",181
 DS-6901UDI,A,"1.044,54€",181
@@ -3959,7 +6959,6 @@ DS-UPS600,C,"87,07€",257
 DS-VP41D-C-HW5L,P,"6.818,91€",96
 EIGDB0002C5,B,"285,53€",236
 EIGHA0004C5+,B,"356,91€",236
-Referencia,Stock,PVP,Página
 EIGHB0002C5,C,"345,01€",236
 EMGDA0101S5,C,"397,37€",236
 ENC-4P-H264,C,"356,43€",150
@@ -4021,7 +7020,6 @@ HDD-CCTV-2TB,A,"122,65€",248
 HDD-CCTV-3TB,C,"232,42€",248
 HDD-CCTV-4TB,A,"170,46€",248
 HDD-CCTV-6TB,A,"277,82€",248
-Referencia,Stock,PVP,Página
 HDD-CCTV-8TB,A,"418,68€",248
 HDR-60-48,C,"47,61€",237
 HIKCENTRAL-P- SUP-PACKAGE-1Y,P,"1.536,61€",192
@@ -4083,7 +7081,6 @@ IDS-7204HUHI-M1-X,C,"253,09€",18
 IDS-7208HQHI-M1-S(STD)(C),C,"249,20€",19
 IDS-7208HQHI-M1-XT,A+,"261,91€",19
 IDS-7208HUHI-M1-X-4A+8-4ALM,C,"441,43€",19
-Referencia,Stock,PVP,Página
 IDS-7208HUHI-M2-X,A,"423,77€",19
 IDS-7208HUHI-M2-X(STD)-4A+8-4ALM,A,"479,69€",19
 IDS-7216HQHI-M2-XT,A,"447,31€",20
@@ -4145,7 +7142,6 @@ NP001V,C,"9.999.999,00€",214
 NRVI12N16,C,"551,22€",241
 NS-E,C,"389,61€",208
 NS-PACIF,C,"7.688,31€",208
-Referencia,Stock,PVP,Página
 NS-RED,C,"7.688,31€",208
 NS-SECT,C,"12.103,90€",208
 NS-SPEED,C,"1.428,57€",208
@@ -4207,7 +7203,6 @@ PND-A9081RV,C,"2.215,91€",116
 PNM-7082RVD,C,"1.465,91€",122
 PNM-9002VQ,C,"1.642,05€",123
 PNM-9084RQZ1,C,"2.723,86€",123
-Referencia,Stock,PVP,Página
 PNM-9085RQZ1,C,"3.829,55€",123
 PNM-9322VQP,C,"6.740,91€",125
 PNM-C16083RVQ,C,"3.238,64€",122
@@ -4269,7 +7264,6 @@ RMS-PACK-3YRS,C,"40,65€",234
 RUT200,C,"245,53€",240
 RUT361,C,"460,16€",240
 RUT901,C,"320,33€",240
-Referencia,Stock,PVP,Página
 S152M2,B,"51,45€",237
 S162M2,B,"52,10€",237
 S222M2,A,"34,34€",237
@@ -4331,7 +7325,6 @@ SHB-4300H,C,"239,77€",252
 SHB-4301H2,C,"394,32€",252
 SHB-4301HP,C,"511,36€",252
 SHB-9000H,C,"3.125,00€",252
-Referencia,Stock,PVP,Página
 SHD-1408FPW,C,"142,05€",30
 SHD-1408FPW,C,"142,05€",129
 SHD-3000F1,C,"59,09€",30
@@ -4393,7 +7386,6 @@ TC-C32KN SPEC:I3-Y-WIFI-2.8MM-V4.1,A,"109,00€",39
 TC-C32KS SPEC:I3-E-Y-C-SD-2.8MM-V4.2,A,"119,07€",39
 TC-C32LS SPEC:I10-E-Y-M-5-50MM-V4.2,A,"502,32€",36
 TC-C32UN SPEC:I8-A-E-Y-2.8-12MM-V4.2,A,"108,74€",36
-Referencia,Stock,PVP,Página
 TC-C32WN SPEC:I5-Y-WIFI-4MM-V4.1,A,"109,00€",35
 TC-C34KN SPEC:I3-A-E-Y-2.8-12MM-V4.2,A,"130,23€",40
 TC-C34QN SPEC:I3-E-Y-2.8MM-V5.0,A,"72,56€",35
@@ -4455,7 +7447,6 @@ UNITY8-FACE,C,"1.434,00€",196
 UNITY8-LPR,C,"1.529,00€",159
 UNITY8-LPR,C,"1.529,00€",196
 UNITY8-STD,C,"131,33€",159
-Referencia,Stock,PVP,Página
 UNITY8-STD,C,"131,33€",196
 UNITY8-VAC,C,"286,66€",159
 UNITY8-VAC,C,"286,66€",196
@@ -4517,7 +7508,6 @@ XNP-6550RH,C,"6.329,55€",119
 XNP-8250R,C,"4.943,18€",120
 XNP-9250R,C,"5.443,18€",121
 XNP-C6403R,C,"4.318,18€",119
-Referencia,Stock,PVP,Página
 XNP-C8253R,C,"5.056,82€",120
 XNV-6010,C,"609,09€",108
 XNV-6080R,C,"1.190,91€",109
