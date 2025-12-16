@@ -392,12 +392,77 @@ function MarkdownReport({ recomendaciones, datosProyecto }: { recomendaciones: R
     const formatCurrency = (v: number) => new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(v);
     const formatTb = (v: number) => `${v} TB`;
 
+    // Download the report as a standalone HTML file
+    const downloadHTML = () => {
+        if (typeof document === 'undefined') return;
+        const content = document.getElementById('report-content')?.innerHTML || '';
+        const full = `<!doctype html><html><head><meta charset="utf-8"><title>Informe</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <style>body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial; padding:20px; color:#0f172a} h2{color:#0f172a}</style>
+        </head><body>${content}</body></html>`;
+        const blob = new Blob([full], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `informe-${Date.now()}.html`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+    };
+
+    // Download a Word-compatible .doc (HTML content saved with .doc MIME)
+    const downloadWord = () => {
+        if (typeof document === 'undefined') return;
+        const content = document.getElementById('report-content')?.innerHTML || '';
+        const full = `<!doctype html><html><head><meta charset="utf-8"><title>Informe</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <style>body{font-family:Times,serif; padding:20px; color:#000} h2{color:#000}</style>
+        </head><body>${content}</body></html>`;
+        const blob = new Blob([full], { type: 'application/msword' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `informe-${Date.now()}.doc`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+    };
+
+    // Open a print window for PDF (user chooses "Save as PDF" in the print dialog)
+    const downloadPDF = () => {
+        if (typeof document === 'undefined' || typeof window === 'undefined') return;
+        const content = document.getElementById('report-content')?.innerHTML || '';
+        const win = window.open('', '_blank', 'width=900,height=700');
+        if (!win) {
+            try { toast.error('No se pudo abrir la ventana de impresión. Revise bloqueadores.'); } catch (e) {}
+            return;
+        }
+        const html = `<!doctype html><html><head><meta charset="utf-8"><title>Informe</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <style>body{font-family:Inter,Arial,Helvetica,sans-serif; padding:20px; color:#0f172a} h2{color:#0f172a}</style>
+        </head><body>${content}</body></html>`;
+        win.document.open();
+        win.document.write(html);
+        win.document.close();
+        win.focus();
+        // Give the document a moment to render then trigger print
+        setTimeout(() => { win.print(); /* keep open for user to save */ }, 500);
+    };
+
     return (
-        <section className="mt-8 p-6 bg-white rounded-xl shadow-md">
+        <section id="report-content" className="mt-8 p-6 bg-white rounded-xl shadow-md">
             <header className="mb-6">
                 <h2 className="text-2xl font-extrabold text-slate-800">✅ Informe Detallado del Proyecto</h2>
                 <p className="text-sm text-slate-500">Empresa emisora: <strong>{datosProyecto.issuingCompanyName || 'Autoplancam'}</strong> — Cliente: <strong>{datosProyecto.clientName || 'Cliente'}</strong></p>
             </header>
+
+            <div className="flex gap-3 mb-4">
+                <button type="button" onClick={downloadPDF} className="px-3 py-2 bg-slate-800 text-white rounded-md text-sm">Descargar PDF</button>
+                <button type="button" onClick={downloadWord} className="px-3 py-2 bg-green-600 text-white rounded-md text-sm">Descargar Word</button>
+                <button type="button" onClick={downloadHTML} className="px-3 py-2 bg-blue-600 text-white rounded-md text-sm">Descargar HTML</button>
+            </div>
 
             <div className="mb-6">
                 <h3 className="text-lg font-semibold text-slate-700">Cálculo de Cámaras</h3>

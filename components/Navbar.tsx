@@ -1,6 +1,7 @@
 
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
+import { useRouter } from 'next/navigation';
 import Link from "next/link";
 import { Button as MovingBorderButton } from "./ui/moving-border";
 import { authClient } from "../lib/auth-client";
@@ -19,6 +20,7 @@ export default function Navbar() {
   const { data: session } = authClient.useSession();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter();
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     setIsMenuOpen(false);
@@ -61,7 +63,16 @@ export default function Navbar() {
           <button onClick={() => changeLanguage('en')} className="text-sm font-medium hover:text-blue-400">{t("English")}</button>
           {/* Botones de Iniciar/Cerrar Sesión */}
           {session && (
-            <button onClick={() => authClient.signOut()} className="text-sm font-medium hover:text-blue-400">
+            <button
+              onClick={async () => {
+                await authClient.signOut({
+                  fetchOptions: {
+                    onSuccess: () => router.push('/'),
+                  },
+                });
+              }}
+              className="text-sm font-medium hover:text-blue-400"
+            >
               {t("Sign Out")}
             </button>
           )}
@@ -102,7 +113,16 @@ export default function Navbar() {
             {/* Botones de Iniciar/Cerrar Sesión en menú móvil */}
             <div className="mt-4">
               {session && (
-                <button onClick={() => authClient.signOut()} className="text-sm font-medium hover:text-blue-400 w-full text-left">
+                <button
+                  onClick={async () => {
+                    await authClient.signOut({
+                      fetchOptions: {
+                        onSuccess: () => router.push('/'),
+                      },
+                    });
+                  }}
+                  className="text-sm font-medium hover:text-blue-400 w-full text-left"
+                >
                   {t("Sign Out")}
                 </button>
               )}

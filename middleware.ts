@@ -32,8 +32,8 @@ export async function middleware(request: NextRequest) {
     }
     
     // Si está autenticado e intenta acceder al login o a la raíz, redirige a planner
-    if (isAuthPath || pathname === '/') {
-        return NextResponse.redirect(new URL('/auth/sign-in', request.url));
+    if (isAuthPath) {
+        return NextResponse.redirect(new URL('/planner', request.url));
     }
 
     return NextResponse.next();
